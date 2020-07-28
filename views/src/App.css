@@ -1,1 +1,145 @@
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
+.body {
+  margin: 25px 25px;
+  background-color: white;
+}
+
+.home {
+  width: 100%;
+  height: 87vh;
+  background-color: whitesmoke;
+}
+
+.header-content {
+  text-align: center;
+  padding: 15rem 10rem;
+}
+
+.header-image {
+  height: 87vh;
+  background-position: center;
+  background-color: whitesmoke;
+  background-image: url('img/Mask\ Group\ 1.png');
+  background-size: cover;
+}
+
+.header-primary {
+  color: #9b7dfb;
+  font-size: 3.6rem;
+  font-style: italic;
+  margin-bottom: 3rem;
+}
+
+p {
+  color: #9b7dfb;
+  padding-top: 1rem;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about {
+  margin-top: 10rem;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+
+.about h2 {
+  margin-top: 3rem;
+  font-size: 2.6rem;
+  font-style: italic;
+}
+
+.heading-about {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.main-card {
+  box-shadow: 0.3rem 0.3rem #777;
+}
+
+.header-image-1 {
+  margin-top: 4rem;
+  width: 80%;
+  height: 34rem;
+  background-position: center;
+  background-color: whitesmoke;
+  background-image: url('img/bg-2.png');
+  background-size: cover;
+  clip-path: circle(50% at 50% 50%);
+}
+
+/* .upcoming {
+  /* background-color: blueviolet; 
+} */
+
+.upcoming-content {
+  /* background-color: brown; */
+  margin: 3rem 20rem;
+  width: 34rem;
+}
+
+.upcoming-title {
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  font-size: 2rem;
+}
+
+.upcoming-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 5rem;
+  grid-row-gap: 5rem;
+  margin-left: 3rem;
+}
+
+.cn {
+  align-self: center;
+  justify-self: center;
+}
+
+.card-1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.card-2 {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.card-3 {
+  grid-area: 2 / 1 / 3 / 3;
+}
+.card-4 {
+  grid-area: 2 / 2 / 3 / 2;
+  width: 10rem;
+  align-self: center;
+  margin-left: 1rem;
+  backface-visibility: hidden;
+
+  /* color: #fff;
+  background-color: #000; */
+}
+
+.cus-button:hover {
+  border-bottom: 0.2rem solid #9b7dfb;
+  cursor: pointer;
+  transition: 0.1s ease-in;
+}
+.cus-button-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.cus-button-rarrow {
+  margin-left: 1rem;
+  margin-right: 0rem;
+  font-size: 1.8rem;
+}
