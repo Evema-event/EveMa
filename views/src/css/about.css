@@ -4,7 +4,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.1fr 0.6fr 1fr;
+  grid-template-rows: 0.1fr 0.61fr;
   grid-template-areas: 'about about';
   background-color: whitesmoke;
 }
@@ -12,9 +12,9 @@
 .section-comp {
   margin-top: 3rem;
   width: 100%;
-  height: 75vh;
+  height: 80vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.7fr 1fr;
   grid-template-rows: 0.1fr 0.6fr 1fr;
   background-color: whitesmoke;
 }
@@ -32,26 +32,27 @@ h2 {
 }
 
 /* .upLeft-card {
-    background-color: burlywood;
-  } */
+  background-color: burlywood;
+} */
 
-.up-card {
+.card-1 {
   justify-items: center;
   margin-top: 3rem;
   margin-left: 6rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 5rem;
+}
+.card-2 {
+  justify-items: center;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-row-gap: 5rem;
 }
 
-.comp-card {
-  justify-items: center;
-  margin-top: 3rem;
-  margin-left: -3rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-gap: 5rem;
-}
 .upLeft-card .upLeft-title {
   text-align: center;
   margin-top: 2rem;
@@ -68,9 +69,7 @@ h2 {
 
 .upLeft-card .card-4 {
   width: 10rem;
-  align-self: center;
-  margin-left: 1rem;
-  backface-visibility: hidden;
+  margin: 2rem auto;
 }
 .upLeft-card .card-4 .cus-button:hover {
   border-bottom: 0.2rem solid #9b7dfb;
@@ -117,7 +116,7 @@ h2 {
   }
   .section-comp {
     padding-top: 4rem;
-    height: 156vh;
+    height: 167vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 'aboutdiv';
@@ -134,22 +133,6 @@ h2 {
     clip-path: circle(25% at 50% 50%);
   }
 
-  .up-card {
-    justify-items: center;
-    margin: 1rem 2rem 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
-
-  .comp-card {
-    justify-items: center;
-    margin: 1rem 2rem 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-  }
-
   .upLeft-card .upLeft-title {
     margin-bottom: 2.5rem;
     margin-left: 0rem;
@@ -157,6 +140,25 @@ h2 {
 
   .comp-title {
     margin-bottom: 2.5rem;
+  }
+  .card-1 {
+    margin: 0 10rem;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
+    grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
+  }
+
+  .card-2 {
+    margin: 0 9rem;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5rem;
+    grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
   }
 }
 
@@ -171,7 +173,7 @@ h2 {
 
   .section-comp {
     margin-top: -10rem;
-    height: 190vh;
+    height: 195vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;
@@ -189,20 +191,24 @@ h2 {
     clip-path: circle(30% at 50% 50%);
   }
 
-  .up-card {
+  .card-1 {
+    margin: 0 6rem;
     justify-items: center;
-    margin: 1rem 2rem 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
     grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
   }
 
-  .comp-card {
+  .card-2 {
+    margin: 0 9rem;
     justify-items: center;
-    margin: 1rem 2rem 0 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
     grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
   }
 
   .upLeft-card .upLeft-title {
@@ -232,7 +238,6 @@ h2 {
 
   .section-comp {
     margin-top: -13rem;
-    height: 265vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;
@@ -247,20 +252,24 @@ h2 {
     clip-path: circle(30% at 50% 50%);
   }
 
-  .up-card {
+  .card-1 {
+    margin: 0 1rem;
     justify-items: center;
-    margin: 1rem 2rem 0 2rem;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
     grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
   }
 
-  .comp-card {
+  .card-2 {
+    margin: 0 3rem;
     justify-items: center;
-    margin: 1rem 2rem 0 2rem;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5rem;
     grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
   }
 
   .upLeft-card .upLeft-title {
@@ -269,6 +278,42 @@ h2 {
   }
 
   .upLeft-card .card-4 {
+    height: 5rem;
+    width: 10rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-comp {
+    height: 295vh;
+  }
+  .card-1 {
+    margin: 0 1rem;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 5rem;
+    grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
+  }
+
+  .card-2 {
+    margin: 0 -1rem;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 5rem;
+    grid-template-rows: 1fr;
+    grid-row-gap: 5rem;
+  }
+
+  .upLeft-card .upLeft-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .upLeft-card .card-4 {
+    margin-top: 5rem;
     height: 5rem;
     width: 10rem;
   }

@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import EventContext from '../../context/event/eventContext';
 
 function Card() {
+  const eventContext = useContext(EventContext);
+  const ue = eventContext.upcomingEvents;
+
   return (
-    <Container>
-      <Rect className='main-card'>
-        <EventName>EVENT NAME</EventName>
-        <Venue>Venue</Venue>
-        <Time>Time</Time>
-      </Rect>
-    </Container>
+    <>
+      {ue.map((event) => (
+        <Container>
+          <Rect className='main-card'>
+            <EventName>{event.name}</EventName>
+            <Venue>{event.venue}</Venue>
+            <Time>{event.time}</Time>
+          </Rect>
+        </Container>
+      ))}
+    </>
   );
 }
 

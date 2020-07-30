@@ -1,9 +1,10 @@
 import React from 'react';
-import Card from '../card/Card';
+import Upcoming from '../card/upCard';
+import Completed from '../card/compCard';
 
 const About = () => {
   return (
-    <div>
+    <div className='about'>
       <div className='section-about'>
         {/* HEADING SECTION */}
 
@@ -17,21 +18,15 @@ const About = () => {
 
           <div className='up-card'>
             <div className='card-1'>
-              <Card />
+              <Upcoming />
             </div>
-            <div className='card-2'>
-              <Card />
-            </div>
-            <div className='card-3'>
-              <Card />
-            </div>
-            <div className='card-4'>
-              <div className='cus-button'>
-                <span className='cus-button-text'>Load More</span>
-                <span className='cus-button-rarrow'>
-                  <i className='fa fa-arrow-circle-right' />
-                </span>
-              </div>
+          </div>
+          <div className='card-4'>
+            <div className='cus-button'>
+              <span className='cus-button-text'>Load More</span>
+              <span className='cus-button-rarrow'>
+                <i className='fa fa-arrow-circle-right' />
+              </span>
             </div>
           </div>
         </div>
@@ -57,28 +52,16 @@ const About = () => {
           <div className='comp-title title'>Completed Events</div>
 
           <div className='comp-card'>
-            <div className='card-1'>
-              <Card />
-            </div>
             <div className='card-2'>
-              <Card />
+              <Completed />
             </div>
-            <div className='card-3'>
-              <Card />
-            </div>
-            <div className='card-5'>
-              <Card />
-            </div>
-            <div className='card-6'>
-              <Card />
-            </div>
-            <div className='card-4'>
-              <div className='cus-button'>
-                <span className='cus-button-text'>Load More</span>
-                <span className='cus-button-rarrow'>
-                  <i className='fa fa-arrow-circle-right' />
-                </span>
-              </div>
+          </div>
+          <div className='card-4'>
+            <div className='cus-button'>
+              <span className='cus-button-text'>Load More</span>
+              <span className='cus-button-rarrow'>
+                <i className='fa fa-arrow-circle-right' />
+              </span>
             </div>
           </div>
         </div>

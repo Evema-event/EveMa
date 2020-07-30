@@ -1,6 +1,7 @@
 @import 'css/about.css';
 @import 'css/home.css';
 @import 'css/navbar.css';
+@import 'css/card.css';
 
 * {
   padding: 0;
