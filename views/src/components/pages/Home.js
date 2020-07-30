@@ -2,29 +2,22 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div className='home'>
+    <div className='section-home'>
       <header className='header'>
-        {/* ROW */}
+        {/* IMAGE */}
 
-        <div className='row'>
-          {/* IMAGE */}
+        <div>
+          <div alt='Demo' className='header-image' />
+        </div>
 
-          <div className='col-5'>
-            <div alt='Demo' className='header-image' />
-          </div>
+        {/* Content */}
 
-          {/* Content */}
-
-          <div className='col-7'>
-            <div className='header-content'>
-              <h1 className='header-primary'>Welcome to EveMa</h1>
-              <p>
-                Greetings to everyone, <br /> This is the Event Management page
-                for the large events and <br /> for more about events <br />{' '}
-                scroll down
-              </p>
-            </div>
-          </div>
+        <div className='header-content'>
+          <h1 className='header-primary'>Welcome to EveMa</h1>
+          <p>
+            Greetings to everyone, <br /> This is the Event Management page for
+            the large events and <br /> for more about events <br /> scroll down
+          </p>
         </div>
       </header>
     </div>
