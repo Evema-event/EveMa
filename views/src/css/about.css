@@ -117,7 +117,7 @@ h2 {
   }
   .section-comp {
     padding-top: 4rem;
-    height: 147vh;
+    height: 156vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 'aboutdiv';
@@ -171,7 +171,7 @@ h2 {
 
   .section-comp {
     margin-top: -10rem;
-    height: 174vh;
+    height: 190vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;
@@ -232,7 +232,7 @@ h2 {
 
   .section-comp {
     margin-top: -13rem;
-    height: 244vh;
+    height: 265vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;

@@ -1,5 +1,6 @@
 @import 'css/about.css';
 @import 'css/home.css';
+@import 'css/navbar.css';
 
 * {
   padding: 0;
@@ -8,7 +9,53 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.body {
+.box {
   margin: 25px 25px;
   background-color: white;
+}
+
+.footer {
+  padding: 1rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #777;
+  color: white;
+  display: flex;
+}
+
+.copyright {
+  width: 50%;
+  text-align: center;
+}
+
+.social {
+  width: 50%;
+  text-align: center;
+}
+
+.social i {
+  padding-right: 0.5rem;
+  padding-left: 2rem;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    display: flex;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .copyright,
+  .social {
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
