@@ -11,7 +11,7 @@ import 'bootstrap/dist/js/bootstrap';
 import 'jquery/dist/jquery.slim';
 import 'popper.js';
 import UpcomingCard from './components/card/UpcomingCardItem';
-import CompletedCard from './components/card/CompletedCardItem';
+import Completed from './components/card/CompletedCardItem';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
           <Route
             exact
             path='/completed-individual-event'
-            component={CompletedCard}
+            component={Completed}
           />
         </Switch>
       </Router>
