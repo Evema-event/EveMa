@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import 'jquery/dist/jquery.slim';
 import 'popper.js';
+import UpcomingCard from './components/card/UpcomingCardItem';
+import CompletedCard from './components/card/CompletedCardItem';
 
 function App() {
   return (
@@ -18,6 +20,16 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/upcoming-individual-event'
+            component={UpcomingCard}
+          />
+          <Route
+            exact
+            path='/completed-individual-event'
+            component={CompletedCard}
+          />
         </Switch>
       </Router>
     </EventState>

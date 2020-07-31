@@ -2,7 +2,7 @@
   color: #ffffff !important;
   background-image: linear-gradient(to right bottom, #9b7dfb, rgb(255, 0, 255));
   position: fixed !important;
-  top: -1;
+  top: 0;
   width: 100%;
   z-index: 100;
 }

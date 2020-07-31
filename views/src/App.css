@@ -2,6 +2,8 @@
 @import 'css/home.css';
 @import 'css/navbar.css';
 @import 'css/card.css';
+/* @import 'css/upcomingIndi.css'; */
+@import 'css/completedIndiv.css';
 
 * {
   padding: 0;

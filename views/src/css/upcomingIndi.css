@@ -1,0 +1,234 @@
+.UpcomingCard {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 700;
+}
+.IndiBg {
+  width: 1253px;
+  height: 630px;
+  border-radius: 39px;
+  flex-direction: column;
+  display: flex;
+  margin: 6rem auto;
+  background-image: linear-gradient(
+    135.40754630408426deg,
+    rgb(255, 0, 170) 0%,
+    rgb(212, 0, 255) 100%
+  );
+}
+
+.EventName {
+  color: rgba(255, 255, 255, 1);
+  font-size: 30px;
+  margin-top: 54px;
+  margin-left: 52px;
+}
+
+.EventDetails {
+  color: rgba(255, 255, 255, 1);
+  font-size: 30px;
+  margin-top: 20px;
+  margin-left: 52px;
+}
+
+.Description {
+  width: 837px;
+  height: 248px;
+  flex-direction: column;
+  display: flex;
+}
+
+.DiscriptionBg {
+  width: 837px;
+  height: 248px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 39px;
+  flex-direction: column;
+  display: flex;
+}
+
+.EventDescription {
+  color: rgba(31, 31, 31, 1);
+  font-size: 30px;
+  margin-top: 36px;
+  margin-left: 31px;
+}
+
+.Last {
+  width: 231px;
+  height: 23px;
+  flex-direction: column;
+  display: flex;
+  margin-left: 75px;
+  margin-top: 60px;
+}
+
+.Date {
+  top: 81px;
+  left: 84px;
+  position: absolute;
+  font-style: italic;
+  font-weight: 500;
+  color: #121212;
+  font-size: 19px;
+}
+
+.LastBg {
+  top: 0px;
+  left: 0px;
+  width: 266px;
+  height: 222px;
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 30px;
+  flex-direction: column;
+  display: flex;
+}
+
+.LastDate {
+  color: #121212;
+  font-size: 20px;
+  margin-top: 44px;
+  margin-left: 18px;
+}
+
+.Time {
+  font-style: italic;
+  font-weight: 500;
+  color: #121212;
+  font-size: 19px;
+  margin-top: 44px;
+  margin-left: 91px;
+}
+
+.Venue {
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: 500;
+  color: #121212;
+  font-size: 19px;
+  margin-top: 10px;
+  margin-left: 108px;
+}
+
+.DateStack {
+  width: 266px;
+  height: 222px;
+  margin-top: -44px;
+  margin-left: -18px;
+  position: relative;
+}
+
+.DescriptionRow {
+  height: 248px;
+  flex-direction: row;
+  display: flex;
+  margin-top: 27px;
+  margin-left: 45px;
+  margin-right: 65px;
+}
+
+.ContactDetails {
+  color: rgba(255, 255, 255, 1);
+  font-size: 30px;
+  margin-top: 33px;
+  margin-left: 45px;
+}
+
+.Contact {
+  width: 324px;
+  height: 26px;
+  flex-direction: column;
+  display: flex;
+  margin-top: 19px;
+}
+
+.ContactBg {
+  width: 820px;
+  height: 63px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  flex-direction: row;
+  display: flex;
+  margin-top: -19px;
+  margin-left: -44px;
+}
+
+.Mail {
+  color: rgba(31, 31, 31, 1);
+  font-size: 22px;
+}
+
+.Phone {
+  color: rgba(31, 31, 31, 1);
+  font-size: 22px;
+  margin-left: 46px;
+}
+
+.MailRow {
+  height: 26px;
+  flex-direction: row;
+  display: flex;
+  flex: 1 1 0%;
+  margin: 1.2rem 4.5rem;
+  /* margin-right: 85px;
+  margin-left: 44px;
+  margin-top: 19px; */
+}
+
+.RegisterButton {
+  width: 261px;
+  height: 63px;
+  flex-direction: column;
+  display: flex;
+  margin-left: 540px;
+}
+
+.RegisterBg {
+  width: 261px;
+  height: 63px;
+  background-color: #e6e6e6;
+  border-radius: 20px;
+  flex-direction: column;
+  display: flex;
+}
+
+.Register {
+  color: rgba(31, 31, 31, 1);
+  font-size: 30px;
+  margin-top: 19px;
+  margin-left: 62px;
+}
+
+.ContactRow {
+  height: 63px;
+  flex-direction: row;
+  display: flex;
+  margin-top: 39px;
+  margin-left: 89px;
+  margin-right: 39px;
+}
+
+.Heading {
+  width: 40px;
+  height: 44px;
+  flex-direction: row;
+  display: flex;
+  margin-top: -684px;
+  margin-left: 71px;
+}
+
+.EventInformation {
+  color: #121212;
+  font-size: 30px;
+  margin-left: 14px;
+  margin-top: 5px;
+}
+
+.BackRow {
+  height: 44px;
+  flex-direction: row;
+  display: flex;
+  flex: 1 1 0%;
+  margin-right: -255px;
+}
