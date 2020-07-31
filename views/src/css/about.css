@@ -106,7 +106,7 @@ h2 {
   clip-path: circle(34% at 50% 50%);
 }
 
-@media (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
   .section-about {
     height: 100%;
     display: grid;
@@ -116,7 +116,7 @@ h2 {
   }
   .section-comp {
     padding-top: 4rem;
-    height: 167vh;
+    height: 150vh;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 'aboutdiv';
@@ -162,7 +162,7 @@ h2 {
   }
 }
 
-@media (max-width: 900px) {
+@media only screen and (max-width: 900px) {
   .section-about {
     height: 100%;
     display: grid;
@@ -173,7 +173,7 @@ h2 {
 
   .section-comp {
     margin-top: -10rem;
-    height: 195vh;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;
@@ -228,7 +228,7 @@ h2 {
   }
 }
 
-@media (max-width: 700px) {
+@media only screen and (max-width: 700px) {
   .section-about {
     display: grid;
     grid-template-columns: 1fr;
@@ -283,9 +283,9 @@ h2 {
   }
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .section-comp {
-    height: 295vh;
+    height: auto;
   }
   .card-1 {
     margin: 0 1rem;
@@ -316,5 +316,11 @@ h2 {
     margin-top: 5rem;
     height: 5rem;
     width: 10rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .section-comp {
+    height: auto;
   }
 }
