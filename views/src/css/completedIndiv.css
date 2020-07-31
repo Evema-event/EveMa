@@ -1,0 +1,123 @@
+.main-bg {
+  display: flex;
+  width: 1253px;
+  height: 630px;
+  border-radius: 39px;
+  flex-direction: column;
+  margin: 100px auto 0 auto;
+  /* margin-top: 100px; */
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(255, 0, 200) 0%,
+    rgba(189, 16, 224, 1) 100%
+  );
+}
+
+.event-name {
+  position: absolute;
+  padding-top: 1rem;
+  margin-left: 3.5rem;
+  font-size: 1.8rem;
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+.discription-row {
+  height: 248px;
+  flex-direction: row;
+  display: flex;
+  margin-top: 133px;
+  margin-left: 43px;
+  margin-right: 36px;
+}
+.details-bg {
+  width: 837px;
+  height: 248px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 39px;
+}
+
+.details {
+  color: #686868;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.last {
+  color: #686868;
+  margin-top: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.last p {
+  margin: 1rem 0rem;
+  font-size: 1.09rem;
+}
+
+.last-bg {
+  width: 266px;
+  height: 248px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  margin-left: 71px;
+}
+
+.contact-name {
+  top: 60%;
+  left: 8%;
+  position: absolute;
+  padding-top: 1rem;
+  margin-left: 9.5rem;
+  font-size: 1.8rem;
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+.contact-bg {
+  width: 837px;
+  height: 63px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 100px;
+}
+
+.contact {
+  display: flex;
+  text-align: center;
+  margin: 0.2rem 3rem;
+}
+
+.contact p {
+  color: #686868;
+  padding: 1rem 4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.register-button {
+  width: 261px;
+  height: 63px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 100px;
+  margin-left: 71px;
+}
+
+.register {
+  color: #686868;
+  font-weight: bolder;
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 8px auto;
+}
+
+.contact-row {
+  height: 63px;
+  flex-direction: row;
+  display: flex;
+  margin-top: 107px;
+  margin-left: 43px;
+  margin-right: 41px;
+}

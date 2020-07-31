@@ -1,32 +1,43 @@
 import React from 'react';
-import img from '../../img/bg-1.png';
+import About from './About';
 
 const Home = () => {
   return (
-    <div className='home'>
-      <header className='header'>
-        {/* ROW */}
-        <div className='row'>
-          {/* IMAGE */}
+    <div>
+      <div className='box'>
+        <div className='section-home'>
+          <header className='header'>
+            {/* IMAGE */}
 
-          <div className='col'>
-            <img src={img} alt='Demo' />
-          </div>
+            <div>
+              <div alt='Demo' className='header-image' />
+            </div>
 
-          {/* Content */}
+            {/* Content */}
 
-          <div className='col'>
-            <div className='heading-content'>
-              <h1 className='heading-primary'>Welcome to EveMa</h1>
+            <div className='header-content'>
+              <h1 className='header-primary'>Welcome to EveMa</h1>
               <p>
-                Greetings to everyone, <br /> This is the event Management page
+                Greetings to everyone, <br /> This is the Event Management page
                 for the large events and <br /> for more about events <br />{' '}
                 scroll down
               </p>
             </div>
-          </div>
+          </header>
         </div>
-      </header>
+        <About />
+      </div>
+      <div className='footer'>
+        <div className='copyright'>Copyright &copy; 2020.</div>
+        <div className='social'>
+          <i className='fa fa-facebook' />
+          Facebook
+          <i className='fa fa-twitter' />
+          Twitter
+          <i className='fa fa-linkedin' />
+          LinkedIn{' '}
+        </div>
+      </div>
     </div>
   );
 };
