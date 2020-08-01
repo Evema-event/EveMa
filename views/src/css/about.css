@@ -150,3 +150,16 @@ h2 {
 		margin: 2rem 5rem;
 	}
 }
+
+@media only screen and (max-width: 450px) {
+	.card-1 {
+		margin: 3rem 3rem;
+	}
+
+	.card-2 {
+		margin: 2rem 3rem;
+	}
+	.title {
+		font-size: 26px;
+	}
+}

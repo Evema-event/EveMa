@@ -31,12 +31,18 @@ const Home = () => {
       <div className='footer'>
         <div className='copyright'>Copyright &copy; 2020.</div>
         <div className='social'>
-          <i className='fa fa-facebook' />
-          <p>Facebook</p>
-          <i className='fa fa-twitter' />
-          <p>Twitter</p>
-          <i className='fa fa-linkedin' />
-          <p>LinkedIn </p>
+          <div className='social-footer'>
+            <i className='fa fa-facebook' />
+            <p>Facebook</p>
+          </div>
+          <div className='social-footer'>
+            <i className='fa fa-twitter' />
+            <p>Twitter</p>
+          </div>
+          <div className='social-footer'>
+            <i className='fa fa-linkedin' />
+            <p>LinkedIn </p>
+          </div>
         </div>
       </div>
     </div>

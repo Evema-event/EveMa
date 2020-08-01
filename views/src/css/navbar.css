@@ -1,32 +1,32 @@
 .navbar {
-  color: #ffffff !important;
-  background-image: linear-gradient(to right bottom, #9b7dfb, rgb(255, 0, 255));
-  position: fixed !important;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+	color: #ffffff !important;
+	background-image: linear-gradient(to right bottom, #9b7dfb, rgb(255, 0, 255));
+	position: fixed !important;
+	top: 0;
+	width: 100%;
+	z-index: 100;
 }
 
 .navbar-dark .navbar-toggler {
-  border-width: 0.09rem;
-  border-color: rgb(255, 255, 255) !important;
+	border-width: 0.09rem;
+	border-color: rgb(255, 255, 255) !important;
 }
 
 .navbar-dark img {
-  margin-left: 0.6rem;
+	margin-left: 0.6rem;
 }
 
 .navbar-dark .fa-bars {
-  color: #ffffff;
+	color: #ffffff;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255) !important;
+	color: rgba(255, 255, 255) !important;
 }
 
 .navbar-dark ul li {
-  margin-right: 1rem;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
+	margin-right: 1rem;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.1rem;
 }
