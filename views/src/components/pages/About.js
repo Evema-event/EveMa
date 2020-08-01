@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Upcoming from '../card/upCard';
 import Completed from '../card/compCard';
+import EventContext from '../../context/event/eventContext';
 
 const About = () => {
+  const eventContext = useContext(EventContext);
+
   return (
     <div className='about'>
       <div className='section-about'>
@@ -21,14 +24,17 @@ const About = () => {
               <Upcoming />
             </div>
           </div>
-          <div className='card-4'>
-            <div className='cus-button'>
-              <span className='cus-button-text'>Load More</span>
-              <span className='cus-button-rarrow'>
-                <i className='fa fa-arrow-circle-right' />
-              </span>
-            </div>
-          </div>
+          {eventContext.upcomingEvents &&
+            eventContext.upcomingEvents.length > 4 && (
+              <div className='card-4'>
+                <div className='cus-button'>
+                  <span className='cus-button-text'>Load More</span>
+                  <span className='cus-button-rarrow'>
+                    <i className='fa fa-arrow-circle-right' />
+                  </span>
+                </div>
+              </div>
+            )}
         </div>
 
         {/* UPCOMING RIGHT SECTION */}
@@ -56,14 +62,17 @@ const About = () => {
               <Completed />
             </div>
           </div>
-          <div className='card-4'>
-            <div className='cus-button'>
-              <span className='cus-button-text'>Load More</span>
-              <span className='cus-button-rarrow'>
-                <i className='fa fa-arrow-circle-right' />
-              </span>
-            </div>
-          </div>
+          {eventContext.completedEvents &&
+            eventContext.completedEvents.length > 6 && (
+              <div className='card-4'>
+                <div className='cus-button'>
+                  <span className='cus-button-text'>Load More</span>
+                  <span className='cus-button-rarrow'>
+                    <i className='fa fa-arrow-circle-right' />
+                  </span>
+                </div>
+              </div>
+            )}
         </div>
       </div>
     </div>
