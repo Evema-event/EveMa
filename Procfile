@@ -1,1 +1,0 @@
-web npm install && npm install --prefix views && npm run build --prefix views && node server.js
