@@ -1,0 +1,1 @@
+web npm install && npm install --prefix views && npm run build --prefix views && NODE_ENV=production node server.js
