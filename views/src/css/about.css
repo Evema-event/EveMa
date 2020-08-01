@@ -45,7 +45,6 @@ h2 {
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   column-gap: 5rem;
   row-gap: 5rem;
 }
@@ -87,15 +86,16 @@ h2 {
   font-size: 1.8rem;
 }
 
-@media only screen and (max-width: 1200px) {
-  .section-about {
-    flex-direction: column;
-  }
-  .section-comp {
-    flex-direction: column;
-  }
+@media only screen and (max-width: 1300px) {
   .about img {
-    width: 80%;
+    display: none;
+  }
+
+  .upLeft {
+    padding-right: 0rem;
+  }
+  .upRight {
+    padding-left: 0px;
   }
 }
 
@@ -116,10 +116,6 @@ h2 {
   .upRight {
     margin: 0 auto;
     padding-left: 0px;
-  }
-
-  .about img {
-    width: 100%;
   }
 }
 
