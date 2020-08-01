@@ -31,11 +31,11 @@ const Home = () => {
         <div className='copyright'>Copyright &copy; 2020.</div>
         <div className='social'>
           <i className='fa fa-facebook' />
-          Facebook
+          <p>Facebook</p>
           <i className='fa fa-twitter' />
-          Twitter
+          <p>Twitter</p>
           <i className='fa fa-linkedin' />
-          LinkedIn{' '}
+          <p>LinkedIn </p>
         </div>
       </div>
     </div>
