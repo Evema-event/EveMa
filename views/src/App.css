@@ -33,23 +33,36 @@
 }
 
 .social {
+  display: flex;
   width: 50%;
   text-align: center;
 }
 
 .social i {
-  padding-right: 0.5rem;
-  padding-left: 2rem;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  color: #777;
+  border-radius: 50%;
+  padding-top: 6px;
 }
 
-@media (max-width: 900px) {
+.social p {
+  color: white;
+  padding-top: 3px;
+  padding-bottom: 1px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media only screen and (max-width: 900px) {
   .footer {
     display: flex;
     padding: 1.5rem;
   }
 }
 
-@media (max-width: 700px) {
+@media only screen and (max-width: 700px) {
   .footer {
     display: flex;
     flex-direction: column;
@@ -60,11 +73,82 @@
   .social {
     padding: 1rem;
     margin: 0 auto;
-    width: 100%;
+    width: auto;
   }
 
   .social i {
-    padding-right: 0.5rem;
-    padding-left: 2rem;
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    color: #777;
+    border-radius: 50%;
+    padding-top: 6px;
+  }
+
+  .social p {
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .copyright,
+  .social {
+    padding: 1rem;
+    text-align: center;
+    margin: 0 auto;
+    width: auto;
+  }
+
+  .social i {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    color: #777;
+    border-radius: 50%;
+    padding-top: 6px;
+  }
+
+  .social p {
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media only screen and (max-width: 390px) {
+  .footer {
+    padding: 1rem;
+  }
+
+  .social {
+    font-size: 75%;
+  }
+
+  .social i {
+    width: 25px;
+    height: 25px;
+    background-color: white;
+    color: #777;
+    border-radius: 50%;
+    padding-top: 6px;
+  }
+
+  .social p {
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.9rem;
   }
 }
