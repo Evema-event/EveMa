@@ -1,7 +1,7 @@
 .section-about {
   margin-top: 3rem;
   width: 100%;
-  height: 100vh;
+  height: 87vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.1fr 0.61fr;
@@ -12,10 +12,10 @@
 .section-comp {
   margin-top: 3rem;
   width: 100%;
-  height: 80vh;
+  height: 87vh;
   display: grid;
   grid-template-columns: 0.7fr 1fr;
-  grid-template-rows: 0.1fr 0.6fr 1fr;
+  grid-template-rows: 0.1fr 0.6fr;
   background-color: whitesmoke;
 }
 
@@ -108,7 +108,7 @@ h2 {
 
 @media (max-width: 1200px) {
   .section-about {
-    height: 100%;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 'about';
@@ -116,7 +116,7 @@ h2 {
   }
   .section-comp {
     padding-top: 4rem;
-    height: 167vh;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: 'aboutdiv';
@@ -173,7 +173,7 @@ h2 {
 
   .section-comp {
     margin-top: -10rem;
-    height: 195vh;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;
@@ -230,6 +230,7 @@ h2 {
 
 @media (max-width: 700px) {
   .section-about {
+    height: auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 0.6fr;
@@ -237,6 +238,7 @@ h2 {
   }
 
   .section-comp {
+    height: auto;
     margin-top: -13rem;
     display: grid;
     grid-template-columns: 1fr;
@@ -285,7 +287,7 @@ h2 {
 
 @media (max-width: 600px) {
   .section-comp {
-    height: 295vh;
+    height: auto;
   }
   .card-1 {
     margin: 0 1rem;

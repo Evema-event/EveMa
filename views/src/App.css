@@ -6,59 +6,65 @@
 @import 'css/completedIndiv.css';
 
 * {
-	padding: 0;
-	border: 0;
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .box {
-	margin: 25px 25px;
-	background-color: white;
+  margin: 25px 25px;
+  background-color: white;
 }
 
 .footer {
-	padding: 1rem;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	background-color: #777;
-	color: white;
-	display: flex;
+  padding: 1rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #777;
+  color: white;
+  display: flex;
 }
 
 .copyright {
-	width: 50%;
-	text-align: center;
+  width: 50%;
+  text-align: center;
 }
 
 .social {
-	width: 50%;
-	text-align: center;
+  width: 50%;
+  text-align: center;
 }
 
 .social i {
-	padding-right: 0.5rem;
-	padding-left: 2rem;
+  padding-right: 0.5rem;
+  padding-left: 2rem;
 }
 
 @media (max-width: 900px) {
-	.footer {
-		display: flex;
-		padding: 1.5rem;
-	}
+  .footer {
+    display: flex;
+    padding: 1.5rem;
+  }
 }
 
-@media (max-width: 800px) {
-	.footer {
-		display: flex;
-		flex-direction: column;
-	}
+@media (max-width: 700px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-	.copyright,
-	.social {
-		padding: 1rem;
-		margin: 0 auto;
-		width: 100%;
-	}
+  .copyright,
+  .social {
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .social i {
+    padding-right: 0.5rem;
+    padding-left: 2rem;
+  }
 }
