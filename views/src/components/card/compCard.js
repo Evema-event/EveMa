@@ -12,17 +12,21 @@ const Completed = () => {
   return (
     <>
       {completedEvent &&
-        completedEvent.map((event) => (
-          <div className='cus-container cus-card'>
-            <div className='rect main-card'>
-              <div className='name'>{event.name}</div>
-              <div className='venue'>{event.venue}</div>
-              <div className='time'>
-                {new Date(event.startDate).toISOString().slice(0, 10)}
+        completedEvent.map((event, i) => {
+          if (i < 6)
+            // console.log(i);
+            return (
+              <div key={event._id} className='cus-container cus-card'>
+                <div className='rect main-card'>
+                  <div className='name'>{event.name}</div>
+                  <div className='venue'>{event.venue}</div>
+                  <div className='time'>
+                    {new Date(event.startDate).toISOString().slice(0, 10)}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
+            );
+        })}
     </>
   );
 };
