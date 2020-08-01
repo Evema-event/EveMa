@@ -8,7 +8,7 @@
 		"server": "cross-env NODE_ENV=development nodemon server.js",
 		"client": "npm start --prefix views",
 		"clientbuild": "npm run build --prefix views",
-		"dev": "concurrently \"npm start\" \"npm run client\"",
+		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"prod": "npm run clientbuild && cross-env NODE_ENV=production node server.js",
 		"test": "jest --watchAll"
 	},

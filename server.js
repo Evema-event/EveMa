@@ -50,7 +50,7 @@ mongoose.connect(
     }
 ).then(() => {
     console.log('MongoDB connected');
-    server.listen(5000, () => {
+    server.listen(PORT, () => {
         console.log(`Server start on port ${PORT}`);
     });
 }).catch(error => {
