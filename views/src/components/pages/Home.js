@@ -1,5 +1,6 @@
 import React from 'react';
 import About from './About';
+import HeaderImage from '../../img/bg-1.png';
 
 const Home = () => {
   return (
@@ -9,8 +10,8 @@ const Home = () => {
           <header className='header'>
             {/* IMAGE */}
 
-            <div>
-              <div alt='Demo' className='header-image' />
+            <div className='header-image'>
+              <img alt='Demo' src={HeaderImage} />
             </div>
 
             {/* Content */}
