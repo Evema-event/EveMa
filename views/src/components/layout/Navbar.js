@@ -1,28 +1,30 @@
 import React, { Fragment } from 'react';
-// import { Link } from 'react-router-dom';
 import Logo from '../../img/Logo.png';
 
 const Navbar = () => {
   const guestLinks = (
     <Fragment>
-      <li className='nav-item'>
-        <a
-          className='nav-link'
-          data-toggle='collapse'
-          data-target='.navbar-collapse.show'
-          href='/signup'
-        >
-          Sign Up <span className='sr-only'>(current)</span>
+      <li>
+        <a className='nav-link' data-target='.navbar-collapse.show' href='/'>
+          Home
         </a>
       </li>
       <li className='nav-item'>
         <a
           className='nav-link'
-          data-toggle='collapse'
+          data-target='.navbar-collapse.show'
+          href='/signup'
+        >
+          Sign Up
+        </a>
+      </li>
+      <li className='nav-item'>
+        <a
+          className='nav-link'
           data-target='.navbar-collapse.show'
           href='/login'
         >
-          Login <span className='sr-only'>(current)</span>
+          Login
         </a>
       </li>
     </Fragment>

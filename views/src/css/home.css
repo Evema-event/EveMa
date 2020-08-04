@@ -64,14 +64,3 @@
     padding-top: 30px;
   }
 }
-
-@media only screen and (max-width: 450px) {
-  .header-primary {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-
-  .section-home p {
-    font-size: 0.6rem;
-  }
-}

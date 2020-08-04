@@ -91,19 +91,19 @@
   }
   .up-card .details-bg {
     padding: 1rem;
-    width: 600px;
+    width: 550px;
     border-radius: 10px;
     margin-top: 0rem;
     font-size: 90%;
   }
-  .up-card.last-bg {
+  .up-card .last-bg {
     font-size: 79%;
-    width: 200px;
+    width: 220px;
     font-weight: 500;
     border-radius: 10px;
   }
   .up-card .contact-bg {
-    width: 600px;
+    width: 550px;
     font-weight: 450;
     border-radius: 10px;
   }
@@ -119,10 +119,10 @@
     border-radius: 30px;
   }
   .up-card .details-bg {
-    width: 500px;
+    width: 470px;
   }
   .up-card .contact-bg {
-    width: 500px;
+    width: 470px;
   }
 }
 
@@ -161,7 +161,7 @@
     flex-direction: row;
   }
 
-  .up-card.contact-bg {
+  .up-card .contact-bg {
     display: grid;
     width: 400px;
   }

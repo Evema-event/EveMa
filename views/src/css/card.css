@@ -4,8 +4,7 @@
 }
 
 .rect {
-  width: 450px;
-  /* height: 220px; */
+  width: 460px;
   background-color: #ffffff;
   border-radius: 19px;
   flex-direction: column;
@@ -20,14 +19,17 @@
   color: #121212;
 }
 .cus-card .name {
+  color: #5e385f;
   font-size: 25px;
   margin-top: 17px;
   margin-left: 15px;
 }
 
 .cus-card .description {
+  color: #414141;
   margin-top: 10px;
   margin-left: 15px;
+  font-weight: 400;
 }
 
 .cus-card .details {
@@ -37,23 +39,19 @@
   margin: 0rem;
   padding: 0.5rem;
   font-size: 18px;
-  color: #121212;
+  color: #6e4166;
 }
 
 @media (max-width: 1200px) {
   .rect {
-    width: 340px;
+    width: 400px;
+    padding-right: 1rem;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 500px) {
   .rect {
-    width: 280px;
-  }
-}
-@media (max-width: 700px) {
-  .rect {
-    width: 200px;
+    width: 270px;
   }
   .cus-card .details {
     flex-direction: column;
