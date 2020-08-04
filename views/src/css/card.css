@@ -4,13 +4,13 @@
 }
 
 .rect {
-  width: 190px;
-  height: 150px;
+  width: 450px;
+  /* height: 220px; */
   background-color: #ffffff;
   border-radius: 19px;
   flex-direction: column;
   display: flex;
-  box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.3);
 }
 
 .cus-card {
@@ -25,14 +25,38 @@
   margin-left: 15px;
 }
 
-.cus-card .venue {
-  font-size: 20px;
-  margin-top: 16px;
+.cus-card .description {
+  margin-top: 10px;
   margin-left: 15px;
 }
 
-.cus-card .time {
-  font-size: 20px;
-  margin-top: 6px;
-  margin-left: 15px;
+.cus-card .details {
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  margin: 0rem;
+  padding: 0.5rem;
+  font-size: 18px;
+  color: #121212;
+}
+
+@media (max-width: 1200px) {
+  .rect {
+    width: 340px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .rect {
+    width: 280px;
+  }
+}
+@media (max-width: 700px) {
+  .rect {
+    width: 200px;
+  }
+  .cus-card .details {
+    flex-direction: column;
+    padding: 1rem;
+  }
 }

@@ -3,7 +3,6 @@ import Upcoming from '../card/upCard';
 import Completed from '../card/compCard';
 import EventContext from '../../context/event/eventContext';
 import UpImg from '../../img/Mask2.png';
-import CompImg from '../../img/Mask3.png';
 
 const About = () => {
   const eventContext = useContext(EventContext);
@@ -49,17 +48,11 @@ const About = () => {
 
       {/* completed */}
       <div className='section-comp'>
-        {/*  UPCOMING LEFT CARDS */}
-
-        <div className='upRight'>
-          <img alt='Demo' src={CompImg} />
-        </div>
-
         {/* UPCOMING RIGHT SECTION */}
 
-        <div className='upLeft-card'>
+        <div className='upLeft'>
           {/* UPCOMING LEFT TITLE */}
-          <div className='comp-title title'>Completed Events</div>
+          <div className='upLeft-title title'>Completed Events</div>
 
           <div className='comp-card'>
             <div className='card-2'>
@@ -70,9 +63,11 @@ const About = () => {
             eventContext.completedEvents.length > 6 && (
               <div className='card-4'>
                 <div className='cus-button'>
-                  <span className='cus-button-text'>Load More</span>
-                  <span className='cus-button-rarrow'>
-                    <i className='fa fa-arrow-circle-right' />
+                  <span className='cus-hov'>
+                    <span className='cus-button-text'>Load More</span>
+                    <span className='cus-button-rarrow'>
+                      <i className='fa fa-arrow-circle-right' />
+                    </span>
                   </span>
                 </div>
               </div>
