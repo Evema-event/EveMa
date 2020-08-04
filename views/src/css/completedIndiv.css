@@ -104,13 +104,12 @@
   }
   .comp-card .contact-bg {
     width: 600px;
-    font-weight: 500;
+    font-weight: 00;
     border-radius: 10px;
   }
   .comp-card .register-button {
     font-weight: 400;
-    text-align: center;
-    margin: 0 20px;
+    margin: 0 auto;
   }
 }
 
