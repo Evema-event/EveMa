@@ -30,12 +30,14 @@ const About = () => {
           {eventContext.upcomingEvents &&
             eventContext.upcomingEvents.length > 2 && (
               <div className='card-4'>
-                <div className='cus-button'>
-                  <span className='cus-button-text'>Load More</span>
-                  <span className='cus-button-rarrow'>
-                    <i className='fa fa-arrow-circle-right' />
+                <a href='/upcoming-list' className='cus-button '>
+                  <span className='cus-hov'>
+                    <span className='cus-button-text'>Load More</span>
+                    <span className='cus-button-rarrow'>
+                      <i className='fa fa-arrow-circle-right' />
+                    </span>
                   </span>
-                </div>
+                </a>
               </div>
             )}
         </div>
@@ -62,14 +64,14 @@ const About = () => {
           {eventContext.completedEvents &&
             eventContext.completedEvents.length > 6 && (
               <div className='card-4'>
-                <div className='cus-button'>
+                <a href='/completed-list' className='cus-button'>
                   <span className='cus-hov'>
                     <span className='cus-button-text'>Load More</span>
                     <span className='cus-button-rarrow'>
                       <i className='fa fa-arrow-circle-right' />
                     </span>
                   </span>
-                </div>
+                </a>
               </div>
             )}
         </div>

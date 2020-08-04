@@ -79,6 +79,12 @@ h2 {
   text-align: center;
 }
 
+.card-4 a:visited,
+.card-4 a:link {
+  color: #686868 !important;
+  text-decoration: none;
+}
+
 .card-4 .cus-button {
   cursor: pointer;
   transition: 0.1s ease-in;
