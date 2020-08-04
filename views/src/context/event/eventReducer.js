@@ -1,4 +1,4 @@
-import { GET_UPCOMING_EVENTS, GET_COMPLETED_EVENTS } from '../types';
+import { GET_UPCOMING_EVENTS, GET_COMPLETED_EVENTS, FIND_INDIV_EVENT } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,7 +12,11 @@ export default (state, action) => {
         ...state,
         completedEvents: action.payload,
       };
-
+    case FIND_INDIV_EVENT:
+      return {
+        ...state,
+        indivEvent: action.payload
+      }
     default:
       break;
   }
