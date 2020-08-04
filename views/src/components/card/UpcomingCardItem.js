@@ -1,47 +1,72 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import EventContext from '../../context/event/eventContext';
 
-function UpcomingCard(props) {
+const Upcomingindiv = () => {
+  const eventContext = useContext(EventContext);
+  const upcomingEvent = eventContext.upcomingEvents;
+
+  useEffect(() => {
+    eventContext.getUpcomingEvent();
+  }, []);
+
   return (
-    <div className='UpcomingCard'>
-      <div className='IndiBg'>
-        <div className='EventName'>Event Name</div>
-        <div className=' EventDetails'>Event Details</div>
-        <div className='DescriptionRow'>
-          <div className='Description'>
-            <div className='DiscriptionBg'>
-              <div className='EventDescription'>Event Description</div>
-            </div>
-          </div>
-          <div className='Last'>
-            <div className='DateStack'>
-              <div className='Date'>31/02/2020</div>
-              <div className='LastBg'>
-                <div className='LastDate'>Last Date for Registration</div>
-                <div className='Time'>11.59 P.M</div>
-                <div className='Venue'>Venue</div>
+    <div className='up-card'>
+      {upcomingEvent &&
+        upcomingEvent.map((event, i) => {
+          if (i < 1)
+            return (
+              // TITLE PART
+              <div key={event._id}>
+                <div className='main-bg'>
+                  <div className='indiv-name'>{event.name}</div>
+                  <div className='indiv-name'>Event Description:</div>
+                  <br />
+                  {/* DESCRIPTION PART */}
+
+                  <div className='discription-row'>
+                    <div className='details-bg'>{event.description}</div>
+
+                    {/* LAST DAY FOR REGISTRATION PART */}
+
+                    <div className='last-bg'>
+                      <div>Last Date for the Registration</div>
+                      <div>
+                        Time: {event.startTime} A.M - {event.endTime} P.M
+                      </div>
+                      <div>
+                        Last Date :
+                        {new Date(event.registrationLastdate)
+                          .toISOString()
+                          .slice(0, 10)}
+                      </div>
+                      <div>Venue :{event.venue}</div>
+                    </div>
+                  </div>
+                  <br />
+                  <div>
+                    <div className='indiv-name'>Contact Details:</div>
+                  </div>
+
+                  <div className='contact-part '>
+                    {/* CONTACT PART */}
+
+                    <div className='contact-bg'>
+                      <div>Mail Address: {event.contactEmail}</div>
+                      <div>Phone:{event.contactNumber}</div>
+                    </div>
+
+                    {/* REGISTER BUTTON */}
+
+                    <div className='register-button '>
+                      <div>Register</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className='ContactDetails'>Contact Details</div>
-        <div className='ContactRow'>
-          <div className='Contact'>
-            <div className='ContactBg'>
-              <div className='MailRow'>
-                <div className='Mail'>Mail Adresss : event@gmail.com</div>
-                <div className='Phone'>Phone Number: 9876543210</div>
-              </div>
-            </div>
-          </div>
-          <div className='RegisterButton'>
-            <div className='RegisterBg'>
-              <div className='Register'>REGISTER</div>
-            </div>
-          </div>
-        </div>
-      </div>
+            );
+        })}
     </div>
   );
-}
+};
 
-export default UpcomingCard;
+export default Upcomingindiv;

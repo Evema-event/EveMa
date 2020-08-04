@@ -3,7 +3,6 @@ import Upcoming from '../card/upCard';
 import Completed from '../card/compCard';
 import EventContext from '../../context/event/eventContext';
 import UpImg from '../../img/Mask2.png';
-import CompImg from '../../img/Mask3.png';
 
 const About = () => {
   const eventContext = useContext(EventContext);

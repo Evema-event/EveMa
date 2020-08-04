@@ -3,18 +3,12 @@ import axios from 'axios';
 import EventContext from './eventContext';
 import EventReducer from './eventReducer';
 import url from '../../server';
-import {
-  FIND_INDIV_EVENT,
-  GET_UPCOMING_EVENTS,
-  GET_COMPLETED_EVENTS,
-  ERROR,
-} from '../types';
+import { GET_UPCOMING_EVENTS, GET_COMPLETED_EVENTS } from '../types';
 
 const EventState = (props) => {
   const initialState = {
     upcomingEvents: null,
     completedEvents: null,
-    indivEvent: null,
   };
 
   const [state, dispatch] = useReducer(EventReducer, initialState);
