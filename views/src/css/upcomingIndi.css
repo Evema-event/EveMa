@@ -1,218 +1,212 @@
 .up-card .main-bg {
-  display: flex;
-  width: 1253px;
-  border-radius: 30px;
-  flex-direction: column;
-  margin: 200px auto;
-  /* margin-top: 100px; */
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(44, 0, 255, 1) 0%,
-    rgba(189, 16, 224, 1) 100%
-  );
-  padding: 3rem;
+	display: flex;
+	width: 1253px;
+	border-radius: 30px;
+	flex-direction: column;
+	margin: 70px auto;
+	margin-bottom: 10px;
+	background-image: linear-gradient(to right bottom, rgba(44, 0, 255, 1) 0%, rgba(189, 16, 224, 1) 100%);
+	padding: 3rem;
 }
 
 .up-card p {
-  margin-bottom: 0rem !important;
+	margin-bottom: 0rem !important;
 }
 
 .up-card .indiv-name {
-  color: #ffffff;
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 0.2rem;
+	color: #ffffff;
+	font-size: 2rem;
+	font-weight: 900;
+	letter-spacing: 0.2rem;
 }
 
 .up-card .discription-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
 .up-card .details-bg {
-  color: #686868;
-  font-size: 1.2rem;
-  font-weight: 400;
-  padding: 1rem;
-  width: 837px;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 20px;
-  margin-right: 2rem;
+	color: #686868;
+	font-size: 1.2rem;
+	font-weight: 400;
+	padding: 1rem;
+	width: 837px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	margin-right: 2rem;
 }
 
 .up-card .last-bg {
-  color: #686868;
-  font-weight: 700;
-  padding: 1rem;
-  width: 266px;
-  background-color: #ffffff;
-  border-radius: 20px;
+	color: #686868;
+	font-weight: 700;
+	padding: 1rem;
+	width: 266px;
+	background-color: #ffffff;
+	border-radius: 20px;
 }
 
 .up-card .contact-part {
-  display: flex;
+	display: flex;
 
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .up-card .contact-bg {
-  display: flex;
-  color: #686868;
-  width: 837px;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 100px;
-  margin-right: 0rem;
-  font-weight: 500;
+	display: flex;
+	color: #686868;
+	width: 837px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 100px;
+	margin-right: 0rem;
+	font-weight: 500;
 }
 
 .up-card .contact-bg div {
-  margin: auto;
-  padding: 0.3rem;
+	margin: auto;
+	padding: 0.3rem;
 }
 
 .up-card .register-button {
-  color: #686868;
-  font-weight: 400;
-  background-color: #ffffff;
-  width: 100px;
-  padding: 0.3rem 0.75rem;
-  border-radius: 1rem;
-  text-align: center;
-  margin: 0 auto;
+	color: #686868;
+	font-weight: 400;
+	background-color: #ffffff;
+	width: 100px;
+	padding: 0.3rem 0.75rem;
+	border-radius: 1rem;
+	text-align: center;
+	margin: 0 auto;
 }
 
 @media only screen and (max-width: 1300px) {
-  .up-card .main-bg {
-    width: 900px;
-    border-radius: 1.5rem;
-  }
-  .up-card .indiv-name {
-    font-size: 1.8rem;
-  }
-  .up-card .details-bg {
-    padding: 1rem;
-    width: 550px;
-    border-radius: 10px;
-    margin-top: 0rem;
-    font-size: 90%;
-  }
-  .up-card .last-bg {
-    font-size: 79%;
-    width: 220px;
-    font-weight: 500;
-    border-radius: 10px;
-  }
-  .up-card .contact-bg {
-    width: 550px;
-    font-weight: 450;
-    border-radius: 10px;
-  }
-  .up-card .register-button {
-    font-weight: 400;
-    margin: 0 auto;
-  }
+	.up-card .main-bg {
+		width: 900px;
+		border-radius: 1.5rem;
+	}
+	.up-card .indiv-name {
+		font-size: 1.8rem;
+	}
+	.up-card .details-bg {
+		padding: 1rem;
+		width: 550px;
+		border-radius: 10px;
+		margin-top: 0rem;
+		font-size: 90%;
+	}
+	.up-card .last-bg {
+		font-size: 79%;
+		width: 220px;
+		font-weight: 500;
+		border-radius: 10px;
+	}
+	.up-card .contact-bg {
+		width: 550px;
+		font-weight: 450;
+		border-radius: 10px;
+	}
+	.up-card .register-button {
+		font-weight: 400;
+		margin: 0 auto;
+	}
 }
 
 @media only screen and (max-width: 900px) {
-  .up-card .main-bg {
-    width: 800px;
-    border-radius: 30px;
-  }
-  .up-card .details-bg {
-    width: 470px;
-  }
-  .up-card .contact-bg {
-    width: 470px;
-  }
+	.up-card .main-bg {
+		width: 800px;
+		border-radius: 30px;
+	}
+	.up-card .details-bg {
+		width: 470px;
+	}
+	.up-card .contact-bg {
+		width: 470px;
+	}
 }
 
 @media only screen and (max-width: 800px) {
-  .up-card .main-bg {
-    margin: 100px auto;
-    display: flex;
-    width: 500px;
-    border-radius: 10px;
-    flex-direction: column;
-  }
-  .up-card .indiv-name {
-    font-size: 1.5rem;
-  }
-  .up-card .discription-row {
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-  }
-  .up-card .details-bg {
-    width: 400px;
-    margin-top: 1rem;
-  }
+	.up-card .main-bg {
+		display: flex;
+		width: 500px;
+		border-radius: 10px;
+		flex-direction: column;
+	}
+	.up-card .indiv-name {
+		font-size: 1.5rem;
+	}
+	.up-card .discription-row {
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+	}
+	.up-card .details-bg {
+		width: 400px;
+		margin-top: 1rem;
+	}
 
-  .up-card .last-bg {
-    width: 400px;
-  }
+	.up-card .last-bg {
+		width: 400px;
+	}
 
-  .up-card .last-bg div {
-    text-align: center;
-  }
+	.up-card .last-bg div {
+		text-align: center;
+	}
 
-  .up-card .contact-part {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-    flex-direction: row;
-  }
+	.up-card .contact-part {
+		display: grid;
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+		flex-direction: row;
+	}
 
-  .up-card .contact-bg {
-    display: grid;
-    width: 400px;
-  }
-  .up-card .contact-bg div {
-    margin: 0;
-    text-align: center;
-  }
-  .register-button {
-    margin: 0 auto;
-  }
+	.up-card .contact-bg {
+		display: grid;
+		width: 400px;
+	}
+	.up-card .contact-bg div {
+		margin: 0;
+		text-align: center;
+	}
+	.register-button {
+		margin: 0 auto;
+	}
 }
 
 @media only screen and (max-width: 550px) {
-  .up-card .main-bg {
-    width: 350px;
-    border-radius: 20px;
-  }
-  .up-card .indiv-name {
-    font-size: 1.3rem;
-  }
-  .up-card .details-bg {
-    width: 250px;
-  }
+	.up-card .main-bg {
+		width: 350px;
+		border-radius: 20px;
+	}
+	.up-card .indiv-name {
+		font-size: 1.3rem;
+	}
+	.up-card .details-bg {
+		width: 250px;
+	}
 
-  .up-card .last-bg {
-    width: 250px;
-    margin-bottom: 1rem;
-  }
-  .up-card .last-bg div {
-    text-align: start;
-  }
+	.up-card .last-bg {
+		width: 250px;
+		margin-bottom: 1rem;
+	}
+	.up-card .last-bg div {
+		text-align: start;
+	}
 
-  .up-card .contact-bg {
-    width: 250px;
-    padding: 7px;
-  }
-  .up-card .contact-bg div {
-    font-size: 80%;
-    text-align: start;
-    margin-left: 0rem;
-  }
-  .up-card .register-button {
-    margin: 0 4.4rem;
-  }
+	.up-card .contact-bg {
+		width: 250px;
+		padding: 7px;
+	}
+	.up-card .contact-bg div {
+		font-size: 80%;
+		text-align: start;
+		margin-left: 0rem;
+	}
+	.up-card .register-button {
+		margin: 0 4.4rem;
+	}
 }
 
 @media only screen and (max-width: 400px) {
-  .up-card .main-bg {
-    margin: 80px auto;
-    width: 310px;
-    border-radius: 10px;
-    padding: 2rem;
-  }
+	.up-card .main-bg {
+		width: 310px;
+		border-radius: 10px;
+		padding: 2rem;
+	}
 }
