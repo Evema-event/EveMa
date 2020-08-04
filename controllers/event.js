@@ -7,7 +7,7 @@ exports.getUpcomingEvents = (req, res) => {
         })
         .catch(err => {
             console.log(err);
-            return res.status(500).json({ message: 'Error' })
+            return res.status(500).json({ message: 'Failed', error: 'Server Error' });
         });
 }
 
@@ -18,6 +18,6 @@ exports.getCompletedEvents = (req, res) => {
         })
         .catch(err => {
             console.log(err);
-            return res.status(500).json({ message: 'Error' })
+            return res.status(500).json({ message: 'Failed', error: 'Server Error' });
         });
 }
