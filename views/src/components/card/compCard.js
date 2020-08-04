@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import EventContext from '../../context/event/eventContext';
 
-const Completed = () => {
+const Completed = (props) => {
   const eventContext = useContext(EventContext);
   const completedEvent = eventContext.completedEvents;
+
+  const onClick = () => {};
 
   useEffect(() => {
     eventContext.getCompletedEvent();
@@ -16,7 +18,11 @@ const Completed = () => {
           if (i < 6)
             // console.log(i);
             return (
-              <div key={event._id} className='cus-container cus-card'>
+              <div
+                key={event._id}
+                onClick={onClick}
+                className='cus-container cus-card'
+              >
                 <div className='rect main-card'>
                   <div className='name'>{event.name}</div>
                   <p className='description'>{event.description}</p>
