@@ -1,26 +1,33 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import EventContext from '../../context/event/eventContext';
+import { Redirect } from 'react-router-dom';
 
-const Completed = (props) => {
+const Completed = () => {
   const eventContext = useContext(EventContext);
   const completedEvent = eventContext.completedEvents;
 
-  const onClick = () => {};
+  const [viewMore, setViewMore] = useState(false);
+
+  const onClick = (eventId) => {
+    eventContext.setIndividualEvent(eventId, false);
+    setViewMore(true);
+  };
 
   useEffect(() => {
     eventContext.getCompletedEvent();
+    // eslint-disable-next-line
   }, []);
 
   return (
     <>
+      {viewMore && <Redirect to='/completedEvents' />}
       {completedEvent &&
         completedEvent.map((event, i) => {
           if (i < 6)
-            // console.log(i);
             return (
               <div
                 key={event._id}
-                onClick={onClick}
+                onClick={() => onClick(event._id)}
                 className='cus-container cus-card'
               >
                 <div className='rect main-card'>
@@ -36,6 +43,7 @@ const Completed = (props) => {
                 </div>
               </div>
             );
+          return null;
         })}
     </>
   );

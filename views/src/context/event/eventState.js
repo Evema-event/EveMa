@@ -3,12 +3,13 @@ import axios from 'axios';
 import EventContext from './eventContext';
 import EventReducer from './eventReducer';
 import url from '../../server';
-import { GET_UPCOMING_EVENTS, GET_COMPLETED_EVENTS } from '../types';
+import { GET_UPCOMING_EVENTS, GET_COMPLETED_EVENTS, FIND_INDIV_EVENT } from '../types';
 
 const EventState = (props) => {
   const initialState = {
     upcomingEvents: null,
     completedEvents: null,
+    indivEvent: null
   };
 
   const [state, dispatch] = useReducer(EventReducer, initialState);
@@ -27,6 +28,16 @@ const EventState = (props) => {
     dispatch({ payload: events.data.events, type: GET_COMPLETED_EVENTS });
   };
 
+  const setIndividualEvent = async (eventId, isUpcomming) => {
+    let event;
+    if (isUpcomming) {
+      event = state.upcomingEvents.filter(event => event._id === eventId);
+    } else {
+      event = state.completedEvents.filter(event => event._id === eventId);
+    }
+    dispatch({ payload: event[0], type: FIND_INDIV_EVENT });
+  }
+
   return (
     <EventContext.Provider
       value={{
@@ -35,6 +46,7 @@ const EventState = (props) => {
         indivEvent: state.indivEvent,
         getUpcomingEvent,
         getCompletedEvent,
+        setIndividualEvent
       }}
     >
       {props.children}

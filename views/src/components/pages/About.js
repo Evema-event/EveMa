@@ -28,7 +28,7 @@ const About = () => {
             </div>
           </div>
           {eventContext.upcomingEvents &&
-            eventContext.upcomingEvents.length > 4 && (
+            eventContext.upcomingEvents.length > 2 && (
               <div className='card-4'>
                 <div className='cus-button'>
                   <span className='cus-button-text'>Load More</span>
