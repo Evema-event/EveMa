@@ -6,10 +6,12 @@ const userSchema = new Schema({
   userName: {
     type: String,
     required: true,
+    unique: true,
   },
   emailId: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -52,10 +54,10 @@ const userSchema = new Schema({
     required: true,
   },
   areaOfInterest: {
-    type: String,
+    type: Array,
     required: true,
   },
-  Designation: {
+  designation: {
     type: String,
     required: true,
   },

@@ -25,3 +25,23 @@ method: **Get**
 Input: **None**
 
 Output: **Array of events having end date less than today**
+
+## Verify User
+
+url: **api/user/verifyUser**
+
+method: **Post**
+
+Input: **userName, emailId**
+
+Output: **Return Failed if user already exist else return Success**
+
+## Signup
+
+url: **api/user/signup**
+
+method: **Post**
+
+Input: **Data in user model**
+
+Output: **Token and user data stored in database**
