@@ -32,7 +32,7 @@ Details of all models:
 10. state -> String
 11. cityName -> String
 12. zipCode -> String
-13. areaOfInterest -> String
+13. areaOfInterest -> Array
 14. designation -> String
 15. companyName -> String
 16. companyAddress -> String
