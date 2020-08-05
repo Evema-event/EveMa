@@ -1,8 +1,15 @@
 const User = require('../models/user');
+const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.verifyUser = (req, res) => {
+
+    const validationErrors = validationResult(req).errors;
+    if (validationErrors.length > 0) {
+        return res.status(422).json({ message: 'Failed', error: validationErrors });
+    }
+
     const userName = req.body.userName;
     const emailId = req.body.emailId;
     User.findOne({ $or: [{ userName: userName }, { emailId: emailId }] })
