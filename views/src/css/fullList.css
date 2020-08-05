@@ -1,6 +1,6 @@
 .view {
   margin-top: 100px auto;
-  padding: 10rem;
+  padding: 8rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 5rem;
@@ -61,7 +61,7 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 3rem;
     column-gap: 2rem;
-    padding: 8rem;
+    padding: 6rem;
   }
   .full-view .rect {
     padding-right: 0rem;
@@ -70,7 +70,6 @@
 
 @media (max-width: 910px) {
   .view {
-    padding: 6rem;
     row-gap: 2.5rem;
     column-gap: 1.5rem;
   }

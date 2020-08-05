@@ -10,7 +10,7 @@ const UpcomingLoad = () => {
 
   const onClick = (eventId) => {
     eventContext.setIndividualEvent(eventId, true);
-    setViewMore(false);
+    setViewMore(true);
   };
 
   useEffect(() => {
@@ -29,16 +29,18 @@ const UpcomingLoad = () => {
                 <div
                   key={event._id}
                   onClick={() => onClick(event._id)}
-                  className='cus-container cus-card'
+                  className='cus-card'
                 >
                   <div className='rect main-card'>
                     <div className='grad'>
                       <div className='name'>{event.name}</div>
                     </div>
-                    <p className='description'>
-                      {event.description.slice(0, 100)}
-                      {event.description.length > 100 && ' ... '}
-                    </p>
+                    <span className='pad'>
+                      <p className='description'>
+                        {event.description.slice(0, 100)}
+                        {event.description.length > 100 && ' ... '}
+                      </p>
+                    </span>
                     <div className='details'>
                       <span>
                         {new Date(event.startDate).toISOString().slice(0, 10)}
