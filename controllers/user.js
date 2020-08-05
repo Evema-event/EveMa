@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcryptjs');
 
 exports.verifyUser = (req, res) => {
     const userName = req.body.userName;
@@ -18,25 +19,7 @@ exports.verifyUser = (req, res) => {
 };
 
 exports.signUp = (req, res) => {
-    const user = new User({
-        userName: req.body.userName,
-        emailId: req.body.emailId,
-        password: req.body.password,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        role: req.body.role,
-        gender: req.body.gender,
-        dateOfBirth: req.body.dateOfBirth,
-        country: req.body.country,
-        state: req.body.state,
-        cityName: req.body.cityName,
-        zipCode: req.body.zipCode,
-        areaOfInterest: req.body.areaOfInterest,
-        Designation: req.body.Designation,
-        companyName: req.body.companyName,
-        companyAddress: req.body.companyAddress,
-        contactNumber: req.body.contactNumber
-    });
+
     User.findOne({ $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }] })
         .then(isUserExist => {
             if (isUserExist) {
@@ -44,6 +27,28 @@ exports.signUp = (req, res) => {
                 error.statusCode = 409;
                 throw error;
             }
+            return bcrypt.hash(req.body.password, 12);
+        })
+        .then(hashedPassword => {
+            const user = new User({
+                userName: req.body.userName,
+                emailId: req.body.emailId,
+                password: hashedPassword,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                role: req.body.role,
+                gender: req.body.gender,
+                dateOfBirth: req.body.dateOfBirth,
+                country: req.body.country,
+                state: req.body.state,
+                cityName: req.body.cityName,
+                zipCode: req.body.zipCode,
+                areaOfInterest: req.body.areaOfInterest,
+                Designation: req.body.Designation,
+                companyName: req.body.companyName,
+                companyAddress: req.body.companyAddress,
+                contactNumber: req.body.contactNumber
+            });
             return user.save();
         })
         .then(savedUser => {
