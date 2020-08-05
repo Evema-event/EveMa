@@ -1,0 +1,65 @@
+.bg-signup {
+  padding: 0.9rem;
+  background-color: whitesmoke;
+}
+
+.signup {
+  display: flex;
+  color: #ffffff;
+  margin: 90px auto;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(202, 30, 30, 0.568),
+    rgba(0, 60, 226, 0.76)
+  );
+  width: 1200px;
+  box-shadow: 5px 6px 1.5px rgba(0, 0, 0, 0.3);
+}
+
+.imgLeft {
+  width: 500px;
+}
+
+.form-signup {
+  padding: 2.5rem 5rem 5rem 5rem;
+}
+
+.form-signup h1 {
+  margin: 1rem 0rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  column-gap: 5rem;
+}
+
+.form_group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_input {
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  width: 200px;
+  box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
+  margin-bottom: auto;
+}
+
+#gender {
+  margin-right: 0.5rem;
+}
+
+#gender:not(:first-child) {
+  margin-left: 1rem;
+}
+
+label {
+  font-size: 1.3rem;
+  letter-spacing: 0.05rem;
+}

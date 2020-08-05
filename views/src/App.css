@@ -1,42 +1,20 @@
-@import "css/about.css";
-@import "css/home.css";
-@import "css/navbar.css";
-@import "css/card.css";
-@import "css/footer.css";
-@import "css/completedIndiv.css";
-@import "css/upcomingIndi.css";
-@import "css/fullList.css";
+@import 'css/about.css';
+@import 'css/home.css';
+@import 'css/navbar.css';
+@import 'css/card.css';
+@import 'css/footer.css';
+@import 'css/completedIndiv.css';
+@import 'css/upcomingIndi.css';
+@import 'css/fullList.css';
+@import 'css/signup.css';
+
 * {
   padding: 0;
   border: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .box {
   margin: 25px 25px;
-}
-
-.signup {
-  margin: 150px auto;
-  background-color: dimgrey;
-  padding: 2rem;
-  width: 500px;
-}
-
-.signup h1 {
-  margin-bottom: 1rem;
-}
-
-.form_group {
-  margin-bottom: 1rem;
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-}
-
-.form_input {
-  padding: 0.3rem 0.5rem;
-  border: 1px solid black;
-  width: 300px;
 }
