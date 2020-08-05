@@ -24,14 +24,22 @@ const Upcomingindiv = () => {
               <div className='last-bg'>
                 <div>Last Date for the Registration</div>
                 <p>
-                  Time: {event.startTime} A.M - {event.endTime} P.M
+                  Time:{' '}
+                  <>
+                    {event.startTime} A.M - {event.endTime} P.M{' '}
+                  </>
                 </p>
                 <p>
-                  Date : {new Date(event.startDate).toISOString().slice(0, 10)}{' '}
-                  -{' '}
-                  <span>
-                    {new Date(event.endDate).toISOString().slice(0, 10)}
-                  </span>
+                  Date :
+                  <>
+                    {' '}
+                    {new Date(event.startDate)
+                      .toISOString()
+                      .slice(0, 10)} -{' '}
+                    <span>
+                      {new Date(event.endDate).toISOString().slice(0, 10)}
+                    </span>
+                  </>
                 </p>
                 <p>
                   Last Date:
@@ -42,7 +50,12 @@ const Upcomingindiv = () => {
                       .slice(0, 10)}
                   </span>
                 </p>
-                <p>Venue: {event.venue}</p>
+                <p>
+                  Venue:<span>{event.venue}</span>
+                </p>
+                <p>
+                  Price: <span>{event.price}</span>
+                </p>
               </div>
             </div>
             <br />
