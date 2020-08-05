@@ -45,6 +45,7 @@ const PORT = process.env.PORT || 5000;
 mongoose.connect(
     'mongodb+srv://event:testevent@cluster0-dsfbd.mongodb.net/eventmanagement?retryWrites=true&w=majority',
     {
+        useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true
     }
@@ -53,6 +54,6 @@ mongoose.connect(
     server.listen(PORT, () => {
         console.log(`Server start on port ${PORT}`);
     });
-}).catch(error => {
+}).catch(err => {
     console.log('[MongoDB]', err);
 });

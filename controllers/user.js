@@ -27,6 +27,12 @@ exports.verifyUser = (req, res) => {
 };
 
 exports.signUp = (req, res) => {
+
+    const validationErrors = validationResult(req).errors;
+    if (validationErrors.length > 0) {
+        return res.status(422).json({ message: 'Failed', error: validationErrors });
+    }
+
     User.findOne({ $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }] })
         .then(isUserExist => {
             if (isUserExist) {
@@ -51,7 +57,7 @@ exports.signUp = (req, res) => {
                 cityName: req.body.cityName,
                 zipCode: req.body.zipCode,
                 areaOfInterest: req.body.areaOfInterest,
-                Designation: req.body.Designation,
+                designation: req.body.designation,
                 companyName: req.body.companyName,
                 companyAddress: req.body.companyAddress,
                 contactNumber: req.body.contactNumber
