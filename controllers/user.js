@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 exports.verifyUser = (req, res) => {
     const userName = req.body.userName;
@@ -19,7 +20,6 @@ exports.verifyUser = (req, res) => {
 };
 
 exports.signUp = (req, res) => {
-
     User.findOne({ $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }] })
         .then(isUserExist => {
             if (isUserExist) {
@@ -52,7 +52,18 @@ exports.signUp = (req, res) => {
             return user.save();
         })
         .then(savedUser => {
-            res.status(200).json({ message: 'Success', user: savedUser });
+            const token = jwt.sign(
+                {
+                    emailId: savedUser.emailId,
+                    userName: savedUser.userName,
+                    userId: savedUser._id
+                },
+                'secret',
+                {
+                    expiresIn: '6h'
+                }
+            );
+            res.status(200).json({ message: 'Success', token: token, user: savedUser });
         })
         .catch(err => {
             if (err.statusCode) {
