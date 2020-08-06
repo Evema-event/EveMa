@@ -1,8 +1,5 @@
-const mongoose = require('mongoose');
-
-const Schema = mongoose.Schema;
-
-const userSchema = new Schema({
+// A data required for user schema
+const user = {
   userName: {
     type: String,
     required: true,
@@ -22,10 +19,6 @@ const userSchema = new Schema({
     required: true,
   },
   lastName: {
-    type: String,
-    required: true,
-  },
-  role: {
     type: String,
     required: true,
   },
@@ -73,6 +66,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   }
-});
+};
 
-module.exports = mongoose.model('User', userSchema);
+// Exporting user data
+module.exports = user;
