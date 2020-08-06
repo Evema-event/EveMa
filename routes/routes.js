@@ -1,15 +1,16 @@
+// Importing express and create router
 const express = require('express');
+const router = express.Router();
 
 // Importing all route files
 const event = require('./event');
 const user = require('./user');
 
-const welcomeController = require('../controllers/welcome');
-
-const router = express.Router();
-
+// Event based details route
 router.use('/event', event);
-router.use('/user',user);
-router.use('/', welcomeController.welcome);
 
+// User based details route
+router.use('/user', user);
+
+// Exporting all routes
 module.exports = router;

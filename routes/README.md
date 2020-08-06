@@ -26,9 +26,9 @@ Input: **None**
 
 Output: **Array of events having end date less than today**
 
-## Verify User
+## Verify User - Visitor
 
-url: **api/user/verifyUser**
+url: **api/user/verifyUser/visitor**
 
 method: **Post**
 
@@ -36,9 +36,29 @@ Input: **userName, emailId**
 
 Output: **Return Failed if user already exist else return Success**
 
-## Signup
+## Verify User - Exhibitor
 
-url: **api/user/signup**
+url: **api/user/verifyUser/exhibitor**
+
+method: **Post**
+
+Input: **userName, emailId**
+
+Output: **Return Failed if user already exist else return Success**
+
+## Signup - Visitor
+
+url: **api/user/signup/visitor**
+
+method: **Post**
+
+Input: **Data in user model**
+
+Output: **Token and user data stored in database**
+
+## Signup - Exhibitor
+
+url: **api/user/signup/exhibitor**
 
 method: **Post**
 

@@ -1,39 +1,19 @@
-const User = require('../models/user');
-const { validationResult } = require('express-validator');
+// Importing database models
+const Visitor = require('../models/visitor');
+const Exhibitor = require('../models/exhibitor');
+
+// Importing npm packages
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-exports.verifyUser = (req, res) => {
-
-    const validationErrors = validationResult(req).errors;
-    if (validationErrors.length > 0) {
-        return res.status(422).json({ message: 'Failed', error: validationErrors });
-    }
-
-    const userName = req.body.userName;
-    const emailId = req.body.emailId;
-    User.findOne({ $or: [{ userName: userName }, { emailId: emailId }] })
-        .then(user => {
-            if (user) {
-                res.status(409).json({ message: 'Failed', error: 'Username or Email already exist!' });
-            } else {
-                res.status(200).json({ message: 'Success' });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({ message: 'Failed', error: 'Server Error' });
-        })
-};
-
-exports.signUp = (req, res) => {
-
-    const validationErrors = validationResult(req).errors;
-    if (validationErrors.length > 0) {
-        return res.status(422).json({ message: 'Failed', error: validationErrors });
-    }
-
-    User.findOne({ $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }] })
+// Singup function for storing user data to databased based on the type of user
+const signUp = (User, req, res) => {
+    return User.findOne({
+        $or: [
+            { userName: req.body.userName },
+            { emailId: req.body.emailId }
+        ]
+    })
         .then(isUserExist => {
             if (isUserExist) {
                 const error = new Error('Username or email already exist');
@@ -86,4 +66,14 @@ exports.signUp = (req, res) => {
                 res.status(500).json({ message: 'Failed', error: 'Server Error' });
             }
         });
+}
+
+// Singup visitor call signUp function with Visitor as user
+exports.signUpVisitor = (req, res) => {
+    return signUp(Visitor, req, res);
+}
+
+// Singup exhibitor call signUp function with Exhibitor as user
+exports.signUpExhibitor = (req, res) => {
+    return signUp(Exhibitor, req, res);
 }
