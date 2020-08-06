@@ -1,6 +1,7 @@
 .navbar {
   color: #ffffff !important;
   background-image: linear-gradient(to right bottom, #9b7dfb, rgb(255, 0, 255));
+  z-index: 1;
 }
 
 .navbar-dark .navbar-toggler {
