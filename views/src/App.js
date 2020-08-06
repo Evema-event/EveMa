@@ -24,7 +24,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
-          <Route exact path='/signupnext' component={NextSignup} />
+          <Route exact path='/signup-1' component={NextSignup} />
           <Route exact path='/upcomingEvents' component={Upcomingindiv} />
           <Route exact path='/completedEvents' component={Completedindiv} />
           <Route exact path='/upcoming-list' component={UpcomLoadPage} />

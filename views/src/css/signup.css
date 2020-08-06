@@ -4,17 +4,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 6.5rem 11rem;
-  margin: 0 auto;
+  padding: 2rem;
 }
 
 .bg-signup-2 {
   background-color: rgba(185, 185, 185, 0.3);
   position: absolute;
-  top: 50%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 3rem 11rem;
+  padding: 2rem;
 }
 
 .signup {
@@ -93,11 +92,11 @@ label {
 
 @media only screen and (max-width: 1400px) {
   .bg-signup {
-    padding: 4.5rem 3rem;
+    padding: 1.5rem;
   }
   .bg-signup-2 {
-    padding: 2.5rem;
-    margin-top: 1rem;
+    padding: 2rem;
+    margin-top: 0rem;
   }
   .signup {
     width: 1100px;
@@ -109,11 +108,10 @@ label {
 
 @media only screen and (max-width: 1200px) {
   .bg-signup {
-    padding: 4.5rem 1.5rem;
+    padding: 1.5rem;
   }
   .bg-signup-2 {
     padding: 1.5rem;
-    margin-top: 0rem;
   }
   .signup {
     width: 950px;
@@ -130,26 +128,8 @@ label {
 }
 
 @media only screen and (max-width: 1000px) {
-  .bg-signup {
-    padding: 2rem;
-  }
   .bg-signup-2 {
     padding: 2rem;
-  }
-  .signup {
-    width: 900px;
-  }
-  .imgLeft {
-    width: 300px;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .bg-signup {
-    padding: 4rem;
-  }
-  .bg-signup-2 {
-    padding: 4rem;
   }
   .signup {
     width: 600px;
@@ -157,15 +137,40 @@ label {
   .imgLeft {
     display: none;
   }
-  .inputs {
-    grid-template-columns: 1fr;
+}
+
+@media only screen and (max-width: 800px) {
+  .bg-signup-2 {
+    padding: 2rem;
+  }
+  .signup {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .bg-signup {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  .bg-signup-2 {
+    padding: 1rem;
+    margin-top: 0rem;
+  }
+  .signup {
+    width: 550px;
+  }
+  label {
+    font-size: 1rem;
+  }
+  .form_input {
+    width: 200px;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .bg-signup {
-    padding: 1rem;
-    margin-top: 2rem;
+  .inputs {
+    grid-template-columns: 1fr;
   }
   .bg-signup-2 {
     padding: 1rem;
@@ -174,17 +179,17 @@ label {
   .signup {
     width: 300px;
   }
-  .form_input {
-    width: 200px;
+}
+
+@media only screen and (max-width: 450px) {
+  .bg-signup-2 {
+    margin-top: 10rem;
   }
 }
+
 @media only screen and (max-width: 400px) {
-  .bg-signup {
-    padding: 1rem;
-  }
   .bg-signup-2 {
-    padding: 1rem;
-    margin-top: 14rem;
+    margin-top: 11rem;
   }
   .signup {
     width: 290px;

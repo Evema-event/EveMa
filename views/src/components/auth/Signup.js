@@ -52,9 +52,24 @@ const Signup = () => {
                 required
               />
             </div>
+            <div className='form_group'>
+              <label htmlFor='role'>Role</label>
+              <span>
+                <select
+                  required
+                  defaultValue={'DEFAULT'}
+                  className='custom-select'
+                  id='role'
+                >
+                  <option defaultValue='DEFAULT'>Choose...</option>
+                  <option defaultValue='1'>Visitor</option>
+                  <option defaultValue='2'>Exhibitor</option>
+                </select>
+              </span>
+            </div>
           </span>
 
-          <a href='/signupnext' id='link'>
+          <a href='/signup-1' id='link'>
             <button type='submit' className='btn btn-primary btn-block next'>
               Next
             </button>

@@ -1,6 +1,5 @@
 .view {
-  margin-top: 100px auto;
-  padding: 8rem;
+  padding: 6rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 5rem;
@@ -61,7 +60,7 @@
     grid-template-columns: 1fr 1fr;
     row-gap: 3rem;
     column-gap: 2rem;
-    padding: 6rem;
+    padding: 5rem;
   }
   .full-view .rect {
     padding-right: 0rem;
@@ -97,17 +96,26 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .full-view .rect {
-    width: 300px;
+    width: 415px;
   }
 }
 
 @media (max-width: 500px) {
   .view {
-    padding: 4rem 0 0 2rem;
+    padding: 3rem;
   }
   .full-view .rect {
     width: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  .view {
+    padding: 2rem;
+  }
+  .full-view .rect {
+    width: 250px;
   }
 }
