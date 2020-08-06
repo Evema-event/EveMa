@@ -1,3 +1,4 @@
+// A data required for user schema
 const user = {
   userName: {
     type: String,
@@ -67,4 +68,5 @@ const user = {
   }
 };
 
+// Exporting user data
 module.exports = user;
