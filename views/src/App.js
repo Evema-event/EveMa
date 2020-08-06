@@ -14,6 +14,7 @@ import Completedindiv from './components/card/CompletedCardItem';
 import UpcomLoadPage from './components/pages/UpcomLoadPage';
 import CompLoadPage from './components/pages/CompLoadPage';
 import Signup from './components/auth/Signup';
+import NextSignup from './components/auth/NextSignup';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/signup' component={Signup} />
+          <Route exact path='/signupnext' component={NextSignup} />
           <Route exact path='/upcomingEvents' component={Upcomingindiv} />
           <Route exact path='/completedEvents' component={Completedindiv} />
           <Route exact path='/upcoming-list' component={UpcomLoadPage} />

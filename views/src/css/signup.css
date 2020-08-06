@@ -1,12 +1,24 @@
 .bg-signup {
-  padding: 0.9rem;
-  background-color: whitesmoke;
+  background-color: rgba(185, 185, 185, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6.5rem 11rem;
+}
+
+.bg-signup-2 {
+  background-color: rgba(185, 185, 185, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3rem 11rem;
 }
 
 .signup {
   display: flex;
   color: #ffffff;
-  margin: 90px auto;
   background-image: linear-gradient(
     to bottom right,
     rgba(202, 30, 30, 0.568),
@@ -46,20 +58,34 @@
 .form_input {
   padding: 0.3rem 0.5rem;
   border-radius: 0.2rem;
-  width: 200px;
+  width: 220px;
   box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
   margin-bottom: auto;
 }
 
-#gender {
+.gender {
   margin-right: 0.5rem;
 }
 
-#gender:not(:first-child) {
+.gender:not(:first-child) {
   margin-left: 1rem;
 }
 
 label {
-  font-size: 1.3rem;
-  letter-spacing: 0.05rem;
+  font-size: 1.1rem;
+}
+
+.next {
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  color: #ffffff !important;
+  background-color: rgba(0, 0, 0, 0.26) !important;
+  border: 0 solid transparent !important;
+}
+
+#link {
+  color: #ffffff !important;
+  text-decoration: none !important;
 }

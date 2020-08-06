@@ -10,26 +10,6 @@ const Signup = () => {
           <h1>Sign Up</h1>
           <span className='inputs'>
             <div className='form_group'>
-              <label htmlFor='firstname'>First Name</label>
-              <input
-                className='form_input'
-                type='text'
-                name='firstname'
-                id='firstname'
-                placeholder='Firstname'
-              />
-            </div>
-            <div className='form_group'>
-              <label htmlFor='lastname'>Last Name</label>
-              <input
-                className='form_input'
-                type='text'
-                name='lastname'
-                id='lastname'
-                placeholder='Lastname'
-              />
-            </div>
-            <div className='form_group'>
               <label htmlFor='username'>Username</label>
               <input
                 className='form_input'
@@ -37,6 +17,7 @@ const Signup = () => {
                 name='username'
                 id='username'
                 placeholder='Username'
+                required
               />
             </div>
             <div className='form_group'>
@@ -46,6 +27,7 @@ const Signup = () => {
                 type='text'
                 name='email'
                 placeholder='Enter your email'
+                required
               />
             </div>
             <div className='form_group'>
@@ -56,6 +38,7 @@ const Signup = () => {
                 name='password'
                 id='password'
                 placeholder='Enter your Password'
+                required
               />
             </div>
             <div className='form_group'>
@@ -66,24 +49,16 @@ const Signup = () => {
                 name='password'
                 id='cpassword'
                 placeholder='Re-enter your Password'
+                required
               />
             </div>
-            <div className='form_group'>
-              <label htmlFor='dob'>Date of Birth</label>
-              <input type='date' name='date' id='dob' className='form_input' />
-            </div>
-            <div className='form_group'>
-              <label htmlFor='gender'>Gender</label>
-              <span className=''>
-                <input type='radio' id='gender' name='gender' />
-                Male
-                <input type='radio' id='gender' name='gender' />
-                Female
-                <input type='radio' id='gender' name='gender' />
-                Others
-              </span>
-            </div>
           </span>
+
+          <a href='/signupnext' id='link'>
+            <button type='submit' className='btn btn-primary btn-block next'>
+              Next
+            </button>
+          </a>
         </form>
       </div>
     </div>
