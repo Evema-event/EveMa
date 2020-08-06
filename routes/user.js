@@ -5,6 +5,8 @@ const router = express.Router();
 
 const userController = require('../controllers/user');
 
+const validator = require('../middleware/validator');
+
 router.post(
     '/verifyUser',
     [
@@ -18,6 +20,7 @@ router.post(
             .normalizeEmail()
             .withMessage('Please enter a valid email id')
     ],
+    validator,
     userController.verifyUser
 );
 router.post(
@@ -94,6 +97,7 @@ router.post(
             .isLength({ min: 6 })
             .withMessage('Contact Number atleast 6 digits long')
     ],
+    validator,
     userController.signUp
 );
 

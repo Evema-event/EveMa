@@ -4,6 +4,6 @@ const user = require('./user');
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(user);
+const exhibitorSchema = new Schema(user);
 
-module.exports = mongoose.model('Exhibitor', userSchema);
+module.exports = mongoose.model('Exhibitor', exhibitorSchema);

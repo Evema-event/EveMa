@@ -1,18 +1,13 @@
-const User = require('../models/user');
-const { validationResult } = require('express-validator');
+const Visitor = require('../models/visitor');
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 exports.verifyUser = (req, res) => {
-
-    const validationErrors = validationResult(req).errors;
-    if (validationErrors.length > 0) {
-        return res.status(422).json({ message: 'Failed', error: validationErrors });
-    }
-
     const userName = req.body.userName;
     const emailId = req.body.emailId;
-    User.findOne({ $or: [{ userName: userName }, { emailId: emailId }] })
+
+    Visitor.findOne({ $or: [{ userName: userName }, { emailId: emailId }] })
         .then(user => {
             if (user) {
                 res.status(409).json({ message: 'Failed', error: 'Username or Email already exist!' });
@@ -28,12 +23,7 @@ exports.verifyUser = (req, res) => {
 
 exports.signUp = (req, res) => {
 
-    const validationErrors = validationResult(req).errors;
-    if (validationErrors.length > 0) {
-        return res.status(422).json({ message: 'Failed', error: validationErrors });
-    }
-
-    User.findOne({ $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }] })
+    Visitor.findOne({ $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }] })
         .then(isUserExist => {
             if (isUserExist) {
                 const error = new Error('Username or email already exist');
@@ -43,7 +33,7 @@ exports.signUp = (req, res) => {
             return bcrypt.hash(req.body.password, 12);
         })
         .then(hashedPassword => {
-            const user = new User({
+            const user = new Visitor({
                 userName: req.body.userName,
                 emailId: req.body.emailId,
                 password: hashedPassword,
