@@ -5,6 +5,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 6.5rem 11rem;
+  margin: 0 auto;
 }
 
 .bg-signup-2 {
@@ -88,4 +89,104 @@ label {
 #link {
   color: #ffffff !important;
   text-decoration: none !important;
+}
+
+@media only screen and (max-width: 1400px) {
+  .bg-signup {
+    padding: 4.5rem 3rem;
+  }
+  .bg-signup-2 {
+    padding: 2.5rem;
+    margin-top: 1rem;
+  }
+  .signup {
+    width: 1100px;
+  }
+  .imgLeft {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .bg-signup {
+    padding: 4.5rem 1.5rem;
+  }
+  .bg-signup-2 {
+    padding: 1.5rem;
+    margin-top: 0rem;
+  }
+  .signup {
+    width: 950px;
+  }
+  .imgLeft {
+    width: 40%;
+  }
+  .inputs {
+    column-gap: 2.5rem;
+  }
+  .form-signup {
+    padding: 2rem 3rem 3rem 3rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .bg-signup {
+    padding: 2rem;
+  }
+  .bg-signup-2 {
+    padding: 2rem;
+  }
+  .signup {
+    width: 900px;
+  }
+  .imgLeft {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .bg-signup {
+    padding: 4rem;
+  }
+  .bg-signup-2 {
+    padding: 4rem;
+  }
+  .signup {
+    width: 600px;
+  }
+  .imgLeft {
+    display: none;
+  }
+  .inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bg-signup {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  .bg-signup-2 {
+    padding: 1rem;
+    margin-top: 11rem;
+  }
+  .signup {
+    width: 300px;
+  }
+  .form_input {
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .bg-signup {
+    padding: 1rem;
+  }
+  .bg-signup-2 {
+    padding: 1rem;
+    margin-top: 14rem;
+  }
+  .signup {
+    width: 290px;
+  }
 }
