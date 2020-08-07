@@ -1,5 +1,6 @@
 import React from 'react';
 import signup from '../../img/signup.jpg';
+import { Link } from 'react-router-dom';
 
 const NextSignup = () => {
   return (
@@ -7,7 +8,7 @@ const NextSignup = () => {
       <div className='signup'>
         <img src={signup} alt='signup' className='imgLeft' />
         <form className='form-signup'>
-          <h1>Sign Up</h1>
+          <h1>Personal Details</h1>
           <span className='inputs'>
             <div className='form_group'>
               <label htmlFor='firstname'>First Name</label>
@@ -32,47 +33,47 @@ const NextSignup = () => {
               />
             </div>
             <div className='form_group'>
-              <label htmlFor='address'>Address</label>
+              <label htmlFor='address'>State</label>
               <input
                 className='form_input'
                 type='text'
                 name='address'
                 id='address'
-                placeholder='Address'
+                placeholder='State'
                 required
               />
             </div>
 
             <div className='form_group'>
-              <label htmlFor='desgnation'>Designation</label>
+              <label htmlFor='desgnation'>Country</label>
               <input
                 className='form_input'
                 type='text'
                 name='Desgnation'
                 id='desgnation'
-                placeholder='Designation'
+                placeholder='Country'
                 required
               />
             </div>
             <div className='form_group' id='check'>
-              <label htmlFor='cname'>Company/Institution Name</label>
+              <label htmlFor='cname'>City</label>
               <input
                 className='form_input'
                 type='text'
                 name='cname'
                 id='cname'
-                placeholder='Company Name'
+                placeholder='City'
                 required
               />
             </div>
             <div className='form_group'>
-              <label htmlFor='area'>Area of Interests</label>
+              <label htmlFor='area'>Zipcode</label>
               <input
                 className='form_input'
                 type='text'
                 name='area'
                 id='area'
-                placeholder='Interest'
+                placeholder='Zipcode'
                 required
               />
             </div>
@@ -102,16 +103,17 @@ const NextSignup = () => {
                 </select>
               </span>
             </div>
-            <a href='/signup' id='link'>
+
+            <Link to='/signup/0' id='link'>
               <button type='button' className='btn btn-primary btn-block next'>
                 Back
               </button>
-            </a>
-            <a href='/signup-2' id='link'>
-              <button type='submit' className='btn btn-primary btn-block next'>
+            </Link>
+            <Link to='/signup/2' id='link'>
+              <button type='button' className='btn btn-primary btn-block next'>
                 Next
               </button>
-            </a>
+            </Link>
           </span>
         </form>
       </div>

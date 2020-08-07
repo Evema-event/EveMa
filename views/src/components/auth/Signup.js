@@ -1,5 +1,6 @@
 import React from 'react';
 import signup from '../../img/signup.jpg';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   return (
@@ -67,13 +68,12 @@ const Signup = () => {
                 </select>
               </span>
             </div>
+            <Link to='/signup/1' id='link'>
+              <button type='button' className='btn btn-primary btn-block next'>
+                Next
+              </button>
+            </Link>
           </span>
-
-          <a href='/signup-1' id='link'>
-            <button type='submit' className='btn btn-primary btn-block next'>
-              Next
-            </button>
-          </a>
         </form>
       </div>
     </div>

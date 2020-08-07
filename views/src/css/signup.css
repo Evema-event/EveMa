@@ -174,23 +174,25 @@ label {
   }
   .bg-signup-2 {
     padding: 1rem;
-    margin-top: 11rem;
+    margin-top: 1rem;
   }
   .signup {
     width: 300px;
   }
+  .form-signup h1 {
+    margin: 0rem 0rem 1rem 0rem;
+    font-size: 98%;
+  }
 }
 
 @media only screen and (max-width: 450px) {
-  .bg-signup-2 {
-    margin-top: 10rem;
+  .form-signup h1 {
+    margin: 0rem 0rem 1rem 0rem;
+    font-size: 90%;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .bg-signup-2 {
-    margin-top: 11rem;
-  }
   .signup {
     width: 290px;
   }
