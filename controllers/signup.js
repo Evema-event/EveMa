@@ -6,6 +6,9 @@ const Exhibitor = require('../models/exhibitor');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Importing send mail function
+const sendMail = require('../utility/sendMail');
+
 // Singup function for storing user data to databased based on the type of user
 const signUp = (User, req, res) => {
     return User.findOne({
@@ -56,6 +59,20 @@ const signUp = (User, req, res) => {
                     expiresIn: '6h'
                 }
             );
+            const to = savedUser.emailId;
+            let subject = 'EveMa - Signup successfully';
+            let body = `
+                <h1>Welcome to EveMa</h1>
+                <p>Dear customer,</p>
+                <br />
+                <p>Your new EveMa account has been created successfully.</p>
+                <h5>Thanks for registering!</h5>
+                <br />
+
+                <p>EveMa Team</p>
+                <p>Link: https://evema-event.herokuapp.com/</p>
+            `;
+            sendMail(to, subject, body);
             res.status(200).json({ message: 'Success', token: token, user: savedUser });
         })
         .catch(err => {
