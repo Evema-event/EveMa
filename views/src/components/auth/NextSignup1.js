@@ -43,7 +43,18 @@ const NextSignup1 = () => {
                 required
               />
             </div>
-            <div></div>
+
+            <div className='form_group'>
+              <label htmlFor='contact'>Contact</label>
+              <input
+                className='form_input'
+                type='text'
+                name='contact'
+                id='contact'
+                placeholder='Contact'
+                required
+              />
+            </div>
             <div className='form_group'>
               <label htmlFor='text-area'>Address</label>
               <textarea

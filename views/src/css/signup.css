@@ -90,6 +90,10 @@ label {
   text-decoration: none !important;
 }
 
+#text-area {
+  grid-column-start: 1;
+}
+
 @media only screen and (max-width: 1400px) {
   .bg-signup {
     padding: 1.5rem;

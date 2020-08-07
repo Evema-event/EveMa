@@ -1,8 +1,19 @@
 import React from 'react';
 import signup from '../../img/signup.jpg';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Signup = () => {
+  const initialState = {
+    name: { value: '' },
+    username: { value: '' },
+    email: { value: '' },
+    password: { value: '' },
+    cpassword: { value: '' },
+  };
+
+  const [fields, setFields] = useState(initialState);
+
   return (
     <div className='bg-signup'>
       <div className='signup'>
