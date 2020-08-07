@@ -22,7 +22,6 @@ const Upcomingindiv = () => {
               {/* LAST DAY FOR REGISTRATION PART */}
 
               <div className='last-bg'>
-                <div>Last Date for the Registration</div>
                 <p>
                   Time:{' '}
                   <>

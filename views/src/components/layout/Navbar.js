@@ -25,13 +25,15 @@ const Navbar = () => {
 
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-      <img
-        src={Logo}
-        width='80'
-        height='35'
-        className='d-inline-block align-top'
-        alt='Logo'
-      ></img>
+      <Link className='nav-link' to='/'>
+        <img
+          src={Logo}
+          width='80'
+          height='35'
+          className='d-inline-block align-top'
+          alt='Logo'
+        ></img>
+      </Link>
       <button
         className='navbar-toggler'
         type='button'

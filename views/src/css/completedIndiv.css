@@ -1,217 +1,213 @@
 .comp-card .main-bg {
-  display: flex;
-  width: 1253px;
-  border-radius: 30px;
-  flex-direction: column;
-  margin: 70px auto;
-  margin-bottom: 10px;
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(44, 0, 255, 1) 0%,
-    rgba(189, 16, 224, 1) 100%
-  );
-  padding: 3rem;
+	display: flex;
+	width: 1253px;
+	border-radius: 30px;
+	flex-direction: column;
+	margin: 70px auto;
+	margin-bottom: 10px;
+	background-image: linear-gradient(to right bottom, rgba(44, 0, 255, 1) 0%, rgba(189, 16, 224, 1) 100%);
+	padding: 3rem;
 }
 
 .comp-card p {
-  margin-bottom: 0rem !important;
+	margin-bottom: 0rem !important;
 }
 
 .comp-card .indiv-name {
-  color: #ffffff;
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 0.2rem;
+	color: #ffffff;
+	font-size: 2rem;
+	font-weight: 900;
+	letter-spacing: 0.2rem;
 }
 
 .comp-card .discription-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
 .comp-card .details-bg {
-  color: #686868;
-  font-size: 1.2rem;
-  font-weight: 400;
-  padding: 1rem;
-  width: 837px;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 20px;
-  margin-right: 2rem;
+	color: #686868;
+	font-size: 1.2rem;
+	font-weight: 400;
+	padding: 1rem;
+	width: 837px;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	margin-right: 2rem;
 }
 
 .comp-card .last-bg {
-  color: #686868;
-  font-weight: 700;
-  padding: 1rem;
-  width: 266px;
-  background-color: #ffffff;
-  border-radius: 20px;
+	color: #686868;
+	font-weight: 700;
+	padding: 1rem;
+	width: 266px;
+	background-color: #ffffff;
+	border-radius: 20px;
 }
 
 .comp-card .contact-part {
-  display: flex;
+	display: flex;
 
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .comp-card .contact-bg {
-  display: flex;
-  color: #686868;
-  width: 837px;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 100px;
-  margin-right: 0rem;
-  font-weight: 500;
+	display: flex;
+	color: #686868;
+	width: 49%;
+	background-color: rgba(255, 255, 255, 1);
+	border-radius: 20px;
+	margin-right: 1rem;
+	font-weight: 500;
 }
 
 .comp-card .contact-bg div {
-  margin: auto;
-  padding: 0.3rem;
+	margin: auto;
+	padding: 0.3rem;
 }
 
 .comp-card .register-button {
-  color: #686868;
-  font-weight: 400;
-  background-color: #ffffff;
-  width: 100px;
-  padding: 0.3rem 0.75rem;
-  border-radius: 1rem;
-  text-align: center;
-  margin: 0 auto;
+	color: #686868;
+	font-weight: 400;
+	background-color: #ffffff;
+	width: 100px;
+	padding: 0.3rem 0.75rem;
+	border-radius: 1rem;
+	text-align: center;
+	margin: 0 auto;
 }
 
 @media only screen and (max-width: 1300px) {
-  .comp-card .main-bg {
-    width: 900px;
-    border-radius: 1.5rem;
-  }
-  .comp-card .indiv-name {
-    font-size: 1.8rem;
-  }
-  .comp-card .details-bg {
-    padding: 1rem;
-    width: 600px;
-    border-radius: 10px;
-    margin-top: 0rem;
-    font-size: 90%;
-  }
-  .comp-card .last-bg {
-    font-size: 79%;
-    width: 200px;
-    font-weight: 500;
-    border-radius: 10px;
-  }
-  .comp-card .contact-bg {
-    width: 600px;
-    font-weight: 500;
-    border-radius: 10px;
-  }
-  .comp-card .register-button {
-    font-weight: 400;
-    text-align: center;
-    margin: 0 20px;
-  }
+	.comp-card .main-bg {
+		width: 900px;
+		border-radius: 1.5rem;
+	}
+	.comp-card .indiv-name {
+		font-size: 1.8rem;
+	}
+	.comp-card .details-bg {
+		padding: 1rem;
+		width: 600px;
+		border-radius: 10px;
+		margin-top: 0rem;
+		font-size: 90%;
+	}
+	.comp-card .last-bg {
+		font-size: 79%;
+		width: 200px;
+		font-weight: 500;
+		border-radius: 10px;
+	}
+	.comp-card .contact-bg {
+		width: 600px;
+		font-weight: 500;
+		border-radius: 10px;
+	}
+	.comp-card .register-button {
+		font-weight: 400;
+		text-align: center;
+		margin: 0 20px;
+	}
 }
 
 @media only screen and (max-width: 900px) {
-  .comp-card .main-bg {
-    width: 800px;
-    border-radius: 30px;
-  }
-  .comp-card .details-bg {
-    width: 500px;
-  }
-  .comp-card .contact-bg {
-    width: 500px;
-  }
+	.comp-card .main-bg {
+		width: 800px;
+		border-radius: 30px;
+	}
+	.comp-card .details-bg {
+		width: 500px;
+	}
+	.comp-card .contact-bg {
+		width: 500px;
+	}
 }
 
 @media only screen and (max-width: 800px) {
-  .comp-card .main-bg {
-    display: flex;
-    width: 500px;
-    border-radius: 10px;
-    flex-direction: column;
-  }
-  .comp-card .indiv-name {
-    font-size: 1.5rem;
-  }
-  .comp-card .discription-row {
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-  }
-  .comp-card .details-bg {
-    width: 400px;
-    margin-top: 1rem;
-  }
+	.comp-card .main-bg {
+		display: flex;
+		width: 500px;
+		border-radius: 10px;
+		flex-direction: column;
+	}
+	.comp-card .indiv-name {
+		font-size: 1.5rem;
+	}
+	.comp-card .discription-row {
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+	}
+	.comp-card .details-bg {
+		width: 400px;
+		margin-top: 1rem;
+	}
 
-  .comp-card .last-bg {
-    width: 400px;
-  }
+	.comp-card .last-bg {
+		width: 400px;
+	}
 
-  .comp-card .last-bg div {
-    text-align: center;
-  }
+	.comp-card .last-bg div {
+		text-align: center;
+	}
 
-  .comp-card .contact-part {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-    flex-direction: row;
-  }
+	.comp-card .contact-part {
+		display: grid;
+		grid-template-columns: 1fr;
+		row-gap: 2rem;
+		flex-direction: row;
+	}
 
-  .comp-card .contact-bg {
-    display: grid;
-    width: 400px;
-  }
-  .comp-card .contact-bg div {
-    margin: 0;
-    text-align: center;
-  }
-  .comp-card .register-button {
-    margin: 0 auto;
-  }
+	.comp-card .contact-bg {
+		display: grid;
+		width: 400px;
+	}
+	.comp-card .contact-bg div {
+		margin: 0;
+		text-align: center;
+	}
+	.comp-card .register-button {
+		margin: 0 auto;
+	}
 }
 
 @media only screen and (max-width: 550px) {
-  .comp-card .main-bg {
-    width: 350px;
-    border-radius: 20px;
-  }
-  .comp-card .indiv-name {
-    font-size: 1.3rem;
-  }
-  .comp-card .details-bg {
-    width: 250px;
-  }
+	.comp-card .main-bg {
+		width: 350px;
+		border-radius: 20px;
+	}
+	.comp-card .indiv-name {
+		font-size: 1.3rem;
+	}
+	.comp-card .details-bg {
+		width: 250px;
+	}
 
-  .comp-card .last-bg {
-    width: 250px;
-    margin-bottom: 1rem;
-  }
-  .comp-card .last-bg div {
-    text-align: start;
-  }
+	.comp-card .last-bg {
+		width: 250px;
+		margin-bottom: 1rem;
+	}
+	.comp-card .last-bg div {
+		text-align: start;
+	}
 
-  .comp-card .contact-bg {
-    width: 250px;
-    padding: 7px;
-  }
-  .comp-card .contact-bg div {
-    font-size: 80%;
-    text-align: start;
-    margin-left: 0rem;
-  }
-  .comp-card .register-button {
-    margin: 0 4.4rem;
-  }
+	.comp-card .contact-bg {
+		width: 250px;
+		padding: 7px;
+	}
+	.comp-card .contact-bg div {
+		font-size: 80%;
+		text-align: start;
+		margin-left: 0rem;
+	}
+	.comp-card .register-button {
+		margin: 0 4.4rem;
+	}
 }
 
 @media only screen and (max-width: 400px) {
-  .comp-card .main-bg {
-    width: 310px;
-    border-radius: 10px;
-    padding: 2rem;
-  }
+	.comp-card .main-bg {
+		width: 310px;
+		border-radius: 10px;
+		padding: 2rem;
+	}
 }

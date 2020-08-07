@@ -8,7 +8,6 @@ const Signup = () => {
     password: { value: '', error: '' },
     cpassword: { value: '', error: '' },
     email: { value: '', error: '' },
-    role: { value: '', error: '' },
   };
 
   const [fields, setFields] = useState(initialState);
@@ -59,12 +58,6 @@ const Signup = () => {
       fields.cpassword.error = '';
     }
 
-    if (fields.role.value === '') {
-      isError = true;
-      fields.role.error = 'Please select a role ';
-    } else {
-      fields.role.error = '';
-    }
     console.log(fields);
 
     setFields({
@@ -133,7 +126,7 @@ const Signup = () => {
                 type='password'
                 name='cpassword'
                 id='cpassword'
-                // minLength='8'
+                minLength='8'
                 value={fields.cpassword.value}
                 placeholder='Re-enter your Password'
                 onChange={handleChange}
@@ -161,7 +154,6 @@ const Signup = () => {
                   </option>
                 </select>
               </span>
-              <h6>{fields.role.error}</h6>
             </div>
             <div>
               <button type='submit' className='btn btn-primary btn-block next'>

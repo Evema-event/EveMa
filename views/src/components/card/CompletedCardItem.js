@@ -22,7 +22,6 @@ const Completedindiv = () => {
               {/* LAST DAY FOR REGISTRATION PART */}
 
               <div className='last-bg'>
-                <div>Last Date for the Registration</div>
                 <div>
                   Time: {event.startTime} A.M - {event.endTime} P.M
                       </div>
@@ -49,10 +48,9 @@ const Completedindiv = () => {
                 <div>Phone:{event.contactNumber}</div>
               </div>
 
-              {/* REGISTER BUTTON */}
-
-              <div className='register-button '>
-                <div>Register</div>
+              <div className='contact-bg'>
+                <div>Number of visitors attended: 2000</div>
+                <div>Number of stalls exhibited: 100</div>
               </div>
             </div>
           </div>

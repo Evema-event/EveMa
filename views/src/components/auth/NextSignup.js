@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import signup from '../../img/signup.jpg';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const NextSignup = () => {
   const initialState = {
@@ -10,8 +10,7 @@ const NextSignup = () => {
     country: { value: '', error: '' },
     zipcode: { value: '', error: '' },
     city: { value: '', error: '' },
-    dob: { value: '', error: '' },
-    gender: { value: '', error: '' },
+    dob: { value: '', error: '' }
   };
 
   const [fields, setFields] = useState(initialState);
@@ -24,6 +23,8 @@ const NextSignup = () => {
     };
 
     updatedField.value = value;
+
+
 
     setFields({
       ...fields,
@@ -76,9 +77,9 @@ const NextSignup = () => {
       fields.zipcode.error = '';
     }
 
-    if (fields.dob.value.length < 3) {
+    if (new Date(fields.dob.value).getTime() > Date.now()) {
       isError = true;
-      fields.dob.error = 'dob is required';
+      fields.dob.error = 'Enter a valid Date of birth';
     } else {
       fields.dob.error = '';
     }
@@ -190,9 +191,10 @@ const NextSignup = () => {
               <label htmlFor='dob'>Date of Birth</label>
               <input
                 type='date'
-                name='date'
+                name='dob'
                 id='dob'
                 required
+                value={fields.dob.value}
                 className='form_input'
                 onChange={handleChange}
               />
@@ -215,12 +217,12 @@ const NextSignup = () => {
               </span>
             </div>
 
-            <a to='/signup/0' id='link'>
+            <Link to='/signup/0' id='link'>
               <button type='button' className='btn btn-primary btn-block next'>
                 Back
               </button>
-            </a>
-            <button type='button' className='btn btn-primary btn-block next'>
+            </Link>
+            <button type='submit' className='btn btn-primary btn-block next'>
               Next
             </button>
           </span>
