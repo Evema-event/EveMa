@@ -1,29 +1,24 @@
 import React, { Fragment } from 'react';
-// import { Link } from 'react-router-dom';
 import Logo from '../../img/Logo.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const guestLinks = (
     <Fragment>
-      <li className='nav-item'>
-        <a
-          className='nav-link'
-          data-toggle='collapse'
-          data-target='.navbar-collapse.show'
-          href='/signup'
-        >
-          Sign Up <span className='sr-only'>(current)</span>
-        </a>
+      <li>
+        <Link className='nav-link' to='/'>
+          Home
+        </Link>
       </li>
       <li className='nav-item'>
-        <a
-          className='nav-link'
-          data-toggle='collapse'
-          data-target='.navbar-collapse.show'
-          href='/login'
-        >
-          Login <span className='sr-only'>(current)</span>
-        </a>
+        <Link className='nav-link' to='/signup/0'>
+          Sign Up
+        </Link>
+      </li>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/login'>
+          Login
+        </Link>
       </li>
     </Fragment>
   );
@@ -51,7 +46,11 @@ const Navbar = () => {
         </span>
       </button>
 
-      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+      <div
+        className='collapse navbar-collapse'
+        data-target='.navbar-collapse.show'
+        id='navbarSupportedContent'
+      >
         <ul className='navbar-nav ml-auto'>{guestLinks}</ul>
       </div>
     </nav>

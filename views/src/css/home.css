@@ -1,5 +1,5 @@
 .section-home {
-  margin-top: 5rem;
+  margin-top: 1rem;
   width: 100%;
   background-color: whitesmoke;
   margin-bottom: 0rem;
@@ -62,16 +62,5 @@
   .header-content {
     padding-left: 0px;
     padding-top: 30px;
-  }
-}
-
-@media only screen and (max-width: 450px) {
-  .header-primary {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-
-  .section-home p {
-    font-size: 0.6rem;
   }
 }

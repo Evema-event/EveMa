@@ -1,6 +1,6 @@
 .about {
   margin-top: 5rem;
-  padding: 3rem;
+  padding: 3rem 2rem;
   background-color: whitesmoke;
   width: 100%;
 }
@@ -79,6 +79,12 @@ h2 {
   text-align: center;
 }
 
+.card-4 a:visited,
+.card-4 a:link {
+  color: #686868 !important;
+  text-decoration: none;
+}
+
 .card-4 .cus-button {
   cursor: pointer;
   transition: 0.1s ease-in;
@@ -123,7 +129,11 @@ h2 {
     padding-right: 0px;
   }
 }
-
+@media only screen and (max-width: 900px) {
+  .section-comp .card-2 {
+    grid-template-columns: 1fr;
+  }
+}
 @media only screen and (max-width: 700px) {
   .section-comp .upLeft {
     margin: 0 auto;
@@ -154,9 +164,11 @@ h2 {
 }
 @media only screen and (max-width: 450px) {
   .about {
+    padding: 0.5rem;
     margin-top: 2.5rem;
   }
   .about h2 {
+    margin-top: 1rem;
     font-size: 1.4rem;
   }
   .card-1 {

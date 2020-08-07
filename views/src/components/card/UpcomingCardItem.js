@@ -23,16 +23,39 @@ const Upcomingindiv = () => {
 
               <div className='last-bg'>
                 <div>Last Date for the Registration</div>
-                <div>
-                  Time: {event.startTime} A.M - {event.endTime} P.M
-                      </div>
-                <div>
-                  Last Date :
-                        {new Date(event.registrationLastdate)
-                    .toISOString()
-                    .slice(0, 10)}
-                </div>
-                <div>Venue :{event.venue}</div>
+                <p>
+                  Time:{' '}
+                  <>
+                    {event.startTime} A.M - {event.endTime} P.M{' '}
+                  </>
+                </p>
+                <p>
+                  Date :
+                  <>
+                    {' '}
+                    {new Date(event.startDate)
+                      .toISOString()
+                      .slice(0, 10)} -{' '}
+                    <span>
+                      {new Date(event.endDate).toISOString().slice(0, 10)}
+                    </span>
+                  </>
+                </p>
+                <p>
+                  Last Date:
+                  <span>
+                    {' '}
+                    {new Date(event.registrationLastdate)
+                      .toISOString()
+                      .slice(0, 10)}
+                  </span>
+                </p>
+                <p>
+                  Venue:<span>{event.venue}</span>
+                </p>
+                <p>
+                  Price: <span>{event.price}</span>
+                </p>
               </div>
             </div>
             <br />
@@ -58,11 +81,8 @@ const Upcomingindiv = () => {
         </div>
       </div>
     );
-  }
-  else {
-    return (
-      <Redirect to='/' />
-    );
+  } else {
+    return <Redirect to='/' />;
   }
 };
 

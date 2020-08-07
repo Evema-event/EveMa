@@ -32,7 +32,10 @@ const Completed = () => {
               >
                 <div className='rect main-card'>
                   <div className='name'>{event.name}</div>
-                  <p className='description'>{event.description}</p>
+                  <p className='description'>
+                    {event.description.slice(0, 100)}
+                    {event.description.length > 100 && ' ... '}
+                  </p>
                   <div className='details'>
                     <span>
                       {new Date(event.startDate).toISOString().slice(0, 10)}
