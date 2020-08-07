@@ -43,29 +43,41 @@ const NextSignup1 = () => {
                 required
               />
             </div>
-            <div></div>
-            <div className='form_group'>
-              <label htmlFor='text-area'>Address</label>
-              <textarea
-                className='form_input'
-                name='address'
-                id='text-area'
-                cols='10'
-                rows='5'
-                placeholder='Enter Your Address'
+
+            <div className='form_group text-area'>
+              <label htmlFor='contact'>Contact</label>
+              <input
+                className='form_input '
+                type='text'
+                name='contact'
+                id='contact'
+                placeholder='Contact'
+                required
               />
             </div>
-            <div></div>
+          </span>
+          <div className='form_group'>
+            <label htmlFor='text-area'>Address</label>
+            <textarea
+              className='form_text'
+              name='address'
+              id='text-area'
+              cols='10'
+              rows='5'
+              placeholder='Enter Your Address'
+            />
+          </div>
+          <span className='inputs'>
             <Link to='/signup/1' id='link'>
               <button type='button' className='btn btn-primary btn-block next'>
                 Back
               </button>
             </Link>
-            <button type='submit' className='btn btn-primary btn-block next'>
-              <Link to='/' id='link'>
+            <Link to='/' id='link'>
+              <button type='submit' className='btn btn-primary btn-block next'>
                 Submit
-              </Link>
-            </button>
+              </button>
+            </Link>
           </span>
         </form>
       </div>

@@ -3,6 +3,7 @@ import Upcoming from '../card/upCard';
 import Completed from '../card/compCard';
 import EventContext from '../../context/event/eventContext';
 import UpImg from '../../img/Mask2.png';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const eventContext = useContext(EventContext);
@@ -30,14 +31,14 @@ const About = () => {
           {eventContext.upcomingEvents &&
             eventContext.upcomingEvents.length > 2 && (
               <div className='card-4'>
-                <a href='/upcoming-list' className='cus-button '>
+                <Link to='/upcoming-list' className='cus-button '>
                   <span className='cus-hov'>
                     <span className='cus-button-text'>Load More</span>
                     <span className='cus-button-rarrow'>
                       <i className='fa fa-arrow-circle-right' />
                     </span>
                   </span>
-                </a>
+                </Link>
               </div>
             )}
         </div>
@@ -64,14 +65,14 @@ const About = () => {
           {eventContext.completedEvents &&
             eventContext.completedEvents.length > 6 && (
               <div className='card-4'>
-                <a href='/completed-list' className='cus-button'>
+                <Link to='/completed-list' className='cus-button'>
                   <span className='cus-hov'>
                     <span className='cus-button-text'>Load More</span>
                     <span className='cus-button-rarrow'>
                       <i className='fa fa-arrow-circle-right' />
                     </span>
                   </span>
-                </a>
+                </Link>
               </div>
             )}
         </div>
