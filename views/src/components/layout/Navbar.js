@@ -1,44 +1,39 @@
 import React, { Fragment } from 'react';
 import Logo from '../../img/Logo.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const guestLinks = (
     <Fragment>
       <li>
-        <a className='nav-link' data-target='.navbar-collapse.show' href='/'>
+        <Link className='nav-link' to='/'>
           Home
-        </a>
+        </Link>
       </li>
       <li className='nav-item'>
-        <a
-          className='nav-link'
-          data-target='.navbar-collapse.show'
-          href='/signup'
-        >
+        <Link className='nav-link' to='/signup/0'>
           Sign Up
-        </a>
+        </Link>
       </li>
       <li className='nav-item'>
-        <a
-          className='nav-link'
-          data-target='.navbar-collapse.show'
-          href='/login'
-        >
+        <Link className='nav-link' to='/login'>
           Login
-        </a>
+        </Link>
       </li>
     </Fragment>
   );
 
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-      <img
-        src={Logo}
-        width='80'
-        height='35'
-        className='d-inline-block align-top'
-        alt='Logo'
-      ></img>
+      <Link className='nav-link' to='/'>
+        <img
+          src={Logo}
+          width='80'
+          height='35'
+          className='d-inline-block align-top'
+          alt='Logo'
+        ></img>
+      </Link>
       <button
         className='navbar-toggler'
         type='button'
@@ -53,7 +48,11 @@ const Navbar = () => {
         </span>
       </button>
 
-      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+      <div
+        className='collapse navbar-collapse'
+        data-target='.navbar-collapse.show'
+        id='navbarSupportedContent'
+      >
         <ul className='navbar-nav ml-auto'>{guestLinks}</ul>
       </div>
     </nav>

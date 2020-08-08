@@ -5,6 +5,9 @@
 @import 'css/footer.css';
 @import 'css/completedIndiv.css';
 @import 'css/upcomingIndi.css';
+@import 'css/fullList.css';
+@import 'css/signup.css';
+
 * {
   padding: 0;
   border: 0;

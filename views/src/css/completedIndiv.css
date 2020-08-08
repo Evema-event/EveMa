@@ -54,10 +54,10 @@
 .comp-card .contact-bg {
 	display: flex;
 	color: #686868;
-	width: 837px;
+	width: 49%;
 	background-color: rgba(255, 255, 255, 1);
-	border-radius: 100px;
-	margin-right: 0rem;
+	border-radius: 20px;
+	margin-right: 1rem;
 	font-weight: 500;
 }
 

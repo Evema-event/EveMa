@@ -1,100 +1,61 @@
+// Importing express and create router
 const express = require('express');
-const { body } = require('express-validator');
-
 const router = express.Router();
 
-const userController = require('../controllers/user');
+// Importing controllers
+const verifyUserController = require('../controllers/verifyUser');
+const signupController = require('../controllers/signup');
 
+// Importing validators
+const verifyUserValidator = require('../validators/verifyUser');
+const signupValidator = require('../validators/signup');
+
+// Importing middleware
+const validator = require('../middleware/validator');
+
+/* 
+  Post - /api/user/verifyUser/visitor  
+  Verify visitor already exist or not 
+*/
 router.post(
-    '/verifyUser',
-    [
-        body('userName')
-            .trim()
-            .isLength({ min: 5 })
-            .withMessage('Username atleast 5 characters long'),
-        body('emailId')
-            .trim()
-            .isEmail()
-            .normalizeEmail()
-            .withMessage('Please enter a valid email id')
-    ],
-    userController.verifyUser
-);
-router.post(
-    '/signUp',
-    [
-        body('userName')
-            .trim()
-            .isLength({ min: 5 })
-            .withMessage('Username atleast 5 characters long'),
-        body('emailId')
-            .trim()
-            .isEmail()
-            .withMessage('Please enter a valid email id')
-            .normalizeEmail(),
-        body('password')
-            .trim()
-            .isLength({ min: 5 })
-            .withMessage('Password atleast 5 characters long'),
-        body('firstName')
-            .trim()
-            .isLength({ min: 3 })
-            .withMessage('First name atleast 3 characters long'),
-        body('lastName')
-            .trim()
-            .isLength({ min: 3 })
-            .withMessage('Last name atleast 3 characters long'),
-        body('role')
-            .trim()
-            .notEmpty()
-            .withMessage('Role must not be empty'),
-        body('gender')
-            .trim()
-            .notEmpty()
-            .withMessage('Gender must not be empty'),
-        body('dateOfBirth')
-            .trim()
-            .isBefore(new Date().toISOString())
-            .withMessage('Date of birth must be before today'),
-        body('country')
-            .trim()
-            .isLength({ min: 3 })
-            .withMessage('Country atleast 3 characters long'),
-        body('state')
-            .trim()
-            .isLength({ min: 3 })
-            .withMessage('State atleast 3 characters long'),
-        body('cityName')
-            .trim()
-            .isLength({ min: 3 })
-            .withMessage('City name atleast 3 characters long'),
-        body('zipCode')
-            .trim()
-            .isLength({ min: 4 })
-            .withMessage('Zipcode atleast 4 characters long'),
-        body('areaOfInterest')
-            .isArray({ min: 1 })
-            .withMessage('Atleast 1 area of interest is needed'),
-        body('designation')
-            .trim()
-            .isLength({ min: 5 })
-            .withMessage('Designation atleast 5 characters long'),
-        body('companyName')
-            .optional({ nullable: true })
-            .trim()
-            .isLength({ min: 3 })
-            .withMessage('Company name atleast 3 characters long'),
-        body('companyAddress')
-            .optional()
-            .trim()
-            .isLength({ min: 5 })
-            .withMessage('Company address atleast 5 characters long'),
-        body('contactNumber')
-            .trim()
-            .isLength({ min: 6 })
-            .withMessage('Contact Number atleast 6 digits long')
-    ],
-    userController.signUp
+  '/verifyUser/visitor',
+  verifyUserValidator,
+  validator,
+  verifyUserController.verifyVisitor
 );
 
+/* 
+  Post - /api/user/verifyUser/exhibitor  
+  Verify exhibitor already exist or not 
+*/
+router.post(
+  '/verifyUser/exhibitor',
+  verifyUserValidator,
+  validator,
+  verifyUserController.verifyExhibitor
+);
+
+/* 
+  Post - /api/user/signup/visitor  
+  Signup visitor
+*/
+router.post(
+  '/signUp/visitor',
+  signupValidator,
+  validator,
+  signupController.signUpVisitor
+);
+
+/* 
+  Post - /api/user/signup/exhibitor
+  Signup exhibitor 
+*/
+router.post(
+  '/signUp/exhibitor',
+  signupValidator,
+  validator,
+  signupController.signUpExhibitor
+);
+
+// Exporting all routes
 module.exports = router;

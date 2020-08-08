@@ -1,6 +1,6 @@
 .about {
   margin-top: 5rem;
-  padding: 3rem;
+  padding: 3rem 2rem;
   background-color: whitesmoke;
   width: 100%;
 }
@@ -77,6 +77,12 @@ h2 {
 
 .card-4 {
   text-align: center;
+}
+
+.card-4 a:visited,
+.card-4 a:link {
+  color: #686868 !important;
+  text-decoration: none;
 }
 
 .card-4 .cus-button {

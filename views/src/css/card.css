@@ -4,11 +4,12 @@
 }
 
 .rect {
-  width: 460px;
+  width: 410px;
   background-color: #ffffff;
   border-radius: 19px;
   flex-direction: column;
   display: flex;
+  padding-right: 1rem;
   box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.3);
 }
 
@@ -56,5 +57,11 @@
   .cus-card .details {
     flex-direction: column;
     padding: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .rect {
+    width: 210px;
   }
 }

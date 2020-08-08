@@ -1,7 +1,8 @@
+// Importing mongoose
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
+// Creating schema with necessary information
 const eventSchema = new Schema({
     name: {
         type: String,
@@ -49,4 +50,5 @@ const eventSchema = new Schema({
     }
 });
 
+// Exporting event model
 module.exports = mongoose.model('Event', eventSchema);
