@@ -3,7 +3,7 @@
   width: 1253px;
   border-radius: 30px;
   flex-direction: column;
-  margin: 70px auto;
+  margin: 10px auto;
   margin-bottom: 10px;
   background-image: linear-gradient(
     to right bottom,
@@ -15,6 +15,14 @@
 
 .up-card p {
   margin-bottom: 0rem !important;
+}
+
+.up_title {
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .up-card .indiv-name {
