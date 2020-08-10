@@ -17,9 +17,5 @@ router.get('/upcomingEvents', eventController.getUpcomingEvents);
 */
 router.get('/completedEvents', eventController.getCompletedEvents);
 
-router.get('/', (req, res) => {
-  res.send('Hello heroku');
-})
-
 // Exporting all routes
 module.exports = router;
