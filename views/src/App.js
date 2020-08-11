@@ -14,6 +14,7 @@ import Completedindiv from './components/card/CompletedCardItem';
 import UpcomLoadPage from './components/pages/UpcomLoadPage';
 import CompLoadPage from './components/pages/CompLoadPage';
 import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
 import NextSignup from './components/auth/NextSignup';
 import NextSignup1 from './components/auth/NextSignup1';
 
@@ -27,6 +28,7 @@ function App() {
           <Route exact path='/signup/0' component={Signup} />
           <Route exact path='/signup/1' component={NextSignup} />
           <Route exact path='/signup/2' component={NextSignup1} />
+          <Route exact path='/login' component={Login} />
           <Route exact path='/upcomingEvents' component={Upcomingindiv} />
           <Route exact path='/completedEvents' component={Completedindiv} />
           <Route exact path='/upcoming-list' component={UpcomLoadPage} />

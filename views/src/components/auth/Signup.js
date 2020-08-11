@@ -32,7 +32,7 @@ const Signup = () => {
     let isError = false;
     if (fields.username.value.length < 5) {
       isError = true;
-      fields.username.error = 'Username is atleast 5 character';
+      fields.username.error = 'Username must be atleast 5 characters in length';
     } else {
       fields.username.error = '';
     }
@@ -46,7 +46,8 @@ const Signup = () => {
 
     if (fields.password.value.length < 8) {
       isError = true;
-      fields.password.error = 'Password is atleast 8 character ';
+      fields.password.error =
+        'Password must be atleast 8 characters in length ';
     } else {
       fields.password.error = '';
     }
