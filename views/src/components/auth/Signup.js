@@ -32,6 +32,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     let isError = false;
     if (fields.username.value.length < 5) {
       isError = true;
@@ -69,10 +70,28 @@ const Signup = () => {
     });
 
     if (!isError) {
-      if (fields.role.value === 'Vistor') {
-        axios.post(url + '/user/verifyUser/visitor');
+      let verifyUrl = url;
+      let data = {
+        userName: fields.username.value,
+        emailId: fields.email.value
+      };
+
+      if (fields.role.value === 'Visitor') {
+        verifyUrl = url + 'user/verifyUser/visitor';
+      } else if (fields.role.value === 'Exhibitor') {
+        verifyUrl = url + 'user/verifyUser/exhibitor';
       }
-      setIsSubmit(true);
+
+      axios.post(verifyUrl, data)
+        .then(res => {
+          if (res.data.message === 'Success') {
+            setIsSubmit(true);
+          }
+        })
+        .catch(err => {
+          alert('Username or Email Id already taken');
+          setIsSubmit(false);
+        });
     }
   };
 
@@ -146,17 +165,18 @@ const Signup = () => {
               <span>
                 <select
                   required
-                  defaultValue={'Default'}
-                  name='section'
+                  value={fields.role.value}
+                  name='role'
                   className='custom-select'
                   placeholder='Choose...'
                   id='role'
+                  onChange={handleChange}
                 >
                   <option value=''>Choose...</option>
-                  <option onChange={handleChange} value='Visitor'>
+                  <option value='Visitor'>
                     Visitor
                   </option>
-                  <option onChange={handleChange} value='Exhibitor'>
+                  <option value='Exhibitor'>
                     Exhibitor
                   </option>
                 </select>

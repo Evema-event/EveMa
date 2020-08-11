@@ -6,6 +6,7 @@ const Login = () => {
   const initialState = {
     username: { value: '', error: '' },
     password: { value: '', error: '' },
+    role: { value: '', error: '' },
   };
 
   const [fields, setFields] = useState(initialState);
@@ -89,13 +90,35 @@ const Login = () => {
                 onChange={handleChange}
                 required
               />
-              <small>Forget Password?</small>
               <h6>{fields.password.error}</h6>
+            </div>
+            <div className='form_group'>
+              <label htmlFor='role'>Role</label>
+              <span>
+                <select
+                  required
+                  value={fields.role.value}
+                  name='role'
+                  className='custom-select'
+                  placeholder='Choose...'
+                  id='role'
+                  onChange={handleChange}
+                >
+                  <option value=''>Choose...</option>
+                  <option value='Visitor'>
+                    Visitor
+                  </option>
+                  <option value='Exhibitor'>
+                    Exhibitor
+                  </option>
+                </select>
+              </span>
             </div>
             <div>
               <button type='submit' className='btn btn-primary btn-block next'>
                 Login
               </button>
+              <small>Forget Password?</small>
             </div>
           </span>
         </form>
