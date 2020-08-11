@@ -69,4 +69,4 @@ module.exports = [
         .trim()
         .isLength({ min: 6 })
         .withMessage('Contact Number atleast 6 digits long')
-]
+];

@@ -5,10 +5,12 @@ const router = express.Router();
 // Importing controllers
 const verifyUserController = require('../controllers/verifyUser');
 const signupController = require('../controllers/signup');
+const loginController = require('../controllers/login');
 
 // Importing validators
 const verifyUserValidator = require('../validators/verifyUser');
 const signupValidator = require('../validators/signup');
+const loginValidator = require('../validators/login');
 
 // Importing middleware
 const validator = require('../middleware/validator');
@@ -55,6 +57,28 @@ router.post(
   signupValidator,
   validator,
   signupController.signUpExhibitor
+);
+
+/* 
+  Post - /api/user/login/visitor  
+  Login visitor
+*/
+router.post(
+  '/login/visitor',
+  loginValidator,
+  validator,
+  loginController.loginVisitor
+);
+
+/* 
+  Post - /api/user/login/exhibitor
+  Login exhibitor 
+*/
+router.post(
+  '/login/exhibitor',
+  loginValidator,
+  validator,
+  loginController.loginExhibitor
 );
 
 // Exporting all routes
