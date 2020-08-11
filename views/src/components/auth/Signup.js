@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import signup from '../../img/signup.jpg';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import url from '../../server';
 
 const Signup = () => {
   const initialState = {
@@ -8,6 +10,7 @@ const Signup = () => {
     password: { value: '', error: '' },
     cpassword: { value: '', error: '' },
     email: { value: '', error: '' },
+    role: { value: '', error: '' },
   };
 
   const [fields, setFields] = useState(initialState);
@@ -66,6 +69,9 @@ const Signup = () => {
     });
 
     if (!isError) {
+      if (fields.role.value === 'Vistor') {
+        axios.post(url + '/user/verifyUser/visitor');
+      }
       setIsSubmit(true);
     }
   };
@@ -147,10 +153,10 @@ const Signup = () => {
                   id='role'
                 >
                   <option value=''>Choose...</option>
-                  <option onChange={handleChange} defaultValue='1'>
+                  <option onChange={handleChange} value='Visitor'>
                     Visitor
                   </option>
-                  <option onChange={handleChange} defaultValue='2'>
+                  <option onChange={handleChange} value='Exhibitor'>
                     Exhibitor
                   </option>
                 </select>

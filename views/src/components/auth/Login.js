@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import signup from '../../img/signup.jpg';
+import login from '../../img/login.jpg';
 import { Redirect } from 'react-router-dom';
 
 const Login = () => {
@@ -58,7 +58,7 @@ const Login = () => {
     <div className='bg-login'>
       {isSubmit && <Redirect to='/' />}
       <div className='login'>
-        <img src={signup} alt='login' className='imgLeft' />
+        <img src={login} alt='login' className='imgLogin' />
         <form className='form-login' onSubmit={handleSubmit}>
           <h1>Login</h1>
           <span className='inputs-login'>

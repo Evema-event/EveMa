@@ -4,6 +4,8 @@ export const GET_UPCOMING_EVENTS = 'GET_UPCOMING_EVENTS';
 export const GET_COMPLETED_EVENTS = 'GET_COMPLETED_EVENTS';
 export const ERROR = 'ERROR';
 
+export const SIGN_UP_0 = 'SIGN_UP_0';
+
 //EVENT ADD DELETE UPDATE
 
 export const ADD_EVENT = 'ADD_EVENT';

@@ -15,11 +15,11 @@
     rgba(202, 30, 30, 0.568),
     rgba(0, 60, 226, 0.76)
   );
-  width: 500px;
+  width: 900px;
   box-shadow: 5px 6px 1.5px rgba(0, 0, 0, 0.3);
 }
 
-.imgLeft {
+.bg-login .imgLogin {
   width: 500px;
 }
 
@@ -105,10 +105,10 @@ h6 {
     margin-top: 0rem;
   }
   .login {
-    width: 1100px;
+    width: 750px;
   }
-  .imgLeft {
-    width: 40%;
+  .bg-login .imgLogin {
+    width: 50% !important;
   }
 }
 
@@ -116,13 +116,11 @@ h6 {
   .bg-login {
     padding: 1.5rem;
   }
-  .bg-login-2 {
-    padding: 1.5rem;
-  }
+
   .login {
     width: 600px;
   }
-  .imgLeft {
+  .bg-login .imgLogin {
     width: 50%;
   }
   .inputs {
@@ -134,37 +132,30 @@ h6 {
 }
 
 @media only screen and (max-width: 1000px) {
-  .bg-login-2 {
-    padding: 2rem;
-  }
   .login {
-    width: 300px;
+    width: 600px;
   }
-  .imgLeft {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .bg-login-2 {
-    padding: 2rem;
+  .bg-login .imgLogin {
+    width: 50%;
   }
 }
 
 @media only screen and (max-width: 700px) {
+  .login {
+    width: 300px;
+  }
   .bg-login {
     padding: 1rem;
     margin-top: 2rem;
-  }
-  .bg-login-2 {
-    padding: 1rem;
-    margin-top: 0rem;
   }
   label {
     font-size: 1rem;
   }
   .form_input {
     width: 200px;
+  }
+  .bg-login .imgLogin {
+    display: none;
   }
 }
 
