@@ -14,6 +14,10 @@ const user = {
     type: String,
     required: true,
   },
+  otpData: {
+    otp: String,
+    expiresIn: Date,
+  },
   firstName: {
     type: String,
     required: true,
