@@ -5,10 +5,14 @@ const router = express.Router();
 // Importing controllers
 const verifyUserController = require('../controllers/verifyUser');
 const signupController = require('../controllers/signup');
+const loginController = require('../controllers/login');
+const passwordController = require('../controllers/password');
 
 // Importing validators
 const verifyUserValidator = require('../validators/verifyUser');
 const signupValidator = require('../validators/signup');
+const loginValidator = require('../validators/login');
+const forgetPasswordValidator = require('../validators/forgetPassword');
 
 // Importing middleware
 const validator = require('../middleware/validator');
@@ -55,6 +59,50 @@ router.post(
   signupValidator,
   validator,
   signupController.signUpExhibitor
+);
+
+/* 
+  Post - /api/user/login/visitor  
+  Login visitor
+*/
+router.post(
+  '/login/visitor',
+  loginValidator,
+  validator,
+  loginController.loginVisitor
+);
+
+/* 
+  Post - /api/user/login/exhibitor
+  Login exhibitor 
+*/
+router.post(
+  '/login/exhibitor',
+  loginValidator,
+  validator,
+  loginController.loginExhibitor
+);
+
+/* 
+  Post - /api/user/forgetPassword/visitor  
+  Forget Password visitor
+*/
+router.post(
+  '/forgetPassword/visitor',
+  forgetPasswordValidator,
+  validator,
+  passwordController.forgetPasswordVisitor
+);
+
+/* 
+  Post - /api/user/forgetPassword/exhibitor
+  Forget Password exhibitor 
+*/
+router.post(
+  '/forgetPassword/exhibitor',
+  forgetPasswordValidator,
+  validator,
+  passwordController.forgetPasswordExhibitor
 );
 
 // Exporting all routes
