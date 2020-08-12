@@ -25,10 +25,11 @@ const forgetPassword = (User, req, res) => {
             const to = savedUser.emailId;
             const subject = 'EveMa - Requesting password reset';
             const body = `
-                <h5>Dear customer,</h5>
+                <h3>Dear customer,</h3>
                 <br />
                 <p>We received request regarding password reset.</p>
-                <h6>OTP for password reset <b>${otp}</b>.</h6>
+                <h4>OTP for password reset <b>${otp}</b>.</h4>
+                <br/>
                 <p>If the mail was not requested by you, please ignore it.</p>
                 <br />
                 <br />
