@@ -1,14 +1,15 @@
-import { SIGN_UP_0 } from '../types';
-
 export default (state, action) => {
-  switch (action.type) {
-    case SIGN_UP_0:
-      return {
-        ...state,
-        signUpOne: action.payload,
-      };
-
-    default:
-      break;
-  }
-};
+    switch (action.type) {
+        case 'CHANGE_USERNAME':
+            return {
+                ...state,
+                username: action.value,
+            };
+        case 'changeRollNo':
+            return {
+                ...state,
+                rollNo: action.value,
+            };
+        default: return state
+    }
+}
