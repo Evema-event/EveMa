@@ -1,14 +1,28 @@
+import {
+    UPDATE_USER,
+    AUTHENTICATE,
+    LOGOUT
+} from '../types';
+
 export default (state, action) => {
     switch (action.type) {
-        case 'CHANGE_USERNAME':
+        case UPDATE_USER:
             return {
                 ...state,
-                username: action.value,
+                ...action.payload
             };
-        case 'changeRollNo':
+        case AUTHENTICATE:
+            localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
-                rollNo: action.value,
+                ...action.payload.user,
+                token: action.payload.token
+            };
+        case LOGOUT:
+            localStorage.clear();
+            return {
+                ...state,
+                token: ''
             };
         default: return state
     }

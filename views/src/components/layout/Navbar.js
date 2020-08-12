@@ -1,8 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect, useContext } from 'react';
 import Logo from '../../img/Logo.png';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 
 const Navbar = () => {
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      authContext.updateUser({ token: localStorage.getItem('token') });
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const guestLinks = (
     <Fragment>
       <li>
@@ -10,16 +20,25 @@ const Navbar = () => {
           Home
         </Link>
       </li>
-      <li className='nav-item'>
-        <Link className='nav-link' to='/signup/0'>
-          Sign Up
+      {
+        authContext.token ?
+          <li className='nav-item'>
+            <span className='nav-link' onClick={authContext.logout}>
+              Logout
+        </span>
+          </li>
+          :
+          <>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/signup/0'>
+                Sign Up
         </Link>
-      </li>
-      <li className='nav-item'>
-        <Link className='nav-link' to='/login'>
-          Login
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/login'>
+                Login
         </Link>
-      </li>
+            </li> </>}
     </Fragment>
   );
 

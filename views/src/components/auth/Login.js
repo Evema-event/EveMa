@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import login from '../../img/login.jpg';
 import { Redirect } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
+
+import axios from 'axios';
+import url from '../../server';
 
 const Login = () => {
+  const authContext = useContext(AuthContext);
+
   const initialState = {
     username: { value: '', error: '' },
     password: { value: '', error: '' },
@@ -11,6 +17,7 @@ const Login = () => {
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -51,7 +58,36 @@ const Login = () => {
     });
 
     if (!isError) {
-      setIsSubmit(true);
+      setLoading(true);
+      authContext.updateUser({
+        username: fields.username.value,
+        role: fields.role.value
+      });
+
+      const userData = {
+        userName: fields.username.value,
+        password: fields.password.value
+      };
+
+      let loginUrl = url;
+      if (fields.role.value === 'Visitor') {
+        loginUrl = url + 'user/login/visitor';
+      } else if (fields.role.value === 'Exhibitor') {
+        loginUrl = url + 'user/login/exhibitor';
+      }
+
+      axios.post(loginUrl, userData)
+        .then(res => {
+          console.log(res);
+          authContext.authentication(res);
+          setLoading(false);
+          setIsSubmit(true);
+        })
+        .catch(err => {
+          alert('Something goes wrong');
+          setLoading(false);
+          console.log(err);
+        });
     }
   };
 
@@ -115,8 +151,8 @@ const Login = () => {
               </span>
             </div>
             <div>
-              <button type='submit' className='btn btn-primary btn-block next'>
-                Login
+              <button type='submit' className='btn btn-primary btn-block next' disable={loading}>
+                {loading ? 'Loading' : 'Login'}
               </button>
               <small>Forget Password?</small>
             </div>

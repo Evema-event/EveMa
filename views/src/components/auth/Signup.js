@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import url from '../../server';
+import AuthContext from '../../context/auth/authContext';
 
 const Signup = () => {
+
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    setFields({
+      ...fields,
+      username: { value: authContext.username, error: '' },
+      email: { value: authContext.email, error: '' },
+      role: { value: authContext.role, error: '' },
+    });
+  }, []);
+
   const initialState = {
     username: { value: '', error: '' },
     password: { value: '', error: '' },
@@ -70,6 +83,13 @@ const Signup = () => {
     });
 
     if (!isError) {
+      authContext.updateUser({
+        username: fields.username.value,
+        password: fields.password.value,
+        email: fields.email.value,
+        role: fields.role.value
+      });
+
       let verifyUrl = url;
       let data = {
         userName: fields.username.value,

@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Link, Redirect } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
+
+import axios from 'axios';
+import url from '../../server';
 
 const NextSignup1 = () => {
+  const authContext = useContext(AuthContext);
+
   const initialState = {
     destination: { value: '', error: '' },
     areasOfInterest: { value: [], error: '' },
@@ -11,8 +17,23 @@ const NextSignup1 = () => {
     address: { value: '', error: '' },
   };
 
+  useEffect(() => {
+    setFields({
+      ...fields,
+      destination: {
+        value: authContext.destination,
+        error: ''
+      },
+      areasOfInterest: { value: authContext.areasOfInterest, error: '' },
+      company: { value: authContext.company, error: '' },
+      contact: { value: authContext.contact, error: '' },
+      address: { value: authContext.address, error: '' },
+    });
+  }, [])
+
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,7 +55,7 @@ const NextSignup1 = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     let isError = false;
-    if (fields.destination.value.length < 3) {
+    if (fields.destination.value.length < 5) {
       isError = true;
       fields.destination.error = 'Destination must be atleast 5 character';
     } else {
@@ -77,7 +98,53 @@ const NextSignup1 = () => {
     //console.log(fields);
 
     if (!isError) {
-      setIsSubmit(true);
+      setLoading(true);
+      authContext.updateUser({
+        destination: fields.destination.value,
+        areasOfInterest: fields.areasOfInterest.value,
+        company: fields.company.value,
+        contact: fields.contact.value,
+        address: fields.address.value,
+      });
+
+      const userData = {
+        userName: authContext.username,
+        emailId: authContext.email,
+        password: authContext.password,
+        firstName: authContext.firstname,
+        lastName: authContext.lastname,
+        gender: authContext.gender,
+        dateOfBirth: authContext.dob,
+        country: authContext.country,
+        state: authContext.state,
+        cityName: authContext.city,
+        zipCode: authContext.zipcode,
+        areaOfInterest: fields.areasOfInterest.value,
+        designation: fields.destination.value,
+        companyName: fields.company.value,
+        companyAddress: fields.contact.value,
+        contactNumber: fields.address.value
+      };
+
+      let signupUrl = url;
+      if (authContext.role === 'Visitor') {
+        signupUrl = url + 'user/signup/visitor';
+      } else if (authContext.role === 'Exhibitor') {
+        signupUrl = url + 'user/signup/exhibitor';
+      }
+
+      axios.post(signupUrl, userData)
+        .then(res => {
+          authContext.authentication(res);
+          setLoading(false);
+          setIsSubmit(true);
+        })
+        .catch(err => {
+          alert('Something goes wrong');
+          setLoading(false);
+          console.log(err);
+        });
+
     }
   };
 
@@ -167,13 +234,18 @@ const NextSignup1 = () => {
                 Back
               </button>
             </Link>
-            <button
-              type='submit'
+            {loading ? <button
               className='btn btn-primary btn-block next'
-              id='link'
+              disable="true"
             >
-              Submit
-            </button>
+              Loading
+            </button> : <button
+                type='submit'
+                className='btn btn-primary btn-block next'
+                id='link'
+              >
+                Submit
+            </button>}
           </span>
         </form>
       </div>

@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Redirect, Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 
 const NextSignup = () => {
+
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    setFields({
+      ...fields,
+      firstname: { value: authContext.firstname, error: '' },
+      lastname: { value: authContext.lastname, error: '' },
+      state: { value: authContext.state, error: '' },
+      country: { value: authContext.country, error: '' },
+      zipcode: { value: authContext.zipcode, error: '' },
+      city: { value: authContext.city, error: '' },
+      dob: { value: authContext.dob, error: '' },
+      gender: { value: authContext.gender, error: '' }
+    });
+  }, []);
+
   const initialState = {
     firstname: { value: '', error: '' },
     lastname: { value: '', error: '' },
@@ -10,7 +28,8 @@ const NextSignup = () => {
     country: { value: '', error: '' },
     zipcode: { value: '', error: '' },
     city: { value: '', error: '' },
-    dob: { value: '', error: '' }
+    dob: { value: '', error: '' },
+    gender: { value: '', error: '' }
   };
 
   const [fields, setFields] = useState(initialState);
@@ -91,6 +110,16 @@ const NextSignup = () => {
     console.log(fields);
 
     if (!isError) {
+      authContext.updateUser({
+        firstname: fields.firstname.value,
+        lastname: fields.lastname.value,
+        state: fields.state.value,
+        country: fields.country.value,
+        zipcode: fields.zipcode.value,
+        city: fields.city.value,
+        dob: fields.dob.value,
+        gender: fields.gender.value
+      });
       setIsSubmit(true);
     }
   };
@@ -205,14 +234,16 @@ const NextSignup = () => {
               <span>
                 <select
                   required
-                  defaultValue={'DEFAULT'}
+                  value={fields.gender.value}
+                  name='gender'
+                  onChange={handleChange}
                   className='custom-select'
                   id='gender'
                 >
                   <option value=''>Choose...</option>
-                  <option defaultValue='1'>Male</option>
-                  <option defaultValue='2'>Female</option>
-                  <option defaultValue='3'>Others</option>
+                  <option value='Male'>Male</option>
+                  <option value='Female'>Female</option>
+                  <option value='Others'>Others</option>
                 </select>
               </span>
             </div>
