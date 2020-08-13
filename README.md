@@ -4,40 +4,65 @@ Event Management Server.
 
 In the project directory, you can run:
 
-### `npm start`
+For install backend dependencies,
 
-Runs the server in the development mode at http://localhost:5000
+```js
+npm install
+```
 
-### `npm run client`
+For install frontend dependencies,
 
-Runs the app in the development mode.<br />
+```bash
+cd views
+npm install
+cd ..
+```
+
+To run the server at http://localhost:5000
+
+```js
+npm start
+```
+
+To run the server in the development mode at http://localhost:5000
+
+```js
+npm run server
+```
+
+To run the front end app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm install`
+```js
+npm run client
+```
 
-Install backend dependencies.
-
-### `cd views`
-
-### `npm install`
-
-Install frontend dependencies.
-After installing go back to root directory by using **cd ..**
-
-### `npm run dev`
-
-Start both frontend and backend servers concurrently at development.
+To start both frontend and backend servers concurrently at development.
 Runs backend at http://localhost:5000
 Open frontend at http://localhost:3000
 
-### `npm run prod`
+```js
+npm run dev
+```
 
-Start application in production.
+To start application in production.
 Build frontend and run the whole application at http://localhost:5000
 
-### `npm run test`
+```js
+npm run prod
+```
 
-Launches the test runner(Jest) in the interactive watch mode.
+To launches the test runner(Jest) in the interactive watch mode for backend testing.
+
+```js
+npm run test
+```
+
+To launches the test runner(Jest) in the interactive watch mode for backend testing.
+
+```js
+npm run clienttest
+```
