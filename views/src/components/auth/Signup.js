@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import url from '../../server';
+import AuthContext from '../../context/auth/authContext';
+import { useAlert } from 'react-alert';
 
 const Signup = () => {
+  const authContext = useContext(AuthContext);
+  const alert = useAlert();
+
+  useEffect(() => {
+    setFields({
+      ...fields,
+      username: { value: authContext.username, error: '' },
+      email: { value: authContext.email, error: '' },
+      role: { value: authContext.role, error: '' },
+    });
+    // eslint-disable-next-line
+  }, []);
+
   const initialState = {
     username: { value: '', error: '' },
     password: { value: '', error: '' },
     cpassword: { value: '', error: '' },
     email: { value: '', error: '' },
+    role: { value: '', error: '' },
   };
 
   const [fields, setFields] = useState(initialState);
@@ -29,10 +47,11 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     let isError = false;
     if (fields.username.value.length < 5) {
       isError = true;
-      fields.username.error = 'Username is atleast 5 character';
+      fields.username.error = 'Username must be atleast 5 characters in length';
     } else {
       fields.username.error = '';
     }
@@ -46,7 +65,8 @@ const Signup = () => {
 
     if (fields.password.value.length < 8) {
       isError = true;
-      fields.password.error = 'Password is atleast 8 character ';
+      fields.password.error =
+        'Password must be atleast 8 characters in length ';
     } else {
       fields.password.error = '';
     }
@@ -58,14 +78,35 @@ const Signup = () => {
       fields.cpassword.error = '';
     }
 
-    console.log(fields);
-
     setFields({
       ...fields,
     });
 
     if (!isError) {
-      setIsSubmit(true);
+      authContext.updateUser({
+        username: fields.username.value,
+        password: fields.password.value,
+        email: fields.email.value,
+        role: fields.role.value,
+      });
+
+      let verifyUrl = url + 'user/verifyUser';
+      let data = {
+        userName: fields.username.value,
+        emailId: fields.email.value,
+      };
+
+      axios
+        .post(verifyUrl, data)
+        .then((res) => {
+          if (res.data.message === 'Success') {
+            setIsSubmit(true);
+          }
+        })
+        .catch((err) => {
+          alert.error('Username or Email Id already taken');
+          setIsSubmit(false);
+        });
     }
   };
 
@@ -139,19 +180,16 @@ const Signup = () => {
               <span>
                 <select
                   required
-                  defaultValue={'Default'}
-                  name='section'
+                  value={fields.role.value}
+                  name='role'
                   className='custom-select'
                   placeholder='Choose...'
                   id='role'
+                  onChange={handleChange}
                 >
                   <option value=''>Choose...</option>
-                  <option onChange={handleChange} defaultValue='1'>
-                    Visitor
-                  </option>
-                  <option onChange={handleChange} defaultValue='2'>
-                    Exhibitor
-                  </option>
+                  <option value='Visitor'>Visitor</option>
+                  <option value='Exhibitor'>Exhibitor</option>
                 </select>
               </span>
             </div>

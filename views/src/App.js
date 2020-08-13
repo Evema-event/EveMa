@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/pages/Home';
 import Navbar from './components/layout/Navbar';
 import EventState from '../src/context/event/eventState';
+import AuthState from '../src/context/auth/authState';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
@@ -14,26 +15,30 @@ import Completedindiv from './components/card/CompletedCardItem';
 import UpcomLoadPage from './components/pages/UpcomLoadPage';
 import CompLoadPage from './components/pages/CompLoadPage';
 import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
 import NextSignup from './components/auth/NextSignup';
 import NextSignup1 from './components/auth/NextSignup1';
 
 function App() {
   return (
-    <EventState>
-      <Router>
-        <Navbar />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/signup/0' component={Signup} />
-          <Route exact path='/signup/1' component={NextSignup} />
-          <Route exact path='/signup/2' component={NextSignup1} />
-          <Route exact path='/upcomingEvents' component={Upcomingindiv} />
-          <Route exact path='/completedEvents' component={Completedindiv} />
-          <Route exact path='/upcoming-list' component={UpcomLoadPage} />
-          <Route exact path='/completed-list' component={CompLoadPage} />
-        </Switch>
-      </Router>
-    </EventState>
+    <AuthState>
+      <EventState>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/signup/0' component={Signup} />
+            <Route exact path='/signup/1' component={NextSignup} />
+            <Route exact path='/signup/2' component={NextSignup1} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/upcomingEvents' component={Upcomingindiv} />
+            <Route exact path='/completedEvents' component={Completedindiv} />
+            <Route exact path='/upcoming-list' component={UpcomLoadPage} />
+            <Route exact path='/completed-list' component={CompLoadPage} />
+          </Switch>
+        </Router>
+      </EventState>
+    </AuthState>
   );
 }
 

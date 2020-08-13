@@ -18,6 +18,6 @@ export default (state, action) => {
         indivEvent: action.payload
       }
     default:
-      break;
+      return state;
   }
 };

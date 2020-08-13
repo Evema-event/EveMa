@@ -28,7 +28,7 @@ const EventState = (props) => {
     dispatch({ payload: events.data.events, type: GET_COMPLETED_EVENTS });
   };
 
-  const setIndividualEvent = async (eventId, isUpcomming) => {
+  const setIndividualEvent = (eventId, isUpcomming) => {
     let event;
     if (isUpcomming) {
       event = state.upcomingEvents.filter(event => event._id === eventId);

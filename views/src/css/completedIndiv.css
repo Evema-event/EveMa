@@ -3,7 +3,7 @@
 	width: 1253px;
 	border-radius: 30px;
 	flex-direction: column;
-	margin: 70px auto;
+	margin: 10px auto;
 	margin-bottom: 10px;
 	background-image: linear-gradient(to right bottom, rgba(44, 0, 255, 1) 0%, rgba(189, 16, 224, 1) 100%);
 	padding: 3rem;
@@ -11,6 +11,22 @@
 
 .comp-card p {
 	margin-bottom: 0rem !important;
+}
+
+.comp_title {
+	text-align: center;
+	text-transform: uppercase;
+	font-style: italic;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+.list_title {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 2rem;
+	margin-top: 1.2rem;
+	margin-bottom: 1rem;
 }
 
 .comp-card .indiv-name {
@@ -170,6 +186,12 @@
 	}
 }
 
+@media only screen and (max-width: 600px) {
+	.list_title {
+		font-size: 1.5rem;
+	}
+}
+
 @media only screen and (max-width: 550px) {
 	.comp-card .main-bg {
 		width: 350px;
@@ -209,5 +231,10 @@
 		width: 310px;
 		border-radius: 10px;
 		padding: 2rem;
+	}
+	.list_title {
+		font-size: 1.2rem;
+		font-weight: bold;
+		margin-bottom: 0;
 	}
 }

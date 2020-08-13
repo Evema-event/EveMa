@@ -10,6 +10,7 @@ const Completedindiv = () => {
     return (
       <div className='comp-card'>
         <div key={event._id}>
+          <div className='comp_title'>Completed Event Details</div>
           <div className='main-bg'>
             <div className='indiv-name'>{event.name}</div>
             <div className='indiv-name'>Event Description:</div>
@@ -24,7 +25,7 @@ const Completedindiv = () => {
               <div className='last-bg'>
                 <div>
                   Time: {event.startTime} A.M - {event.endTime} P.M
-                      </div>
+                </div>
                 <div>
                   Date : {new Date(event.startDate).toISOString().slice(0, 10)}{' '}
                   -{' '}
@@ -49,19 +50,16 @@ const Completedindiv = () => {
               </div>
 
               <div className='contact-bg'>
-                <div>Number of visitors attended: 2000</div>
-                <div>Number of stalls exhibited: 100</div>
+                <div>Number of visitors attended: {event.registeredUsers.length}</div>
+                <div>Number of stalls exhibited: {event.registeredStalls.length}</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     );
-  }
-  else {
-    return (
-      <Redirect to='/' />
-    );
+  } else {
+    return <Redirect to='/' />;
   }
 };
 

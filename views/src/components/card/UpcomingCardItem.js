@@ -9,6 +9,7 @@ const Upcomingindiv = () => {
   if (event) {
     return (
       <div className='up-card'>
+        <div className='up_title'>Upcoming Event Details</div>
         <div key={event._id}>
           <div className='main-bg'>
             <div className='indiv-name'>{event.name}</div>

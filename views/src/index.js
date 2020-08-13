@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { positions, Provider } from 'react-alert';
+import AlertMUITemplate from 'react-alert-template-mui';
+
+const options = {
+  timeout: 5000,
+  position: positions.MIDDLE,
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider template={AlertMUITemplate} {...options}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -47,7 +47,13 @@ const eventSchema = new Schema({
     registrationLastdate: {
         type: Date,
         required: true
-    }
+    },
+    registeredUsers: [
+        mongoose.Schema.Types.ObjectId
+    ],
+    registeredStalls: [
+        mongoose.Schema.Types.ObjectId
+    ]
 });
 
 // Exporting event model

@@ -1,20 +1,22 @@
 // Importing npm packages
 const nodemailer = require('nodemailer');
-const sendgridTransporter = require('nodemailer-sendgrid-transport');
 
 // Creating tranporter for sending mail
-const transporter = nodemailer.createTransport(sendgridTransporter({
+let mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-        api_key: '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'
+        user: 'evema.eventmanagement@gmail.com',
+        pass: 'evema123'
     }
-}));
+});
 
 // Function will sendmail wheneven called
 module.exports = (to, subject, body) => {
-    transporter.sendMail({
+    let mailDetails = {
+        from: 'evema.eventmanagement@gmail.com',
         to: to,
-        from: 'gokulnath.20.1@protosem.tech',
         subject: subject,
         html: body
-    });
+    };
+    return mailTransporter.sendMail(mailDetails);
 }
