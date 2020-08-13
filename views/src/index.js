@@ -5,6 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { positions, Provider } from 'react-alert';
 import AlertMUITemplate from 'react-alert-template-mui';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap';
+import 'jquery/dist/jquery.slim';
+import 'popper.js';
 
 const options = {
   timeout: 5000,

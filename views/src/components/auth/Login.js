@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import login from '../../img/login.jpg';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import { useAlert } from 'react-alert';
 import axios from 'axios';
@@ -158,7 +158,9 @@ const Login = () => {
               >
                 {loading ? 'Loading' : 'Login'}
               </button>
-              <small>Forget Password?</small>
+              <Link id='link' to='/forgetpassword/0'>
+                <small>Forget Password?</small>
+              </Link>
             </div>
           </span>
         </form>
