@@ -1,10 +1,9 @@
 // Importing database models
-const Visitor = require('../models/visitor');
-const Exhibitor = require('../models/exhibitor');
+const User = require('../models/user');
 
 // VerifyUser function to check the account is already exist or not.
-const verifyUser = (User, req, res) => {
-    return User.findOne({
+exports.verifyUser = (req, res) => {
+    User.findOne({
         $or: [
             { userName: req.body.userName },
             { emailId: req.body.emailId }
@@ -27,13 +26,3 @@ const verifyUser = (User, req, res) => {
             }
         });
 }
-
-// Verify visitor call verifyUser function as input of visitor
-exports.verifyVisitor = (req, res) => {
-    return verifyUser(Visitor, req, res);
-};
-
-// Verify exhibitor call verifyUser function as input of exhibitor
-exports.verifyExhibitor = (req, res) => {
-    return verifyUser(Exhibitor, req, res);
-};

@@ -1,6 +1,6 @@
 // Importing database models
-const Visitor = require('../models/visitor');
-const Exhibitor = require('../models/exhibitor');
+const User = require('../models/user');
+const Profile = require('../models/profile');
 
 // Importing npm packages
 const bcrypt = require('bcryptjs');
@@ -9,9 +9,10 @@ const jwt = require('jsonwebtoken');
 // Importing send mail function
 const sendMail = require('../utility/sendMail');
 
-// Signup function for storing user data to databased based on the type of user
-const signUp = (User, req, res) => {
-  return User.findOne({
+// Signup function for storing user data to databased
+exports.signUp = (req, res) => {
+  let savedUser;
+  User.findOne({
     $or: [{ userName: req.body.userName }, { emailId: req.body.emailId }],
   })
     .then((isUserExist) => {
@@ -27,9 +28,16 @@ const signUp = (User, req, res) => {
         userName: req.body.userName,
         emailId: req.body.emailId,
         password: hashedPassword,
+        role: [req.body.role]
+      });
+      return user.save();
+    })
+    .then(user => {
+      savedUser = user;
+      const profile = new Profile({
+        userId: user._id,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        role: req.body.role,
         gender: req.body.gender,
         dateOfBirth: req.body.dateOfBirth,
         country: req.body.country,
@@ -42,9 +50,9 @@ const signUp = (User, req, res) => {
         companyAddress: req.body.companyAddress,
         contactNumber: req.body.contactNumber,
       });
-      return user.save();
+      return profile.save()
     })
-    .then((savedUser) => {
+    .then((savedProfile) => {
       const token = jwt.sign(
         {
           emailId: savedUser.emailId,
@@ -61,11 +69,9 @@ const signUp = (User, req, res) => {
       let body = `
                 <h1>Welcome to EveMa</h1>
                 <p>Dear customer,</p>
-                <br />
                 <p>Your new EveMa account has been created successfully.</p>
-                <h5>Thanks for registering!</h5>
+                <h3>Thanks for registering!</h3>
                 <br />
-
                 <p>EveMa Team</p>
                 <p>Link: https://evema-event.herokuapp.com/</p>
             `;
@@ -84,14 +90,4 @@ const signUp = (User, req, res) => {
         res.status(500).json({ message: 'Failed', error: 'Server Error' });
       }
     });
-};
-
-// Signup visitor call signUp function with Visitor as user
-exports.signUpVisitor = (req, res) => {
-  return signUp(Visitor, req, res);
-};
-
-// Signup exhibitor call signUp function with Exhibitor as user
-exports.signUpExhibitor = (req, res) => {
-  return signUp(Exhibitor, req, res);
 };
