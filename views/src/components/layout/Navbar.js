@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useContext } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import Logo from '../../img/Logo.png';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
@@ -23,7 +23,7 @@ const Navbar = () => {
       {
         authContext.token ?
           <li className='nav-item'>
-            <span className='nav-link' onClick={authContext.logout}>
+            <span style={{ cursor: "pointer" }} className='nav-link' onClick={authContext.logout}>
               Logout
         </span>
           </li>

@@ -19,6 +19,7 @@ const NextSignup = () => {
       dob: { value: authContext.dob, error: '' },
       gender: { value: authContext.gender, error: '' }
     });
+    // eslint-disable-next-line
   }, []);
 
   const initialState = {
@@ -42,8 +43,6 @@ const NextSignup = () => {
     };
 
     updatedField.value = value;
-
-
 
     setFields({
       ...fields,
@@ -107,8 +106,6 @@ const NextSignup = () => {
       ...fields,
     });
 
-    console.log(fields);
-
     if (!isError) {
       authContext.updateUser({
         firstname: fields.firstname.value,
@@ -126,6 +123,7 @@ const NextSignup = () => {
   return (
     <div className='bg-signup-2'>
       {isSubmit && <Redirect to='/signup/2' />}
+      {!authContext.username && <Redirect to='/signup/0' />}
       <div className='signup'>
         <img src={signup} alt='signup' className='imgLeft' />
         <form className='form-signup' onSubmit={handleSubmit}>

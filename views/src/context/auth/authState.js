@@ -34,29 +34,22 @@ const AuthState = (props) => {
   };
 
   const logout = () => {
-    dispatch({ type: LOGOUT });
+    dispatch({ type: LOGOUT, payload: initialState });
   };
 
   const authentication = (response) => {
     const user = {
-      usedId: response.data.user._id,
+      userId: response.data.user._id,
       username: response.data.user.userName,
       password: response.data.user.password,
       email: response.data.user.emailId,
-      firstname: response.data.user.firstName,
-      lastname: response.data.user.lastName,
-      state: response.data.user.state,
-      country: response.data.user.country,
-      zipcode: response.data.user.zipCode,
-      city: response.data.user.cityName,
-      dob: response.data.user.dateOfBirth,
-      gender: response.data.user.gender,
-      destination: response.data.user.designation,
-      areasOfInterest: response.data.user.areaOfInterest,
-      company: response.data.user.companyName,
-      contact: response.data.user.contactNumber,
-      address: response.data.user.companyAddress,
+      role: ""
     };
+    if (response.data.user.role.length === 1) {
+      user.role = response.data.user.role[0];
+    } else {
+      user.role = 'Exhibitor';
+    }
     dispatch({
       type: AUTHENTICATE,
       payload: { token: response.data.token, user: user },
@@ -66,6 +59,7 @@ const AuthState = (props) => {
   return (
     <AuthContext.Provider
       value={{
+        userId: state.userId,
         username: state.username,
         email: state.email,
         password: state.password,

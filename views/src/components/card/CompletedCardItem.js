@@ -50,8 +50,8 @@ const Completedindiv = () => {
               </div>
 
               <div className='contact-bg'>
-                <div>Number of visitors attended: 2000</div>
-                <div>Number of stalls exhibited: 100</div>
+                <div>Number of visitors attended: {event.registeredUsers.length}</div>
+                <div>Number of stalls exhibited: {event.registeredStalls.length}</div>
               </div>
             </div>
           </div>
