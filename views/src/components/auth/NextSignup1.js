@@ -145,7 +145,7 @@ const NextSignup1 = () => {
           setIsSubmit(true);
         })
         .catch((err) => {
-          alert.error('Something went wrong');
+          alert.error('Something wrong, Check the Details');
           setLoading(false);
           console.log(err);
         });
