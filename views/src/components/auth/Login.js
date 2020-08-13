@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import login from '../../img/login.jpg';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
@@ -14,7 +14,6 @@ const Login = () => {
   const initialState = {
     username: { value: '', error: '' },
     password: { value: '', error: '' },
-    role: { value: '', error: '' },
   };
 
   const [fields, setFields] = useState(initialState);
@@ -62,8 +61,7 @@ const Login = () => {
     if (!isError) {
       setLoading(true);
       authContext.updateUser({
-        username: fields.username.value,
-        role: fields.role.value,
+        username: fields.username.value
       });
 
       const userData = {
@@ -71,12 +69,7 @@ const Login = () => {
         password: fields.password.value,
       };
 
-      let loginUrl = url;
-      if (fields.role.value === 'Visitor') {
-        loginUrl = url + 'user/login/visitor';
-      } else if (fields.role.value === 'Exhibitor') {
-        loginUrl = url + 'user/login/exhibitor';
-      }
+      let loginUrl = url + 'user/login';
 
       axios
         .post(loginUrl, userData)
@@ -132,29 +125,11 @@ const Login = () => {
               />
               <h6>{fields.password.error}</h6>
             </div>
-            <div className='form_group'>
-              <label htmlFor='role'>Role</label>
-              <span>
-                <select
-                  required
-                  value={fields.role.value}
-                  name='role'
-                  className='custom-select'
-                  placeholder='Choose...'
-                  id='role'
-                  onChange={handleChange}
-                >
-                  <option value=''>Choose...</option>
-                  <option value='Visitor'>Visitor</option>
-                  <option value='Exhibitor'>Exhibitor</option>
-                </select>
-              </span>
-            </div>
             <div>
               <button
                 type='submit'
                 className='btn btn-primary btn-block next'
-                disable={loading}
+                disable={loading.toString()}
               >
                 {loading ? 'Loading' : 'Login'}
               </button>

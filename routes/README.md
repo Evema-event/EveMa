@@ -26,19 +26,9 @@ Input: **None**
 
 Output: **Array of events having end date less than today**
 
-## Verify User - Visitor
+## Verify User
 
-url: **api/user/verifyUser/visitor**
-
-method: **Post**
-
-Input: **userName, emailId**
-
-Output: **Return Failed if user already exist else return Success**
-
-## Verify User - Exhibitor
-
-url: **api/user/verifyUser/exhibitor**
+url: **api/user/verifyUser**
 
 method: **Post**
 
@@ -46,22 +36,42 @@ Input: **userName, emailId**
 
 Output: **Return Failed if user already exist else return Success**
 
-## Signup - Visitor
+## Signup
 
-url: **api/user/signup/visitor**
-
-method: **Post**
-
-Input: **Data in user model**
-
-Output: **Token and user data stored in database**
-
-## Signup - Exhibitor
-
-url: **api/user/signup/exhibitor**
+url: **api/user/signup**
 
 method: **Post**
 
-Input: **Data in user model**
+Input: **user data and profile data in model except otpData, userId, registeredEvents and registeredStalls**
 
 Output: **Token and user data stored in database**
+
+## Login
+
+url: **api/user/login**
+
+method: **Post**
+
+Input: **userName, password**
+
+Output: **Token and user data stored in database**
+
+## Forget Password
+
+url: **api/user/forgetPassword**
+
+method: **Post**
+
+Input: **emailId**
+
+Output: **Otp will send to email**
+
+## Reset Password
+
+url: **api/user/resetPassword**
+
+method: **Put**
+
+Input: **emailId, password, otp**
+
+Output: **If OTP is correct send Success else throw error**

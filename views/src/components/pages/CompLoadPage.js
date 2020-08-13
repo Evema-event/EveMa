@@ -3,9 +3,12 @@ import CompletedLoad from '../card/compLoad';
 
 const CompLoadPage = () => {
   return (
-    <div className='view'>
-      <CompletedLoad />
-    </div>
+    <>
+      <div className='list_title'>Completed Event Details</div>
+      <div className='view'>
+        <CompletedLoad />
+      </div>
+    </>
   );
 };
 

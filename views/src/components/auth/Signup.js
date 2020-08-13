@@ -17,6 +17,7 @@ const Signup = () => {
       email: { value: authContext.email, error: '' },
       role: { value: authContext.role, error: '' },
     });
+    // eslint-disable-next-line
   }, []);
 
   const initialState = {
@@ -77,8 +78,6 @@ const Signup = () => {
       fields.cpassword.error = '';
     }
 
-    console.log(fields);
-
     setFields({
       ...fields,
     });
@@ -91,17 +90,11 @@ const Signup = () => {
         role: fields.role.value,
       });
 
-      let verifyUrl = url;
+      let verifyUrl = url + 'user/verifyUser';
       let data = {
         userName: fields.username.value,
         emailId: fields.email.value,
       };
-
-      if (fields.role.value === 'Visitor') {
-        verifyUrl = url + 'user/verifyUser/visitor';
-      } else if (fields.role.value === 'Exhibitor') {
-        verifyUrl = url + 'user/verifyUser/exhibitor';
-      }
 
       axios
         .post(verifyUrl, data)

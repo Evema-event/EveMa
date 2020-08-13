@@ -32,6 +32,7 @@ const NextSignup1 = () => {
       contact: { value: authContext.contact, error: '' },
       address: { value: authContext.address, error: '' },
     });
+    // eslint-disable-next-line
   }, []);
 
   const [fields, setFields] = useState(initialState);
@@ -98,8 +99,6 @@ const NextSignup1 = () => {
       ...fields,
     });
 
-    //console.log(fields);
-
     if (!isError) {
       setLoading(true);
       authContext.updateUser({
@@ -114,6 +113,7 @@ const NextSignup1 = () => {
         userName: authContext.username,
         emailId: authContext.email,
         password: authContext.password,
+        role: authContext.role,
         firstName: authContext.firstname,
         lastName: authContext.lastname,
         gender: authContext.gender,
@@ -129,12 +129,7 @@ const NextSignup1 = () => {
         contactNumber: fields.address.value,
       };
 
-      let signupUrl = url;
-      if (authContext.role === 'Visitor') {
-        signupUrl = url + 'user/signup/visitor';
-      } else if (authContext.role === 'Exhibitor') {
-        signupUrl = url + 'user/signup/exhibitor';
-      }
+      let signupUrl = url + 'user/signup';
 
       axios
         .post(signupUrl, userData)
@@ -155,6 +150,7 @@ const NextSignup1 = () => {
   return (
     <div className='bg-signup-2'>
       {isSubmit && <Redirect to='/' />}
+      {!authContext.username && <Redirect to='/signup/0' />}
       <div className='signup'>
         <img src={signup} alt='signup' className='imgLeft' />
         <form className='form-signup' onSubmit={handleSubmit}>
@@ -247,14 +243,14 @@ const NextSignup1 = () => {
                 Loading
               </button>
             ) : (
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-                id='link'
-              >
-                Submit
-              </button>
-            )}
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Submit
+                </button>
+              )}
           </span>
         </form>
       </div>

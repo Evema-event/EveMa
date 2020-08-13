@@ -1,15 +1,14 @@
 // Importing database models
-const Visitor = require('../models/visitor');
-const Exhibitor = require('../models/exhibitor');
+const User = require('../models/user');
 
 // Importing npm packages
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Login function generate token based on user availability
-const login = (User, req, res) => {
+exports.login = (req, res) => {
   let savedUser;
-  return User.findOne({
+  User.findOne({
     $or: [{ userName: req.body.userName }, { emailId: req.body.userName }],
   })
     .then((user) => {
@@ -23,7 +22,7 @@ const login = (User, req, res) => {
     })
     .then((isMatch) => {
       if (!isMatch) {
-        const error = new error('Password does not match');
+        const error = new Error('Password does not match');
         error.statusCode = 401;
         throw error;
       }
@@ -52,14 +51,4 @@ const login = (User, req, res) => {
         res.status(500).json({ message: 'Failed', error: 'Server Error' });
       }
     });
-};
-
-// Login visitor call login function with Visitor as user
-exports.loginVisitor = (req, res) => {
-  return login(Visitor, req, res);
-};
-
-// Login exhibitor call login function with Exhibitor as user
-exports.loginExhibitor = (req, res) => {
-  return login(Exhibitor, req, res);
 };

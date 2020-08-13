@@ -16,6 +16,10 @@ module.exports = [
         .trim()
         .isLength({ min: 5 })
         .withMessage('Password atleast 5 characters long'),
+    body('role')
+        .trim()
+        .isIn(['Visitor', 'Exhibitor'])
+        .withMessage('Must be Visitor or Exhibitor'),
     body('firstName')
         .trim()
         .isLength({ min: 3 })

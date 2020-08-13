@@ -13,52 +13,31 @@ const verifyUserValidator = require('../validators/verifyUser');
 const signupValidator = require('../validators/signup');
 const loginValidator = require('../validators/login');
 const forgetPasswordValidator = require('../validators/forgetPassword');
+const resetPasswordValidator = require('../validators/resetPassword');
 
 // Importing middleware
 const validator = require('../middleware/validator');
 
 /* 
-  Post - /api/user/verifyUser/visitor  
-  Verify visitor already exist or not 
+  Post - /api/user/verifyUser 
+  Verify user already exist or not 
 */
 router.post(
-  '/verifyUser/visitor',
+  '/verifyUser',
   verifyUserValidator,
   validator,
-  verifyUserController.verifyVisitor
+  verifyUserController.verifyUser
 );
 
 /* 
-  Post - /api/user/verifyUser/exhibitor  
-  Verify exhibitor already exist or not 
+  Post - /api/user/signup
+  Signup user
 */
 router.post(
-  '/verifyUser/exhibitor',
-  verifyUserValidator,
-  validator,
-  verifyUserController.verifyExhibitor
-);
-
-/* 
-  Post - /api/user/signup/visitor  
-  Signup visitor
-*/
-router.post(
-  '/signUp/visitor',
+  '/signUp',
   signupValidator,
   validator,
-  signupController.signUpVisitor
-);
-
-/* 
-  Post - /api/user/signup/exhibitor
-  Signup exhibitor 
-*/
-router.post(
-  '/signUp/exhibitor',
-  signupValidator,
-  validator,
-  signupController.signUpExhibitor
+  signupController.signUp
 );
 
 /* 
@@ -66,43 +45,32 @@ router.post(
   Login visitor
 */
 router.post(
-  '/login/visitor',
+  '/login',
   loginValidator,
   validator,
-  loginController.loginVisitor
+  loginController.login
 );
 
 /* 
-  Post - /api/user/login/exhibitor
-  Login exhibitor 
+  Post - /api/user/forgetPassword
+  Forget Password will send otp to user email
 */
 router.post(
-  '/login/exhibitor',
-  loginValidator,
-  validator,
-  loginController.loginExhibitor
-);
-
-/* 
-  Post - /api/user/forgetPassword/visitor  
-  Forget Password visitor
-*/
-router.post(
-  '/forgetPassword/visitor',
+  '/forgetPassword',
   forgetPasswordValidator,
   validator,
-  passwordController.forgetPasswordVisitor
+  passwordController.forgetPassword
 );
 
 /* 
-  Post - /api/user/forgetPassword/exhibitor
-  Forget Password exhibitor 
+  Post - /api/user/resetPassword
+  Reset Password will set new password based on otp
 */
-router.post(
-  '/forgetPassword/exhibitor',
-  forgetPasswordValidator,
+router.put(
+  '/resetPassword',
+  resetPasswordValidator,
   validator,
-  passwordController.forgetPasswordExhibitor
+  passwordController.resetPassword
 );
 
 // Exporting all routes
