@@ -2,12 +2,15 @@ import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Link, Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import { useAlert } from 'react-alert';
 
 import axios from 'axios';
 import url from '../../server';
 
 const NextSignup1 = () => {
   const authContext = useContext(AuthContext);
+
+  const alert = useAlert();
 
   const initialState = {
     destination: { value: '', error: '' },
@@ -22,14 +25,14 @@ const NextSignup1 = () => {
       ...fields,
       destination: {
         value: authContext.destination,
-        error: ''
+        error: '',
       },
       areasOfInterest: { value: authContext.areasOfInterest, error: '' },
       company: { value: authContext.company, error: '' },
       contact: { value: authContext.contact, error: '' },
       address: { value: authContext.address, error: '' },
     });
-  }, [])
+  }, []);
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -123,7 +126,7 @@ const NextSignup1 = () => {
         designation: fields.destination.value,
         companyName: fields.company.value,
         companyAddress: fields.contact.value,
-        contactNumber: fields.address.value
+        contactNumber: fields.address.value,
       };
 
       let signupUrl = url;
@@ -133,18 +136,19 @@ const NextSignup1 = () => {
         signupUrl = url + 'user/signup/exhibitor';
       }
 
-      axios.post(signupUrl, userData)
-        .then(res => {
+      axios
+        .post(signupUrl, userData)
+        .then((res) => {
           authContext.authentication(res);
+          alert.success('You have registered successfully');
           setLoading(false);
           setIsSubmit(true);
         })
-        .catch(err => {
-          alert('Something goes wrong');
+        .catch((err) => {
+          alert.error('Something went wrong');
           setLoading(false);
           console.log(err);
         });
-
     }
   };
 
@@ -234,18 +238,23 @@ const NextSignup1 = () => {
                 Back
               </button>
             </Link>
-            {loading ? <button
-              className='btn btn-primary btn-block next'
-              disable="true"
-            >
-              Loading
-            </button> : <button
+            {loading ? (
+              <button
+                id='link'
+                className='btn btn-primary btn-block next'
+                disable='true'
+              >
+                Loading
+              </button>
+            ) : (
+              <button
                 type='submit'
                 className='btn btn-primary btn-block next'
                 id='link'
               >
                 Submit
-            </button>}
+              </button>
+            )}
           </span>
         </form>
       </div>

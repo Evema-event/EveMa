@@ -4,10 +4,11 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import url from '../../server';
 import AuthContext from '../../context/auth/authContext';
+import { useAlert } from 'react-alert';
 
 const Signup = () => {
-
   const authContext = useContext(AuthContext);
+  const alert = useAlert();
 
   useEffect(() => {
     setFields({
@@ -87,13 +88,13 @@ const Signup = () => {
         username: fields.username.value,
         password: fields.password.value,
         email: fields.email.value,
-        role: fields.role.value
+        role: fields.role.value,
       });
 
       let verifyUrl = url;
       let data = {
         userName: fields.username.value,
-        emailId: fields.email.value
+        emailId: fields.email.value,
       };
 
       if (fields.role.value === 'Visitor') {
@@ -102,14 +103,15 @@ const Signup = () => {
         verifyUrl = url + 'user/verifyUser/exhibitor';
       }
 
-      axios.post(verifyUrl, data)
-        .then(res => {
+      axios
+        .post(verifyUrl, data)
+        .then((res) => {
           if (res.data.message === 'Success') {
             setIsSubmit(true);
           }
         })
-        .catch(err => {
-          alert('Username or Email Id already taken');
+        .catch((err) => {
+          alert.error('Username or Email Id already taken');
           setIsSubmit(false);
         });
     }
@@ -193,12 +195,8 @@ const Signup = () => {
                   onChange={handleChange}
                 >
                   <option value=''>Choose...</option>
-                  <option value='Visitor'>
-                    Visitor
-                  </option>
-                  <option value='Exhibitor'>
-                    Exhibitor
-                  </option>
+                  <option value='Visitor'>Visitor</option>
+                  <option value='Exhibitor'>Exhibitor</option>
                 </select>
               </span>
             </div>
