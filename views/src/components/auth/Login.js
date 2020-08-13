@@ -2,12 +2,14 @@ import React, { useState, useContext, useEffect } from 'react';
 import login from '../../img/login.jpg';
 import { Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-
+import { useAlert } from 'react-alert';
 import axios from 'axios';
 import url from '../../server';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
+
+  const alert = useAlert();
 
   const initialState = {
     username: { value: '', error: '' },
@@ -61,12 +63,12 @@ const Login = () => {
       setLoading(true);
       authContext.updateUser({
         username: fields.username.value,
-        role: fields.role.value
+        role: fields.role.value,
       });
 
       const userData = {
         userName: fields.username.value,
-        password: fields.password.value
+        password: fields.password.value,
       };
 
       let loginUrl = url;
@@ -76,15 +78,17 @@ const Login = () => {
         loginUrl = url + 'user/login/exhibitor';
       }
 
-      axios.post(loginUrl, userData)
-        .then(res => {
+      axios
+        .post(loginUrl, userData)
+        .then((res) => {
           console.log(res);
+          alert.success('You have logged in successfully');
           authContext.authentication(res);
           setLoading(false);
           setIsSubmit(true);
         })
-        .catch(err => {
-          alert('Something goes wrong');
+        .catch((err) => {
+          alert.error('Invalid Login Credentials');
           setLoading(false);
           console.log(err);
         });
@@ -141,17 +145,17 @@ const Login = () => {
                   onChange={handleChange}
                 >
                   <option value=''>Choose...</option>
-                  <option value='Visitor'>
-                    Visitor
-                  </option>
-                  <option value='Exhibitor'>
-                    Exhibitor
-                  </option>
+                  <option value='Visitor'>Visitor</option>
+                  <option value='Exhibitor'>Exhibitor</option>
                 </select>
               </span>
             </div>
             <div>
-              <button type='submit' className='btn btn-primary btn-block next' disable={loading}>
+              <button
+                type='submit'
+                className='btn btn-primary btn-block next'
+                disable={loading}
+              >
                 {loading ? 'Loading' : 'Login'}
               </button>
               <small>Forget Password?</small>
