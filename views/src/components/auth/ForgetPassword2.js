@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
@@ -14,9 +14,19 @@ const ForgetPassword2 = () => {
     otp: { value: '', error: '' },
   };
 
+  useEffect(() => {
+    setFields({
+      ...fields,
+      email: { value: authContext.email, error: '' },
+      password: { value: authContext.password, error: '' },
+      otp: { value: authContext.otp, error: '' },
+    });
+    // eslint-disable-next-line
+  }, []);
+
   const [fields, setFields] = useState(initialState);
   const [loading, setLoading] = useState(false);
-  const [isSubmit, setisSubmit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +74,6 @@ const ForgetPassword2 = () => {
     });
 
     if (!isError) {
-      let otpurl = url + 'user/resetPassword';
       setLoading(true);
       authContext.updateUser({
         password: fields.password.value,
@@ -75,17 +84,20 @@ const ForgetPassword2 = () => {
         password: fields.password.value,
         otp: fields.otp.value,
       };
-      console.log(userData.otp);
+
+      let otpurl = url + 'user/resetPassword';
+
       axios
         .post(otpurl, userData)
         .then((res) => {
           console.log(res);
-          setisSubmit(true);
           setLoading(false);
+          setIsSubmit(true);
           swal('Password reset', 'Your password reset succesfully', 'success');
         })
         .catch((err) => {
           console.log(err);
+          setLoading(false);
           swal('Error', 'Check your password again', 'error');
         });
     }
@@ -144,9 +156,23 @@ const ForgetPassword2 = () => {
                 />
                 <h6>{fields.otp.error}</h6>
               </div>
-              <button type='submit' className='btn btn-primary btn-block next'>
-                Submit
-              </button>
+              {loading ? (
+                <button
+                  id='link'
+                  className='btn btn-primary btn-block next'
+                  disable='true'
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Submit
+                </button>
+              )}
               <Link to='/forgetpassword/0'>
                 <button
                   type='submit'

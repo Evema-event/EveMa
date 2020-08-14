@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
 import url from '../../server.js';
@@ -13,16 +13,15 @@ const ForgetPassword = () => {
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setisSubmit] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setFields({
       ...fields,
-      email: {
-        value: authContext.email,
-      },
+      email: { value: authContext.email, error: '' },
     });
+    // eslint-disable-next-line
   }, []);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     const updatedField = {
@@ -52,7 +51,6 @@ const ForgetPassword = () => {
     });
     if (!isError) {
       //console.log('hi');
-      setLoading(true);
       authContext.forgetPassword({
         email: fields.email.value,
       });
@@ -65,11 +63,9 @@ const ForgetPassword = () => {
         .post(forgetpwurl, data)
         .then((res) => {
           console.log(res);
-          setLoading(false);
           setisSubmit(true);
         })
         .catch((err) => {
-          setLoading(false);
           console.log(err);
         });
     }
