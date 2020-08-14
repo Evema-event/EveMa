@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import url from '../../server';
 import AuthContext from '../../context/auth/authContext';
-import success from '../layout/Alert';
 
 const Signup = () => {
   const authContext = useContext(AuthContext);
@@ -103,7 +102,6 @@ const Signup = () => {
           }
         })
         .catch((err) => {
-          success();
           setIsSubmit(false);
         });
     }
