@@ -1,6 +1,9 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import axios from 'axios';
+import swal from 'sweetalert';
+import url from '../../server.js';
 
 const ForgetPassword2 = () => {
   const authContext = useContext(AuthContext);
@@ -13,6 +16,7 @@ const ForgetPassword2 = () => {
 
   const [fields, setFields] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [isSubmit, setisSubmit] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -60,15 +64,36 @@ const ForgetPassword2 = () => {
     });
 
     if (!isError) {
+      let otpurl = url + 'user/resetPassword';
       setLoading(true);
       authContext.updateUser({
-        email: fields.email.value,
+        password: fields.password.value,
+        otp: fields.otp.value,
       });
+      const userData = {
+        emailId: authContext.email,
+        password: fields.password.value,
+        otp: fields.otp.value,
+      };
+      console.log(userData.otp);
+      axios
+        .post(otpurl, userData)
+        .then((res) => {
+          console.log(res);
+          setisSubmit(true);
+          setLoading(false);
+          swal('Password reset', 'Your password reset succesfully', 'success');
+        })
+        .catch((err) => {
+          console.log(err);
+          swal('Error', 'Check your password again', 'error');
+        });
     }
   };
 
   return (
     <div className='bg-login'>
+      {isSubmit && <Redirect to='/login' />}
       <div className='forget'>
         <form className='form-login' onSubmit={handleSubmit}>
           <h5>Create New Password</h5>
@@ -119,18 +144,13 @@ const ForgetPassword2 = () => {
                 />
                 <h6>{fields.otp.error}</h6>
               </div>
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-                id='link'
-              >
+              <button type='submit' className='btn btn-primary btn-block next'>
                 Submit
               </button>
               <Link to='/forgetpassword/0'>
                 <button
                   type='submit'
                   className='btn btn-primary btn-block next'
-                  id='link'
                 >
                   Back
                 </button>

@@ -25,6 +25,7 @@ const AuthState = (props) => {
     contact: '',
     address: '',
     token: '',
+    otp: '',
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);

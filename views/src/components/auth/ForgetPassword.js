@@ -15,6 +15,14 @@ const ForgetPassword = () => {
   const [isSubmit, setisSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setFields({
+      ...fields,
+      email: {
+        value: authContext.email,
+      },
+    });
+  }, []);
   const handleChange = (event) => {
     const { name, value } = event.target;
     const updatedField = {
