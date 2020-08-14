@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Link, Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import swal from 'sweetalert';
 
 import axios from 'axios';
 import url from '../../server';
@@ -132,11 +133,12 @@ const NextSignup1 = () => {
         .post(signupUrl, userData)
         .then((res) => {
           authContext.authentication(res);
-
+          swal('Congrats', 'You logged in successfully!', 'success');
           setLoading(false);
           setIsSubmit(true);
         })
         .catch((err) => {
+          swal('Something Wrong', 'Invalid Signup Credentials', 'error');
           setLoading(false);
           console.log(err);
         });

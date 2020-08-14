@@ -4,7 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
 import url from '../../server';
-import success from '../layout/Alert';
+import swal from 'sweetalert';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
@@ -73,13 +73,13 @@ const Login = () => {
         .post(loginUrl, userData)
         .then((res) => {
           console.log(res);
-          success();
+          swal('Congrats', 'You logged in successfully!', 'success');
           authContext.authentication(res);
           setLoading(false);
           setIsSubmit(true);
         })
         .catch((err) => {
-          alert('Invalid Login Credentials');
+          swal('Something Wrong', 'Invalid Login Credentials', 'error');
           setLoading(false);
           console.log(err);
         });
