@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
+import axios from 'axios';
+import url from '../../server.js';
 
 const ForgetPassword = () => {
   const authContext = useContext(AuthContext);
@@ -10,6 +12,7 @@ const ForgetPassword = () => {
   };
 
   const [fields, setFields] = useState(initialState);
+  const [isSubmit, setisSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
@@ -36,22 +39,37 @@ const ForgetPassword = () => {
       fields.email.error = '';
     }
 
-    //console.log(fields);
-
     setFields({
       ...fields,
     });
-
     if (!isError) {
+      //console.log('hi');
       setLoading(true);
-      authContext.updateUser({
+      authContext.forgetPassword({
         email: fields.email.value,
       });
+      let forgetpwurl = url + 'user/forgetPassword';
+      let data = {
+        emailId: fields.email.value,
+      };
+      //console.log(data);
+      axios
+        .post(forgetpwurl, data)
+        .then((res) => {
+          console.log(res);
+          setLoading(false);
+          setisSubmit(true);
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err);
+        });
     }
   };
 
   return (
     <div className='bg-login'>
+      {isSubmit && <Redirect to='/forgetpassword/1' />}
       <div className='forget'>
         <form className='form-login' onSubmit={handleSubmit}>
           <h2>Forget Password</h2>
@@ -71,15 +89,13 @@ const ForgetPassword = () => {
               <h6>{fields.email.error}</h6>
             </div>
             <div>
-              <Link to='/forgetpassword/1'>
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  disable={loading}
-                >
-                  Next
-                </button>
-              </Link>
+              <button
+                type='submit'
+                className='btn btn-primary btn-block next'
+                //disable={loading}
+              >
+                Next
+              </button>
             </div>
           </span>
         </form>
