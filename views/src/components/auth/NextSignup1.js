@@ -2,15 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import signup from '../../img/signup.jpg';
 import { Link, Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-import { useAlert } from 'react-alert';
 
 import axios from 'axios';
 import url from '../../server';
 
 const NextSignup1 = () => {
   const authContext = useContext(AuthContext);
-
-  const alert = useAlert();
 
   const initialState = {
     destination: { value: '', error: '' },
@@ -135,12 +132,11 @@ const NextSignup1 = () => {
         .post(signupUrl, userData)
         .then((res) => {
           authContext.authentication(res);
-          alert.success('You have registered successfully');
+
           setLoading(false);
           setIsSubmit(true);
         })
         .catch((err) => {
-          alert.error('Something wrong, Check the Details');
           setLoading(false);
           console.log(err);
         });
@@ -243,14 +239,14 @@ const NextSignup1 = () => {
                 Loading
               </button>
             ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  id='link'
-                >
-                  Submit
-                </button>
-              )}
+              <button
+                type='submit'
+                className='btn btn-primary btn-block next'
+                id='link'
+              >
+                Submit
+              </button>
+            )}
           </span>
         </form>
       </div>

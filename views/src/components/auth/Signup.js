@@ -4,11 +4,10 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import url from '../../server';
 import AuthContext from '../../context/auth/authContext';
-import { useAlert } from 'react-alert';
+import success from '../layout/Alert';
 
 const Signup = () => {
   const authContext = useContext(AuthContext);
-  const alert = useAlert();
 
   useEffect(() => {
     setFields({
@@ -104,7 +103,7 @@ const Signup = () => {
           }
         })
         .catch((err) => {
-          alert.error('Username or Email Id already taken');
+          success();
           setIsSubmit(false);
         });
     }

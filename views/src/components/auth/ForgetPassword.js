@@ -1,13 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
-import login from '../../img/login.jpg';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-import { useAlert } from 'react-alert';
 
 const ForgetPassword = () => {
   const authContext = useContext(AuthContext);
-
-  const alert = useAlert();
 
   const initialState = {
     email: { value: '', error: '' },

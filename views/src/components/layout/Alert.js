@@ -1,9 +1,12 @@
-import { useAlert } from 'react-alert';
+import React from 'react';
 
 const success = () => {
-  const alert = useAlert();
-
-  alert.success('Check Your Mail for the Reset Link');
+  return (
+    <div class='alert alert-success'>
+      <strong>Success!</strong> This alert box could indicate a successful or
+      positive action.
+    </div>
+  );
 };
 
 export default success;

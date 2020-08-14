@@ -2,14 +2,12 @@ import React, { useState, useContext } from 'react';
 import login from '../../img/login.jpg';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-import { useAlert } from 'react-alert';
 import axios from 'axios';
 import url from '../../server';
+import success from '../layout/Alert';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
-
-  const alert = useAlert();
 
   const initialState = {
     username: { value: '', error: '' },
@@ -61,7 +59,7 @@ const Login = () => {
     if (!isError) {
       setLoading(true);
       authContext.updateUser({
-        username: fields.username.value
+        username: fields.username.value,
       });
 
       const userData = {
@@ -75,13 +73,13 @@ const Login = () => {
         .post(loginUrl, userData)
         .then((res) => {
           console.log(res);
-          alert.success('You have logged in successfully');
+          success();
           authContext.authentication(res);
           setLoading(false);
           setIsSubmit(true);
         })
         .catch((err) => {
-          alert.error('Invalid Login Credentials');
+          alert('Invalid Login Credentials');
           setLoading(false);
           console.log(err);
         });
