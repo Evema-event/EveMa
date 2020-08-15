@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import url from '../../server';
 import AuthContext from '../../context/auth/authContext';
+import swal from 'sweetalert';
 
 const Signup = () => {
   const authContext = useContext(AuthContext);
@@ -28,6 +29,7 @@ const Signup = () => {
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -81,6 +83,7 @@ const Signup = () => {
     });
 
     if (!isError) {
+      setLoading(true);
       authContext.updateUser({
         username: fields.username.value,
         password: fields.password.value,
@@ -99,10 +102,13 @@ const Signup = () => {
         .then((res) => {
           if (res.data.message === 'Success') {
             setIsSubmit(true);
+            setLoading(false);
           }
         })
         .catch((err) => {
+          swal('User or Email Address', 'already taken by a user', 'warning');
           setIsSubmit(false);
+          setLoading(false);
         });
     }
   };
@@ -191,9 +197,23 @@ const Signup = () => {
               </span>
             </div>
             <div>
-              <button type='submit' className='btn btn-primary btn-block next'>
-                Next
-              </button>
+              {loading ? (
+                <button
+                  id='link'
+                  className='btn btn-primary btn-block next'
+                  disable={loading}
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Next
+                </button>
+              )}
             </div>
           </span>
         </form>

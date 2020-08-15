@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
 import url from '../../server.js';
+import swal from 'sweetalert';
 
 const ForgetPassword = () => {
   const authContext = useContext(AuthContext);
@@ -13,6 +14,7 @@ const ForgetPassword = () => {
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setisSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setFields({
@@ -50,6 +52,7 @@ const ForgetPassword = () => {
       ...fields,
     });
     if (!isError) {
+      setLoading(true);
       authContext.forgetPassword({
         email: fields.email.value,
       });
@@ -61,9 +64,13 @@ const ForgetPassword = () => {
         .post(forgetpwurl, data)
         .then((res) => {
           setisSubmit(true);
+          setLoading(false);
+          swal('OTP Sent', 'Check your registered Email Address', 'success');
         })
         .catch((err) => {
           console.log(err);
+          setLoading(false);
+          swal('Something Wrong', 'You not signed up', 'error');
         });
     }
   };
@@ -90,13 +97,23 @@ const ForgetPassword = () => {
               <h6>{fields.email.error}</h6>
             </div>
             <div>
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-              //disable={loading}
-              >
-                Next
-              </button>
+              {loading ? (
+                <button
+                  id='link'
+                  className='btn btn-primary btn-block next'
+                  disable={loading}
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Next
+                </button>
+              )}
             </div>
           </span>
         </form>
