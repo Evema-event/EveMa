@@ -71,6 +71,7 @@ exports.resetPassword = (req, res) => {
         })
         .then(hashedPassword => {
             loadedUser.password = hashedPassword;
+            loadedUser.otpData = {};
             return loadedUser.save();
         })
         .then(savedUser => {
