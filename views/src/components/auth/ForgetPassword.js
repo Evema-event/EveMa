@@ -50,7 +50,6 @@ const ForgetPassword = () => {
       ...fields,
     });
     if (!isError) {
-      //console.log('hi');
       authContext.forgetPassword({
         email: fields.email.value,
       });
@@ -58,11 +57,9 @@ const ForgetPassword = () => {
       let data = {
         emailId: fields.email.value,
       };
-      //console.log(data);
       axios
         .post(forgetpwurl, data)
         .then((res) => {
-          console.log(res);
           setisSubmit(true);
         })
         .catch((err) => {
@@ -82,7 +79,7 @@ const ForgetPassword = () => {
               <label htmlFor='email'>Email</label>
               <input
                 className='form_input'
-                type='text'
+                type='email'
                 name='email'
                 id='email'
                 value={fields.email.value}
@@ -96,7 +93,7 @@ const ForgetPassword = () => {
               <button
                 type='submit'
                 className='btn btn-primary btn-block next'
-                //disable={loading}
+              //disable={loading}
               >
                 Next
               </button>

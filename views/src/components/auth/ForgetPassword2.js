@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
@@ -13,16 +13,6 @@ const ForgetPassword2 = () => {
     cpassword: { value: '', error: '' },
     otp: { value: '', error: '' },
   };
-
-  useEffect(() => {
-    setFields({
-      ...fields,
-      email: { value: authContext.email, error: '' },
-      password: { value: authContext.password, error: '' },
-      otp: { value: authContext.otp, error: '' },
-    });
-    // eslint-disable-next-line
-  }, []);
 
   const [fields, setFields] = useState(initialState);
   const [loading, setLoading] = useState(false);
@@ -67,18 +57,12 @@ const ForgetPassword2 = () => {
       fields.otp.error = '';
     }
 
-    //console.log(fields);
-
     setFields({
       ...fields,
     });
 
     if (!isError) {
       setLoading(true);
-      authContext.updateUser({
-        password: fields.password.value,
-        otp: fields.otp.value,
-      });
       const userData = {
         emailId: authContext.email,
         password: fields.password.value,
@@ -90,7 +74,6 @@ const ForgetPassword2 = () => {
       axios
         .put(otpurl, userData)
         .then((res) => {
-          console.log(res);
           setLoading(false);
           setIsSubmit(true);
           swal('Password reset', 'Your password reset succesfully', 'success');
@@ -106,6 +89,7 @@ const ForgetPassword2 = () => {
   return (
     <div className='bg-login'>
       {isSubmit && <Redirect to='/login' />}
+      {!authContext.email && <Redirect to='/forgetpassword/0' />}
       <div className='forget'>
         <form className='form-login' onSubmit={handleSubmit}>
           <h5>Create New Password</h5>
@@ -165,20 +149,20 @@ const ForgetPassword2 = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  id='link'
-                >
-                  Submit
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className='btn btn-primary btn-block next'
+                    id='link'
+                  >
+                    Submit
+                  </button>
+                )}
               <Link to='/forgetpassword/0'>
                 <button
                   type='submit'
                   className='btn btn-primary btn-block next'
                 >
-                  Back
+                  Cancel
                 </button>
               </Link>
             </div>
