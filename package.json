@@ -49,8 +49,10 @@
 		"supertest": "^4.0.2"
 	},
 	"jest": {
+		"testEnvironment": "node",
 		"testPathIgnorePatterns": [
-			"views"
+			"views",
+			"node_modules"
 		]
 	}
 }
