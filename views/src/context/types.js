@@ -7,6 +7,7 @@ export const ERROR = 'ERROR';
 export const UPDATE_USER = 'UPDATE_USER';
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const LOGOUT = 'LOGOUT';
+export const FORGET_PASSWORD = 'FORGET_PASSWORD';
 
 //EVENT ADD DELETE UPDATE
 

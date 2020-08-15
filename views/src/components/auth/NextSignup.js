@@ -4,7 +4,6 @@ import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 
 const NextSignup = () => {
-
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ const NextSignup = () => {
       zipcode: { value: authContext.zipcode, error: '' },
       city: { value: authContext.city, error: '' },
       dob: { value: authContext.dob, error: '' },
-      gender: { value: authContext.gender, error: '' }
+      gender: { value: authContext.gender, error: '' },
     });
     // eslint-disable-next-line
   }, []);
@@ -30,11 +29,12 @@ const NextSignup = () => {
     zipcode: { value: '', error: '' },
     city: { value: '', error: '' },
     dob: { value: '', error: '' },
-    gender: { value: '', error: '' }
+    gender: { value: '', error: '' },
   };
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -107,6 +107,7 @@ const NextSignup = () => {
     });
 
     if (!isError) {
+      setLoading(true);
       authContext.updateUser({
         firstname: fields.firstname.value,
         lastname: fields.lastname.value,
@@ -115,7 +116,7 @@ const NextSignup = () => {
         zipcode: fields.zipcode.value,
         city: fields.city.value,
         dob: fields.dob.value,
-        gender: fields.gender.value
+        gender: fields.gender.value,
       });
       setIsSubmit(true);
     }
@@ -251,9 +252,23 @@ const NextSignup = () => {
                 Back
               </button>
             </Link>
-            <button type='submit' className='btn btn-primary btn-block next'>
-              Next
-            </button>
+            {loading ? (
+              <button
+                id='link'
+                className='btn btn-primary btn-block next'
+                disable={loading}
+              >
+                Loading
+              </button>
+            ) : (
+              <button
+                type='submit'
+                className='btn btn-primary btn-block next'
+                id='link'
+              >
+                Next
+              </button>
+            )}
           </span>
         </form>
       </div>

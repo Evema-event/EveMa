@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 
-import { UPDATE_USER, AUTHENTICATE, LOGOUT } from '../types';
+import { UPDATE_USER, AUTHENTICATE, LOGOUT, FORGET_PASSWORD } from '../types';
 
 const AuthState = (props) => {
   const initialState = {
@@ -25,12 +25,18 @@ const AuthState = (props) => {
     contact: '',
     address: '',
     token: '',
+    otp: '',
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const updateUser = (userData) => {
     dispatch({ type: UPDATE_USER, payload: userData });
+  };
+
+  const forgetPassword = (data) => {
+    console.log(data);
+    dispatch({ type: FORGET_PASSWORD, payload: data });
   };
 
   const logout = () => {
@@ -43,7 +49,7 @@ const AuthState = (props) => {
       username: response.data.user.userName,
       password: response.data.user.password,
       email: response.data.user.emailId,
-      role: ""
+      role: '',
     };
     if (response.data.user.role.length === 1) {
       user.role = response.data.user.role[0];
@@ -81,6 +87,7 @@ const AuthState = (props) => {
         updateUser,
         authentication,
         logout,
+        forgetPassword,
       }}
     >
       {props.children}

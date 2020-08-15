@@ -12,12 +12,11 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
-    "react-alert": "^7.0.2",
-    "react-alert-template-mui": "^1.0.7",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

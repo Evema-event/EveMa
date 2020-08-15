@@ -19,6 +19,22 @@
   box-shadow: 5px 6px 1.5px rgba(0, 0, 0, 0.3);
 }
 
+.forget {
+  display: flex;
+  color: #ffffff;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(202, 30, 30, 0.568),
+    rgba(0, 60, 226, 0.76)
+  );
+  width: 400px;
+  box-shadow: 5px 6px 1.5px rgba(0, 0, 0, 0.3);
+}
+
+.bg-login {
+  margin-top: 2rem;
+}
+
 .bg-login .imgLogin {
   width: 500px;
 }
@@ -107,8 +123,15 @@ h6 {
   .login {
     width: 750px;
   }
+  .forget {
+    width: 320px;
+  }
+
   .bg-login .imgLogin {
     width: 50% !important;
+  }
+  .form-login {
+    padding: 2rem 3rem 3rem 3rem;
   }
 }
 
@@ -134,6 +157,9 @@ h6 {
 @media only screen and (max-width: 1000px) {
   .login {
     width: 600px;
+  }
+  .forget {
+    width: 300px;
   }
   .bg-login .imgLogin {
     width: 50%;

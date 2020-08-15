@@ -1,15 +1,13 @@
 import React, { useState, useContext } from 'react';
 import login from '../../img/login.jpg';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-import { useAlert } from 'react-alert';
 import axios from 'axios';
 import url from '../../server';
+import swal from 'sweetalert';
 
 const Login = () => {
   const authContext = useContext(AuthContext);
-
-  const alert = useAlert();
 
   const initialState = {
     username: { value: '', error: '' },
@@ -61,7 +59,7 @@ const Login = () => {
     if (!isError) {
       setLoading(true);
       authContext.updateUser({
-        username: fields.username.value
+        username: fields.username.value,
       });
 
       const userData = {
@@ -75,13 +73,13 @@ const Login = () => {
         .post(loginUrl, userData)
         .then((res) => {
           console.log(res);
-          alert.success('You have logged in successfully');
+          swal('Congrats', 'You logged in successfully!', 'success');
           authContext.authentication(res);
           setLoading(false);
           setIsSubmit(true);
         })
         .catch((err) => {
-          alert.error('Invalid Login Credentials');
+          swal('Something Wrong', 'Invalid Login Credentials', 'error');
           setLoading(false);
           console.log(err);
         });
@@ -133,7 +131,9 @@ const Login = () => {
               >
                 {loading ? 'Loading' : 'Login'}
               </button>
-              <small>Forget Password?</small>
+              <Link id='link' to='/forgetpassword/0'>
+                <small>Forget Password?</small>
+              </Link>
             </div>
           </span>
         </form>
