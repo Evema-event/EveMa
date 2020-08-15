@@ -88,7 +88,7 @@ const ForgetPassword2 = () => {
       let otpurl = url + 'user/resetPassword';
 
       axios
-        .post(otpurl, userData)
+        .put(otpurl, userData)
         .then((res) => {
           console.log(res);
           setLoading(false);
