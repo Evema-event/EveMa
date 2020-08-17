@@ -1,6 +1,7 @@
 import React from 'react';
 import About from './About';
 import HeaderImage from '../../img/bg-1.png';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -26,6 +27,11 @@ const Home = () => {
             </div>
           </header>
         </div>
+        <Link to='/addEvent/0'>
+          <button className='fixed-button wobble' type='button'>
+            <i className='fas fa-plus'></i>
+          </button>
+        </Link>
         <About />
       </div>
       <div className='footer'>

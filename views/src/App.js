@@ -17,6 +17,9 @@ import NextSignup1 from './components/auth/NextSignup1';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ForgetPassword2 from './components/auth/ForgetPassword2';
 
+import AddEvent from './components/events/AddEvent';
+import AddEvent1 from './components/events/AddEvent1';
+
 function App() {
   return (
     <AuthState>
@@ -24,6 +27,7 @@ function App() {
         <Router>
           <Navbar />
           <Switch>
+            <Route exact path='/admin' component={Login} />
             <Route exact path='/' component={Home} />
             <Route exact path='/signup/0' component={Signup} />
             <Route exact path='/signup/1' component={NextSignup} />
@@ -35,6 +39,8 @@ function App() {
             <Route exact path='/completedEvents' component={Completedindiv} />
             <Route exact path='/upcoming-list' component={UpcomLoadPage} />
             <Route exact path='/completed-list' component={CompLoadPage} />
+            <Route exact path='/addEvent/0' component={AddEvent} />
+            <Route exact path='/addEvent/1' component={AddEvent1} />
           </Switch>
         </Router>
       </EventState>
