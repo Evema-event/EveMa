@@ -42,7 +42,6 @@
 		"nodemailer": "^6.4.11"
 	},
 	"devDependencies": {
-		"co-commit": "^0.2.15",
 		"concurrently": "^5.2.0",
 		"cross-env": "^7.0.2",
 		"jest": "^26.1.0",
