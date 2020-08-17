@@ -75,6 +75,7 @@ const Login = () => {
           console.log(res);
           swal('Congrats', 'You logged in successfully!', 'success');
           authContext.authentication(res);
+          console.log(res);
           setLoading(false);
           setIsSubmit(true);
         })
@@ -122,6 +123,9 @@ const Login = () => {
                 required
               />
               <h6>{fields.password.error}</h6>
+              <Link id='link' to='/forgetpassword/0'>
+                <small>Forget Password?</small>
+              </Link>
             </div>
             <div>
               <button
@@ -131,8 +135,18 @@ const Login = () => {
               >
                 {loading ? 'Loading' : 'Login'}
               </button>
-              <Link id='link' to='/forgetpassword/0'>
-                <small>Forget Password?</small>
+              <Link id='link' to='/signup/0'>
+                <small>
+                  Need an account?
+                  <span
+                    style={{
+                      color: 'whitesmoke',
+                      marginLeft: '10px',
+                    }}
+                  >
+                    Sign up
+                  </span>
+                </small>
               </Link>
             </div>
           </span>

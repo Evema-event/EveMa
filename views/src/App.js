@@ -12,6 +12,7 @@ import UpcomLoadPage from './components/pages/UpcomLoadPage';
 import CompLoadPage from './components/pages/CompLoadPage';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
+import Admin from './components/pages/Admin';
 import NextSignup from './components/auth/NextSignup';
 import NextSignup1 from './components/auth/NextSignup1';
 import ForgetPassword from './components/auth/ForgetPassword';
@@ -27,7 +28,7 @@ function App() {
         <Router>
           <Navbar />
           <Switch>
-            <Route exact path='/admin' component={Login} />
+            <Route exact path='/admin' component={Admin} />
             <Route exact path='/' component={Home} />
             <Route exact path='/signup/0' component={Signup} />
             <Route exact path='/signup/1' component={NextSignup} />

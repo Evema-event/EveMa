@@ -27,11 +27,6 @@ const Home = () => {
             </div>
           </header>
         </div>
-        <Link to='/addEvent/0'>
-          <button className='fixed-button wobble' type='button'>
-            <i className='fas fa-plus'></i>
-          </button>
-        </Link>
         <About />
       </div>
       <div className='footer'>
