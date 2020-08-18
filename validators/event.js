@@ -19,20 +19,26 @@ module.exports = [
     .isEmail()
     .withMessage('Please enter a valid email id')
     .normalizeEmail(),
-  body('price').isNumeric().withMessage('Price must be number'),
+  body('price')
+    .isNumeric()
+    .withMessage('Price must be number'),
   body('startDate')
-    .isAfter(new Date().toISOString)
+    .isAfter(new Date().toISOString())
     .withMessage('Start Date must be after today'),
   body('endDate')
-    .isAfter(new Date().toISOString)
+    .isAfter(new Date().toISOString())
     .withMessage('End Date must be afer today'),
-  body('startTime').notEmpty().withMessage('Start time must not be empty'),
-  body('endTime').notEmpty().withMessage('End time must not be empty'),
+  body('startTime')
+    .notEmpty()
+    .withMessage('Start time must not be empty'),
+  body('endTime')
+    .notEmpty()
+    .withMessage('End time must not be empty'),
   body('venue')
     .trim()
     .isLength({ min: 5 })
     .withMessage('Venue should be 5 characters long'),
   body('registrationLastdate')
-    .isAfter(new Date().toISOString)
+    .isAfter(new Date().toISOString())
     .withMessage('Registration last date must be afer today'),
 ];

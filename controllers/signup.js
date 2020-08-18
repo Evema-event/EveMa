@@ -6,8 +6,9 @@ const Profile = require('../models/profile');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Importing send mail function
+// Importing utility functions
 const sendMail = require('../utility/sendMail');
+const throwError = require('../utility/throwError');
 
 // Signup function for storing user data to databased
 exports.signUp = (req, res) => {
@@ -81,13 +82,6 @@ exports.signUp = (req, res) => {
         .json({ message: 'Success', token: token, user: savedUser });
     })
     .catch((err) => {
-      if (err.statusCode) {
-        res
-          .status(err.statusCode)
-          .json({ message: 'Failed', error: err.message });
-      } else {
-        console.log(err);
-        res.status(500).json({ message: 'Failed', error: 'Server Error' });
-      }
+      return throwError(err, res);
     });
 };

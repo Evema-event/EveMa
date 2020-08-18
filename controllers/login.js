@@ -5,6 +5,9 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Importing throw error utility function
+const throwError = require('../utility/throwError');
+
 // Login function generate token based on user availability
 exports.login = (req, res) => {
   let savedUser;
@@ -42,13 +45,6 @@ exports.login = (req, res) => {
         .json({ message: 'Success', token: token, user: savedUser });
     })
     .catch((err) => {
-      if (err.statusCode) {
-        res
-          .status(err.statusCode)
-          .json({ message: 'Failed', error: err.message });
-      } else {
-        console.log(err);
-        res.status(500).json({ message: 'Failed', error: 'Server Error' });
-      }
+      return throwError(err, res);
     });
 };
