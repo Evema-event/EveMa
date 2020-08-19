@@ -1,6 +1,7 @@
 /*
 
-To commit changes with co-author just create file named pair.json which should contain username, email of the pair. If email is private you can specify the github mail which will look like <username@users.noreply.github.com>. 
+To commit changes with co-author just create file named pair.json which should contain username, email of the pair. 
+If email is private you can specify the github mail which will look like <username@users.noreply.github.com>. 
 
 Format of pair.json
 {
@@ -34,8 +35,13 @@ let log = (err, stdout, stderr) => console.log(stdout);
 
 // Running command based on OS
 if (os.type() === 'Windows_NT') {
-	exec(`git commit -m \"%npm_config_message%\" -m \"Co-authored-by: ${pair.name} <${pair.email}>\"`, log);
+  exec(
+    `git commit -m \"%npm_config_message%\" -m \"Co-authored-by: ${pair.name} <${pair.email}>\"`,
+    log
+  );
 } else {
-	exec(`git commit -m \"$npm_config_message\" -m \"Co-authored-by: ${pair.name} <${pair.email}>\"`, log);
+  exec(
+    `git commit -m \"$npm_config_message\" -m \"Co-authored-by: ${pair.name} <${pair.email}>\"`,
+    log
+  );
 }
-
