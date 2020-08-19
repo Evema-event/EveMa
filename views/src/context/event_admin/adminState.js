@@ -1,6 +1,7 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import AdminContext from './adminContext';
 import AdminReducer from './adminReducer';
+
 import { ADD_EVENT } from '../types';
 
 const AdminState = (props) => {
@@ -20,9 +21,9 @@ const AdminState = (props) => {
 
   const [state, dispatch] = useReducer(AdminReducer, initialState);
 
-  const addEvent = (data) => {
-    console.log(state);
-    console.log(data);
+  const addEvent = (data = initialState) => {
+    //console.log(state);
+    //console.log(data);
     dispatch({ type: ADD_EVENT, payload: data });
   };
 

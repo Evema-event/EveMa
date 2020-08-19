@@ -4,7 +4,6 @@ import { Link, Redirect } from 'react-router-dom';
 import AdminContext from '../../context/event_admin/adminContext';
 import axios from 'axios';
 import url from '../../server';
-import authContext from '../../context/auth/authContext';
 
 const AddEvent = () => {
   const adminContext = useContext(AdminContext);
@@ -99,7 +98,6 @@ const AddEvent = () => {
     //console.log(fields);
 
     if (!isError) {
-      setLoading(true);
       adminContext.addEvent({
         eventName: fields.eventName.value,
         venue: fields.venue.value,
@@ -108,26 +106,7 @@ const AddEvent = () => {
         startDate: fields.startDate.value,
         endDate: fields.endDate.value,
       });
-      let addeventUrl = url + 'event/addEvent';
-      let data = {
-        eventName: fields.eventName.value,
-        venue: fields.venue.value,
-        contact: fields.contact.value,
-        email: fields.email.value,
-        startDate: fields.startDate.value,
-        endDate: fields.endDate.value,
-      };
-      axios
-        .post(addeventUrl, data)
-        .then((res) => {
-          if (res.data.message === 'Success') {
-            setisSubmit(true);
-            setLoading(false);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      setisSubmit(true);
     }
   };
 

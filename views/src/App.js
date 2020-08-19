@@ -24,13 +24,13 @@ import AdminState from './context/event_admin/adminState';
 
 function App() {
   return (
-    <AuthState>
-      <AdminState>
+    <AdminState>
+      <AuthState>
         <EventState>
           <Router>
             <Navbar />
             <Switch>
-              <Route exact path='/admin' component={Admin} />
+              <Route path='/admin' component={Admin} />
               <Route exact path='/' component={Home} />
               <Route exact path='/signup/0' component={Signup} />
               <Route exact path='/signup/1' component={NextSignup} />
@@ -55,8 +55,8 @@ function App() {
             </Switch>
           </Router>
         </EventState>
-      </AdminState>
-    </AuthState>
+      </AuthState>
+    </AdminState>
   );
 }
 

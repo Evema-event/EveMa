@@ -82,22 +82,28 @@ const AddEvent = () => {
         startTime: fields.startTime.value,
         endTime: fields.endTime.value,
       });
+      let config = {
+        headers: {
+          'x-auth-token': localStorage.getItem('token'),
+        },
+      };
       let data = {
-        eventName: adminContext.eventName,
+        name: adminContext.eventName,
         venue: adminContext.venue,
-        contact: adminContext.contact,
-        email: adminContext.email,
+        contactNumber: adminContext.contact,
+        contactEmail: adminContext.email,
         startDate: adminContext.startDate,
         endDate: adminContext.endDate,
-        lastDate: fields.lastDate.value,
+        registrationLastdate: fields.lastDate.value,
         price: fields.price.value,
         description: fields.description.value,
         startTime: fields.startTime.value,
         endTime: fields.endTime.value,
       };
       axios
-        .post(addeventUrl, data)
+        .post(addeventUrl, data, config)
         .then((res) => {
+          adminContext.addEvent();
           console.log(res);
           setisSubmit(true);
           setLoading(false);
@@ -109,7 +115,7 @@ const AddEvent = () => {
   };
   return (
     <div className='event-bg'>
-      {/* {isSubmit && <Redirect to='/' />} */}
+      {isSubmit && <Redirect to='/' />}
       <div className='event'>
         <div className='add-left'>
           <img src={addImg} alt='Add Event' />
