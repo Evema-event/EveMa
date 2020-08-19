@@ -9,6 +9,14 @@ import swal from 'sweetalert';
 const Signup = () => {
   const authContext = useContext(AuthContext);
 
+  const initialState = {
+    username: { value: '', error: '' },
+    password: { value: '', error: '' },
+    cpassword: { value: '', error: '' },
+    email: { value: '', error: '' },
+    role: { value: '', error: '' },
+  };
+
   useEffect(() => {
     setFields({
       ...fields,
@@ -18,14 +26,6 @@ const Signup = () => {
     });
     // eslint-disable-next-line
   }, []);
-
-  const initialState = {
-    username: { value: '', error: '' },
-    password: { value: '', error: '' },
-    cpassword: { value: '', error: '' },
-    email: { value: '', error: '' },
-    role: { value: '', error: '' },
-  };
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
@@ -124,6 +124,7 @@ const Signup = () => {
             <div className='form_group'>
               <label htmlFor='username'>Username</label>
               <input
+                data-testid='username'
                 className='form_input'
                 type='text'
                 name='username'
@@ -138,6 +139,7 @@ const Signup = () => {
             <div className='form_group'>
               <label htmlFor='email'>Email Address</label>
               <input
+                data-testid='email'
                 className='form_input'
                 type='email'
                 name='email'
@@ -151,6 +153,7 @@ const Signup = () => {
             <div className='form_group'>
               <label htmlFor='password'>Password</label>
               <input
+                data-testid='password'
                 className='form_input'
                 type='password'
                 name='password'
@@ -166,6 +169,7 @@ const Signup = () => {
             <div className='form_group'>
               <label htmlFor='cpassword'>Confirm Password</label>
               <input
+                data-testid='cpassword'
                 className='form_input'
                 type='password'
                 name='cpassword'
@@ -207,6 +211,7 @@ const Signup = () => {
                 </button>
               ) : (
                 <button
+                  data-testid='button'
                   type='submit'
                   className='btn btn-primary btn-block next'
                   id='link'
