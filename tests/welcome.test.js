@@ -15,14 +15,14 @@ const events = require('./dummyData/event');
 // One upcoming event and one completed event
 beforeAll(async () => {
     await db.connectDB('test-welcome');
-    await Event.create(events);
+    await Event.create(events.valid);
 });
 
 // Run after all test cases finished 
 // Delete all data we store in begining and disconnect from database
 afterAll(async () => {
     await Event.deleteMany();
-    db.disconnectDB();
+    await db.disconnectDB();
 });
 
 // All test cases for test the unknown route will send Hello World!!
@@ -44,14 +44,14 @@ describe('Should return Hello World!! for undefined routes in development', () =
 
     // Testing /api/event route
     test('Get /api/event', async () => {
-        const res = await request(app).get('/api/');
+        const res = await request(app).get('/api/event');
         expect(res.status).toBe(200);
         expect(res.text).toBe('Hello World!!');
     });
 
     // Testing /api/user route
     test('Get /api/user', async () => {
-        const res = await request(app).get('/api/');
+        const res = await request(app).get('/api/user');
         expect(res.status).toBe(200);
         expect(res.text).toBe('Hello World!!');
     });
@@ -63,7 +63,7 @@ describe('Should return Hello World!! for undefined routes in development', () =
     });
 
     // Testing /api/event/completedEvents route
-    test('Get /api/event/upcomingEvents', async () => {
+    test('Get /api/event/completedEvents', async () => {
         const res = await request(app).get('/api/event/completedEvents');
         expect(res.text).not.toBe('Hello World!!');
     });

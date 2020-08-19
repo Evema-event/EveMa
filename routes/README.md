@@ -12,6 +12,8 @@ url: **api/event/upcomingEvents**
 
 method: **Get**
 
+token: **Not required**
+
 Input: **None**
 
 Output: **Array of events having end date greater than or equal to today**
@@ -21,6 +23,8 @@ Output: **Array of events having end date greater than or equal to today**
 url: **api/event/completedEvents**
 
 method: **Get**
+
+token: **Not required**
 
 Input: **None**
 
@@ -32,6 +36,8 @@ url: **api/user/verifyUser**
 
 method: **Post**
 
+token: **Not required**
+
 Input: **userName, emailId**
 
 Output: **Return Failed if user already exist else return Success**
@@ -41,6 +47,8 @@ Output: **Return Failed if user already exist else return Success**
 url: **api/user/signup**
 
 method: **Post**
+
+token: **Not required**
 
 Input: **user data and profile data in model except otpData, userId, registeredEvents and registeredStalls**
 
@@ -52,6 +60,8 @@ url: **api/user/login**
 
 method: **Post**
 
+token: **Not required**
+
 Input: **userName, password**
 
 Output: **Token and user data stored in database**
@@ -61,6 +71,8 @@ Output: **Token and user data stored in database**
 url: **api/user/forgetPassword**
 
 method: **Post**
+
+token: **Not required**
 
 Input: **emailId**
 
@@ -72,6 +84,44 @@ url: **api/user/resetPassword**
 
 method: **Put**
 
+token: **Not required**
+
 Input: **emailId, password, otp**
 
 Output: **If OTP is correct send Success else throw error**
+
+## Add event
+
+url: **api/event/addEvent**
+
+method: **Post**
+
+token: **Required**
+
+Input: **All data from event model except registeredUsers and registeredStalls**
+
+Output: **If success send event data else throw error**
+
+## Delete event
+
+url: **api/event/deleteEvent/{eventId}**
+
+method: **Delete**
+
+token: **Required**
+
+Input: **None**
+
+Output: **If success send event data else throw error**
+
+## Register event
+
+url: **api/event/registerEvent/{eventId}**
+
+method: **Put**
+
+token: **Required**
+
+Input: **None**
+
+Output: **If success send event data else throw error**
