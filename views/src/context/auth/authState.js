@@ -51,11 +51,13 @@ const AuthState = (props) => {
       email: response.data.user.emailId,
       role: '',
     };
+
     if (response.data.user.role.length === 1) {
       user.role = response.data.user.role[0];
     } else {
       user.role = 'Exhibitor';
     }
+    localStorage.setItem('role', user.role);
     dispatch({
       type: AUTHENTICATE,
       payload: { token: response.data.token, user: user },

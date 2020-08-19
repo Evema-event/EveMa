@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import addImg from '../../img/createevent.png';
 import { Link, Redirect } from 'react-router-dom';
 import AdminContext from '../../context/event_admin/adminContext';
-import axios from 'axios';
-import url from '../../server';
 
 const AddEvent = () => {
   const adminContext = useContext(AdminContext);
@@ -18,6 +16,8 @@ const AddEvent = () => {
       startDate: { value: adminContext.startDate, error: '' },
       endDate: { value: adminContext.endDate, error: '' },
     });
+
+    //eslint-disable-next-line
   }, []);
   const initialState = {
     eventName: { value: '', error: '' },
@@ -107,6 +107,7 @@ const AddEvent = () => {
         endDate: fields.endDate.value,
       });
       setisSubmit(true);
+      setLoading(false);
     }
   };
 

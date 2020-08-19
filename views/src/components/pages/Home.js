@@ -1,7 +1,6 @@
 import React from 'react';
 import About from './About';
 import HeaderImage from '../../img/bg-1.png';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (

@@ -79,10 +79,10 @@
 }
 
 .up-card .register-button {
-  color: #686868;
+  color: #ffffff;
   font-weight: 400;
   background-color: #ffffff;
-  width: 100px;
+  width: auto;
   padding: 0.3rem 0.75rem;
   border-radius: 1rem;
   text-align: center;

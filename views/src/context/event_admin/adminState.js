@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer } from 'react';
 import AdminContext from './adminContext';
 import AdminReducer from './adminReducer';
 

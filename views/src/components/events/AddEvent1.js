@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import AdminContext from '../../context/event_admin/adminContext';
 import axios from 'axios';
 import url from '../../server';
-import authContext from '../../context/auth/authContext';
+import swal from 'sweetalert';
 
 const AddEvent = () => {
   const initialState = {
@@ -103,12 +103,14 @@ const AddEvent = () => {
       axios
         .post(addeventUrl, data, config)
         .then((res) => {
+          swal('Congrats', 'Event added', 'success');
           adminContext.addEvent();
           console.log(res);
           setisSubmit(true);
           setLoading(false);
         })
         .catch((err) => {
+          swal('Oops...', 'Something Wrong', 'error');
           console.log(err);
         });
     }
@@ -196,13 +198,23 @@ const AddEvent = () => {
                   Back
                 </button>
               </Link>
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-                id='link'
-              >
-                Create Event
-              </button>
+              {loading ? (
+                <button
+                  id='link'
+                  className='btn btn-primary btn-block next'
+                  disable={loading.toString()}
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Create Event
+                </button>
+              )}
             </div>
           </form>
         </div>
