@@ -3,9 +3,9 @@ const User = require('../models/user');
 
 // Importing npm packages
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
-// Importing throw error utility function
+// Importing utility functions
+const tokenGenerator = require('../utility/tokenGenerator');
 const throwError = require('../utility/throwError');
 
 // Login function generate token based on user availability
@@ -29,17 +29,11 @@ exports.login = (req, res) => {
         error.statusCode = 401;
         throw error;
       }
-      const token = jwt.sign(
-        {
-          emailId: savedUser.emailId,
-          userName: savedUser.userName,
-          userId: savedUser._id,
-        },
-        'secret',
-        {
-          expiresIn: '6h',
-        }
-      );
+      const token = tokenGenerator({
+        emailId: savedUser.emailId,
+        userName: savedUser.userName,
+        userId: savedUser._id,
+      });
       res
         .status(200)
         .json({ message: 'Success', token: token, user: savedUser });

@@ -2,13 +2,12 @@
 const User = require('../models/user');
 const Profile = require('../models/profile');
 
-// Importing npm packages
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-
 // Importing utility functions
+const hashPassword = require('../utility/hashPassword');
+const tokenGenerator = require('../utility/tokenGenerator');
 const sendMail = require('../utility/sendMail');
 const throwError = require('../utility/throwError');
+const { TokenExpiredError } = require('jsonwebtoken');
 
 // Signup function for storing user data to databased
 exports.signUp = (req, res) => {
@@ -22,7 +21,7 @@ exports.signUp = (req, res) => {
         error.statusCode = 409;
         throw error;
       }
-      return bcrypt.hash(req.body.password, 12);
+      return hashPassword(req.body.password);
     })
     .then((hashedPassword) => {
       const user = new User({
@@ -54,17 +53,11 @@ exports.signUp = (req, res) => {
       return profile.save()
     })
     .then((savedProfile) => {
-      const token = jwt.sign(
-        {
-          emailId: savedUser.emailId,
-          userName: savedUser.userName,
-          userId: savedUser._id,
-        },
-        'secret',
-        {
-          expiresIn: '6h',
-        }
-      );
+      const token = tokenGenerator({
+        emailId: savedUser.emailId,
+        userName: savedUser.userName,
+        userId: savedUser._id,
+      });
       const to = savedUser.emailId;
       let subject = 'EveMa - Signup successfully';
       let body = `

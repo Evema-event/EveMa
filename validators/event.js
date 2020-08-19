@@ -13,7 +13,8 @@ module.exports = [
     .withMessage('Description atleast 15 characters long'),
   body('contactNumber')
     .isNumeric()
-    .withMessage('Contact Number must be number'),
+    .isLength({ min: 6 })
+    .withMessage('Contact Number must be more than 6 digit'),
   body('contactEmail')
     .trim()
     .isEmail()

@@ -15,14 +15,14 @@ const events = require('./dummyData/event');
 // One upcoming event and one completed event
 beforeAll(async () => {
     await db.connectDB('test-welcome');
-    await Event.create(events);
+    await Event.create(events.valid);
 });
 
 // Run after all test cases finished 
 // Delete all data we store in begining and disconnect from database
 afterAll(async () => {
     await Event.deleteMany();
-    db.disconnectDB();
+    await db.disconnectDB();
 });
 
 // All test cases for test the unknown route will send Hello World!!
