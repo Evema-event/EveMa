@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import addImg from '../../img/createevent.png';
 import { Link, Redirect } from 'react-router-dom';
+import AdminContext from '../../context/event_admin/adminContext';
+import axios from 'axios';
+import url from '../../server';
+import authContext from '../../context/auth/authContext';
 
 const AddEvent = () => {
+  const adminContext = useContext(AdminContext);
+
+  useEffect(() => {
+    setFields({
+      ...fields,
+      eventName: { value: adminContext.eventName, error: '' },
+      venue: { value: adminContext.venue, error: '' },
+      contact: { value: adminContext.contact, error: '' },
+      email: { value: adminContext.email, error: '' },
+      startDate: { value: adminContext.startDate, error: '' },
+      endDate: { value: adminContext.endDate, error: '' },
+    });
+  }, []);
   const initialState = {
     eventName: { value: '', error: '' },
     venue: { value: '', error: '' },
@@ -14,6 +31,7 @@ const AddEvent = () => {
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setisSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,6 +47,7 @@ const AddEvent = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    //setLoading(true);
     let isError = false;
 
     if (fields.eventName.value.length < 4) {
@@ -77,16 +96,44 @@ const AddEvent = () => {
     setFields({
       ...fields,
     });
+    //console.log(fields);
 
     if (!isError) {
-      setisSubmit(true);
-      console.log(fields);
+      setLoading(true);
+      adminContext.addEvent({
+        eventName: fields.eventName.value,
+        venue: fields.venue.value,
+        contact: fields.contact.value,
+        email: fields.email.value,
+        startDate: fields.startDate.value,
+        endDate: fields.endDate.value,
+      });
+      let addeventUrl = url + 'event/addEvent';
+      let data = {
+        eventName: fields.eventName.value,
+        venue: fields.venue.value,
+        contact: fields.contact.value,
+        email: fields.email.value,
+        startDate: fields.startDate.value,
+        endDate: fields.endDate.value,
+      };
+      axios
+        .post(addeventUrl, data)
+        .then((res) => {
+          if (res.data.message === 'Success') {
+            setisSubmit(true);
+            setLoading(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
   return (
     <div className='event-bg'>
-      {isSubmit && <Redirect to='/addevent/1' />}
+      {isSubmit && <Redirect to='/addEvent/1' />}
       <div className='event'>
         <div className='add-left'>
           <img src={addImg} alt='Add Event' />
@@ -188,14 +235,23 @@ const AddEvent = () => {
                   Cancel
                 </button>
               </Link>
-
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-                id='link'
-              >
-                Next
-              </button>
+              {loading ? (
+                <button
+                  id='link'
+                  className='btn btn-primary btn-block next'
+                  disable={loading.toString()}
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Next
+                </button>
+              )}
             </div>
           </form>
         </div>

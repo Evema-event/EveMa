@@ -201,7 +201,7 @@ const Signup = () => {
                 <button
                   id='link'
                   className='btn btn-primary btn-block next'
-                  disable={loading}
+                  disable={loading.toString()}
                 >
                   Loading
                 </button>

@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import addImg from '../../img/createevent.png';
 import { Link, Redirect } from 'react-router-dom';
+import AdminContext from '../../context/event_admin/adminContext';
+import axios from 'axios';
+import url from '../../server';
+import authContext from '../../context/auth/authContext';
 
 const AddEvent = () => {
   const initialState = {
@@ -10,9 +14,22 @@ const AddEvent = () => {
     endTime: { value: '', error: '' },
     description: { value: '', error: '' },
   };
+  const adminContext = useContext(AdminContext);
 
+  useEffect(() => {
+    setFields({
+      ...fields,
+      lastDate: { value: adminContext.lastDate, error: '' },
+      price: { value: adminContext.price, error: '' },
+      description: { value: adminContext.description, error: '' },
+      startTime: { value: adminContext.startTime, error: '' },
+      endTime: { value: adminContext.endTime, error: '' },
+    });
+    // eslint-disable-next-line
+  }, []);
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setisSubmit] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,13 +73,43 @@ const AddEvent = () => {
     });
 
     if (!isError) {
-      setisSubmit(true);
-      console.log(fields);
+      setLoading(true);
+      let addeventUrl = url + 'event/addEvent';
+      adminContext.addEvent({
+        lastDate: fields.lastDate.value,
+        price: fields.price.value,
+        description: fields.description.value,
+        startTime: fields.startTime.value,
+        endTime: fields.endTime.value,
+      });
+      let data = {
+        eventName: adminContext.eventName,
+        venue: adminContext.venue,
+        contact: adminContext.contact,
+        email: adminContext.email,
+        startDate: adminContext.startDate,
+        endDate: adminContext.endDate,
+        lastDate: fields.lastDate.value,
+        price: fields.price.value,
+        description: fields.description.value,
+        startTime: fields.startTime.value,
+        endTime: fields.endTime.value,
+      };
+      axios
+        .post(addeventUrl, data)
+        .then((res) => {
+          console.log(res);
+          setisSubmit(true);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
   return (
     <div className='event-bg'>
-      {isSubmit && <Redirect to='/' />}
+      {/* {isSubmit && <Redirect to='/' />} */}
       <div className='event'>
         <div className='add-left'>
           <img src={addImg} alt='Add Event' />
@@ -101,12 +148,12 @@ const AddEvent = () => {
                 <label htmlFor='startTime'>Start Time</label>
                 <input
                   className='add-input'
-                  type='time'
+                  type='text'
                   name='startTime'
                   id='startTime'
                   value={fields.startTime.value}
                   onChange={handleChange}
-                  placeholder='Start Time'
+                  placeholder='eg: 9am'
                   required
                 />
               </div>
@@ -114,12 +161,12 @@ const AddEvent = () => {
                 <label htmlFor='endTime'>End Time</label>
                 <input
                   className='add-input'
-                  type='time'
+                  type='text'
                   name='endTime'
                   id='endTime'
                   value={fields.endTime.value}
                   onChange={handleChange}
-                  placeholder='End Time'
+                  placeholder='eg: 5pm'
                   required
                 />
               </div>

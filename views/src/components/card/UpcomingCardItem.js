@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import EventContext from '../../context/event/eventContext';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const Upcomingindiv = () => {
   const eventContext = useContext(EventContext);
@@ -74,7 +74,9 @@ const Upcomingindiv = () => {
               {/* REGISTER BUTTON */}
 
               <div className='register-button '>
-                <div>Register</div>
+                <div>
+                  <button type='submit'>Register</button>
+                </div>
               </div>
             </div>
           </div>
