@@ -4,8 +4,9 @@ const User = require('../models/user');
 // Importing npm packages
 const bcrypt = require('bcryptjs');
 
-// Importing send mail function
+// Importing utility functions
 const sendMail = require('../utility/sendMail');
+const throwError = require('../utility/throwError');
 
 // Forget Password function send OTP to user mail provided while signup
 exports.forgetPassword = (req, res) => {
@@ -41,14 +42,7 @@ exports.forgetPassword = (req, res) => {
             res.status(200).json({ message: 'Success' });
         })
         .catch(err => {
-            if (err.statusCode) {
-                res
-                    .status(err.statusCode)
-                    .json({ message: 'Failed', error: err.message });
-            } else {
-                console.log(err);
-                res.status(500).json({ message: 'Failed', error: 'Server Error' });
-            }
+            return throwError(err, res);
         });
 }
 
@@ -78,13 +72,6 @@ exports.resetPassword = (req, res) => {
             res.status(200).json({ message: 'Success' });
         })
         .catch(err => {
-            if (err.statusCode) {
-                res
-                    .status(err.statusCode)
-                    .json({ message: 'Failed', error: err.message });
-            } else {
-                console.log(err);
-                res.status(500).json({ message: 'Failed', error: 'Server Error' });
-            }
+            return throwError(err, res);
         });
 }

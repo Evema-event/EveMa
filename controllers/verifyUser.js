@@ -1,6 +1,9 @@
 // Importing database models
 const User = require('../models/user');
 
+// Importing throw error utility function
+const throwError = require('../utility/throwError');
+
 // VerifyUser function to check the account is already exist or not.
 exports.verifyUser = (req, res) => {
     User.findOne({
@@ -18,11 +21,6 @@ exports.verifyUser = (req, res) => {
             return res.status(200).json({ message: 'Success' });
         })
         .catch(err => {
-            if (err.statusCode) {
-                res.status(err.statusCode).json({ message: 'Failed', error: err.message });
-            } else {
-                console.log(err);
-                res.status(500).json({ message: 'Failed', error: 'Server Error' });
-            }
+            return throwError(err, res);
         });
 }
