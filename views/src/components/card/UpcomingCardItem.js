@@ -73,9 +73,8 @@ const Upcomingindiv = () => {
               </div>
 
               {/* REGISTER BUTTON */}
-              <div className='register-button'>
-                <RegisterBtn eventId={event._id} />
-              </div>
+
+              <RegisterBtn eventId={event._id} />
             </div>
           </div>
         </div>

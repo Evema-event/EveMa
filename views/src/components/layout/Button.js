@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Button = () => {
   return (
     <div>
-      <Link to='/addEvent/0'>
+      <Link to='/admin/addEvent/0'>
         <button className='fixed-button wobble' type='button'>
           <i className='fas fa-plus'></i>
         </button>

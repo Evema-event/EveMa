@@ -38,7 +38,7 @@
 }
 
 .up-card .details-bg {
-  color: #686868;
+  color: #333131;
   font-size: 1.2rem;
   font-weight: 400;
   padding: 1rem;
@@ -49,7 +49,7 @@
 }
 
 .up-card .last-bg {
-  color: #686868;
+  color: #333131;
   font-weight: 700;
   padding: 1rem;
   width: 266px;
@@ -65,8 +65,8 @@
 
 .up-card .contact-bg {
   display: flex;
-  color: #686868;
-  width: 837px;
+  color: #333131;
+  width: 715px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 100px;
   margin-right: 0rem;
@@ -79,14 +79,28 @@
 }
 
 .up-card .register-button {
-  color: #ffffff;
+  color: #333131;
   font-weight: 400;
   background-color: #ffffff;
-  width: auto;
+  width: 300px;
   padding: 0.3rem 0.75rem;
   border-radius: 1rem;
   text-align: center;
   margin: 0 auto;
+  cursor: pointer;
+}
+
+.btn_exhibitor {
+  color: #333131;
+  font-weight: 400;
+  background-color: #ffffff;
+  width: 180px;
+  padding: 0.3rem 0.75rem;
+  border-radius: 1rem;
+  justify-content: space-evenly;
+  display: flex;
+  margin-left: 2rem;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -113,11 +127,15 @@
   .up-card .contact-bg {
     width: 550px;
     font-weight: 450;
+    font-size: 85%;
     border-radius: 10px;
   }
   .up-card .register-button {
     font-weight: 400;
     margin: 0 auto;
+  }
+  .btn_exhibitor {
+    font-size: 85%;
   }
 }
 
@@ -130,7 +148,11 @@
     width: 470px;
   }
   .up-card .contact-bg {
-    width: 470px;
+    width: 450px;
+  }
+  .btn_exhibitor {
+    text-align: center;
+    margin: 0 0 0 1rem;
   }
 }
 
@@ -177,6 +199,9 @@
     text-align: center;
   }
   .register-button {
+    margin: 0 auto;
+  }
+  .btn_exhibitor {
     margin: 0 auto;
   }
 }

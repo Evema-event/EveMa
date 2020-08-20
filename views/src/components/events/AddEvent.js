@@ -113,7 +113,7 @@ const AddEvent = () => {
 
   return (
     <div className='event-bg'>
-      {isSubmit && <Redirect to='/addEvent/1' />}
+      {isSubmit && <Redirect to='/admin/addEvent/1' />}
       <div className='event'>
         <div className='add-left'>
           <img src={addImg} alt='Add Event' />

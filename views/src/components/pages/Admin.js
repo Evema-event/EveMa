@@ -14,8 +14,8 @@ const Admin = () => {
       <AdminState>
         <Switch>
           <Route exact path='/admin' component={AdminPage} />
-          <Route exact path='/addEvent/0' component={AddEvent} />
-          <Route exact path='/addEvent/1' component={AddEvent1} />
+          <Route exact path='/admin/addEvent/0' component={AddEvent} />
+          <Route exact path='/admin/addEvent/1' component={AddEvent1} />
         </Switch>
       </AdminState>
     );
