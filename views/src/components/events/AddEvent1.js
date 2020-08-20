@@ -43,6 +43,16 @@ const AddEvent = () => {
     });
   };
 
+  const updateState = () => {
+    adminContext.addEvent({
+      lastDate: fields.lastDate.value,
+      price: fields.price.value,
+      description: fields.description.value,
+      startTime: fields.startTime.value,
+      endTime: fields.endTime.value,
+    });
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let isError = false;
@@ -54,19 +64,14 @@ const AddEvent = () => {
       fields.lastDate.error = '';
     }
 
-    if (fields.price.value < 500) {
-      isError = true;
-      fields.lastDate.error = 'Price must be atleast 500 rupees';
-    } else {
-      fields.lastDate.error = '';
-    }
-
     if (fields.description.value.length < 10) {
       isError = true;
       fields.description.error = 'Description must be atleast 2 lines';
     } else {
       fields.description.error = '';
     }
+
+    console.log(fields, isError);
 
     setFields({
       ...fields,
@@ -75,13 +80,7 @@ const AddEvent = () => {
     if (!isError) {
       setLoading(true);
       let addeventUrl = url + 'event/addEvent';
-      adminContext.addEvent({
-        lastDate: fields.lastDate.value,
-        price: fields.price.value,
-        description: fields.description.value,
-        startTime: fields.startTime.value,
-        endTime: fields.endTime.value,
-      });
+      updateState();
       let config = {
         headers: {
           'x-auth-token': localStorage.getItem('token'),
@@ -104,9 +103,9 @@ const AddEvent = () => {
         .post(addeventUrl, data, config)
         .then((res) => {
           swal('Congrats', 'Event added', 'success');
+          setisSubmit(true);
           adminContext.addEvent();
           console.log(res);
-          setisSubmit(true);
           setLoading(false);
         })
         .catch((err) => {
@@ -118,6 +117,7 @@ const AddEvent = () => {
   return (
     <div className='event-bg'>
       {isSubmit && <Redirect to='/admin' />}
+      {!adminContext.eventName && <Redirect to='/admin/addEvent/0' />}
       <div className='event'>
         <div className='add-left'>
           <img src={addImg} alt='Add Event' />
@@ -193,8 +193,8 @@ const AddEvent = () => {
                   required
                 />
               </div>
-              <Link to='/addEvent/0' id='link'>
-                <button className='btn btn-primary btn-block next' id='link'>
+              <Link to='/admin/addEvent/0' id='link'>
+                <button className='btn btn-primary btn-block next' id='link' onClick={updateState}>
                   Back
                 </button>
               </Link>
@@ -207,14 +207,14 @@ const AddEvent = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  id='link'
-                >
-                  Create Event
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className='btn btn-primary btn-block next'
+                    id='link'
+                  >
+                    Create Event
+                  </button>
+                )}
             </div>
           </form>
         </div>
