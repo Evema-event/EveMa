@@ -117,7 +117,7 @@ const AddEvent = () => {
   };
   return (
     <div className='event-bg'>
-      {isSubmit && <Redirect to='/' />}
+      {isSubmit && <Redirect to='/admin' />}
       <div className='event'>
         <div className='add-left'>
           <img src={addImg} alt='Add Event' />
@@ -161,7 +161,7 @@ const AddEvent = () => {
                   id='startTime'
                   value={fields.startTime.value}
                   onChange={handleChange}
-                  placeholder='eg: 9am'
+                  placeholder='eg: 9:00'
                   required
                 />
               </div>
@@ -174,7 +174,7 @@ const AddEvent = () => {
                   id='endTime'
                   value={fields.endTime.value}
                   onChange={handleChange}
-                  placeholder='eg: 5pm'
+                  placeholder='eg: 5:30'
                   required
                 />
               </div>

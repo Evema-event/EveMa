@@ -1,4 +1,4 @@
-import { ADD_EVENT, AUTHENTICATE } from '../types';
+import { ADD_EVENT } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -7,13 +7,7 @@ export default (state, action) => {
         ...state,
         ...action.payload,
       };
-    case AUTHENTICATE:
-      localStorage.setItem('token', action.payload.token);
-      return {
-        ...state,
-        ...action.payload.user,
-        token: action.payload.token,
-      };
+
     default:
       return state;
   }
