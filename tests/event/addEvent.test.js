@@ -18,8 +18,7 @@ const getToken = require('../utility/getToken');
 // Global variables
 let token;
 
-// Run before all test cases - will connect to data base and create two events
-// One upcoming event and one completed event
+// Run before all test cases - will create users and get token for each
 beforeAll(async () => {
     await db.connectDB('test-addevent');
     token = await getToken();
