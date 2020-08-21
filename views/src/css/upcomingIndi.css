@@ -133,6 +133,7 @@
   .up-card .register-button {
     font-weight: 400;
     margin: 0 auto;
+    width: 250px;
   }
   .btn_exhibitor {
     font-size: 85%;
@@ -149,6 +150,9 @@
   }
   .up-card .contact-bg {
     width: 450px;
+  }
+  .up-card .register-button {
+    width: 240px;
   }
   .btn_exhibitor {
     text-align: center;
