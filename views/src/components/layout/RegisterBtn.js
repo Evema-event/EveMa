@@ -4,6 +4,7 @@ import url from '../../server';
 import axios from 'axios';
 import swal from 'sweetalert';
 import EventContext from '../../context/event/eventContext';
+import AuthContext from '../../context/auth/authContext';
 
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ const RegisterBtn = (props) => {
   const [regEvent, setregEvent] = useState(false);
 
   const eventContext = useContext(EventContext);
+  const authContext = useContext(AuthContext);
 
   const registerEvent = () => {
     setregEvent(true);
@@ -69,7 +71,7 @@ const RegisterBtn = (props) => {
   ) {
     return (
       <div>
-        {regEvent ? (
+        {authContext.registeredEvents.includes(props.eventId) || regEvent ? (
           <div className='register-button'>Registered</div>
         ) : (
           <div className='register-button'>
@@ -114,9 +116,9 @@ const RegisterBtn = (props) => {
     );
   }
   return (
-    <div>
-      <Link to='/login'>Register</Link>
-    </div>
+    <Link to='/login'>
+      <div className='register-button'>Register</div>
+    </Link>
   );
 };
 

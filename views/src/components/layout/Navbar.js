@@ -2,16 +2,41 @@ import React, { Fragment, useEffect, useContext } from 'react';
 import Logo from '../../img/Logo.png';
 import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
-
+import url from '../../server';
+import axios from 'axios';
+import EventContext from '../../context/event/eventContext';
 const Navbar = () => {
   const authContext = useContext(AuthContext);
+  const eventContext = useContext(EventContext);
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      authContext.updateUser({ token: localStorage.getItem('token') });
+    let token = localStorage.getItem('token');
+    if (token) {
+      authContext.updateUser({ token: token });
+      getProfile(token);
     }
+
     // eslint-disable-next-line
-  }, []);
+  }, [eventContext.upcomingEvents]);
+
+  const getProfile = (token) => {
+    const profileUrl = url + 'user/getProfile';
+
+    const config = {
+      headers: {
+        'x-auth-token': token,
+      },
+    };
+    axios
+      .get(profileUrl, config)
+      .then((response) => {
+        response.data.token = token;
+        authContext.authentication(response);
+      })
+      .catch((err) => {
+        authContext.logout();
+      });
+  };
 
   const guestLinks = (
     <Fragment>
