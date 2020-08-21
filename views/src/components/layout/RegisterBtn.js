@@ -47,7 +47,7 @@ const RegisterBtn = (props) => {
       .delete(deleteUrl, configuration)
       .then((res) => {
         if (res.data.message === 'Success') {
-          swal('Congrats', 'Event deleted successfully', 'success');
+          swal('Event deleted successfully');
           console.log(res);
           eventContext.getUpcomingEvent();
 

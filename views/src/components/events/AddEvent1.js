@@ -51,15 +51,18 @@ const AddEvent = () => {
       startTime: fields.startTime.value,
       endTime: fields.endTime.value,
     });
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     let isError = false;
 
-    if (new Date(fields.lastDate.value.length).getTime < Date.now()) {
+    if (
+      new Date(fields.lastDate.value).getTime() >
+      new Date(adminContext.startDate).getTime()
+    ) {
       isError = true;
-      fields.lastDate.error = 'Enter a valid last date to register';
+      fields.lastDate.error = 'Last date must be before the start of the event';
     } else {
       fields.lastDate.error = '';
     }
@@ -138,6 +141,7 @@ const AddEvent = () => {
                   placeholder='Last Date'
                   required
                 />
+                <h6>{fields.lastDate.error}</h6>
               </div>
               <div className='add-group'>
                 <label htmlFor='price'>Price</label>
@@ -192,9 +196,14 @@ const AddEvent = () => {
                   placeholder='Enter the event description'
                   required
                 />
+                <h6>{fields.description.error}</h6>
               </div>
               <Link to='/admin/addEvent/0' id='link'>
-                <button className='btn btn-primary btn-block next' id='link' onClick={updateState}>
+                <button
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                  onClick={updateState}
+                >
                   Back
                 </button>
               </Link>
@@ -207,14 +216,14 @@ const AddEvent = () => {
                   Loading
                 </button>
               ) : (
-                  <button
-                    type='submit'
-                    className='btn btn-primary btn-block next'
-                    id='link'
-                  >
-                    Create Event
-                  </button>
-                )}
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Create Event
+                </button>
+              )}
             </div>
           </form>
         </div>
