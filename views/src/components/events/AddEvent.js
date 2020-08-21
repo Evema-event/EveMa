@@ -49,7 +49,7 @@ const AddEvent = () => {
     //setLoading(true);
     let isError = false;
 
-    if (fields.eventName.value.length < 4) {
+    if (fields.eventName.value.length < 5) {
       isError = true;
       fields.eventName.error =
         'The name of the event must atleast be 5 characters';
@@ -85,7 +85,10 @@ const AddEvent = () => {
       fields.startDate.error = '';
     }
 
-    if (new Date(fields.endDate.value).getTime() < fields.startDate.value) {
+    if (
+      new Date(fields.endDate.value).getTime() <
+      new Date(fields.startDate.value).getTime()
+    ) {
       isError = true;
       fields.endDate.error = 'Enter a valid date';
     } else {
@@ -206,7 +209,7 @@ const AddEvent = () => {
                 />
                 <h6>{fields.endDate.error}</h6>
               </div>
-              <Link to='/'>
+              <Link to='/admin'>
                 <button
                   type='button'
                   className='btn btn-primary btn-block next'
