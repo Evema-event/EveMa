@@ -6,8 +6,7 @@ const Profile = require('../models/profile');
 const hashPassword = require('../utility/hashPassword');
 const tokenGenerator = require('../utility/tokenGenerator');
 const sendMail = require('../utility/sendMail');
-const throwError = require('../utility/throwError');
-const { TokenExpiredError } = require('jsonwebtoken');
+const throwError = require('../utility/throwError')
 
 // Signup function for storing user data to databased
 exports.signUp = (req, res) => {
@@ -72,7 +71,7 @@ exports.signUp = (req, res) => {
       sendMail(to, subject, body);
       res
         .status(200)
-        .json({ message: 'Success', token: token, user: savedUser });
+        .json({ message: 'Success', token: token, user: savedUser, profile: savedProfile });
     })
     .catch((err) => {
       return throwError(err, res);

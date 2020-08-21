@@ -90,6 +90,18 @@ Input: **emailId, password, otp**
 
 Output: **If OTP is correct send Success else throw error**
 
+## Get Profile
+
+url: **api/user/getProfile**
+
+method: **Get**
+
+token: **Required**
+
+Input: **None**
+
+Output: **For visitor and exhibitor send both user and profile model for organizer send user model**
+
 ## Add event
 
 url: **api/event/addEvent**
