@@ -17,7 +17,6 @@ import NextSignup from './components/auth/NextSignup';
 import NextSignup1 from './components/auth/NextSignup1';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ForgetPassword2 from './components/auth/ForgetPassword2';
-import AdminPage from './components/pages/AdminPage';
 
 function App() {
   return (

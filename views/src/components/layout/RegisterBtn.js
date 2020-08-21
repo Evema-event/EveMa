@@ -8,10 +8,12 @@ import EventContext from '../../context/event/eventContext';
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
   const [isSubmit, setisSubmit] = useState(false);
+  const [regEvent, setregEvent] = useState(false);
 
   const eventContext = useContext(EventContext);
 
   const registerEvent = () => {
+    setregEvent(true);
     let data = {};
     let config = {
       headers: {
@@ -66,11 +68,17 @@ const RegisterBtn = (props) => {
     localStorage.getItem('role') === 'Visitor'
   ) {
     return (
-      <div className='register-button'>
-        {loading ? (
-          <button disabled>Loading</button>
+      <div>
+        {regEvent ? (
+          <div className='register-button'>Registered</div>
         ) : (
-          <button onClick={registerEvent}>Register Event</button>
+          <div className='register-button'>
+            {loading ? (
+              <div disabled>Loading</div>
+            ) : (
+              <div onClick={registerEvent}>Register Event</div>
+            )}
+          </div>
         )}
       </div>
     );

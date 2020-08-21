@@ -59,15 +59,17 @@ const AddEvent = () => {
 
     if (
       new Date(fields.lastDate.value).getTime() >
-      new Date(adminContext.startDate).getTime()
+        new Date(adminContext.startDate).getTime() ||
+      new Date(fields.lastDate.value).getTime() <= Date.now()
     ) {
       isError = true;
-      fields.lastDate.error = 'Last date must be before the start of the event';
+      fields.lastDate.error =
+        'Last date must be before the start of the event and after today';
     } else {
       fields.lastDate.error = '';
     }
 
-    if (fields.description.value.length < 10) {
+    if (fields.description.value.length < 15) {
       isError = true;
       fields.description.error = 'Description must be atleast 2 lines';
     } else {

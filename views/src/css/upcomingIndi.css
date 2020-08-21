@@ -84,7 +84,7 @@
   background-color: #ffffff;
   width: 300px;
   padding: 0.3rem 0.75rem;
-  border-radius: 1rem;
+  border-radius: 10px;
   text-align: center;
   margin: 0 auto;
   cursor: pointer;
@@ -129,11 +129,13 @@
     font-weight: 450;
     font-size: 85%;
     border-radius: 10px;
+    color: #333131;
   }
   .up-card .register-button {
     font-weight: 400;
-    margin: 0 auto;
+    margin-left: 1rem;
     width: 250px;
+    font-size: 85%;
   }
   .btn_exhibitor {
     font-size: 85%;
@@ -153,6 +155,7 @@
   }
   .up-card .register-button {
     width: 240px;
+    margin: 0 auto;
   }
   .btn_exhibitor {
     text-align: center;
@@ -235,12 +238,12 @@
     padding: 7px;
   }
   .up-card .contact-bg div {
-    font-size: 80%;
+    font-size: 100%;
     text-align: start;
     margin-left: 0rem;
   }
-  .up-card .register-button {
-    margin: 0 4.4rem;
+  .up-card .indiv-name {
+    letter-spacing: 0;
   }
 }
 
