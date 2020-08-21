@@ -1,5 +1,6 @@
 // Importing database models
 const User = require('../models/user');
+const Profile = require('../models/profile');
 
 // Importing npm packages
 const bcrypt = require('bcryptjs');
@@ -29,6 +30,9 @@ exports.login = (req, res) => {
         error.statusCode = 401;
         throw error;
       }
+      return Profile.findOne({ userId: savedUser._id });
+    })
+    .then(profile => {
       const token = tokenGenerator({
         emailId: savedUser.emailId,
         userName: savedUser.userName,
@@ -36,7 +40,7 @@ exports.login = (req, res) => {
       });
       res
         .status(200)
-        .json({ message: 'Success', token: token, user: savedUser });
+        .json({ message: 'Success', token: token, user: savedUser, profile: profile });
     })
     .catch((err) => {
       return throwError(err, res);
