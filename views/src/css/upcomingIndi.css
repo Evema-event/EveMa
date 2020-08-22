@@ -59,7 +59,7 @@
 
 .up-card .contact-part {
   display: flex;
-
+  justify-content: space-between;
   margin-top: 1rem;
 }
 
@@ -68,7 +68,7 @@
   color: #333131;
   width: 715px;
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 100px;
+  border-radius: 10px;
   margin-right: 0rem;
   font-weight: 500;
 }
@@ -86,7 +86,6 @@
   padding: 0.3rem 0.75rem;
   border-radius: 10px;
   text-align: center;
-
   cursor: pointer;
   margin-left: 1rem;
   text-decoration: none;
@@ -103,6 +102,10 @@
   display: flex;
   margin-left: 2rem;
   cursor: pointer;
+}
+
+.up-card .reg-btn {
+  display: flex;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -154,14 +157,19 @@
   }
   .up-card .contact-bg {
     width: 450px;
+    flex-direction: column;
   }
   .up-card .register-button {
     width: 240px;
     margin: 0 auto;
+    padding: 1rem;
+    font-size: medium;
   }
   .btn_exhibitor {
+    font-size: medium;
     text-align: center;
     margin: 0 0 0 1rem;
+    padding: 1rem;
   }
 }
 
@@ -209,9 +217,14 @@
   }
   .up-card .register-button {
     margin: 0 auto;
+    padding: 0rem;
+    font-size: inherit;
+    width: 150px;
+    border-radius: 5px;
   }
   .btn_exhibitor {
     margin: 0 auto;
+    padding: 0rem;
   }
 }
 
@@ -246,6 +259,15 @@
   }
   .up-card .indiv-name {
     letter-spacing: 0;
+  }
+
+  .up-card .reg-btn {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn_exhibitor {
+    margin-top: 1rem;
+    border-radius: 5px;
   }
 }
 

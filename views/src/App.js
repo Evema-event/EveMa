@@ -35,8 +35,8 @@ function App() {
             <Route exact path='/forgetpassword/1' component={ForgetPassword2} />
             <Route exact path='/upcomingEvents' component={Upcomingindiv} />
             <Route exact path='/completedEvents' component={Completedindiv} />
-            <Route exact path='/upcoming-list' component={UpcomLoadPage} />
-            <Route exact path='/completed-list' component={CompLoadPage} />
+            <Route exact path='/upcomingList' component={UpcomLoadPage} />
+            <Route exact path='/completedList' component={CompLoadPage} />
           </Switch>
         </Router>
       </EventState>

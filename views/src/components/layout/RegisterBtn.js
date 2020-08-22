@@ -89,7 +89,7 @@ const RegisterBtn = (props) => {
     localStorage.getItem('role') === 'Exhibitor'
   ) {
     return (
-      <div>
+      <div className='reg-btn'>
         <div className='btn_exhibitor'>
           {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
         </div>
@@ -116,8 +116,8 @@ const RegisterBtn = (props) => {
     );
   }
   return (
-    <Link to='/login'>
-      <div className='register-button'>Register</div>
+    <Link to='/login' className='register-button'>
+      <div>Register</div>
     </Link>
   );
 };

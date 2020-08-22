@@ -31,7 +31,7 @@ const About = () => {
           {eventContext.upcomingEvents &&
             eventContext.upcomingEvents.length > 2 && (
               <div className='card-4'>
-                <Link to='/upcoming-list' className='cus-button '>
+                <Link to='/upcomingList' className='cus-button '>
                   <span className='cus-hov'>
                     <span className='cus-button-text'>Load More</span>
                     <span className='cus-button-rarrow'>
@@ -65,7 +65,7 @@ const About = () => {
           {eventContext.completedEvents &&
             eventContext.completedEvents.length > 6 && (
               <div className='card-4'>
-                <Link to='/completed-list' className='cus-button'>
+                <Link to='/completedList' className='cus-button'>
                   <span className='cus-hov'>
                     <span className='cus-button-text'>Load More</span>
                     <span className='cus-button-rarrow'>
