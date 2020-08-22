@@ -24,10 +24,17 @@ module.exports = async () => {
         emailId: organizer.emailId,
         userName: organizer.userName
     });
+
     const visitor = await request(app).post('/api/user/signup').send(users.valid.visitor);
     let visitorToken = visitor.body.token;
+
     const exhibitor = await request(app).post('/api/user/signup').send(users.valid.exhibitor);
     let exhibitorToken = exhibitor.body.token;
 
-    return { organizerToken, visitorToken, exhibitorToken };
+    let token = {
+        organizerToken: organizerToken,
+        visitorToken: visitorToken,
+        exhibitorToken: exhibitorToken
+    };
+    return token;
 }
