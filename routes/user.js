@@ -7,6 +7,7 @@ const verifyUserController = require('../controllers/verifyUser');
 const signupController = require('../controllers/signup');
 const loginController = require('../controllers/login');
 const passwordController = require('../controllers/password');
+const profileController = require('../controllers/profile');
 
 // Importing validators
 const verifyUserValidator = require('../validators/verifyUser');
@@ -17,6 +18,7 @@ const resetPasswordValidator = require('../validators/resetPassword');
 
 // Importing middleware
 const validator = require('../middleware/validator');
+const authenticate = require('../middleware/authenticate');
 
 /* 
   Post - /api/user/verifyUser 
@@ -72,6 +74,16 @@ router.put(
   validator,
   passwordController.resetPassword
 );
+
+/* 
+ Get - /api/user/getProfile
+ Send profile details of user based on token
+*/
+router.get(
+  '/getProfile',
+  authenticate,
+  profileController.getProfile
+)
 
 // Exporting all routes
 module.exports = router;
