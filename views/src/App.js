@@ -17,6 +17,7 @@ import NextSignup from './components/auth/NextSignup';
 import NextSignup1 from './components/auth/NextSignup1';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ForgetPassword2 from './components/auth/ForgetPassword2';
+import RegisterStall from './components/pages/RegisterStall';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route exact path='/completedEvents' component={Completedindiv} />
             <Route exact path='/upcomingList' component={UpcomLoadPage} />
             <Route exact path='/completedList' component={CompLoadPage} />
+            <Route exact path='/registerstall' component={RegisterStall} />
           </Switch>
         </Router>
       </EventState>

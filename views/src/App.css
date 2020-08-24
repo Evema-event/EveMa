@@ -9,6 +9,8 @@
 @import 'css/signup.css';
 @import 'css/login.css';
 @import 'css/event.css';
+@import 'css/resgisterstall.css';
+
 * {
   padding: 0;
   border: 0;
