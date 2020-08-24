@@ -28,9 +28,17 @@
 .section-register .reg-input {
   padding: 0.5rem;
   border-radius: 3px;
-  margin: 0.6rem;
+  margin: 0.1rem;
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.377);
   /* box-shadow: x-axis y-axis blur color; */
+}
+
+.section-register h2 {
+  margin-bottom: 2rem;
+}
+
+.can {
+  margin-top: 0.75rem !important;
 }
 
 @media screen and (max-width: 1400px) {
@@ -76,11 +84,17 @@
   .section-register .reg-input {
     width: 230px;
   }
+  .reg-btn {
+    flex-direction: column;
+  }
+  .can {
+    margin-left: 0rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
   .section-register {
-    margin: 0rem;
+    margin: 2rem 0rem;
     padding: 2rem 0rem;
     width: 280px;
   }
