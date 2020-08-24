@@ -30,7 +30,6 @@ exports.getCompletedEvents = (req, res) => {
 
 // Add event to database
 exports.addEvent = (req, res) => {
-
   // Verify user is organizer or not
   User.findById(req.userId)
     .then((user) => {
@@ -66,7 +65,6 @@ exports.addEvent = (req, res) => {
 
 // Delete an event from database
 exports.deleteEvent = (req, res) => {
-
   // Organizer only can able to delete event
   User.findById(req.userId)
     .then((user) => {
@@ -78,18 +76,18 @@ exports.deleteEvent = (req, res) => {
       // Delete event
       return Event.findByIdAndDelete(req.params.eventId);
     })
-    .then(event => {
+    .then((event) => {
       res.status(200).json({ message: 'Success', event: event });
     })
     .catch((err) => {
       return throwError(err, res);
     });
-}
+};
 
 // Visitor can register for an event
 exports.registerEvent = (req, res) => {
   User.findById(req.userId)
-    .then(user => {
+    .then((user) => {
       if (!user.role.includes('Visitor')) {
         const error = new Error('User only can able to register for an event');
         error.statusCode = 401;
@@ -97,21 +95,21 @@ exports.registerEvent = (req, res) => {
       }
       return Profile.findOne({ userId: req.userId });
     })
-    .then(profile => {
+    .then((profile) => {
       profile.registeredEvents.push(req.params.eventId);
       return profile.save();
     })
-    .then(profile => {
+    .then((profile) => {
       return Event.findById(req.params.eventId);
     })
-    .then(event => {
+    .then((event) => {
       event.registeredUsers.push(req.userId);
       return event.save();
     })
-    .then(event => {
+    .then((event) => {
       res.status(200).json({ message: 'Success', event: event });
     })
     .catch((err) => {
       return throwError(err, res);
     });
-}
+};
