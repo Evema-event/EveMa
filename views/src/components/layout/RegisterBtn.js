@@ -90,16 +90,20 @@ const RegisterBtn = (props) => {
   ) {
     return (
       <div className='reg-btn'>
-        <div className='btn_exhibitor'>
-          {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
-        </div>
-        <div className='btn_exhibitor'>
-          {loading ? (
-            <div disabled>Loading</div>
-          ) : (
-            <div>Register Conference</div>
-          )}
-        </div>
+        <Link to='/registerStall'>
+          <div className='btn_exhibitor'>
+            {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
+          </div>
+        </Link>
+        <Link to='/registerConference'>
+          <div className='btn_exhibitor'>
+            {loading ? (
+              <div disabled>Loading</div>
+            ) : (
+              <div>Register Conference</div>
+            )}
+          </div>
+        </Link>
       </div>
     );
   } else if (

@@ -38,7 +38,7 @@ function App() {
             <Route exact path='/completedEvents' component={Completedindiv} />
             <Route exact path='/upcomingList' component={UpcomLoadPage} />
             <Route exact path='/completedList' component={CompLoadPage} />
-            <Route exact path='/registerstall' component={RegisterStall} />
+            <Route exact path='/registerStall' component={RegisterStall} />
           </Switch>
         </Router>
       </EventState>

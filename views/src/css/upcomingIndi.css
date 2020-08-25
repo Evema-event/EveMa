@@ -100,8 +100,10 @@
   border-radius: 1rem;
   justify-content: space-evenly;
   display: flex;
+  cursor: pointer;
   margin-left: 2rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .up-card .reg-btn {

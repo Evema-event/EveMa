@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import img from '../../img/register.png';
 import { Link, Redirect } from 'react-router-dom';
+import url from '../../server';
+import axios from 'axios';
+import swal from 'sweetalert';
+import AuthContext from '../../context/auth/authContext';
 
-const RegisterStall = () => {
+const RegisterStall = (props) => {
   const initialState = {
     productName: { value: '', error: '' },
     productDescription: { value: '', error: '' },
@@ -12,6 +16,9 @@ const RegisterStall = () => {
   const [fields, setFields] = useState(initialState);
   const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [regEvent, setregEvent] = useState(false);
+
+  const authContext = useContext(AuthContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -52,13 +59,41 @@ const RegisterStall = () => {
     }
 
     setFields({ ...fields });
-    setSubmit(true);
+    if (!isError) {
+      authContext.updateUser({
+        productName: fields.productName.value,
+        productDescription: fields.productDescription.value,
+        domain: fields.domain.value,
+      });
+
+      setregEvent(true);
+      let data = {};
+      let config = {
+        headers: {
+          'x-auth-token': localStorage.getItem('token'),
+        },
+      };
+      let registerStallUrl = url + `stall/registerStall/${props.eventId}`;
+      setLoading(true);
+      axios
+        .put(registerStallUrl, data, config)
+        .then((res) => {
+          swal('Congrats', 'Stall registered Successfully', 'success');
+          console.log(res);
+          setSubmit(true);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    }
   };
 
   return (
     <div>
       <div className='section-register'>
-        {/* {submit && <Redirect to='/' />} */}
+        {submit && <Redirect to='/' />}
         <img className='reg-img' src={img} alt='Register Stall' />
         <form onSubmit={handleSubmit}>
           <h2>Register Stall</h2>
@@ -106,24 +141,30 @@ const RegisterStall = () => {
             />
             <h6>{fields.productDescription.error}</h6>
           </div>
-
-          {loading ? (
-            <button
-              id='link'
-              className='btn btn-primary btn-block can next'
-              disable={loading.toString()}
-            >
-              Loading
-            </button>
+          {authContext.registeredStalls.includes(props.eventId) || regEvent ? (
+            <div className='register-button'>Registered</div>
           ) : (
-            <button
-              type='submit'
-              className='btn btn-primary btn-block can next'
-              id='link'
-            >
-              Register
-            </button>
+            <div className='register-button'>
+              {loading ? (
+                <button
+                  id='link'
+                  className='btn btn-primary btn-block can next'
+                  disable={loading.toString()}
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block can next'
+                  id='link'
+                >
+                  Register
+                </button>
+              )}
+            </div>
           )}
+
           <Link to='/'>
             <button type='button' className='btn btn-primary btn-block can'>
               Cancel
