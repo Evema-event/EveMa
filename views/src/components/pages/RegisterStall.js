@@ -4,8 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import url from '../../server';
 import axios from 'axios';
 import swal from 'sweetalert';
-import AuthContext from '../../context/auth/authContext';
 import EventContext from '../../context/event/eventContext';
+import AuthContext from '../../context/auth/authContext';
 
 const RegisterStall = (props) => {
   const initialState = {
@@ -19,8 +19,8 @@ const RegisterStall = (props) => {
   const [loading, setLoading] = useState(false);
   const [regEvent, setregEvent] = useState(false);
 
-  const authContext = useContext(AuthContext);
   const eventContext = useContext(EventContext);
+  const authContext = useContext(AuthContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -64,7 +64,11 @@ const RegisterStall = (props) => {
 
     if (!isError) {
       setregEvent(true);
-      let data = {};
+      let data = {
+        productName: fields.productName.value,
+        description: fields.productDescription.value,
+        productDomain: fields.domain.value,
+      };
       let config = {
         headers: {
           'x-auth-token': localStorage.getItem('token'),
@@ -78,7 +82,6 @@ const RegisterStall = (props) => {
         .post(registerStallUrl, data, config)
         .then((res) => {
           swal('Congrats', 'Stall registered Successfully', 'success');
-          // eventContext.setSelectedEvent('');
           console.log(res);
           setSubmit(true);
           setLoading(false);
@@ -94,6 +97,7 @@ const RegisterStall = (props) => {
     <div>
       <div className='section-register'>
         {submit && <Redirect to='/' />}
+        {!eventContext.selectedEvent && <Redirect to='/' />}
         <img className='reg-img' src={img} alt='Register Stall' />
         <form onSubmit={handleSubmit}>
           <h2>Register Stall</h2>
@@ -142,7 +146,9 @@ const RegisterStall = (props) => {
             <h6>{fields.productDescription.error}</h6>
           </div>
           {authContext.registeredStalls.includes(props.eventId) || regEvent ? (
-            <div className='register-button'>Registered</div>
+            <div className='register-button btn btn-primary btn-block can next'>
+              Registered
+            </div>
           ) : (
             <div className='register-button'>
               {loading ? (

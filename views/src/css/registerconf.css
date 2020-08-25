@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  background-image: linear-gradient(to right top, #C04848, #940094);
+  background-image: linear-gradient(to right top, #c04848, #940094);
   background-size: cover;
   padding: 2rem;
   margin: 1rem;
@@ -18,7 +18,7 @@
   column-gap: 1rem;
   grid-template-areas: '. .' '. .' '. .' 'dec dec';
 }
-.section-conf .reg_txt{
+.section-conf .reg_txt {
   padding: 0.5rem;
   border-radius: 3px;
   margin: 0.1rem;
@@ -59,19 +59,17 @@
 }
 
 @media screen and (max-width: 1400px) {
-  
 }
 
 @media screen and (max-width: 1200px) {
-  .section-conf{
-      width: 1070px;
+  .section-conf {
+    width: 1070px;
   }
-  
 }
 
 @media screen and (max-width: 1000px) {
-  .section-conf{
-      width: 650px;
+  .section-conf {
+    width: 650px;
   }
   .reg-img {
     display: none;
@@ -79,37 +77,38 @@
 }
 
 @media screen and (max-width: 700px) {
-  .section-conf{
-      width: 550px
+  .section-conf {
+    width: 550px;
   }
-  .section-conf .reg-input{
-      width: 200px;
+  .section-conf .reg-input {
+    width: 200px;
   }
-  
 }
 
 @media screen and (max-width: 600px) {
-   .section-conf{
-       width: 330px;
-       margin-top: 14rem;
-   }
-    .section-conf .reg_grid{
-    grid-template-columns: 1fr ;  
-    grid-template-areas: '.' '.' '.''.''dec' '.' '.';
-}
-  .reg_txt{
-      width: 200px;
-}
-  .section-conf h2{
-      font-size: 1.4rem;
+  .section-conf {
+    width: 330px;
+    margin-top: 14rem;
+  }
+  .section-conf .reg_grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: '.' '.' '.' '.' '.' '.' 'dec' 'reg';
+  }
+  .reg {
+    grid-area: reg;
+  }
+  .reg_txt {
+    width: 200px;
+  }
+  .section-conf h2 {
+    font-size: 1.4rem;
   }
 }
 
 @media screen and (max-width: 400px) {
   .section-conf {
-    margin: 2rem 0rem;
+    margin: 14rem 0rem;
     padding: 2rem 0rem;
     width: 280px;
   }
- 
 }

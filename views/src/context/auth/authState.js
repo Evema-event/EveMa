@@ -28,6 +28,7 @@ const AuthState = (props) => {
     otp: '',
     registeredEvents: [],
     registeredStalls: [],
+    registeredConferences: [],
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -78,6 +79,7 @@ const AuthState = (props) => {
         address: response.data.profile.companyAddress,
         registeredEvents: response.data.profile.registeredEvents,
         registeredStalls: response.data.profile.registeredStalls,
+        registeredConferences: response.data.profile.registeredConferences,
       };
     }
     if (response.data.user.role.length === 1) {
@@ -116,6 +118,7 @@ const AuthState = (props) => {
         token: state.token,
         registeredStalls: state.registeredStalls,
         registeredEvents: state.registeredEvents,
+        registeredConferences: state.registeredConferences,
         updateUser,
         authentication,
         logout,

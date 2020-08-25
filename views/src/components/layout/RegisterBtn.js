@@ -11,6 +11,7 @@ const RegisterBtn = (props) => {
   const [isSubmit, setisSubmit] = useState(false);
   const [regEvent, setregEvent] = useState(false);
   const [stallRedir, setStallRedir] = useState(false);
+  const [confRedir, setConfRedir] = useState(false);
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
@@ -55,7 +56,6 @@ const RegisterBtn = (props) => {
           swal('Event deleted successfully');
           console.log(res);
           eventContext.getUpcomingEvent();
-
           setisSubmit(true);
           setLoading(false);
         }
@@ -69,6 +69,11 @@ const RegisterBtn = (props) => {
   const registerStall = () => {
     eventContext.setSelectedEvent(props.eventId);
     setStallRedir(true);
+  };
+
+  const registerConference = () => {
+    eventContext.setSelectedEvent(props.eventId);
+    setConfRedir(true);
   };
 
   if (
@@ -97,12 +102,13 @@ const RegisterBtn = (props) => {
     return (
       <div className='reg-btn'>
         {stallRedir && <Redirect to='/registerStall' />}
-        <button onClick={registerStall}>
+        {confRedir && <Redirect to='/registerConference' />}
+        <div onClick={registerStall}>
           <div className='btn_exhibitor'>
             {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
           </div>
-        </button>
-        <Link to='/registerConference'>
+        </div>
+        <div onClick={registerConference}>
           <div className='btn_exhibitor'>
             {loading ? (
               <div disabled>Loading</div>
@@ -110,7 +116,7 @@ const RegisterBtn = (props) => {
               <div>Register Conference</div>
             )}
           </div>
-        </Link>
+        </div>
       </div>
     );
   } else if (
