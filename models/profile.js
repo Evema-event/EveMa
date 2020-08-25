@@ -11,6 +11,7 @@ const profileSchema = new Schema({
   },
   registeredEvents: [mongoose.Schema.Types.ObjectId],
   registeredStalls: [mongoose.Schema.Types.ObjectId],
+  registeredConferences: [mongoose.Schema.Types.ObjectId],
   firstName: {
     type: String,
     required: true,
