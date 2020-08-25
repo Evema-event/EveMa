@@ -12,6 +12,7 @@ const Login = () => {
   const initialState = {
     username: { value: '', error: '' },
     password: { value: '', error: '' },
+    link: '/',
   };
 
   const [fields, setFields] = useState(initialState);
@@ -72,8 +73,17 @@ const Login = () => {
       axios
         .post(loginUrl, userData)
         .then((res) => {
+          if (res.data.user.role[0] === 'Organizer') {
+            setFields({
+              ...fields,
+              link: '/admin',
+            });
+            swal('Congrats', 'You logged in admin!', 'success');
+          } else {
+            swal('Congrats', 'You logged in successfully!', 'success');
+          }
           console.log(res);
-          swal('Congrats', 'You logged in successfully!', 'success');
+
           authContext.authentication(res);
           setLoading(false);
           setIsSubmit(true);
@@ -88,7 +98,7 @@ const Login = () => {
 
   return (
     <div className='bg-login'>
-      {isSubmit && <Redirect to='/' />}
+      {isSubmit && <Redirect to={fields.link} />}
       <div className='login'>
         <img src={login} alt='login' className='imgLogin' />
         <form className='form-login' onSubmit={handleSubmit}>
@@ -122,6 +132,9 @@ const Login = () => {
                 required
               />
               <h6>{fields.password.error}</h6>
+              <Link id='link' to='/forgetpassword/0'>
+                <small>Forget Password?</small>
+              </Link>
             </div>
             <div>
               <button
@@ -131,8 +144,18 @@ const Login = () => {
               >
                 {loading ? 'Loading' : 'Login'}
               </button>
-              <Link id='link' to='/forgetpassword/0'>
-                <small>Forget Password?</small>
+              <Link id='link' to='/signup/0'>
+                <small>
+                  Need an account?
+                  <span
+                    style={{
+                      color: 'whitesmoke',
+                      marginLeft: '10px',
+                    }}
+                  >
+                    Sign up
+                  </span>
+                </small>
               </Link>
             </div>
           </span>

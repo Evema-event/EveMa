@@ -200,7 +200,7 @@ const NextSignup1 = () => {
             <div className='form_group text-area'>
               <label htmlFor='contact'>Contact</label>
               <input
-                className='form_input '
+                className='form_input'
                 type='text'
                 name='contact'
                 id='contact'
