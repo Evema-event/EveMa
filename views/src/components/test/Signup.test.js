@@ -1,8 +1,10 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import Signup from '../auth/Signup';
+// import React from 'react';
+// import { render, fireEvent } from '@testing-library/react';
+// import Signup from '../auth/Signup';
 
-test('adds 1 + 2 to equal 3', () => {
+import '@testing-library/jest-dom/extend-expect';
+
+test('adds 2 to equal 2', () => {
   expect(2).toBe(2);
 });
 
