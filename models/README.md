@@ -46,3 +46,23 @@ Details of all models:
 11. registrationLastdate -> Date
 12. registeredUsers -> Array -> userId
 13. registeredStalls -> Array -> stallId
+
+## Stall Model
+
+1. productName -> String
+2. description -> String
+3. productDomain -> String
+4. userId -> ObjectId
+5. eventId -> ObjectId
+
+## Conference Model
+
+1. title -> String
+2. theme -> String
+3. description -> String
+4. date -> Date
+5. startTime -> String
+6. endTime -> String
+7. seatLimit -> Number
+8. userId -> ObjectId
+9. eventId -> ObjectId

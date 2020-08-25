@@ -137,3 +137,27 @@ token: **Required**
 Input: **None**
 
 Output: **If success send event data else throw error**
+
+## Register stall
+
+url: **api/stall/registerStall/{eventId}**
+
+method: **post**
+
+token: **Required**
+
+Input: **all data from stall model except userId and eventId**
+
+Output: **If success send stall data else throw error**
+
+## Register Conference
+
+url: **api/conference/registerConference/{eventId}**
+
+method: **post**
+
+token: **Required**
+
+Input: **all data from conference model except userId and eventId**
+
+Output: **If success send conference data else throw error**

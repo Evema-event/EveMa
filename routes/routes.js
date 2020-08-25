@@ -6,6 +6,7 @@ const router = express.Router();
 const event = require('./event');
 const user = require('./user');
 const stall = require('./stall');
+const conference = require('./conference');
 
 // Event based details route
 router.use('/event', event);
@@ -15,6 +16,9 @@ router.use('/user', user);
 
 // Stall based details route
 router.use('/stall', stall);
+
+// conference based details route
+router.use('/conference', conference);
 
 // Exporting all routes
 module.exports = router;
