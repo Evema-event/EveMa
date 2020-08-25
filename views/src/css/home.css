@@ -37,6 +37,22 @@
   text-align: center;
 }
 
+.fixed-button {
+  background-color: #243aff;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  box-shadow: 1px 3px 5px #888888;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 1200px) {
   .header-primary {
     font-size: 2.8rem;
