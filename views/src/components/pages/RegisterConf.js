@@ -93,12 +93,12 @@ const RegisterConf = (props) => {
           'x-auth-token': localStorage.getItem('token'),
         },
       };
-      let registerStallUrl =
-        url + `/conference/registerConference/${eventContext.selectedEvent}`;
+      let registerConfUrl =
+        url + `conference/registerConference/${eventContext.selectedEvent}`;
       setLoading(true);
       console.log(url);
       axios
-        .post(registerStallUrl, data, config)
+        .post(registerConfUrl, data, config)
         .then((res) => {
           swal('Congrats', 'Conference registered Successfully', 'success');
           console.log(res);
@@ -116,6 +116,7 @@ const RegisterConf = (props) => {
     <div>
       <div className='section-conf'>
         {submit && <Redirect to='/' />}
+        {!eventContext.selectedEvent && <Redirect to='/' />}
         <img className='reg-img' src={img} alt='Register Conference' />
         <form onSubmit={handleSubmit}>
           <h2>Register Conference</h2>
@@ -235,21 +236,21 @@ const RegisterConf = (props) => {
               ) : (
                 <div className='register-button'>
                   {loading ? (
-                    <div
+                    <button
                       id='link'
                       className='btn btn-primary btn-block can next'
                       disable={loading.toString()}
                     >
                       Loading
-                    </div>
+                    </button>
                   ) : (
-                    <div
+                    <button
                       type='submit'
                       className='btn btn-primary btn-block can next'
                       id='link'
                     >
                       Register
-                    </div>
+                    </button>
                   )}
                 </div>
               )}
