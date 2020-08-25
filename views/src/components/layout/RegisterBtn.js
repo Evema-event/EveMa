@@ -10,6 +10,7 @@ const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
   const [isSubmit, setisSubmit] = useState(false);
   const [regEvent, setregEvent] = useState(false);
+  const [stallRedir, setStallRedir] = useState(false);
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
@@ -65,6 +66,11 @@ const RegisterBtn = (props) => {
       });
   };
 
+  const registerStall = () => {
+    eventContext.setSelectedEvent(props.eventId);
+    setStallRedir(true);
+  };
+
   if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Visitor'
@@ -90,11 +96,12 @@ const RegisterBtn = (props) => {
   ) {
     return (
       <div className='reg-btn'>
-        <Link to='/registerStall'>
+        {stallRedir && <Redirect to='/registerStall' />}
+        <button onClick={registerStall}>
           <div className='btn_exhibitor'>
             {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
           </div>
-        </Link>
+        </button>
         <Link to='/registerConference'>
           <div className='btn_exhibitor'>
             {loading ? (

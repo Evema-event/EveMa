@@ -5,6 +5,7 @@ import url from '../../server';
 import axios from 'axios';
 import swal from 'sweetalert';
 import AuthContext from '../../context/auth/authContext';
+import EventContext from '../../context/event/eventContext';
 
 const RegisterStall = (props) => {
   const initialState = {
@@ -19,6 +20,7 @@ const RegisterStall = (props) => {
   const [regEvent, setregEvent] = useState(false);
 
   const authContext = useContext(AuthContext);
+  const eventContext = useContext(EventContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -59,13 +61,8 @@ const RegisterStall = (props) => {
     }
 
     setFields({ ...fields });
-    if (!isError) {
-      authContext.updateUser({
-        productName: fields.productName.value,
-        productDescription: fields.productDescription.value,
-        domain: fields.domain.value,
-      });
 
+    if (!isError) {
       setregEvent(true);
       let data = {};
       let config = {
@@ -73,12 +70,15 @@ const RegisterStall = (props) => {
           'x-auth-token': localStorage.getItem('token'),
         },
       };
-      let registerStallUrl = url + `stall/registerStall/${props.eventId}`;
+      let registerStallUrl =
+        url + `stall/registerStall/${eventContext.selectedEvent}`;
       setLoading(true);
+      console.log(url);
       axios
-        .put(registerStallUrl, data, config)
+        .post(registerStallUrl, data, config)
         .then((res) => {
           swal('Congrats', 'Stall registered Successfully', 'success');
+          // eventContext.setSelectedEvent('');
           console.log(res);
           setSubmit(true);
           setLoading(false);
