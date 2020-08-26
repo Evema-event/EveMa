@@ -12,6 +12,15 @@ const conferenceController = require('../controllers/conference');
 const authenticate = require('../middleware/authenticate');
 const validator = require('../middleware/validator');
 
+/* Get - /api/stall/getConferences
+Return conferences of specific event
+*/
+router.get(
+  '/getConferences/:eventId',
+  authenticate,
+  conferenceController.getConferences
+);
+
 /* Post - /api/conference/registerConference
  Exhibitor can register for a conference*/
 router.post(

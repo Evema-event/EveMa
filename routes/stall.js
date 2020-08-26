@@ -12,6 +12,15 @@ const stallController = require('../controllers/stall');
 const authenticate = require('../middleware/authenticate');
 const validator = require('../middleware/validator');
 
+/* Get - /api/stall/getStalls 
+Return stalls of specific event
+*/
+router.get(
+  '/getStalls/:eventId',
+  authenticate,
+  stallController.getStalls
+);
+
 /* Post - /api/stall/registerStall
  Exhibitor can register for a stall*/
 router.post(
