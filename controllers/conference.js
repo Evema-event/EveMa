@@ -10,19 +10,29 @@ const throwError = require('../utility/throwError');
 //Get stalls of particular event
 exports.getConferences = (req, res) => {
   Event.findById(req.params.eventId)
-    .populate({
-      path: "registeredConferences",
-      populate: {
-        path: "userId"
-      }
-    })
+    .populate("registeredConferences")
     .then(event => {
       if (!event) {
         const error = new Error('Event not found');
         error.statusCode = 404;
         throw error;
       }
-      res.status(200).json({ message: 'Success', conferences: event.registeredConferences });
+      return Promise.all(event.registeredConferences.map(conference => {
+        return Profile.findOne({ userId: conference.userId })
+          .then(profile => {
+            let newConference = {
+              ...conference._doc,
+              user: profile
+            };
+            return newConference;
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      }))
+    })
+    .then(conferences => {
+      res.status(200).json({ message: 'Success', conferences: conferences });
     })
     .catch(err => {
       throwError(err, res);
