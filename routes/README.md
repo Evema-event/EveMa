@@ -161,3 +161,27 @@ token: **Required**
 Input: **all data from conference model except userId and eventId**
 
 Output: **If success send conference data else throw error**
+
+## Get Stalls
+
+url: **api/stall/getStalls/{eventId}**
+
+method: **get**
+
+token: **Required**
+
+Input: **None**
+
+Output: **If success send all stall data with exhibitor details else throw error**
+
+## Get Conference
+
+url: **api/conference/getConferences/{eventId}**
+
+method: **get**
+
+token: **Required**
+
+Input: **None**
+
+Output: **If success send all conference data with exhibitor details else throw error**

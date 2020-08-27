@@ -10,7 +10,7 @@
 		"clientbuild": "npm run build --prefix views",
 		"clienttest": "npm run test --prefix views",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
-		"prod": "npm run clientbuild && cross-env NODE_ENV=production node server.js",
+		"prod": "npm run clientbuild && cross-env NODE_ENV=production npm start",
 		"test": "jest",
 		"test:watch": "jest --watchAll",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix views && npm run build --prefix views",
@@ -45,7 +45,7 @@
 	"devDependencies": {
 		"concurrently": "^5.2.0",
 		"cross-env": "^7.0.2",
-		"git-co-commit": "^1.0.2",
+		"git-co-commit": "^1.0.3",
 		"jest": "^26.1.0",
 		"nodemon": "^2.0.4",
 		"supertest": "^4.0.2"

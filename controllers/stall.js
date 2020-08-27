@@ -10,7 +10,12 @@ const throwError = require('../utility/throwError');
 //Get stalls of particular event
 exports.getStalls = (req, res) => {
   Event.findById(req.params.eventId)
-    .populate("registeredStalls")
+    .populate({
+      path: "registeredStalls",
+      populate: {
+        path: "userId"
+      }
+    })
     .then(event => {
       if (!event) {
         const error = new Error('Event not found');
