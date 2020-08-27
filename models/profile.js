@@ -9,9 +9,41 @@ const profileSchema = new Schema({
     ref: 'User',
     required: true,
   },
-  registeredEvents: [mongoose.Schema.Types.ObjectId],
-  registeredStalls: [mongoose.Schema.Types.ObjectId],
-  registeredConferences: [mongoose.Schema.Types.ObjectId],
+  registeredEvents: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event'
+    }
+  ],
+  registeredStalls: [
+    {
+      eventId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Event'
+      },
+      stallId: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Stall'
+        }
+      ]
+    }
+  ],
+  registeredConferences: [
+    {
+      eventId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Event'
+      },
+      conferenceId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Conference'
+      }
+    }
+  ],
   firstName: {
     type: String,
     required: true,

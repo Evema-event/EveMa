@@ -48,9 +48,24 @@ const eventSchema = new Schema({
     type: Date,
     required: true,
   },
-  registeredUsers: [mongoose.Schema.Types.ObjectId],
-  registeredStalls: [mongoose.Schema.Types.ObjectId],
-  registeredConferences: [mongoose.Schema.Types.ObjectId],
+  registeredUsers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
+  registeredStalls: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Stall'
+    }
+  ],
+  registeredConferences: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Conference'
+    }
+  ],
 });
 
 // Exporting event model

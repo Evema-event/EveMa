@@ -55,7 +55,7 @@ Build frontend and run the whole application at http://localhost:5000
 npm run prod
 ```
 
-To launches the test runner(Jest) in the interactive watch mode for backend testing.
+To launches the test runner(Jest)
 
 ```js
 npm run test
@@ -64,5 +64,17 @@ npm run test
 To launches the test runner(Jest) in the interactive watch mode for backend testing.
 
 ```js
+npm run test:watch
+```
+
+To launches the test runner(Jest) in the interactive watch mode for frontend testing.
+
+```js
 npm run clienttest
+```
+
+To co-commit with pairs
+
+```js
+npm run commit
 ```

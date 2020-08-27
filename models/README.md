@@ -16,20 +16,21 @@ Details of all models:
 
 1.  userId -> ObjectId
 2.  registeredEvents -> Array -> eventId
-3.  registeredStalls -> Array -> stallId
-4.  firstName -> String
-5.  lastName -> String
-6.  gender -> String
-7.  dateOfBirth -> Date
-8.  country -> String
-9.  state -> String
-10. cityName -> String
-11. zipCode -> String
-12. areaOfInterest -> Array
-13. designation -> String
-14. companyName -> String
-15. companyAddress -> String
-16. contactNumber -> String
+3.  registeredStalls -> Array -> { eventId, array -> stallId }
+4.  registeredConferences -> Array -> {eventId, conferenceId}
+5.  firstName -> String
+6.  lastName -> String
+7.  gender -> String
+8.  dateOfBirth -> Date
+9.  country -> String
+10. state -> String
+11. cityName -> String
+12. zipCode -> String
+13. areaOfInterest -> Array
+14. designation -> String
+15. companyName -> String
+16. companyAddress -> String
+17. contactNumber -> String
 
 ## Event Model
 
