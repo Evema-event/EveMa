@@ -17,7 +17,9 @@ import NextSignup from './components/auth/NextSignup';
 import NextSignup1 from './components/auth/NextSignup1';
 import ForgetPassword from './components/auth/ForgetPassword';
 import ForgetPassword2 from './components/auth/ForgetPassword2';
-
+import RegisterStall from './components/pages/RegisterStall';
+import RegisterConf from './components/pages/RegisterConf';
+import StallView from './components/pages/stallView';
 function App() {
   return (
     <AuthState>
@@ -35,8 +37,11 @@ function App() {
             <Route exact path='/forgetpassword/1' component={ForgetPassword2} />
             <Route exact path='/upcomingEvents' component={Upcomingindiv} />
             <Route exact path='/completedEvents' component={Completedindiv} />
-            <Route exact path='/upcoming-list' component={UpcomLoadPage} />
-            <Route exact path='/completed-list' component={CompLoadPage} />
+            <Route exact path='/upcomingList' component={UpcomLoadPage} />
+            <Route exact path='/completedList' component={CompLoadPage} />
+            <Route exact path='/registerStall' component={RegisterStall} />
+            <Route exact path='/registerConference' component={RegisterConf} />
+            <Route exact path='/stallList' component={StallView} />
           </Switch>
         </Router>
       </EventState>

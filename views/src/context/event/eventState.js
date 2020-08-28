@@ -3,13 +3,19 @@ import axios from 'axios';
 import EventContext from './eventContext';
 import EventReducer from './eventReducer';
 import url from '../../server';
-import { GET_UPCOMING_EVENTS, GET_COMPLETED_EVENTS, FIND_INDIV_EVENT } from '../types';
+import {
+  GET_UPCOMING_EVENTS,
+  GET_COMPLETED_EVENTS,
+  FIND_INDIV_EVENT,
+  SET_SELECTED_EVENT,
+} from '../types';
 
 const EventState = (props) => {
   const initialState = {
     upcomingEvents: null,
     completedEvents: null,
-    indivEvent: null
+    indivEvent: null,
+    selectedEvent: null,
   };
 
   const [state, dispatch] = useReducer(EventReducer, initialState);
@@ -31,12 +37,16 @@ const EventState = (props) => {
   const setIndividualEvent = (eventId, isUpcomming) => {
     let event;
     if (isUpcomming) {
-      event = state.upcomingEvents.filter(event => event._id === eventId);
+      event = state.upcomingEvents.filter((event) => event._id === eventId);
     } else {
-      event = state.completedEvents.filter(event => event._id === eventId);
+      event = state.completedEvents.filter((event) => event._id === eventId);
     }
     dispatch({ payload: event[0], type: FIND_INDIV_EVENT });
-  }
+  };
+
+  const setSelectedEvent = (eventId) => {
+    dispatch({ payload: eventId, type: SET_SELECTED_EVENT });
+  };
 
   return (
     <EventContext.Provider
@@ -44,9 +54,11 @@ const EventState = (props) => {
         upcomingEvents: state.upcomingEvents,
         completedEvents: state.completedEvents,
         indivEvent: state.indivEvent,
+        selectedEvent: state.selectedEvent,
         getUpcomingEvent,
         getCompletedEvent,
-        setIndividualEvent
+        setIndividualEvent,
+        setSelectedEvent,
       }}
     >
       {props.children}

@@ -9,6 +9,9 @@
 @import 'css/signup.css';
 @import 'css/login.css';
 @import 'css/event.css';
+@import 'css/resgisterstall.css';
+@import 'css/registerconf.css';
+@import 'css/stallList.css';
 * {
   padding: 0;
   border: 0;
@@ -18,4 +21,8 @@
 
 .box {
   margin: 25px 25px;
+}
+
+a {
+  text-decoration: none !important;
 }

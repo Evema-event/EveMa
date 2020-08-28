@@ -10,6 +10,8 @@ const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
   const [isSubmit, setisSubmit] = useState(false);
   const [regEvent, setregEvent] = useState(false);
+  const [stallRedir, setStallRedir] = useState(false);
+  const [confRedir, setConfRedir] = useState(false);
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
@@ -54,7 +56,6 @@ const RegisterBtn = (props) => {
           swal('Event deleted successfully');
           console.log(res);
           eventContext.getUpcomingEvent();
-
           setisSubmit(true);
           setLoading(false);
         }
@@ -63,6 +64,16 @@ const RegisterBtn = (props) => {
         console.log(err);
         setLoading(false);
       });
+  };
+
+  const registerStall = () => {
+    eventContext.setSelectedEvent(props.eventId);
+    setStallRedir(true);
+  };
+
+  const registerConference = () => {
+    eventContext.setSelectedEvent(props.eventId);
+    setConfRedir(true);
   };
 
   if (
@@ -89,16 +100,22 @@ const RegisterBtn = (props) => {
     localStorage.getItem('role') === 'Exhibitor'
   ) {
     return (
-      <div>
-        <div className='btn_exhibitor'>
-          {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
+      <div className='reg-btn'>
+        {stallRedir && <Redirect to='/registerStall' />}
+        {confRedir && <Redirect to='/registerConference' />}
+        <div onClick={registerStall}>
+          <div className='btn_exhibitor'>
+            {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
+          </div>
         </div>
-        <div className='btn_exhibitor'>
-          {loading ? (
-            <div disabled>Loading</div>
-          ) : (
-            <div>Register Conference</div>
-          )}
+        <div onClick={registerConference}>
+          <div className='btn_exhibitor'>
+            {loading ? (
+              <div disabled>Loading</div>
+            ) : (
+              <div>Register Conference</div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -116,8 +133,8 @@ const RegisterBtn = (props) => {
     );
   }
   return (
-    <Link to='/login'>
-      <div className='register-button'>Register</div>
+    <Link to='/login' className='register-button'>
+      <div>Register</div>
     </Link>
   );
 };
