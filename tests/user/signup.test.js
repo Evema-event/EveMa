@@ -32,7 +32,7 @@ describe('Signup user test cases', () => {
             .post('/api/user/signup')
             .send(users.invalid.visitor);
         expect(res.status).toBe(422);
-        expect(res.body.error.length).toBe(10);
+        expect(res.body.error.length).toBe(17);
     });
 
 });
