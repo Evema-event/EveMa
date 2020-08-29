@@ -35,7 +35,7 @@ describe('Test cases for forgetPassword', () => {
     });
 
     // Throw error if email not registerd
-    test('Should throw erro if email is not registered', async () => {
+    test('Should throw error if email is not registered', async () => {
         const res = await request(app)
             .post('/api/user/forgetPassword')
             .send(users.valid.exhibitor);
