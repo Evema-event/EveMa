@@ -136,7 +136,7 @@ module.exports = {
             },
             // Data for login with email
             email: {
-                userName: 'organizer@test',
+                userName: 'org',
                 password: 'org'
             }
         },
@@ -149,7 +149,7 @@ module.exports = {
             },
             // Data for login with email
             email: {
-                userName: 'exhibitor@test',
+                userName: 'exh',
                 password: 'exh'
             }
         },
@@ -162,7 +162,7 @@ module.exports = {
             },
             // Data for login with email
             email: {
-                userName: 'visitor@test',
+                userName: 'vis',
                 password: 'vis'
             }
         }
