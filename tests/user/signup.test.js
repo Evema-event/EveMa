@@ -35,4 +35,36 @@ describe('Signup user test cases', () => {
         expect(res.body.error.length).toBe(17);
     });
 
+    // Throw error for user already exist
+    test('Should throw error if user already exist', async () => {
+        const res = await request(app)
+            .post('/api/user/signup')
+            .send(users.valid.exhibitor);
+        expect(res.status).toBe(409);
+        expect(res.body.message).toBe('Failed');
+    });
+
+    // Except Visitor and Exhibitor role throw error
+    test('Should throw error if role except Visitor and Exhibitor', async () => {
+        const res = await request(app)
+            .post('/api/user/signup')
+            .send({
+                ...users.valid.visitor,
+                role: 'Someone'
+            });
+        expect(res.status).toBe(422);
+        expect(res.body.message).toBe('Failed');
+    });
+
+    // Success for valid data and return both profile and user data and token
+    test('Should success for valid data', async () => {
+        const res = await request(app)
+            .post('/api/user/signup')
+            .send(users.valid.visitor);
+        expect(res.status).toBe(200);
+        expect(res.body.message).toBe('Success');
+        expect(res.body.token).toBeTruthy();
+        expect(res.body.user.userName).toBe(users.valid.visitor.userName);
+        expect(res.body.profile.firstName).toBe(users.valid.visitor.firstName);
+    });
 });
