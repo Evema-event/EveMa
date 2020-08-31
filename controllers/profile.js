@@ -12,14 +12,18 @@ exports.getProfile = (req, res) => {
     // Find the user by userId from token
     User.findById(req.userId)
         .then(user => {
-            // Return empty profile for organizer
-            if (user.role[0] === 'Organizer') {
-                return res.status(200).json({ message: 'Success', user: user, profile: {} });
-            }
+
             loadedUser = user;
 
-            // Find profile for exhibitor and visitor
-            return Profile.findOne({ userId: req.userId });
+            // Return empty profile for organizer
+            if (user.role[0] === 'Organizer') {
+                let profile = {};
+                return profile;
+            } else {
+                // Find profile for exhibitor and visitor
+                return Profile.findOne({ userId: req.userId });
+            }
+
         })
         .then(profile => {
             // Return profile for exhibitor and visitor

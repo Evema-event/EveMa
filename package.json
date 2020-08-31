@@ -11,7 +11,7 @@
 		"clienttest": "npm run test --prefix views",
 		"dev": "concurrently \"npm run server\" \"npm run client\"",
 		"prod": "npm run clientbuild && cross-env NODE_ENV=production npm start",
-		"test": "jest",
+		"test": "jest --runInBand --detectOpenHandles",
 		"test:watch": "jest --watchAll",
 		"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix views && npm run build --prefix views",
 		"commit": "commit"

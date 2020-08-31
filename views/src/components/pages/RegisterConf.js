@@ -106,8 +106,13 @@ const RegisterConf = (props) => {
           setLoading(false);
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.data.error === "You can only register 1 conference") {
+            swal('Cannot register', 'You can only register for one conference', 'error');
+          } else {
+            swal('Something went wrong', 'Try again!', 'error');
+          }
           setLoading(false);
+          setSubmit(true);
         });
     }
   };
@@ -229,31 +234,31 @@ const RegisterConf = (props) => {
             </Link>
             <div className='reg'>
               {authContext.registeredConferences.includes(props.eventId) ||
-              regEvent ? (
-                <div className='register-button btn btn-primary btn-block can next'>
-                  Registered
-                </div>
-              ) : (
-                <div className='register-button'>
-                  {loading ? (
-                    <button
-                      id='link'
-                      className='btn btn-primary btn-block can next'
-                      disable={loading.toString()}
-                    >
-                      Loading
-                    </button>
-                  ) : (
-                    <button
-                      type='submit'
-                      className='btn btn-primary btn-block can next'
-                      id='link'
-                    >
-                      Register
-                    </button>
-                  )}
-                </div>
-              )}
+                regEvent ? (
+                  <div className='register-button btn btn-primary btn-block can next'>
+                    Registered
+                  </div>
+                ) : (
+                  <div className='register-button'>
+                    {loading ? (
+                      <button
+                        id='link'
+                        className='btn btn-primary btn-block can next'
+                        disable={loading.toString()}
+                      >
+                        Loading
+                      </button>
+                    ) : (
+                        <button
+                          type='submit'
+                          className='btn btn-primary btn-block can next'
+                          id='link'
+                        >
+                          Register
+                        </button>
+                      )}
+                  </div>
+                )}
             </div>
           </div>
         </form>

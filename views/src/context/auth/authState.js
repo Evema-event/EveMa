@@ -48,7 +48,7 @@ const AuthState = (props) => {
 
   const authentication = (response) => {
     let user;
-    if (response.data.user.role == 'Organizer') {
+    if (response.data.user.role.includes('Organizer')) {
       user = {
         userId: response.data.user._id,
         username: response.data.user.userName,
@@ -56,7 +56,6 @@ const AuthState = (props) => {
         email: response.data.user.emailId,
         role: '',
       };
-      // eslint-disable-next-line
     } else {
       user = {
         userId: response.data.user._id,

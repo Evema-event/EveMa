@@ -8,6 +8,7 @@ const db = require('../../db');
 // Importing db models
 const Event = require('../../models/event');
 const User = require('../../models/user');
+const Profile = require('../../models/profile');
 
 // Importing Dummy data
 const events = require('../dummyData/event');
@@ -33,6 +34,7 @@ beforeAll(async () => {
 afterAll(async () => {
     await Event.deleteMany();
     await User.deleteMany();
+    await Profile.deleteMany();
     await db.disconnectDB();
 });
 
