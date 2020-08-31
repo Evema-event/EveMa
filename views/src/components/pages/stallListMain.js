@@ -2,7 +2,7 @@ import StallList from '../card/stallList';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const stallView = () => {
+const stallListMain = () => {
   return (
     <div>
       <>
@@ -57,4 +57,4 @@ const stallView = () => {
   );
 };
 
-export default stallView;
+export default stallListMain;

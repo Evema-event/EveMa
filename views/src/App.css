@@ -12,6 +12,7 @@
 @import 'css/resgisterstall.css';
 @import 'css/registerconf.css';
 @import 'css/stallList.css';
+@import 'css/stallIndiv.css';
 * {
   padding: 0;
   border: 0;

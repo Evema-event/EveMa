@@ -15,7 +15,7 @@ const stallList = () => {
         </div>
         <div className='product-name'>
           <h5>Email</h5>
-          <h6> demo@tect.com </h6>
+          <h6> johnconnor@genisys.tech </h6>
         </div>
       </div>
     </div>
