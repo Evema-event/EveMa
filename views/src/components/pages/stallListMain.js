@@ -1,6 +1,7 @@
 import StallList from '../card/stallList';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ConferenceList from '../card/conferenceList';
 
 const stallListMain = () => {
   return (
@@ -42,7 +43,9 @@ const stallListMain = () => {
           role='tabpanel'
           aria-labelledby='stall-tab'
         >
-          <StallList />
+          <div className='view'>
+            <StallList />
+          </div>
         </div>
         <div
           className='tab-pane'
@@ -50,7 +53,9 @@ const stallListMain = () => {
           role='tabpanel'
           aria-labelledby='conference-tab'
         >
-          <StallList />
+          <div className='view'>
+            <ConferenceList />
+          </div>
         </div>
       </div>
     </div>
