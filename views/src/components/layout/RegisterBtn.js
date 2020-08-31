@@ -76,6 +76,51 @@ const RegisterBtn = (props) => {
     setConfRedir(true);
   };
 
+  const stallCountCSS = {
+    borderRadius: "50%",
+    border: "1px solid black",
+    padding: "5px 10px",
+    backgroundColor: "green",
+    color: "white"
+  }
+
+  const stallBtn = () => {
+    let stallCount = 0;
+    for (var stalls of authContext.registeredStalls) {
+      if (stalls.eventId === props.eventId) {
+        stallCount = stalls.stallId.length;
+      }
+    }
+
+    if (stallCount < 2) {
+      return <div className='btn_exhibitor' onClick={registerStall}>
+        {loading ? <div disabled>Loading</div> : <div>Register Stall <span style={stallCountCSS}>{2 - stallCount}</span> </div>}
+      </div>;
+    } else {
+      return <div className='btn_exhibitor'> <div> Registered <span style={{ ...stallCountCSS, backgroundColor: "red" }}>0</span> </div> </div >;
+    }
+  }
+
+  const conferenceBtn = () => {
+    let registered = false;
+    for (var conference of authContext.registeredConferences) {
+      if (conference.eventId === props.eventId) {
+        registered = true;
+      }
+    }
+    if (registered) {
+      return <div className='btn_exhibitor'>Registered</div>;
+    } else {
+      return <div className='btn_exhibitor' onClick={registerConference}>
+        {loading ? (
+          <div disabled>Loading</div>
+        ) : (
+            <div>Register Conference</div>
+          )}
+      </div>;
+    }
+  }
+
   if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Visitor'
@@ -85,14 +130,14 @@ const RegisterBtn = (props) => {
         {authContext.registeredEvents.includes(props.eventId) || regEvent ? (
           <div className='register-button'>Registered</div>
         ) : (
-          <div className='register-button'>
-            {loading ? (
-              <div disabled>Loading</div>
-            ) : (
-              <div onClick={registerEvent}>Register Event</div>
-            )}
-          </div>
-        )}
+            <div className='register-button'>
+              {loading ? (
+                <div disabled>Loading</div>
+              ) : (
+                  <div onClick={registerEvent}>Register Event</div>
+                )}
+            </div>
+          )}
       </div>
     );
   } else if (
@@ -103,19 +148,11 @@ const RegisterBtn = (props) => {
       <div className='reg-btn'>
         {stallRedir && <Redirect to='/registerStall' />}
         {confRedir && <Redirect to='/registerConference' />}
-        <div onClick={registerStall}>
-          <div className='btn_exhibitor'>
-            {loading ? <div disabled>Loading</div> : <div>Register Stall</div>}
-          </div>
+        <div style={{ position: "relative" }}>
+          {stallBtn()}
         </div>
-        <div onClick={registerConference}>
-          <div className='btn_exhibitor'>
-            {loading ? (
-              <div disabled>Loading</div>
-            ) : (
-              <div>Register Conference</div>
-            )}
-          </div>
+        <div>
+          {conferenceBtn()}
         </div>
       </div>
     );

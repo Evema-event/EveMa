@@ -77,7 +77,6 @@ const RegisterStall = (props) => {
       let registerStallUrl =
         url + `stall/registerStall/${eventContext.selectedEvent}`;
       setLoading(true);
-      console.log(url);
       axios
         .post(registerStallUrl, data, config)
         .then((res) => {
@@ -87,8 +86,13 @@ const RegisterStall = (props) => {
           setLoading(false);
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.data.error === "You can only register 2 stalls in an event") {
+            swal('Cannot register', 'You can only register for two stalls', 'error');
+          } else {
+            swal('Something went wrong', 'Try again!', 'error');
+          }
           setLoading(false);
+          setSubmit(true);
         });
     }
   };
@@ -150,26 +154,26 @@ const RegisterStall = (props) => {
               Registered
             </div>
           ) : (
-            <div className='register-button'>
-              {loading ? (
-                <button
-                  id='link'
-                  className='btn btn-primary btn-block can next'
-                  disable={loading.toString()}
-                >
-                  Loading
-                </button>
-              ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block can next'
-                  id='link'
-                >
-                  Register
-                </button>
-              )}
-            </div>
-          )}
+              <div className='register-button'>
+                {loading ? (
+                  <button
+                    id='link'
+                    className='btn btn-primary btn-block can next'
+                    disable={loading.toString()}
+                  >
+                    Loading
+                  </button>
+                ) : (
+                    <button
+                      type='submit'
+                      className='btn btn-primary btn-block can next'
+                      id='link'
+                    >
+                      Register
+                    </button>
+                  )}
+              </div>
+            )}
 
           <Link to='/'>
             <button type='button' className='btn btn-primary btn-block can'>
