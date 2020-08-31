@@ -7,6 +7,7 @@ const db = require('../../db');
 
 // Importing db models
 const User = require('../../models/user');
+const Profile = require('../../models/profile');
 
 // Importing Dummy data
 const users = require('../dummyData/signup');
@@ -24,6 +25,7 @@ beforeAll(async () => {
 // Run after all test cases - will delete all users and disconnect from data base
 afterAll(async () => {
     await User.deleteMany();
+    await Profile.deleteMany();
     await db.disconnectDB();
 });
 

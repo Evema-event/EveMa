@@ -13,6 +13,8 @@ exports.connectDB = (dbname) => {
     );
 }
 
-exports.disconnectDB = () => {
+// Exporting function, that will delete the db and disconnect
+exports.disconnectDB = async () => {
+    await mongoose.connection.db.dropDatabase();
     return mongoose.disconnect();
 }
