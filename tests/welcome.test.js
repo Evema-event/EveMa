@@ -59,12 +59,14 @@ describe('Should return Hello World!! for undefined routes in development', () =
     // Testing /api/event/upcomingEvents route
     test('Get /api/event/upcomingEvents', async () => {
         const res = await request(app).get('/api/event/upcomingEvents');
+        expect(res.status).toBe(200);
         expect(res.text).not.toBe('Hello World!!');
     });
 
     // Testing /api/event/completedEvents route
     test('Get /api/event/completedEvents', async () => {
         const res = await request(app).get('/api/event/completedEvents');
+        expect(res.status).toBe(200);
         expect(res.text).not.toBe('Hello World!!');
     });
 });
