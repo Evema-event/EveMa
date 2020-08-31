@@ -1,8 +1,9 @@
 import StallList from '../card/stallList';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ConferenceList from '../card/conferenceList';
 
-const stallView = () => {
+const stallListMain = () => {
   return (
     <div>
       <>
@@ -42,7 +43,9 @@ const stallView = () => {
           role='tabpanel'
           aria-labelledby='stall-tab'
         >
-          <StallList />
+          <div className='view'>
+            <StallList />
+          </div>
         </div>
         <div
           className='tab-pane'
@@ -50,11 +53,13 @@ const stallView = () => {
           role='tabpanel'
           aria-labelledby='conference-tab'
         >
-          <StallList />
+          <div className='view'>
+            <ConferenceList />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default stallView;
+export default stallListMain;

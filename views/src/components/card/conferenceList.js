@@ -1,6 +1,6 @@
 import React from 'react';
 
-const stallList = () => {
+const ConferenceList = () => {
   return (
     <div>
       <div className='stall-bg'>
@@ -22,4 +22,4 @@ const stallList = () => {
   );
 };
 
-export default stallList;
+export default ConferenceList;
