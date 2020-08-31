@@ -48,11 +48,18 @@ const Navbar = () => {
           </Link>
         </li>
       ) : (
-        <li>
-          <Link className='nav-link' to='/'>
-            Home
-          </Link>
-        </li>
+        <>
+          <li>
+            <Link className='nav-link' to='/'>
+              Home
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/stallList'>
+              Stalls and Conferece
+            </Link>
+          </li>
+        </>
       )}
       {authContext.token ? (
         <li className='nav-item'>

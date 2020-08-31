@@ -7,57 +7,26 @@ const stallListMain = () => {
   return (
     <div>
       <>
-        <ul className='nav nav-pills  nav-justified' id='myTab' role='tablist'>
-          <li className='nav-item'>
-            <Link
-              className='nav-link active'
-              id='stall-tab'
-              data-toggle='tab'
-              role='tab'
-              aria-controls='stall'
-              aria-selected='true'
-              to='/stallList'
-            >
-              Stall
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link
-              className='nav-item nav-link'
-              id='conference-tab'
-              data-toggle='tab'
-              role='tab'
-              aria-controls='conference'
-              aria-selected='false'
-              to='/conferenceList'
-            >
-              Conference
-            </Link>
-          </li>
-        </ul>
-      </>
-      <div className='tab-content' id='myTabContent'>
-        <div
-          className='tab-pane active'
-          id='stall'
-          role='tabpanel'
-          aria-labelledby='stall-tab'
-        >
+        <div>
+          <div className='list_title'>Conference List</div>
           <div className='view'>
-            <StallList />
-          </div>
-        </div>
-        <div
-          className='tab-pane'
-          id='conference'
-          role='tabpanel'
-          aria-labelledby='conference-tab'
-        >
-          <div className='view'>
+            <ConferenceList />
+            <ConferenceList />
+            <ConferenceList />
             <ConferenceList />
           </div>
         </div>
-      </div>
+        <div>
+          <div className='list_title'>Stall List</div>
+          <div className='view'>
+            <StallList />
+            <StallList />
+            <StallList />
+            <StallList />
+            <StallList />
+          </div>
+        </div>
+      </>
     </div>
   );
 };
