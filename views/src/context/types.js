@@ -11,6 +11,9 @@ export const FORGET_PASSWORD = 'FORGET_PASSWORD';
 export const SET_SELECTED_EVENT = 'SET_SELECTED_EVENT';
 
 export const ADD_EVENT = 'ADD_EVENT';
+export const GET_STALLS = 'GET_STALLS';
+export const SET_INDIVIDUAL_STALL = 'SET_INDIVIDUAL_STALL';
+
 //export const DELETE_EVENT = 'DELETE_EVENT';
 // export const UPDATE_EVENT = 'UPDATE_EVENT';
 // export const FILTER_EVENTS = 'FILTER_EVENTS';

@@ -1,15 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
 import EventContext from '../../context/event/eventContext';
+import StallContext from '../../context/stall/stallContext';
 import { Redirect } from 'react-router-dom';
 
 const UpcomingLoad = () => {
   const eventContext = useContext(EventContext);
   const upcomingEvent = eventContext.upcomingEvents;
+  const stallContext = useContext(StallContext);
 
   const [viewMore, setViewMore] = useState(false);
 
   const onClick = (eventId) => {
     eventContext.setIndividualEvent(eventId, true);
+    stallContext.getStalls(eventId);
     setViewMore(true);
   };
 

@@ -5,6 +5,7 @@ import Home from './components/pages/Home';
 import Navbar from './components/layout/Navbar';
 import EventState from '../src/context/event/eventState';
 import AuthState from '../src/context/auth/authState';
+import StallState from '../src/context/stall/stallState';
 
 import Upcomingindiv from './components/card/UpcomingCardItem';
 import Completedindiv from './components/card/CompletedCardItem';
@@ -27,28 +28,30 @@ function App() {
   return (
     <AuthState>
       <EventState>
-        <Router>
-          <Navbar />
-          <Switch>
-            <Route path='/admin' component={Admin} />
-            <Route exact path='/' component={Home} />
-            <Route exact path='/signup/0' component={Signup} />
-            <Route exact path='/signup/1' component={NextSignup} />
-            <Route exact path='/signup/2' component={NextSignup1} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/forgetpassword/0' component={ForgetPassword} />
-            <Route exact path='/forgetpassword/1' component={ForgetPassword2} />
-            <Route exact path='/upcomingEvents' component={Upcomingindiv} />
-            <Route exact path='/completedEvents' component={Completedindiv} />
-            <Route exact path='/upcomingList' component={UpcomLoadPage} />
-            <Route exact path='/completedList' component={CompLoadPage} />
-            <Route exact path='/registerStall' component={RegisterStall} />
-            <Route exact path='/registerConference' component={RegisterConf} />
-            <Route exact path='/stallList' component={StallListMain} />
-            <Route exact path='/conferenceList' component={ConferenceListMain} />
-            <Route exact path='/stallIndividual' component={StallIndiv} />
-          </Switch>
-        </Router>
+        <StallState>
+          <Router>
+            <Navbar />
+            <Switch>
+              <Route path='/admin' component={Admin} />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/signup/0' component={Signup} />
+              <Route exact path='/signup/1' component={NextSignup} />
+              <Route exact path='/signup/2' component={NextSignup1} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/forgetpassword/0' component={ForgetPassword} />
+              <Route exact path='/forgetpassword/1' component={ForgetPassword2} />
+              <Route exact path='/upcomingEvents' component={Upcomingindiv} />
+              <Route exact path='/completedEvents' component={Completedindiv} />
+              <Route exact path='/upcomingList' component={UpcomLoadPage} />
+              <Route exact path='/completedList' component={CompLoadPage} />
+              <Route exact path='/registerStall' component={RegisterStall} />
+              <Route exact path='/registerConference' component={RegisterConf} />
+              <Route exact path='/stallList' component={StallListMain} />
+              <Route exact path='/conferenceList' component={ConferenceListMain} />
+              <Route exact path='/stallIndividual' component={StallIndiv} />
+            </Switch>
+          </Router>
+        </StallState>
       </EventState>
     </AuthState>
   );

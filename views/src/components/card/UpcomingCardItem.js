@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import EventContext from '../../context/event/eventContext';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import RegisterBtn from '../layout/RegisterBtn';
 import EventTab from '../layout/eventTab';
 
@@ -76,6 +76,9 @@ const Upcomingindiv = () => {
               {/* REGISTER BUTTON */}
 
               <RegisterBtn eventId={event._id} />
+            </div>
+            <div>
+              Exhibitor can able to register only two stalls and one conference.
             </div>
           </div>
         </div>
