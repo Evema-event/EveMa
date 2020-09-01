@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import EventContext from '../../context/event/eventContext';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import RegisterBtn from '../layout/RegisterBtn';
+import EventTab from '../layout/eventTab';
 
 const Upcomingindiv = () => {
   const eventContext = useContext(EventContext);
@@ -10,7 +11,7 @@ const Upcomingindiv = () => {
   if (event) {
     return (
       <div className='up-card'>
-        <div className='up_title'>Upcoming Event Details</div>
+        <EventTab tab="event" />
         <div key={event._id}>
           <div className='main-bg'>
             <div className='indiv-name'>{event.name}</div>

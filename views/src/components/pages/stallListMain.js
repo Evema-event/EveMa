@@ -1,34 +1,20 @@
 import StallList from '../card/stallList';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import ConferenceList from '../card/conferenceList';
+import EventTab from '../layout/eventTab';
 
-const stallListMain = () => {
+const StallListMain = () => {
   return (
-    <div>
-      <>
-        <div>
-          <div className='list_title'>Conference List</div>
-          <div className='view'>
-            <ConferenceList />
-            <ConferenceList />
-            <ConferenceList />
-            <ConferenceList />
-          </div>
-        </div>
-        <div>
-          <div className='list_title'>Stall List</div>
-          <div className='view'>
-            <StallList />
-            <StallList />
-            <StallList />
-            <StallList />
-            <StallList />
-          </div>
-        </div>
-      </>
-    </div>
+    <>
+      <EventTab tab="stall" />
+      <div className='view'>
+        <StallList />
+        <StallList />
+        <StallList />
+        <StallList />
+        <StallList />
+      </div>
+    </>
   );
 };
 
-export default stallListMain;
+export default StallListMain;

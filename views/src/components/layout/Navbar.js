@@ -41,26 +41,19 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       {localStorage.getItem('token') &&
-      localStorage.getItem('role') === 'Organizer' ? (
-        <li>
-          <Link className='nav-link' to='/admin'>
-            Admin
+        localStorage.getItem('role') === 'Organizer' ? (
+          <li>
+            <Link className='nav-link' to='/admin'>
+              Admin
           </Link>
-        </li>
-      ) : (
-        <>
+          </li>
+        ) : (
           <li>
             <Link className='nav-link' to='/'>
               Home
             </Link>
           </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/stallList'>
-              Stalls and Conferece
-            </Link>
-          </li>
-        </>
-      )}
+        )}
       {authContext.token ? (
         <li className='nav-item'>
           <span
@@ -72,19 +65,19 @@ const Navbar = () => {
           </span>
         </li>
       ) : (
-        <>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/signup/0'>
-              Sign Up
+          <>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/signup/0'>
+                Sign Up
             </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/login'>
-              Login
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/login'>
+                Login
             </Link>
-          </li>{' '}
-        </>
-      )}
+            </li>{' '}
+          </>
+        )}
     </Fragment>
   );
 

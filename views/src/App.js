@@ -20,6 +20,7 @@ import ForgetPassword2 from './components/auth/ForgetPassword2';
 import RegisterStall from './components/pages/RegisterStall';
 import RegisterConf from './components/pages/RegisterConf';
 import StallListMain from './components/pages/stallListMain';
+import ConferenceListMain from './components/pages/conferenceListMain';
 import StallIndiv from './components/pages/StallIndiv';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route exact path='/registerStall' component={RegisterStall} />
             <Route exact path='/registerConference' component={RegisterConf} />
             <Route exact path='/stallList' component={StallListMain} />
+            <Route exact path='/conferenceList' component={ConferenceListMain} />
             <Route exact path='/stallIndividual' component={StallIndiv} />
           </Switch>
         </Router>
