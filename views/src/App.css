@@ -13,6 +13,7 @@
 @import 'css/registerconf.css';
 @import 'css/stallList.css';
 @import 'css/stallIndiv.css';
+@import 'css/conferenceIndiv.css';
 * {
   padding: 0;
   border: 0;
