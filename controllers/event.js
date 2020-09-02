@@ -28,6 +28,45 @@ exports.getCompletedEvents = (req, res) => {
     });
 };
 
+// Send visitor list for an event
+exports.getVisitorList = (req, res) => {
+  User.findById(req.userId)
+    .then((user) => {
+      if (user.role[0] !== 'Organizer') {
+        const error = new Error("Only organizers can view the visitor's list");
+        error.statusCode = 401;
+        throw error;
+      }
+      Event.findById(req.params.eventId)
+        .populate('registeredUsers')
+        .then((event) => {
+          if (!event) {
+            const error = new Error('Event not found');
+            error.statusCode = 404;
+            throw error;
+          }
+          return Promise.all(
+            event.registeredUsers.map((user) => {
+              return Profile.findOne({ userId: user })
+                .then((user) => {
+                  let newuser = user;
+                  return newuser;
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
+          );
+        })
+        .then((list) => {
+          res.status(200).json({ message: 'Success', visitorlist: list });
+        });
+    })
+    .catch((err) => {
+      throwError(err, res);
+    });
+};
+
 // Add event to database
 exports.addEvent = (req, res) => {
   // Verify user is organizer or not
