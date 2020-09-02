@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import StallContext from '../../context/stall/stallContext';
+import EventTab from '../layout/eventTab';
 
 const StallIndiv = () => {
 
@@ -9,7 +10,9 @@ const StallIndiv = () => {
   const stall = stallContext.individualStall;
 
   return (
+
     <div>
+      <EventTab tab="stall" />
       {!stallContext.stalls && <Redirect to='/'></Redirect>}
       {
         stall &&
