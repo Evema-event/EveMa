@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+
 import ConferenceContext from '../../context/conference/conferenceContext';
 
 const ConferenceList = (props) => {
+  const [redirectConf, setRedirectConf] = useState(false);
   const { setIndividualConference } = useContext(ConferenceContext);
 
   const onClickConference = () => {
     setIndividualConference(props.conference);
+    setRedirectConf(true);
   }
 
   return (
     <div onClick={onClickConference}>
+      {redirectConf && <Redirect to='/conferenceIndividual' />}
       <div className='stall-bg'>
         <div className='stall-title'>{props.conference.title}</div>
         <div className='product-name'>

@@ -24,6 +24,7 @@ import RegisterConf from './components/pages/RegisterConf';
 import StallListMain from './components/pages/stallListMain';
 import ConferenceListMain from './components/pages/conferenceListMain';
 import StallIndiv from './components/pages/StallIndiv';
+import ConferenceIndiv from './components/card/ConferenceIndividual';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
                 <Route exact path='/stallList' component={StallListMain} />
                 <Route exact path='/conferenceList' component={ConferenceListMain} />
                 <Route exact path='/stallIndividual' component={StallIndiv} />
+                <Route exact path='/conferenceIndividual' component={ConferenceIndiv} />
               </Switch>
             </Router>
           </ConferenceState>

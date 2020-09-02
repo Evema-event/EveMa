@@ -77,9 +77,9 @@ const Upcomingindiv = () => {
 
               <RegisterBtn eventId={event._id} />
             </div>
-            <div>
-              Exhibitor can able to register only two stalls and one conference.
-            </div>
+            <center style={{ color: 'white', marginTop: '15px' }}>
+              <span style={{ fontWeight: "bold" }}>Note: </span>Exhibitor can able to register only two stalls and one conference.
+            </center>
           </div>
         </div>
       </div>
