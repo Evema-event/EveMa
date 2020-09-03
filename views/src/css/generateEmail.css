@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+.email-card {
+  font-family: Oxygen;
+  font-style: normal;
+  /* font-weight: bold; */
+  display: flex;
+  width: 900px;
+  flex-direction: column;
+  background-image: linear-gradient(
+    88.83deg,
+    #c04848 -1.46%,
+    #b40303 -1.46%,
+    #480048 101.54%
+  );
+  box-shadow: 3px 5px 5px #565353;
+  border-radius: 19px;
+  margin: 60px auto;
+  padding: 2rem;
+}
+/* .email-val {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+} */
+
+.email-item {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: 1fr;
+  column-gap: 1rem;
+}
+.email-title h4 {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 28px solid;
+  color: #fff8f8;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+h5 {
+  font-size: 28px;
+  color: #fff8f8;
+}
+.emailind-value {
+  width: 750px;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-right: 2rem;
+}
+h6 {
+  font-size: 25px;
+  color: #000000;
+}
+
+.emailAdd {
+  margin-top: 20px;
+  width: 750px;
+}
+.details-bg {
+  color: #000000;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+}
+.checkbox_send {
+  margin-top: 1rem;
+  color: #ffffff;
+}
+@media screen and (max-width: 1200px) {
+  .email-item {
+    grid-template-columns: 1fr;
+  }
+  .email-card {
+    width: 970px;
+  }
+  .details-bg {
+    width: 440px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .email-val {
+    grid-template-columns: 1fr;
+  }
+  .email-card {
+    width: 350px;
+    /* padding: 0rem; */
+    margin: 10px auto;
+  }
+  .emailind-value {
+    margin-right: 0rem;
+    width: 350px;
+  }
+  .details-bg {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .email-val {
+    grid-template-columns: 1fr;
+  }
+  .email-card {
+    width: 320px;
+    /* padding: 0rem; */
+    margin: 10px auto;
+  }
+  .emailind-value {
+    width: 250px;
+  }
+  .details-bg {
+    width: 250px;
+  }
+}
