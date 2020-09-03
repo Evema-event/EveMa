@@ -20,6 +20,7 @@
 .product-name {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: flex-start;
   margin: 0.5rem;
 }
 
@@ -32,4 +33,30 @@
 .stall-bg h6 {
   font-style: italic;
   color: #ffffff;
+}
+
+@media only screen and (max-width: 900px) {
+  .stall-bg {
+    width: 370px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .stall-bg {
+    width: 360px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .stall-bg {
+    width: 240px;
+  }
+  .product-name {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .stall-bg {
+    width: 220px;
+  }
 }
