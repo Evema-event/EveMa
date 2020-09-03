@@ -1,65 +1,43 @@
-import StallList from '../card/stallList';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ConferenceList from '../card/conferenceList';
+import React, { useEffect, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 
-const stallListMain = () => {
+import StallList from '../card/stallList';
+import EventTab from '../layout/eventTab';
+
+import EventContext from '../../context/event/eventContext';
+import StallContext from '../../context/stall/stallContext';
+
+const StallListMain = () => {
+
+  const eventContext = useContext(EventContext);
+  const stallContext = useContext(StallContext);
+
+  useEffect(() => {
+    if (eventContext.selectedEvent) {
+      stallContext.getStalls(eventContext.selectedEvent);
+    }
+    //eslint-disable-next-line
+  }, [eventContext.selectedEvent]);
+
+
   return (
-    <div>
-      <>
-        <ul className='nav nav-pills  nav-justified' id='myTab' role='tablist'>
-          <li className='nav-item'>
-            <Link
-              className='nav-link active'
-              id='stall-tab'
-              data-toggle='tab'
-              role='tab'
-              aria-controls='stall'
-              aria-selected='true'
-              to='/stallList'
-            >
-              Stall
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link
-              className='nav-item nav-link'
-              id='conference-tab'
-              data-toggle='tab'
-              role='tab'
-              aria-controls='conference'
-              aria-selected='false'
-              to='/conferenceList'
-            >
-              Conference
-            </Link>
-          </li>
-        </ul>
-      </>
-      <div className='tab-content' id='myTabContent'>
-        <div
-          className='tab-pane active'
-          id='stall'
-          role='tabpanel'
-          aria-labelledby='stall-tab'
-        >
-          <div className='view'>
-            <StallList />
-          </div>
-        </div>
-        <div
-          className='tab-pane'
-          id='conference'
-          role='tabpanel'
-          aria-labelledby='conference-tab'
-        >
-          <div className='view'>
-            <ConferenceList />
-          </div>
-        </div>
+    <>
+      {!eventContext.selectedEvent && <Redirect to='/' />}
+      <EventTab tab="stall" />
+      <div className='view'>
+        {
+          stallContext.stalls && stallContext.stalls.map(stall => <StallList
+            stall={stall}
+            key={stall._id}
+          />
+          )
+        }
       </div>
-    </div>
+      {
+        stallContext.stalls && stallContext.stalls.length === 0 && <center>No stalls yet!</center>
+      }
+    </>
   );
 };
 
-export default stallListMain;
+export default StallListMain;

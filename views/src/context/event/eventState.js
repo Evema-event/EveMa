@@ -35,6 +35,7 @@ const EventState = (props) => {
   };
 
   const setIndividualEvent = (eventId, isUpcomming) => {
+    setSelectedEvent(eventId);
     let event;
     if (isUpcomming) {
       event = state.upcomingEvents.filter((event) => event._id === eventId);
