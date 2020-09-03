@@ -47,9 +47,13 @@ exports.getVisitorList = (req, res) => {
           }
           return Promise.all(
             event.registeredUsers.map((user) => {
-              return Profile.findOne({ userId: user })
-                .then((user) => {
-                  let newuser = user;
+              return Profile.findOne({ userId: user._id })
+                .then((profile) => {
+                  let newuser = {
+                    ...profile._doc,
+                    emailId: user.emailId,
+                    userName: user.userName,
+                  };
                   return newuser;
                 })
                 .catch((err) => {
