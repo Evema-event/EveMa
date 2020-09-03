@@ -6,6 +6,7 @@ import AddEvent1 from '../events/AddEvent1';
 import AdminState from '../../context/event_admin/adminState';
 import VisitorsList from '../userDetails/VisitorsList';
 import VisitorDetails from '../userDetails/VisitorDetails';
+import GenerateEmail from '../card/GenerateEmail';
 
 const Admin = () => {
   if (
@@ -20,6 +21,7 @@ const Admin = () => {
           <Route exact path='/admin/addEvent/1' component={AddEvent1} />
           <Route exact path='/admin/visitorsList' component={VisitorsList} />
           <Route exact path='/admin/visitorDetails' component={VisitorDetails} />
+          <Route exact path-='/admin/generateEmail' component={GenerateEmail} />
         </Switch>
       </AdminState>
     );
