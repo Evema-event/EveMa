@@ -53,7 +53,7 @@ exports.getVisitorList = (req, res) => {
                   return newuser;
                 })
                 .catch((err) => {
-                  console.log(err);
+                  throwError(err, res);
                 });
             })
           );

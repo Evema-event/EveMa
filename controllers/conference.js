@@ -11,38 +11,40 @@ const throwError = require('../utility/throwError');
 exports.getConferences = (req, res) => {
   Event.findById(req.params.eventId)
     .populate({
-      path: "registeredConferences",
+      path: 'registeredConferences',
       populate: {
-        path: "userId"
-      }
+        path: 'userId',
+      },
     })
-    .then(event => {
+    .then((event) => {
       if (!event) {
         const error = new Error('Event not found');
         error.statusCode = 404;
         throw error;
       }
-      return Promise.all(event.registeredConferences.map(conference => {
-        return Profile.findOne({ userId: conference.userId._id })
-          .then(profile => {
-            let newConference = {
-              ...conference._doc,
-              user: profile
-            };
-            return newConference;
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      }))
+      return Promise.all(
+        event.registeredConferences.map((conference) => {
+          return Profile.findOne({ userId: conference.userId._id })
+            .then((profile) => {
+              let newConference = {
+                ...conference._doc,
+                user: profile,
+              };
+              return newConference;
+            })
+            .catch((err) => {
+              throwError(err, res);
+            });
+        })
+      );
     })
-    .then(conferences => {
+    .then((conferences) => {
       res.status(200).json({ message: 'Success', conferences: conferences });
     })
-    .catch(err => {
+    .catch((err) => {
       throwError(err, res);
-    })
-}
+    });
+};
 
 // Exhibitor can register a Conference
 exports.registerConference = (req, res) => {
@@ -67,9 +69,12 @@ exports.registerConference = (req, res) => {
       }
       return Profile.findOne({ userId: req.userId });
     })
-    .then(profile => {
-      if (profile.registeredConferences && profile.registeredConferences.length > 0) {
-        profile.registeredConferences.forEach(event => {
+    .then((profile) => {
+      if (
+        profile.registeredConferences &&
+        profile.registeredConferences.length > 0
+      ) {
+        profile.registeredConferences.forEach((event) => {
           if (event.eventId.toString() === req.params.eventId.toString()) {
             const error = new Error('You can only register 1 conference');
             error.statusCode = 422;
@@ -95,7 +100,7 @@ exports.registerConference = (req, res) => {
       loadedConference = conference;
       loadedProfile.registeredConferences.push({
         eventId: req.params.eventId,
-        conferenceId: loadedConference._id
+        conferenceId: loadedConference._id,
       });
       return loadedProfile.save();
     })
