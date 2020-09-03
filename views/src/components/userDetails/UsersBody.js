@@ -1,22 +1,28 @@
 // Importing core packages
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import VisitorContext from '../../context/visitor/visitorContext';
+
 
 // UsersBody component
-const UsersBody = () => {
+const UsersBody = (props) => {
     const [redirectVisitor, setRedirect] = useState(false);
+    const visitorContext = useContext(VisitorContext);
 
     const onClickUser = () => {
+        visitorContext.getVisitors(props.visitor)
         setRedirect(true);
+
     }
 
     return (
         <tr onClick={onClickUser}>
-            {redirectVisitor && <Redirect to='/admin/VisitorDetails' />}
-            <td>1</td>
-            <td>Testing</td>
-            <td>test@test.com</td>
-            <td>12345677890</td>
+            {redirectVisitor && <Redirect to='/admin/VisitorDetails' /> }
+
+            <td>{props.index}</td>
+            <td>{props.visitor.firstName}</td>
+            <td>props.visitor.email</td>
+            <td>{props.visitor.companyAddress}</td>
         </tr>
     );
 }

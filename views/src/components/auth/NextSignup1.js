@@ -123,8 +123,8 @@ const NextSignup1 = () => {
         areaOfInterest: fields.areasOfInterest.value,
         designation: fields.destination.value,
         companyName: fields.company.value,
-        companyAddress: fields.contact.value,
-        contactNumber: fields.address.value,
+        companyAddress: fields.address.value,
+        contactNumber: fields.contact.value,
       };
 
       let signupUrl = url + 'user/signup';

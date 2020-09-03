@@ -7,6 +7,7 @@ import EventState from './context/event/eventState';
 import AuthState from './context/auth/authState';
 import StallState from './context/stall/stallState';
 import ConferenceState from './context/conference/conferenceState';
+import VisitorState from './context/visitor/visitorState';
 
 import Upcomingindiv from './components/card/UpcomingCardItem';
 import Completedindiv from './components/card/CompletedCardItem';
@@ -32,6 +33,7 @@ function App() {
       <EventState>
         <StallState>
           <ConferenceState>
+            <VisitorState>
             <Router>
               <Navbar />
               <Switch>
@@ -80,6 +82,7 @@ function App() {
                 <Route exact path-='/GenerateEmail' component={GenerateEmail} />
               </Switch>
             </Router>
+            </VisitorState>
           </ConferenceState>
         </StallState>
       </EventState>

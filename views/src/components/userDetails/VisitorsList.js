@@ -1,5 +1,6 @@
 // Importing core packages
-import React from 'react';
+import React,{useContext} from 'react';
+import VisitorContext from '../../context/visitor/visitorContext';
 
 // Importing custom components
 import EventTab from '../layout/eventTab';
@@ -8,6 +9,8 @@ import UsersBody from './UsersBody';
 
 // VisitorsList component
 const VisitorsList = () => {
+    const visitorContext = useContext(VisitorContext);
+    const visitors = visitorContext.visitorlist ;
     const tableCss = {
         width: "90%",
         minWidth: "600px",
@@ -18,18 +21,17 @@ const VisitorsList = () => {
     return (
         <div>
             <EventTab tab="visitor" />
-            <div style={{ overflowX: "auto" }}>
-                <table className="table" style={tableCss}>
-                    <UsersHeader />
-                    <tbody>
-                        <UsersBody />
-                        <UsersBody />
-                        <UsersBody />
-                        <UsersBody />
-                        <UsersBody />
-                    </tbody>
-                </table>
-            </div>
+            
+
+                <div  style={{ overflowX: "auto" }}>
+            <table className="table" style={tableCss}>
+                <UsersHeader />
+                <tbody>
+                {visitors && visitors.map((visitor, i)=> 
+                    <UsersBody key={visitor._id} visitor= {visitor} index={i+1} onClick={visitor._id} /> )}
+                </tbody>
+            </table>
+        </div>
         </div>
     );
 }
