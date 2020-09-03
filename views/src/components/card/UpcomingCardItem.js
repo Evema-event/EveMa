@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import EventContext from '../../context/event/eventContext';
 import { Redirect } from 'react-router-dom';
 import RegisterBtn from '../layout/RegisterBtn';
+import EventTab from '../layout/eventTab';
 
 const Upcomingindiv = () => {
   const eventContext = useContext(EventContext);
@@ -10,7 +11,7 @@ const Upcomingindiv = () => {
   if (event) {
     return (
       <div className='up-card'>
-        <div className='up_title'>Upcoming Event Details</div>
+        <EventTab tab="event" />
         <div key={event._id}>
           <div className='main-bg'>
             <div className='indiv-name'>{event.name}</div>
@@ -76,6 +77,9 @@ const Upcomingindiv = () => {
 
               <RegisterBtn eventId={event._id} />
             </div>
+            <center style={{ color: 'white', marginTop: '15px' }}>
+              <span style={{ fontWeight: "bold" }}>Note: </span>Exhibitor can able to register only two stalls and one conference.
+            </center>
           </div>
         </div>
       </div>
