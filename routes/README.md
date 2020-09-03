@@ -185,3 +185,15 @@ token: **Required**
 Input: **None**
 
 Output: **If success send all conference data with exhibitor details else throw error**
+
+## Get VisitorList
+
+url: **api/event/visitorList/{eventId}**
+
+method: **get**
+
+token: **Required**
+
+Input: **None**
+
+Output: **If success, send all visitor details if it is an organiser else throw error**

@@ -25,6 +25,16 @@ router.get('/upcomingEvents', eventController.getUpcomingEvents);
 router.get('/completedEvents', eventController.getCompletedEvents);
 
 /*
+  Get - /api/event/visitorList
+  Sends visitor list for that particular event
+*/
+router.get(
+  '/visitorList/:eventId',
+  authenticate,
+  eventController.getVisitorList
+);
+
+/*
   Post - /api/event/addEvent
   Organizer can add event
 */
