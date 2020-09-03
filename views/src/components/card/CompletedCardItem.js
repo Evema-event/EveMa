@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import EventContext from '../../context/event/eventContext';
 import { Redirect } from 'react-router-dom';
+import EventTab from '../layout/eventTab';
 
 const Completedindiv = () => {
   const eventContext = useContext(EventContext);
@@ -10,7 +11,7 @@ const Completedindiv = () => {
     return (
       <div className='comp-card'>
         <div key={event._id}>
-          <div className='comp_title'>Completed Event Details</div>
+          <EventTab tab="event" />
           <div className='main-bg'>
             <div className='indiv-name'>{event.name}</div>
             <div className='indiv-name'>Event Description:</div>

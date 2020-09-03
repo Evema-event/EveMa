@@ -161,12 +161,15 @@ const RegisterBtn = (props) => {
     localStorage.getItem('role') === 'Organizer'
   ) {
     return (
-      <>
+      <div className="reg-btn">
         {isSubmit && <Redirect to='/admin' />}
-        <div className='register-button' onClick={deleteEvent}>
+        <div className='btn_exhibitor' onClick={deleteEvent}>
           {loading ? <div disabled>Loading</div> : <div>Delete Event</div>}
         </div>
-      </>
+        <div className='btn_exhibitor'>
+          <Link to='/admin/generateEmail' style={{ color: "black" }}>Notify Users</Link>
+        </div>
+      </div>
     );
   }
   return (

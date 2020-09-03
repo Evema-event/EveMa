@@ -26,7 +26,7 @@ import StallListMain from './components/pages/stallListMain';
 import ConferenceListMain from './components/pages/conferenceListMain';
 import StallIndiv from './components/pages/StallIndiv';
 import ConferenceIndiv from './components/card/ConferenceIndividual';
-import GenerateEmail from './components/card/GenerateEmail';
+
 function App() {
   return (
     <AuthState>
@@ -79,7 +79,6 @@ function App() {
                   path='/conferenceIndividual'
                   component={ConferenceIndiv}
                 />
-                <Route exact path-='/GenerateEmail' component={GenerateEmail} />
               </Switch>
             </Router>
             </VisitorState>
