@@ -9,7 +9,7 @@ const UsersBody = (props) => {
   const visitorContext = useContext(VisitorContext);
 
   const onClickUser = () => {
-    visitorContext.getVisitors(props.visitor);
+    visitorContext.setIndividualVisitor(props.visitor);
     setRedirect(true);
   };
 
@@ -20,7 +20,7 @@ const UsersBody = (props) => {
       <td>{props.index}</td>
       <td>{props.visitor.firstName}</td>
       <td>{props.visitor.emailId}</td>
-      <td>{props.visitor.companyAddress}</td>
+      <td>{props.visitor.contactNumber}</td>
     </tr>
   );
 };

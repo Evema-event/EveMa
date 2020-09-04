@@ -30,11 +30,9 @@ const RegisterBtn = (props) => {
       .put(registerUrl, data, config)
       .then((res) => {
         swal('Congrats', 'Event registered Successfully', 'success');
-        console.log(res);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
       });
   };
@@ -54,14 +52,12 @@ const RegisterBtn = (props) => {
       .then((res) => {
         if (res.data.message === 'Success') {
           swal('Event deleted successfully');
-          console.log(res);
           eventContext.getUpcomingEvent();
           setisSubmit(true);
           setLoading(false);
         }
       })
       .catch((err) => {
-        console.log(err);
         setLoading(false);
       });
   };
@@ -77,10 +73,11 @@ const RegisterBtn = (props) => {
   };
 
   const stallCountCSS = {
-    borderRadius: "50%",
-    border: "1px solid black",
+    borderRadius: "5px",
+    marginLeft: "5px",
     padding: "5px 10px",
     backgroundColor: "green",
+    opacity: '0.8',
     color: "white"
   }
 

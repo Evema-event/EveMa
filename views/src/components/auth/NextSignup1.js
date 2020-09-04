@@ -140,7 +140,6 @@ const NextSignup1 = () => {
         .catch((err) => {
           swal('Something Wrong', 'Invalid Signup Credentials', 'error');
           setLoading(false);
-          console.log(err);
         });
     }
   };
@@ -241,14 +240,14 @@ const NextSignup1 = () => {
                 Loading
               </button>
             ) : (
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-                id='link'
-              >
-                Submit
-              </button>
-            )}
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Submit
+                </button>
+              )}
           </span>
         </form>
       </div>

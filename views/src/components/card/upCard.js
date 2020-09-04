@@ -16,10 +16,13 @@ const Upcoming = () => {
 
   const onClick = (eventId) => {
     eventContext.setIndividualEvent(eventId, true);
-    stallContext.getStalls(eventId);
-    conferenceContext.getConferences(eventId);
-    visitorContext.getVisitors(eventId);
-    visitorContext.setIndividualVisitor(eventId, true);
+    if (localStorage.getItem('token')) {
+      stallContext.getStalls(eventId);
+      conferenceContext.getConferences(eventId);
+      if (localStorage.getItem('role') === 'Organizer') {
+        visitorContext.getVisitors(eventId);
+      }
+    }
     setViewMore(true);
   };
 

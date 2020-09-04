@@ -21,14 +21,12 @@ const EventState = (props) => {
   const [state, dispatch] = useReducer(EventReducer, initialState);
 
   // GET UPCOMING EVENT
-
   const getUpcomingEvent = async () => {
     const events = await axios.get(url + 'event/upcomingEvents');
     dispatch({ payload: events.data.events, type: GET_UPCOMING_EVENTS });
   };
 
   // GET COMPLETED EVENT
-
   const getCompletedEvent = async () => {
     const events = await axios.get(url + 'event/completedEvents');
     dispatch({ payload: events.data.events, type: GET_COMPLETED_EVENTS });
