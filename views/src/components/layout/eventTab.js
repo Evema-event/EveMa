@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
+import EventContext from '../../context/event/eventContext';
+
 const EventTab = (props) => {
+
+    const { isUpcoming } = useContext(EventContext);
 
     const [redirectStall, setRedirectStall] = React.useState(false);
     const [redirectConference, setRedirectConference] = React.useState(false);
@@ -28,7 +32,7 @@ const EventTab = (props) => {
             {redirectStall && <Redirect to='/stallList'></Redirect>}
             {redirectConference && <Redirect to='/conferenceList'></Redirect>}
             <li className="nav-item">
-                <Link className={props.tab === "event" ? "nav-link active" : "nav-link"} to='/upcomingEvents'>Event Details</Link>
+                <Link className={props.tab === "event" ? "nav-link active" : "nav-link"} to={isUpcoming ? '/upcomingEvents' : '/completedEvents'}>Event Details</Link>
             </li>
             <li className="nav-item">
                 <Link className={props.tab === "stall" ? "nav-link active" : "nav-link"} to='#' onClick={onClickStall} >Stalls</Link>

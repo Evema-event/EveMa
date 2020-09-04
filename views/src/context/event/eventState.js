@@ -14,6 +14,7 @@ const EventState = (props) => {
   const initialState = {
     upcomingEvents: null,
     completedEvents: null,
+    isUpcoming: false,
     indivEvent: null,
     selectedEvent: null,
   };
@@ -40,7 +41,7 @@ const EventState = (props) => {
     } else {
       event = state.completedEvents.filter((event) => event._id === eventId);
     }
-    dispatch({ payload: event[0], type: FIND_INDIV_EVENT });
+    dispatch({ payload: { event: event[0], isUpcoming: isUpcomming }, type: FIND_INDIV_EVENT });
   };
 
   const setSelectedEvent = (eventId) => {
@@ -54,6 +55,7 @@ const EventState = (props) => {
         completedEvents: state.completedEvents,
         indivEvent: state.indivEvent,
         selectedEvent: state.selectedEvent,
+        isUpcoming: state.isUpcoming,
         getUpcomingEvent,
         getCompletedEvent,
         setIndividualEvent,
