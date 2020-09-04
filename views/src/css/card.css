@@ -1,67 +1,69 @@
 .cus-container {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .rect {
-  width: 410px;
-  background-color: #ffffff;
-  border-radius: 19px;
-  flex-direction: column;
-  display: flex;
-  padding-right: 1rem;
-  box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.3);
+	width: 410px;
+	background-color: #ffffff;
+	border-radius: 19px;
+	flex-direction: column;
+	display: flex;
+	padding-right: 1rem;
+	box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.3);
 }
 
 .cus-card {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  color: #121212;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: bold;
+	color: #121212;
+	min-height: 200px;
 }
 .cus-card .name {
-  color: #5e385f;
-  font-size: 25px;
-  margin-top: 17px;
-  margin-left: 15px;
+	color: #5e385f;
+	font-size: 25px;
+	margin-top: 17px;
+	margin-left: 15px;
 }
 
 .cus-card .description {
-  color: #414141;
-  margin-top: 10px;
-  margin-left: 15px;
-  font-weight: 400;
+	color: #414141;
+	margin-top: 10px;
+	margin-left: 15px;
+	font-weight: 400;
+	min-height: 80px;
 }
 
 .cus-card .details {
-  display: flex;
-  align-content: center;
-  justify-content: space-evenly;
-  margin: 0rem;
-  padding: 0.5rem;
-  font-size: 18px;
-  color: #6e4166;
+	display: flex;
+	align-content: center;
+	justify-content: space-evenly;
+	margin: 0rem;
+	padding: 0.5rem;
+	font-size: 18px;
+	color: #6e4166;
 }
 
 @media (max-width: 1200px) {
-  .rect {
-    width: 400px;
-    padding-right: 1rem;
-  }
+	.rect {
+		width: 400px;
+		padding-right: 1rem;
+	}
 }
 
 @media (max-width: 500px) {
-  .rect {
-    width: 270px;
-  }
-  .cus-card .details {
-    flex-direction: column;
-    padding: 1rem;
-  }
+	.rect {
+		width: 270px;
+	}
+	.cus-card .details {
+		flex-direction: column;
+		padding: 1rem;
+	}
 }
 
 @media (max-width: 400px) {
-  .rect {
-    width: 210px;
-  }
+	.rect {
+		width: 210px;
+	}
 }
