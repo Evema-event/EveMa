@@ -11,39 +11,40 @@ const throwError = require('../utility/throwError');
 exports.getStalls = (req, res) => {
   Event.findById(req.params.eventId)
     .populate({
-      path: "registeredStalls",
+      path: 'registeredStalls',
       populate: {
-        path: "userId"
-      }
+        path: 'userId',
+      },
     })
-    .then(event => {
+    .then((event) => {
       if (!event) {
         const error = new Error('Event not found');
         error.statusCode = 404;
         throw error;
       }
-      return Promise.all(event.registeredStalls.map(stall => {
-        return Profile.findOne({ userId: stall.userId._id })
-          .then(profile => {
-            let newStall = {
-              ...stall._doc,
-              user: profile
-            };
-            return newStall;
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      }));
+      return Promise.all(
+        event.registeredStalls.map((stall) => {
+          return Profile.findOne({ userId: stall.userId._id })
+            .then((profile) => {
+              let newStall = {
+                ...stall._doc,
+                user: profile,
+              };
+              return newStall;
+            })
+            .catch((err) => {
+              throwError(err, res);
+            });
+        })
+      );
     })
-    .then(stalls => {
+    .then((stalls) => {
       res.status(200).json({ message: 'Success', stalls: stalls });
     })
-    .catch(err => {
+    .catch((err) => {
       throwError(err, res);
-    })
-}
-
+    });
+};
 
 //Exhibitor can register for a stall
 exports.registerStall = (req, res) => {
@@ -68,17 +69,21 @@ exports.registerStall = (req, res) => {
       }
       return Profile.findOne({ userId: req.userId });
     })
-    .then(profile => {
-
+    .then((profile) => {
       loadedProfile = profile;
       if (profile.registeredStalls && profile.registeredStalls.length > 0) {
-        profile.registeredStalls.forEach(event => {
-          if (event.eventId.toString() === req.params.eventId.toString() && event.stallId.length >= 2) {
-            const error = new Error('You can only register 2 stalls in an event');
+        profile.registeredStalls.forEach((event) => {
+          if (
+            event.eventId.toString() === req.params.eventId.toString() &&
+            event.stallId.length >= 2
+          ) {
+            const error = new Error(
+              'You can only register 2 stalls in an event'
+            );
             error.statusCode = 422;
             throw error;
           }
-        })
+        });
       }
 
       const stall = new Stall({
@@ -94,31 +99,35 @@ exports.registerStall = (req, res) => {
     .then((stall) => {
       loadedStall = stall;
 
-      if (!loadedProfile.registeredStalls || loadedProfile.registeredStalls.length === 0) {
+      if (
+        !loadedProfile.registeredStalls ||
+        loadedProfile.registeredStalls.length === 0
+      ) {
         loadedProfile.registeredStalls = [
           {
             eventId: req.params.eventId,
-            stallId: [loadedStall._id]
-          }
+            stallId: [loadedStall._id],
+          },
         ];
       } else {
         let isEventIn = false;
 
-        loadedProfile.registeredStalls = loadedProfile.registeredStalls.map(event => {
-          if (event.eventId.toString() === req.params.eventId.toString()) {
-            isEventIn = true;
-            event.stallId.push(loadedStall._id);
+        loadedProfile.registeredStalls = loadedProfile.registeredStalls.map(
+          (event) => {
+            if (event.eventId.toString() === req.params.eventId.toString()) {
+              isEventIn = true;
+              event.stallId.push(loadedStall._id);
+            }
+            return event;
           }
-          return event;
-        })
+        );
 
         if (!isEventIn) {
           loadedProfile.registeredStalls.push({
             eventId: req.params.eventId,
-            stallId: [loadedStall._id]
+            stallId: [loadedStall._id],
           });
         }
-
       }
       return loadedProfile.save();
     })

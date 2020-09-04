@@ -4,9 +4,11 @@ const router = express.Router();
 
 // Importing validation files
 const eventValidator = require('../validators/event');
+const notifyUsersValidator = require('../validators/notifyUsers');
 
 // Importing controllers
 const eventController = require('../controllers/event');
+const notifyUsersController = require('../controllers/notifyUsers');
 
 // Importing Middleware
 const authenticate = require('../middleware/authenticate');
@@ -64,6 +66,14 @@ router.put(
   '/registerEvent/:eventId',
   authenticate,
   eventController.registerEvent
+);
+
+router.post(
+  '/notifyUsers/:eventId',
+  authenticate,
+  notifyUsersValidator,
+  validator,
+  notifyUsersController.notifyUsers
 );
 
 // Exporting all routes

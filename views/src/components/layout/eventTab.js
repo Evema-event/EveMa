@@ -36,6 +36,14 @@ const EventTab = (props) => {
             <li className="nav-item">
                 <Link className={props.tab === "conference" ? "nav-link active" : "nav-link"} to='#' onClick={onClickConference}>Conferences</Link>
             </li>
+            {
+                localStorage.getItem('role') === 'Organizer' &&
+                <li className="nav-item">
+                    <Link to='/admin/visitorsList' className={props.tab === "visitor" ? "nav-link active" : "nav-link"}>
+                        Visitors
+                </Link>
+                </li>
+            }
         </ul>
     );
 }
