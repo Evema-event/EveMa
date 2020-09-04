@@ -54,6 +54,11 @@ const Navbar = () => {
             </Link>
           </li>
         )}
+      <li>
+        <Link className='nav-link' to='/eventList'>
+          EventList
+        </Link>
+      </li>
       {authContext.token ? (
         <li className='nav-item'>
           <span
