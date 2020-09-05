@@ -5,17 +5,14 @@ import StallContext from '../../context/stall/stallContext';
 import EventTab from '../layout/eventTab';
 
 const StallIndiv = () => {
-
   const stallContext = useContext(StallContext);
   const stall = stallContext.individualStall;
 
   return (
-
     <div>
-      <EventTab tab="stall" />
+      <EventTab tab='stall' />
       {!stallContext.stalls && <Redirect to='/'></Redirect>}
-      {
-        stall &&
+      {stall && (
         <div className='stall-card'>
           <div className='stall-title'>
             <h4>{stall.productName}</h4>
@@ -47,19 +44,15 @@ const StallIndiv = () => {
             </div>
             <div className='stallAdd'>
               <h5>Product Description</h5>
-              <div className='details-bg'>
-                {stall.description}
-              </div>
+              <div className='detail-bg'>{stall.description}</div>
             </div>
             <div className='stallAdd'>
               <h5>Company Address</h5>
-              <div className='details-bg'>
-                {stall.user.companyAddress}
-              </div>
+              <div className='detail-bg'>{stall.user.companyAddress}</div>
             </div>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 };

@@ -1,15 +1,28 @@
 import React, { useState, useContext, useEffect } from 'react';
 import EventContext from '../../context/event/eventContext';
+import StallContext from '../../context/stall/stallContext';
+import ConferenceContext from '../../context/conference/conferenceContext';
+import VisitorContext from '../../context/visitor/visitorContext';
 import { Redirect } from 'react-router-dom';
 
 const Completed = () => {
   const eventContext = useContext(EventContext);
   const completedEvent = eventContext.completedEvents;
+  const stallContext = useContext(StallContext);
+  const conferenceContext = useContext(ConferenceContext);
+  const visitorContext = useContext(VisitorContext);
 
   const [viewMore, setViewMore] = useState(false);
 
   const onClick = (eventId) => {
     eventContext.setIndividualEvent(eventId, false);
+    if (localStorage.getItem('token')) {
+      stallContext.getStalls(eventId);
+      conferenceContext.getConferences(eventId);
+      if (localStorage.getItem('role') === 'Organizer') {
+        visitorContext.getVisitors(eventId);
+      }
+    }
     setViewMore(true);
   };
 

@@ -22,8 +22,6 @@ const AdminState = (props) => {
   const [state, dispatch] = useReducer(AdminReducer, initialState);
 
   const addEvent = (data = initialState) => {
-    //console.log(state);
-    //console.log(data);
     dispatch({ type: ADD_EVENT, payload: data });
   };
 

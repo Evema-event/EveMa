@@ -123,8 +123,8 @@ const NextSignup1 = () => {
         areaOfInterest: fields.areasOfInterest.value,
         designation: fields.destination.value,
         companyName: fields.company.value,
-        companyAddress: fields.contact.value,
-        contactNumber: fields.address.value,
+        companyAddress: fields.address.value,
+        contactNumber: fields.contact.value,
       };
 
       let signupUrl = url + 'user/signup';
@@ -140,7 +140,6 @@ const NextSignup1 = () => {
         .catch((err) => {
           swal('Something Wrong', 'Invalid Signup Credentials', 'error');
           setLoading(false);
-          console.log(err);
         });
     }
   };
@@ -241,14 +240,14 @@ const NextSignup1 = () => {
                 Loading
               </button>
             ) : (
-              <button
-                type='submit'
-                className='btn btn-primary btn-block next'
-                id='link'
-              >
-                Submit
-              </button>
-            )}
+                <button
+                  type='submit'
+                  className='btn btn-primary btn-block next'
+                  id='link'
+                >
+                  Submit
+                </button>
+              )}
           </span>
         </form>
       </div>

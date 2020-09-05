@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import StallList from '../card/stallList';
@@ -11,14 +11,6 @@ const StallListMain = () => {
 
   const eventContext = useContext(EventContext);
   const stallContext = useContext(StallContext);
-
-  useEffect(() => {
-    if (eventContext.selectedEvent) {
-      stallContext.getStalls(eventContext.selectedEvent);
-    }
-    //eslint-disable-next-line
-  }, [eventContext.selectedEvent]);
-
 
   return (
     <>

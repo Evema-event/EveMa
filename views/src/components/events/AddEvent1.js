@@ -59,7 +59,7 @@ const AddEvent = () => {
 
     if (
       new Date(fields.lastDate.value).getTime() >
-        new Date(adminContext.startDate).getTime() ||
+      new Date(adminContext.startDate).getTime() ||
       new Date(fields.lastDate.value).getTime() <= Date.now()
     ) {
       isError = true;
@@ -75,8 +75,6 @@ const AddEvent = () => {
     } else {
       fields.description.error = '';
     }
-
-    console.log(fields, isError);
 
     setFields({
       ...fields,
@@ -110,12 +108,10 @@ const AddEvent = () => {
           swal('Congrats', 'Event added', 'success');
           setisSubmit(true);
           adminContext.addEvent();
-          console.log(res);
           setLoading(false);
         })
         .catch((err) => {
           swal('Oops...', 'Something Wrong', 'error');
-          console.log(err);
         });
     }
   };
@@ -218,14 +214,14 @@ const AddEvent = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  id='link'
-                >
-                  Create Event
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className='btn btn-primary btn-block next'
+                    id='link'
+                  >
+                    Create Event
+                  </button>
+                )}
             </div>
           </form>
         </div>

@@ -20,7 +20,8 @@ export default (state, action) => {
     case FIND_INDIV_EVENT:
       return {
         ...state,
-        indivEvent: action.payload,
+        indivEvent: action.payload.event,
+        isUpcoming: action.payload.isUpcoming,
       };
     case SET_SELECTED_EVENT:
       return {

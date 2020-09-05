@@ -21,7 +21,7 @@ const RegisterConf = (props) => {
   const [fields, setFields] = useState(initialState);
   const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [regEvent, setregEvent] = useState(false);
+
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
 
@@ -78,7 +78,7 @@ const RegisterConf = (props) => {
     setFields({ ...fields });
 
     if (!isError) {
-      setregEvent(true);
+      setLoading(true);
       let data = {
         title: fields.confTitle.value,
         description: fields.confDesc.value,
@@ -96,12 +96,10 @@ const RegisterConf = (props) => {
       let registerConfUrl =
         url + `conference/registerConference/${eventContext.selectedEvent}`;
       setLoading(true);
-      console.log(url);
       axios
         .post(registerConfUrl, data, config)
         .then((res) => {
           swal('Congrats', 'Conference registered Successfully', 'success');
-          console.log(res);
           setSubmit(true);
           setLoading(false);
         })
@@ -233,16 +231,16 @@ const RegisterConf = (props) => {
               </button>
             </Link>
             <div className='reg'>
-              {authContext.registeredConferences.includes(props.eventId) ||
-                regEvent ? (
-                  <div className='register-button btn btn-primary btn-block can next'>
-                    Registered
-                  </div>
-                ) : (
+              {authContext.registeredConferences.includes(props.eventId) ? (
+                <div className='register-button btn btn-primary btn-block can next'>
+                  Registered
+                </div>
+              ) : (
                   <div className='register-button'>
                     {loading ? (
                       <button
                         id='link'
+                        type="button"
                         className='btn btn-primary btn-block can next'
                         disable={loading.toString()}
                       >

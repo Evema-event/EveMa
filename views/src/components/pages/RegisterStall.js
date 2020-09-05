@@ -17,7 +17,6 @@ const RegisterStall = (props) => {
   const [fields, setFields] = useState(initialState);
   const [submit, setSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [regEvent, setregEvent] = useState(false);
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
@@ -63,7 +62,7 @@ const RegisterStall = (props) => {
     setFields({ ...fields });
 
     if (!isError) {
-      setregEvent(true);
+      setLoading(true);
       let data = {
         productName: fields.productName.value,
         description: fields.productDescription.value,
@@ -76,12 +75,10 @@ const RegisterStall = (props) => {
       };
       let registerStallUrl =
         url + `stall/registerStall/${eventContext.selectedEvent}`;
-      setLoading(true);
       axios
         .post(registerStallUrl, data, config)
         .then((res) => {
           swal('Congrats', 'Stall registered Successfully', 'success');
-          console.log(res);
           setSubmit(true);
           setLoading(false);
         })
@@ -149,7 +146,7 @@ const RegisterStall = (props) => {
             />
             <h6>{fields.productDescription.error}</h6>
           </div>
-          {authContext.registeredStalls.includes(props.eventId) || regEvent ? (
+          {authContext.registeredStalls.includes(props.eventId) ? (
             <div className='register-button btn btn-primary btn-block can next'>
               Registered
             </div>
@@ -159,6 +156,7 @@ const RegisterStall = (props) => {
                   <button
                     id='link'
                     className='btn btn-primary btn-block can next'
+                    type="button"
                     disable={loading.toString()}
                   >
                     Loading

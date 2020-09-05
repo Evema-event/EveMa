@@ -79,7 +79,6 @@ const ForgetPassword2 = () => {
           swal('Password reset', 'Your password reset succesfully', 'success');
         })
         .catch((err) => {
-          console.log(err);
           setLoading(false);
           swal('Error', 'Check your password again', 'error');
         });

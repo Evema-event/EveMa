@@ -98,7 +98,6 @@ const AddEvent = () => {
     setFields({
       ...fields,
     });
-    //console.log(fields);
 
     if (!isError) {
       adminContext.addEvent({
@@ -227,14 +226,14 @@ const AddEvent = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  id='link'
-                >
-                  Next
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className='btn btn-primary btn-block next'
+                    id='link'
+                  >
+                    Next
+                  </button>
+                )}
             </div>
           </form>
         </div>

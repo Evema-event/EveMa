@@ -1,68 +1,77 @@
 // Importing core packages
-import React from 'react';
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 
 // Importing custom components
 import EventTab from '../layout/eventTab';
+import VisitorContext from '../../context/visitor/visitorContext';
 
 // VisitorDetails component
 const VisitorDetails = () => {
-    return (
-        <div>
-            <EventTab tab="visitor" />
-            <div className='stall-card'>
-                <div className='stall-val'>
-                    <div className='stall-item'>
-                        <h5>Name</h5>
-                        <div className='card-value'>
-                            <h6>Test</h6>
+    const visitorContext = useContext(VisitorContext);
+    const visitor = visitorContext.individualVisitor;
+
+    if (!visitor || !visitorContext.visitorlist) {
+        return <Redirect to='/' />;
+    } else {
+        return (
+            <div>
+                <EventTab tab="visitor" />
+                <div className='stall-card'>
+                    <div className='stall-val'>
+                        <div className='stall-item'>
+                            <h5>Name</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.firstName}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>E-mail</h5>
-                        <div className='card-value'>
-                            <h6>test@test.com</h6>
+                        <div className='stall-item'>
+                            <h5>E-mail</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.emailId}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>Contact</h5>
-                        <div className='card-value'>
-                            <h6>1234567890</h6>
+                        <div className='stall-item'>
+                            <h5>Contact</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.contactNumber}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>Area of Interest</h5>
-                        <div className='card-value'>
-                            <h6>AI, ML</h6>
+                        <div className='stall-item'>
+                            <h5>Area of Interest</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.areaOfInterest}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>Organization</h5>
-                        <div className='card-value'>
-                            <h6>Testing</h6>
+                        <div className='stall-item'>
+                            <h5>Organization</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.companyName}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>Designation</h5>
-                        <div className='card-value'>
-                            <h6>Developer</h6>
+                        <div className='stall-item'>
+                            <h5>Designation</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.designation}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>No of events Attended</h5>
-                        <div className='card-value'>
-                            <h6>5</h6>
+                        <div className='stall-item'>
+                            <h5>No of events Attended</h5>
+                            <div className='card-value'>
+                                <h6>{visitor.registeredEvents.length}</h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className='stall-item'>
-                        <h5>Location</h5>
-                        <div className='card-value'>
-                            This is Location
+                        <div className='stall-item'>
+                            <h5>Location</h5>
+                            <div className='card-value'>
+                                {visitor.cityName}, {visitor.state}, {visitor.country} - {visitor.zipCode}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 // Exporting VisitorDetials component

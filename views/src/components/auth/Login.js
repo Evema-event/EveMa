@@ -51,8 +51,6 @@ const Login = () => {
       fields.password.error = '';
     }
 
-    //console.log(fields);
-
     setFields({
       ...fields,
     });
@@ -82,7 +80,6 @@ const Login = () => {
           } else {
             swal('Congrats', 'You logged in successfully!', 'success');
           }
-          console.log(res);
 
           authContext.authentication(res);
           setLoading(false);
@@ -91,7 +88,6 @@ const Login = () => {
         .catch((err) => {
           swal('Something Wrong', 'Invalid Login Credentials', 'error');
           setLoading(false);
-          console.log(err);
         });
     }
   };

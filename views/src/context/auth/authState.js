@@ -38,7 +38,6 @@ const AuthState = (props) => {
   };
 
   const forgetPassword = (data) => {
-    console.log(data);
     dispatch({ type: FORGET_PASSWORD, payload: data });
   };
 

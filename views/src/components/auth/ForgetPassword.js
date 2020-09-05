@@ -68,7 +68,6 @@ const ForgetPassword = () => {
           swal('OTP Sent', 'Check your registered Email Address', 'success');
         })
         .catch((err) => {
-          console.log(err);
           setLoading(false);
           swal('Something Wrong', 'You not signed up', 'error');
         });
@@ -106,14 +105,14 @@ const ForgetPassword = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className='btn btn-primary btn-block next'
-                  id='link'
-                >
-                  Next
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className='btn btn-primary btn-block next'
+                    id='link'
+                  >
+                    Next
+                  </button>
+                )}
             </div>
           </span>
         </form>
