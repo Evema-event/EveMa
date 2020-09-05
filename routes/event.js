@@ -27,7 +27,7 @@ router.get('/upcomingEvents', eventController.getUpcomingEvents);
 router.get('/completedEvents', eventController.getCompletedEvents);
 
 /*
-  Get - /api/event/visitorList
+  Get - /api/event/visitorList/{eventId}
   Sends visitor list for that particular event
 */
 router.get(
@@ -49,7 +49,7 @@ router.post(
 );
 
 /*
-  Delete - /api/event/deleteEvent
+  Delete - /api/event/deleteEvent/{eventId}
   Organizer can delete event
 */
 router.delete(
@@ -59,7 +59,7 @@ router.delete(
 );
 
 /*
-  Put - /api/event/registerEvent
+  Put - /api/event/registerEvent/{eventId}
   Visitor can able to register an event
 */
 router.put(
@@ -68,6 +68,10 @@ router.put(
   eventController.registerEvent
 );
 
+/*
+  Post - /api/event/notifyUsers/{eventId}
+  Send email to the Users
+*/
 router.post(
   '/notifyUsers/:eventId',
   authenticate,

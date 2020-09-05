@@ -17,7 +17,7 @@ Details of all models:
 1.  userId -> ObjectId
 2.  registeredEvents -> Array -> eventId
 3.  registeredStalls -> Array -> { eventId, array -> stallId }
-4.  registeredConferences -> Array -> {eventId, conferenceId}
+4.  registeredConferences -> Array -> {eventId, array -> conferenceId}
 5.  firstName -> String
 6.  lastName -> String
 7.  gender -> String
@@ -47,6 +47,7 @@ Details of all models:
 11. registrationLastdate -> Date
 12. registeredUsers -> Array -> userId
 13. registeredStalls -> Array -> stallId
+14. registeredConferences -> Array -> conferenceId
 
 ## Stall Model
 

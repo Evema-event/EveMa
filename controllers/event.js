@@ -8,9 +8,16 @@ const throwError = require('../utility/throwError');
 
 // Send events that have end date today or after
 exports.getUpcomingEvents = (req, res) => {
-  Event.find({ endDate: { $gte: new Date(Date.now() - 24 * 3600 * 1000) } })
+  Event.find({
+      endDate: {
+        $gte: new Date(Date.now() - 24 * 3600 * 1000)
+      }
+    })
     .then((events) => {
-      return res.status(200).json({ message: 'Success', events: events });
+      return res.status(200).json({
+        message: 'Success',
+        events: events
+      });
     })
     .catch((err) => {
       return throwError(err, res);
@@ -19,9 +26,16 @@ exports.getUpcomingEvents = (req, res) => {
 
 // Send events that have end date before today
 exports.getCompletedEvents = (req, res) => {
-  Event.find({ endDate: { $lt: new Date(Date.now() - 24 * 3600 * 1000) } })
+  Event.find({
+      endDate: {
+        $lt: new Date(Date.now() - 24 * 3600 * 1000)
+      }
+    })
     .then((events) => {
-      return res.status(200).json({ message: 'Success', events: events });
+      return res.status(200).json({
+        message: 'Success',
+        events: events
+      });
     })
     .catch((err) => {
       return throwError(err, res);
@@ -47,7 +61,9 @@ exports.getVisitorList = (req, res) => {
           }
           return Promise.all(
             event.registeredUsers.map((user) => {
-              return Profile.findOne({ userId: user._id })
+              return Profile.findOne({
+                  userId: user._id
+                })
                 .then((profile) => {
                   let newuser = {
                     ...profile._doc,
@@ -63,7 +79,10 @@ exports.getVisitorList = (req, res) => {
           );
         })
         .then((list) => {
-          res.status(200).json({ message: 'Success', visitorlist: list });
+          res.status(200).json({
+            message: 'Success',
+            visitorlist: list
+          });
         });
     })
     .catch((err) => {
@@ -99,7 +118,10 @@ exports.addEvent = (req, res) => {
       return event.save();
     })
     .then((event) => {
-      res.status(200).json({ message: 'Success', event: event });
+      res.status(200).json({
+        message: 'Success',
+        event: event
+      });
     })
     .catch((err) => {
       return throwError(err, res);
@@ -120,7 +142,10 @@ exports.deleteEvent = (req, res) => {
       return Event.findByIdAndDelete(req.params.eventId);
     })
     .then((event) => {
-      res.status(200).json({ message: 'Success', event: event });
+      res.status(200).json({
+        message: 'Success',
+        event: event
+      });
     })
     .catch((err) => {
       return throwError(err, res);
@@ -136,9 +161,16 @@ exports.registerEvent = (req, res) => {
         error.statusCode = 401;
         throw error;
       }
-      return Profile.findOne({ userId: req.userId });
+      return Profile.findOne({
+        userId: req.userId
+      });
     })
     .then((profile) => {
+      if (profile.registeredEvents.includes(req.params.eventId)) {
+        const error = new Error('User already register for an event');
+        error.statusCode = 422;
+        throw error;
+      }
       profile.registeredEvents.push(req.params.eventId);
       return profile.save();
     })
@@ -150,7 +182,10 @@ exports.registerEvent = (req, res) => {
       return event.save();
     })
     .then((event) => {
-      res.status(200).json({ message: 'Success', event: event });
+      res.status(200).json({
+        message: 'Success',
+        event: event
+      });
     })
     .catch((err) => {
       return throwError(err, res);

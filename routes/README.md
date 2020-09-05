@@ -197,3 +197,15 @@ token: **Required**
 Input: **None**
 
 Output: **If success, send all visitor details if it is an organiser else throw error**
+
+## NotifyUsers
+
+url: **api/event/notifyUsers/{eventId}**
+
+method: **post**
+
+token: **Required**
+
+Input: **subject,body,users(Array must contain Visitor or Exhibitor or Both)**
+
+Output:**Return Failed if error else Success**
