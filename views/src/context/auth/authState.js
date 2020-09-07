@@ -2,6 +2,9 @@ import React, { useReducer } from 'react';
 import AuthContext from './authContext';
 import AuthReducer from './authReducer';
 
+import axios from 'axios';
+import url from '../../server';
+
 import { UPDATE_USER, AUTHENTICATE, LOGOUT, FORGET_PASSWORD } from '../types';
 
 const AuthState = (props) => {
@@ -32,6 +35,25 @@ const AuthState = (props) => {
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+
+  const getProfile = () => {
+    const profileUrl = url + 'user/getProfile';
+
+    const config = {
+      headers: {
+        'x-auth-token': localStorage.getItem('token'),
+      },
+    };
+    axios
+      .get(profileUrl, config)
+      .then((response) => {
+        response.data.token = localStorage.getItem('token');
+        authentication(response);
+      })
+      .catch((err) => {
+        logout();
+      });
+  };
 
   const updateUser = (userData) => {
     dispatch({ type: UPDATE_USER, payload: userData });
@@ -118,6 +140,7 @@ const AuthState = (props) => {
         registeredEvents: state.registeredEvents,
         registeredConferences: state.registeredConferences,
         updateUser,
+        getProfile,
         authentication,
         logout,
         forgetPassword,
