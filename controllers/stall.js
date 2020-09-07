@@ -6,6 +6,7 @@ const Event = require('../models/event');
 
 //Importing throw error utility function
 const throwError = require('../utility/throwError');
+const stall = require('../validators/stall');
 
 //Get stalls of particular event
 exports.getStalls = (req, res) => {
@@ -40,6 +41,74 @@ exports.getStalls = (req, res) => {
     })
     .then((stalls) => {
       res.status(200).json({ message: 'Success', stalls: stalls });
+    })
+    .catch((err) => {
+      throwError(err, res);
+    });
+};
+
+exports.deleteStall = (req, res) => {
+  let eventId;
+  User.findById(req.userId).then((user) => {
+    if (user.role[0] !== 'Exhibitor') {
+      const error = new Error('Only Exhibitor can delete a stall');
+      error.statusCode = 401;
+      throw error;
+    }
+    return user;
+  });
+  Stall.findById(req.params.stallId)
+    .populate('eventId')
+    .then((stall) => {
+      if (!stall) {
+        const error = new Error('Stall not found');
+        error.statusCode = 404;
+        throw error;
+      }
+      let currentdate = Date.now();
+      let stdate = stall.eventId.startDate;
+      let limitdate = new Date(
+        stdate.setDate(stdate.getDate() - 2)
+      ).toISOString();
+      if (currentdate > limitdate) {
+        const error = new Error('Time limit exceeded for deleting a stall');
+        error.statusCode = 401;
+        throw error;
+      }
+      eventId = stall.eventId._id;
+      return Event.findById(stall.eventId._id);
+    })
+    .then((event) => {
+      event.registeredStalls = event.registeredStalls.filter(
+        (stallId) => stallId.toString() !== req.params.stallId.toString()
+      );
+      return event.save();
+    })
+    .then((event) => {
+      return Profile.findOne({ userId: req.userId });
+    })
+    .then((profile) => {
+      let stalls = [];
+      profile.registeredStalls.forEach((stall) => {
+        if (stall.eventId.toString() === eventId.toString()) {
+          if (stall.stallId.length === 2) {
+            stall.stallId = stall.stallId.filter(
+              (stallId) => stallId.toString() !== req.params.stallId.toString()
+            );
+            stalls.push(stall);
+          }
+        } else {
+          stalls.push(stall);
+        }
+      });
+      profile.registeredStalls = stalls;
+      return profile.save();
+    })
+    .then((profile) => {
+      return Stall.findOneAndDelete(req.params.stallId);
+    })
+    .then((stall) => {
+      res.status(200).json({ message: 'Success', stall: stall });
     })
     .catch((err) => {
       throwError(err, res);
