@@ -1,31 +1,14 @@
-@import 'css/about.css';
-@import 'css/home.css';
-@import 'css/navbar.css';
-@import 'css/card.css';
-@import 'css/footer.css';
-@import 'css/completedIndiv.css';
-@import 'css/upcomingIndi.css';
-@import 'css/fullList.css';
-@import 'css/signup.css';
-@import 'css/login.css';
-@import 'css/event.css';
-@import 'css/resgisterstall.css';
-@import 'css/registerconf.css';
-@import 'css/stallList.css';
-@import 'css/stallIndiv.css';
-@import 'css/conferenceIndiv.css';
-@import 'css/generateEmail.css';
 * {
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
 
 .box {
-  margin: 25px 25px;
+	margin: 25px 25px;
 }
 
 a {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }

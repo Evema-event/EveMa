@@ -1,0 +1,41 @@
+.loadMore {
+	text-align: center;
+}
+
+.loadMore a:visited,
+.loadMore a:link {
+	color: #686868 !important;
+	text-decoration: none;
+}
+
+.loadMore .button {
+	cursor: pointer;
+	transition: 0.1s ease-in;
+}
+
+.loadMore .button .hoverLine:hover {
+	border-bottom: 0.2rem solid #9b7dfb;
+}
+
+.loadMore .button .buttonText {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.loadMore .button .rarrow {
+	margin-left: 1rem;
+	margin-right: 0rem;
+	font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 700px) {
+	.loadMore .button {
+		padding: 0rem;
+	}
+
+	.loadMore .button .buttonText {
+		font-size: 1.3rem;
+	}
+	.loadMore .button .rarrow {
+		font-size: 1.3rem;
+	}
+}

@@ -33,15 +33,9 @@ const EventState = (props) => {
     dispatch({ payload: events.data.events, type: GET_COMPLETED_EVENTS });
   };
 
-  const setIndividualEvent = (eventId, isUpcomming) => {
-    setSelectedEvent(eventId);
-    let event;
-    if (isUpcomming) {
-      event = state.upcomingEvents.filter((event) => event._id === eventId);
-    } else {
-      event = state.completedEvents.filter((event) => event._id === eventId);
-    }
-    dispatch({ payload: { event: event[0], isUpcoming: isUpcomming }, type: FIND_INDIV_EVENT });
+  const setIndividualEvent = (event, isUpcoming) => {
+    setSelectedEvent(event._id);
+    dispatch({ payload: { event: event, isUpcoming: isUpcoming }, type: FIND_INDIV_EVENT });
   };
 
   const setSelectedEvent = (eventId) => {

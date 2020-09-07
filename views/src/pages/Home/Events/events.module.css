@@ -1,0 +1,31 @@
+.about {
+	margin-top: 5rem;
+	padding: 3rem 2rem;
+	background-color: whitesmoke;
+	width: 100%;
+}
+
+.about h2 {
+	font-style: italic;
+	font-weight: bold;
+	text-align: center;
+}
+
+.title {
+	text-transform: uppercase;
+}
+
+@media only screen and (max-width: 450px) {
+	.about {
+		padding: 0.5rem;
+		margin-top: 2.5rem;
+	}
+	.about h2 {
+		margin-top: 1rem;
+		font-size: 1.4rem;
+	}
+
+	.title {
+		font-size: 1.2rem;
+	}
+}
