@@ -33,6 +33,9 @@ import Admin from './Organizer/Admin';
 //  Importing Navbar
 import Navbar from '../Layout/Navbar/Navbar';
 
+//Import Profile
+import Profilepage from '../pages/Profile/Profile'
+
 const Routes = () => {
     return (
         <Router>
@@ -55,6 +58,7 @@ const Routes = () => {
                 <Route exact path='/conferenceDetails' component={ConferencesDetails} />
                 <Route exact path='/registerStall' component={RegisterStall} />
                 <Route exact path='/registerConference' component={RegisterConference} />
+                <Route exact path='/profilepage' component={Profilepage}/>
                 <Route path='/' component={Home} />
             </Switch>
         </Router>
