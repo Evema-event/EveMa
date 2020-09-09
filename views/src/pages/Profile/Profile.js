@@ -1,8 +1,13 @@
-import React from 'react'
+import React,{useContext} from 'react';
 
 import img from '../../img/picture.jpeg';
-import classes from '../Profile/Profile.module.css'
+import classes from '../Profile/Profile.module.css';
+
+import AuthContext from '../../context/auth/authContext';
+
 const Profile = () => {
+    const profile = useContext(AuthContext);
+
     return (
         <div className={classes.heads}>
             <h4 className={classes.profile}>Profile</h4>
@@ -13,71 +18,71 @@ const Profile = () => {
                 <div className={classes.header}>
                     <div className={classes.info}>
                         <h5 className={classes.head}>Username</h5>
-                        <p className={classes.body}>Poovarasan</p>
+                        <p className={classes.body}>{profile.username}</p>
                     </div>
                     <div className={classes.info}>
                         <h5 className={classes.head}>Email</h5>
-                        <p className={classes.body}>Poovarasan.17it@kct.ac.in</p>
+                        <p className={classes.body}>{profile.email}</p>
                     </div>
                     <div className={classes.info}>
                         <h5 className={classes.head}>Contact</h5>
-                        <p className={classes.body}>9876543210</p>
+                        <p className={classes.body}>{profile.contact}</p>
                     </div>
                 </div> 
                 <div className={classes.image}>
                     <img src={img}></img>
-                    <h5 className={classes.picture}>Visitor</h5>
+                    <h5 className={classes.picture}>{profile.role}</h5>
                 </div>
             </div> 
 
         <div className={classes.part}>   
             <div className={classes.info}>
                 <h5 className={classes.head}>FirstName</h5>
-                <p className={classes.body}>Poovarasan</p>
+                <p className={classes.body}>{profile.firstname}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>LastName</h5>
-                <p className={classes.body}>P</p>
+                <p className={classes.body}>{profile.lastname}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Date of Birth</h5>
-                <p className={classes.body}>10/10/1999</p>
+                <p className={classes.body}>{profile.dob.slice(0,10)}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Gender</h5>
-                <p className={classes.body}>Male</p>
+                <p className={classes.body}>{profile.gender}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Areas of Interest</h5>
-                <p className={classes.body}>IOT</p>
+                <p className={classes.body}>{profile.areasOfInterest}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Designation</h5>
-                <p className={classes.body}>student</p>
+                <p className={classes.body}>{profile.destination}</p>
             </div>
             <div className={classes.info}>
-                <h5 className={classes.head}>company</h5>
-                <p className={classes.body}>Forge</p>
+                <h5 className={classes.head}>Company</h5>
+                <p className={classes.body}>{profile.company}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>City</h5>
-                <p className={classes.body}>Namakkal</p>
+                <p className={classes.body}>{profile.city}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>State</h5>
-                <p className={classes.body}>Tamilnadu</p>
+                <p className={classes.body}>{profile.state}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Country</h5>
-                <p className={classes.body}>India</p>
+                <p className={classes.body}>{profile.country}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Company Address</h5>
-                <p className={classes.body}>KCT TECH PARK</p>
+                <p className={classes.body}>{profile.address}</p>
             </div>
             <div className={classes.info}>
                 <h5 className={classes.head}>Zipcode</h5>
-                <p className={classes.body}>637041</p>
+                <p className={classes.body}>{profile.zipcode}</p>
             </div>
         </div>
 
