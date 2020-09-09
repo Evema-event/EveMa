@@ -47,6 +47,7 @@ exports.getStalls = (req, res) => {
     });
 };
 
+//Delete a particular stall
 exports.deleteStall = (req, res) => {
   let eventId;
   User.findById(req.userId).then((user) => {
