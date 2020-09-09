@@ -4,13 +4,12 @@ import img from '../../img/picture.jpeg';
 import classes from '../Profile/Profile.module.css'
 const Profile = () => {
     return (
-        <div className={classes.start}>
+        <div className={classes.heads}>
             <h4 className={classes.profile}>Profile</h4>
             <div className={classes.main}>
-                
-                <div className={classes.user}>
-            <div className={classes.division}>
+            <div className={classes.user}>
 
+            <div className={classes.division}>
                 <div className={classes.header}>
                     <div className={classes.info}>
                         <h5 className={classes.head}>Username</h5>
@@ -29,9 +28,9 @@ const Profile = () => {
                     <img src={img}></img>
                     <h5 className={classes.picture}>Visitor</h5>
                 </div>
-            </div>    
-            <div className={classes.part}>  
-            
+            </div> 
+
+        <div className={classes.part}>   
             <div className={classes.info}>
                 <h5 className={classes.head}>FirstName</h5>
                 <p className={classes.body}>Poovarasan</p>
@@ -81,10 +80,9 @@ const Profile = () => {
                 <p className={classes.body}>637041</p>
             </div>
         </div>
-        </div>
-        
 
-        </div>
+    </div>
+    </div>
     </div>
     )
 }
