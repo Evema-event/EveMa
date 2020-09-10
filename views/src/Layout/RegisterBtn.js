@@ -8,6 +8,7 @@ import axios from 'axios';
 import EventContext from '../context/event/eventContext';
 import AuthContext from '../context/auth/authContext';
 
+
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
   const [isSubmit, setisSubmit] = useState(false);
@@ -15,9 +16,11 @@ const RegisterBtn = (props) => {
   const [stallRedir, setStallRedir] = useState(false);
   const [confRedir, setConfRedir] = useState(false);
   const [deleteStallRedir, setDeleteStallRedir] = useState(false);
-
+  const [deleteConfRedir, setDeleteConfRedir] = useState(false);
+  
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
+
 
   const registerEvent = () => {
     setregEvent(true);
@@ -170,6 +173,43 @@ const RegisterBtn = (props) => {
       });
   };
 
+  const deleteConference = () => {
+    let configuration = {
+      headers: {
+        'x-auth-token': localStorage.getItem('token'),
+      },
+    };
+    console.log(props.confId)
+    let delConfUrl = url + `conference/deleteConference/${props.confId}`;
+    setLoading(true);
+    swal({
+      title: 'Are you sure?',
+      text: 'You are about to delete a Conference!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        axios
+          .delete(delConfUrl, configuration)
+          .then((res) => {
+            if (res.data.message === 'Success') {
+              swal('Conference deleted successfully');
+              authContext.getProfile();
+              setDeleteConfRedir(true);
+              setLoading(false);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            setLoading(false);
+          });
+      } else {
+        setDeleteConfRedir(true);
+      }
+    });
+  };
+
   if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Visitor'
@@ -209,10 +249,31 @@ const RegisterBtn = (props) => {
             </div>
           </>
         );
-      } else {
+      } 
+      else {
         return <></>;
       }
-    } else {
+    } 
+    else if(props.confId){
+      if(props.user===authContext.userId){
+          return (
+            <>
+            {deleteConfRedir && <Redirect to= '/conferenceDetails'/>}
+            <div
+              className='btn btn-danger'
+              style={{ width: '200px' }}
+              onClick={deleteConference}
+            >
+              Delete Conference
+            </div>
+            </>
+          )
+      }
+      else{
+        return <></>
+      }
+    }
+    else {
       return (
         <div className='ml-auto row'>
           {stallRedir && <Redirect to='/registerStall' />}
