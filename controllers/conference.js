@@ -6,6 +6,7 @@ const Conference = require('../models/conference');
 
 // Importing throwError Utility function
 const throwError = require('../utility/throwError');
+const conference = require('../validators/conference');
 
 //Get stalls of particular event
 exports.getConferences = (req, res) => {
@@ -45,6 +46,84 @@ exports.getConferences = (req, res) => {
       throwError(err, res);
     });
 };
+
+//Exhibitor can delete a Conference
+exports.deleteConference = (req,res) =>{
+  let eventId
+  User.findById(req.userId)
+  .then((user) =>{
+    if (user.role[0]!=='Exhibitor'){
+      const error= new Error('Only Exhibitor can delete a conference.')
+      error.statusCode = 401
+      throw error
+    }
+    return user
+  }
+  )
+  Conference.findById(req.params.conferenceId)
+  .populate("eventId")
+  .then((conf)=>{
+    if(!conf){
+      const error = new Error('Conference not found')
+      error.statusCode= 404
+      throw error
+    }
+    let currentdate = Date.now()
+    let confDate = conf.eventId.startDate
+    console.log(confDate)
+    let limitDate = new Date(confDate.setDate(confDate.getDate()-2)).toISOString()
+    if(currentdate>limitDate){
+      const error = new Error('Time limit Exceeded to delete')
+      error.statusCode= 401
+      throw error
+    }
+    eventId = conf.eventId._id
+    return Event.findById(eventId) 
+  })
+  .then((event)=>{
+   event.registeredConferences = event.registeredConferences.filter(
+     (conferenceId)=>{
+        conferenceId.toString() !== req.params.conferenceId.toString()
+     }
+   )
+   return event.save()
+
+  })
+  .then((event)=>{
+   return Profile.findOne({
+      userId : req.userId
+    })
+  })
+  .then((profile)=>{
+   let confl=[]
+   profile.registeredConferences.forEach((conf)=>{
+     if(conf.eventId.toString()===eventId.toString()){
+       if(conf.conferenceId.length===2){
+         conf.conferenceId = conf.conferenceId.filter((confId)=>
+           confId.toString()!==req.params.conferenceId.toString()
+         ) 
+       confl.push(conf)
+       }
+     }
+     else{
+       confl.push(conf)
+     }
+     
+   })
+   profile.registeredConferences = confl
+   console.log(profile)
+   return profile.save() 
+  })
+  .then((profile)=>{
+   return Conference.findByIdAndDelete(req.params.conferenceId)
+  })
+  .then((conference)=>{
+    return res.status(200).json({message : 'Success', conference : conference})
+  })
+  .catch((err)=>{
+    throwError(err, res)
+  })
+}
 
 // Exhibitor can register a Conference
 exports.registerConference = (req, res) => {

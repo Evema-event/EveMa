@@ -31,4 +31,12 @@ router.post(
   conferenceController.registerConference
 );
 
+/*Delete - /api/conference/deleteConference
+Exhibitor can delete a conference*/
+router.delete(
+  '/deleteConference/:conferenceId',
+  authenticate,
+  conferenceController.deleteConference
+)
+
 module.exports = router;
