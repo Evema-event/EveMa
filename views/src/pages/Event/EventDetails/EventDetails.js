@@ -66,7 +66,7 @@ const EventDetails = () => {
                             </div>
                         </div>
                         <div className='d-md-none mt-4'>
-                            {eventContext.isUpcoming && <RegisterButton eventId={event._id} />}
+                            {eventContext.isUpcoming && <RegisterButton eventId={event._id} event={event} />}
                         </div>
                     </div>
                 </div>

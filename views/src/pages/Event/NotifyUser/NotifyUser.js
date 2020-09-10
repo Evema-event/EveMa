@@ -10,7 +10,6 @@ import url from '../../../server';
 import EventContext from '../../../context/event/eventContext';
 
 const GenerateEmail = () => {
-
   const { selectedEvent, indivEvent } = useContext(EventContext);
 
   const initialState = {
@@ -18,7 +17,7 @@ const GenerateEmail = () => {
     body: { value: '', error: '' },
     visitor: false,
     exhibitor: false,
-    error: ''
+    error: '',
   };
 
   const [fields, setFields] = useState(initialState);
@@ -51,8 +50,7 @@ const GenerateEmail = () => {
 
     if (fields.body.value.length < 25) {
       isError = true;
-      fields.body.error =
-        'Body must be atleast 25 characters in length ';
+      fields.body.error = 'Body must be atleast 25 characters in length ';
     } else {
       fields.body.error = '';
     }
@@ -74,22 +72,22 @@ const GenerateEmail = () => {
       let users = [];
 
       if (fields.visitor) {
-        users.push("Visitor");
+        users.push('Visitor');
       }
       if (fields.exhibitor) {
-        users.push("Exhibitor");
+        users.push('Exhibitor');
       }
 
       const data = {
         subject: fields.subject.value,
         body: fields.body.value,
-        users: users
+        users: users,
       };
 
       let config = {
         headers: {
-          'x-auth-token': localStorage.getItem('token')
-        }
+          'x-auth-token': localStorage.getItem('token'),
+        },
       };
 
       let mailUrl = url + 'event/notifyUsers/' + selectedEvent;
@@ -98,12 +96,12 @@ const GenerateEmail = () => {
         .post(mailUrl, data, config)
         .then((res) => {
           swal('', 'Email sent successfully', 'success')
-            .then(val => {
+            .then((val) => {
               setIsSubmit(true);
             })
-            .catch(err => {
+            .catch((err) => {
               throw err;
-            })
+            });
           setLoading(false);
         })
         .catch((err) => {
@@ -115,8 +113,8 @@ const GenerateEmail = () => {
 
   return (
     <div>
-      {!selectedEvent && !indivEvent && <Redirect to="/" />}
-      {isSubmit && <Redirect to="/eventDetails" />}
+      {!selectedEvent && !indivEvent && <Redirect to='/' />}
+      {isSubmit && <Redirect to='/eventDetails' />}
       <div className={classes['email-card']}>
         <div className={classes['email-title']}>
           <h4>Generate E-mail for {indivEvent && indivEvent.name}</h4>
@@ -125,27 +123,27 @@ const GenerateEmail = () => {
           <h5>Subject to attach with E-mail</h5>
           <div className={classes['details-bg']}>
             <input
-              type="text"
-              name="subject"
+              type='text'
+              name='subject'
               onChange={handleChange}
               value={fields.subject.value}
-              style={{ width: "100%" }}
+              style={{ width: '100%' }}
             />
           </div>
-          <p style={{ color: "white" }}>{fields.subject.error}</p>
+          <p style={{ color: 'white' }}>{fields.subject.error}</p>
         </div>
         <div className={classes['email-item']}>
           <h5>Body of the email</h5>
           <div className={classes['details-bg']}>
             <textarea
-              rows="5"
-              name="body"
+              rows='5'
+              name='body'
               value={fields.body.value}
               onChange={handleChange}
-              style={{ width: "100%" }}>
-            </textarea>
+              style={{ width: '100%' }}
+            ></textarea>
           </div>
-          <p style={{ color: "white" }}>{fields.body.error}</p>
+          <p style={{ color: 'white' }}>{fields.body.error}</p>
         </div>
         <div className={classes['checkbox_send']}>
           <div className='form-check form-check-inline'>
@@ -154,14 +152,12 @@ const GenerateEmail = () => {
               type='checkbox'
               id='inlineCheckbox1'
               checked={fields.visitor}
-              onChange={
-                () => {
-                  setFields({
-                    ...fields,
-                    visitor: !fields.visitor
-                  });
-                }
-              }
+              onChange={() => {
+                setFields({
+                  ...fields,
+                  visitor: !fields.visitor,
+                });
+              }}
             />
             <label className='form-check-label' htmlFor='inlineCheckbox1'>
               Visitor
@@ -172,14 +168,12 @@ const GenerateEmail = () => {
               className='form-check-input'
               type='checkbox'
               checked={fields.exhibitor}
-              onChange={
-                () => {
-                  setFields({
-                    ...fields,
-                    exhibitor: !fields.exhibitor
-                  });
-                }
-              }
+              onChange={() => {
+                setFields({
+                  ...fields,
+                  exhibitor: !fields.exhibitor,
+                });
+              }}
               id='inlineCheckbox2'
               value='option2'
             />
@@ -187,30 +181,64 @@ const GenerateEmail = () => {
               Exhibitor
             </label>
           </div>
-          <p style={{ marginTop: "5px" }}>{fields.error}</p>
+          <p style={{ marginTop: '5px' }}>{fields.error}</p>
         </div>
         <div>
           <Link
             to='/eventDetails'
             type='button'
-            style={{ maxWidth: '300px', minWidth: "250px", textAlign: 'center', marginRight: "10px" }}
-            className={['btn btn-primary', classes.link, classes.next, classes['btn-primary']].join(' ')}
+            style={{
+              maxWidth: '300px',
+              minWidth: '250px',
+              textAlign: 'center',
+              marginRight: '10px',
+            }}
+            className={[
+              'btn btn-primary',
+              classes.link,
+              classes.next,
+              classes['btn-primary'],
+            ].join(' ')}
           >
             Cancel
-        </Link>
-          {loading ? <button
-            type='button'
-            style={{ maxWidth: '300px', minWidth: "250px", textAlign: 'center' }}
-            className={['btn btn-primary', classes.link, classes.next, classes['btn-primary']].join(' ')}
-          > Loading </button> : <button
-            type='button'
-            style={{ maxWidth: '300px', minWidth: "250px", textAlign: 'center' }}
-            className={['btn btn-primary', classes.link, classes.next, classes['btn-primary']].join(' ')}
-            onClick={handleSubmit}
-          >
+          </Link>
+          {loading ? (
+            <button
+              type='button'
+              style={{
+                maxWidth: '300px',
+                minWidth: '250px',
+                textAlign: 'center',
+              }}
+              className={[
+                'btn btn-primary',
+                classes.link,
+                classes.next,
+                classes['btn-primary'],
+              ].join(' ')}
+            >
+              {' '}
+              Loading{' '}
+            </button>
+          ) : (
+            <button
+              type='button'
+              style={{
+                maxWidth: '300px',
+                minWidth: '250px',
+                textAlign: 'center',
+              }}
+              className={[
+                'btn btn-primary',
+                classes.link,
+                classes.next,
+                classes['btn-primary'],
+              ].join(' ')}
+              onClick={handleSubmit}
+            >
               Send E-mail
-        </button>
-          }
+            </button>
+          )}
         </div>
       </div>
     </div>
