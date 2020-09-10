@@ -99,6 +99,10 @@ const Login = () => {
   return (
     <div className={classes['bg-login']}>
       {localStorage.getItem('token') && <Redirect to='/' />}
+      {localStorage.getItem('token') &&
+        localStorage.getItem('role') === 'Organizer' && (
+          <Redirect to='/admin' />
+        )}
       {isSubmit && <Redirect to={fields.link} />}
       <div className={classes['login']}>
         <img src={login} alt='login' className={classes['imgLogin']} />
@@ -140,7 +144,11 @@ const Login = () => {
             <div>
               <button
                 type='submit'
-                className={['btn btn-primary btn-block', classes.next, classes['btn-primary']].join(' ')}
+                className={[
+                  'btn btn-primary btn-block',
+                  classes.next,
+                  classes['btn-primary'],
+                ].join(' ')}
                 disable={loading.toString()}
               >
                 {loading ? 'Loading' : 'Login'}

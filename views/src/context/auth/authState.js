@@ -9,7 +9,7 @@ import { UPDATE_USER, AUTHENTICATE, LOGOUT, FORGET_PASSWORD } from '../types';
 
 const AuthState = (props) => {
   const initialState = {
-    usedId: '',
+    userId: '',
     username: '',
     password: '',
     email: '',
