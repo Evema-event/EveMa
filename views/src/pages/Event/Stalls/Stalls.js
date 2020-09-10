@@ -15,6 +15,7 @@ const Stalls = () => {
 
   useEffect(() => {
     getStalls(selectedEvent);
+    // eslint-disable-next-line
   }, []);
 
   return (

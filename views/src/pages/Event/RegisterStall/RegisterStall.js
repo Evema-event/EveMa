@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
-import img from '../../../img/register.png';
+import img from '../../../img/registerStall.png';
 import classes from './registerStall.module.css';
 
 import url from '../../../server';
@@ -84,17 +84,24 @@ const RegisterStall = (props) => {
         .then((res) => {
           authContext.getProfile();
           swal('Congrats', 'Stall registered Successfully', 'success')
-            .then(val => {
+            .then((val) => {
               setSubmit(true);
             })
-            .catch(err => {
+            .catch((err) => {
               throw err;
-            })
+            });
           setLoading(false);
         })
         .catch((err) => {
-          if (err.response.data.error === "You can only register 2 stalls in an event") {
-            swal('Cannot register', 'You can only register for two stalls', 'error');
+          if (
+            err.response.data.error ===
+            'You can only register 2 stalls in an event'
+          ) {
+            swal(
+              'Cannot register',
+              'You can only register for two stalls',
+              'error'
+            );
           } else {
             swal('Something went wrong', 'Try again!', 'error');
           }
@@ -157,32 +164,54 @@ const RegisterStall = (props) => {
             <h6>{fields.productDescription.error}</h6>
           </div>
           {authContext.registeredStalls.includes(props.eventId) ? (
-            <div className={classes['register-button btn btn-primary btn-block can next']}>
+            <div
+              className={
+                classes['register-button btn btn-primary btn-block can next']
+              }
+            >
               Registered
             </div>
           ) : (
-              <div className={classes['register-button']}>
-                {loading ? (
-                  <button
-                    className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}
-                    type="button"
-                    disable={loading.toString()}
-                  >
-                    Loading
-                  </button>
-                ) : (
-                    <button
-                      type='submit'
-                      className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}
-                    >
-                      Register
-                    </button>
-                  )}
-              </div>
-            )}
+            <div className={classes['register-button']}>
+              {loading ? (
+                <button
+                  className={[
+                    'btn btn-primary btn-block',
+                    classes.can,
+                    classes.next,
+                    classes['btn-primary'],
+                  ].join(' ')}
+                  type='button'
+                  disable={loading.toString()}
+                >
+                  Loading
+                </button>
+              ) : (
+                <button
+                  type='submit'
+                  className={[
+                    'btn btn-primary btn-block',
+                    classes.can,
+                    classes.next,
+                    classes['btn-primary'],
+                  ].join(' ')}
+                >
+                  Register
+                </button>
+              )}
+            </div>
+          )}
 
           <Link to='/'>
-            <button type='button' className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}>
+            <button
+              type='button'
+              className={[
+                'btn btn-primary btn-block',
+                classes.can,
+                classes.next,
+                classes['btn-primary'],
+              ].join(' ')}
+            >
               Cancel
             </button>
           </Link>

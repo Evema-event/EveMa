@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
-import img from '../../../img/conference.png';
+import img from '../../../img/registerConference.png';
 import classes from './registerConference.module.css';
 
 import axios from 'axios';
@@ -105,17 +105,26 @@ const RegisterConf = (props) => {
         .then((res) => {
           authContext.getProfile();
           swal('Congrats', 'Conference registered Successfully', 'success')
-            .then(val => {
+            .then((val) => {
               setSubmit(true);
             })
-            .catch(err => {
+            .catch((err) => {
               throw err;
             });
           setLoading(false);
         })
         .catch((err) => {
-          if (err && err.response && err.response.data && err.response.data.error === "You can only register 1 conference") {
-            swal('Cannot register', 'You can only register for one conference', 'error');
+          if (
+            err &&
+            err.response &&
+            err.response.data &&
+            err.response.data.error === 'You can only register 1 conference'
+          ) {
+            swal(
+              'Cannot register',
+              'You can only register for one conference',
+              'error'
+            );
           } else {
             swal('Something went wrong', 'Try again!', 'error');
           }
@@ -130,7 +139,11 @@ const RegisterConf = (props) => {
       <div className={classes['section-conf']}>
         {submit && <Redirect to='/conferenceList' />}
         {!eventContext.selectedEvent && <Redirect to='/' />}
-        <img className={classes['reg-img']} src={img} alt='Register Conference' />
+        <img
+          className={classes['reg-img']}
+          src={img}
+          alt='Register Conference'
+        />
         <form onSubmit={handleSubmit}>
           <h2>Register Conference</h2>
           <div className={classes['reg_grid']}>
@@ -218,7 +231,11 @@ const RegisterConf = (props) => {
               />
               <h6>{fields.edTime.error}</h6>
             </div>
-            <div className={[classes['form_reg-group'], classes['reg_text']].join(' ')}>
+            <div
+              className={[classes['form_reg-group'], classes['reg_text']].join(
+                ' '
+              )}
+            >
               <label htmlFor='description'>Description</label>
               <textarea
                 type='text'
@@ -236,35 +253,60 @@ const RegisterConf = (props) => {
             </div>
 
             <Link to='/'>
-              <button type='button' className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}>
+              <button
+                type='button'
+                className={[
+                  'btn btn-primary btn-block',
+                  classes.can,
+                  classes.next,
+                  classes['btn-primary'],
+                ].join(' ')}
+              >
                 Cancel
               </button>
             </Link>
             <div className={classes['reg']}>
               {authContext.registeredConferences.includes(props.eventId) ? (
-                <div className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}>
+                <div
+                  className={[
+                    'btn btn-primary btn-block',
+                    classes.can,
+                    classes.next,
+                    classes['btn-primary'],
+                  ].join(' ')}
+                >
                   Registered
                 </div>
               ) : (
-                  <div className={classes['register-button']}>
-                    {loading ? (
-                      <button
-                        type="button"
-                        className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}
-                        disable={loading.toString()}
-                      >
-                        Loading
-                      </button>
-                    ) : (
-                        <button
-                          type='submit'
-                          className={['btn btn-primary btn-block', classes.can, classes.next, classes['btn-primary']].join(' ')}
-                        >
-                          Register
-                        </button>
-                      )}
-                  </div>
-                )}
+                <div className={classes['register-button']}>
+                  {loading ? (
+                    <button
+                      type='button'
+                      className={[
+                        'btn btn-primary btn-block',
+                        classes.can,
+                        classes.next,
+                        classes['btn-primary'],
+                      ].join(' ')}
+                      disable={loading.toString()}
+                    >
+                      Loading
+                    </button>
+                  ) : (
+                    <button
+                      type='submit'
+                      className={[
+                        'btn btn-primary btn-block',
+                        classes.can,
+                        classes.next,
+                        classes['btn-primary'],
+                      ].join(' ')}
+                    >
+                      Register
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </form>
