@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import img from '../../img/picture.jpeg';
 import classes from '../Profile/Profile.module.css';
@@ -10,6 +11,9 @@ const Profile = () => {
 
   return (
     <div className={classes.heads}>
+      {!localStorage.getItem('token') && profile.role !== 'Organizer' && (
+        <Redirect to='/' />
+      )}
       <h4 className={classes.profile}>Profile</h4>
       <div className={classes.main}>
         <div className={classes.user}>
