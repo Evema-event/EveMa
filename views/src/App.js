@@ -11,7 +11,7 @@ import StallState from './context/stall/stallState';
 import ConferenceState from './context/conference/conferenceState';
 import VisitorState from './context/visitor/visitorState';
 
-const App1 = () => {
+const App = () => {
     return (
         <EventState>
             <AuthState>
@@ -27,4 +27,4 @@ const App1 = () => {
     );
 }
 
-export default App1;
+export default App;
