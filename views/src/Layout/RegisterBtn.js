@@ -18,7 +18,7 @@ const RegisterBtn = (props) => {
   const [confRedir, setConfRedir] = useState(false);
   const [deleteStallRedir, setDeleteStallRedir] = useState(false);
   const [deleteConfRedir, setDeleteConfRedir] = useState(false);
-  
+
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
 
@@ -36,6 +36,7 @@ const RegisterBtn = (props) => {
     axios
       .put(registerUrl, data, config)
       .then((res) => {
+        eventContext.setIndividualEvent(res.data.event, true);
         swal('Congrats', 'Event registered Successfully', 'success');
         authContext.getProfile();
         setLoading(false);
@@ -200,14 +201,20 @@ const RegisterBtn = (props) => {
           .delete(delStallUrl, configuration)
           .then((res) => {
             if (res.data.message === 'Success') {
-              swal('Stall deleted successfully');
+              eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
+              eventContext.setIndividualEvent(eventContext.indivEvent, true);
               authContext.getProfile();
-              setDeleteStallRedir(true);
               setLoading(false);
+              swal('Stall deleted successfully')
+                .then(res => {
+                  setDeleteStallRedir(true);
+                })
+                .catch(err => {
+                  throw err;
+                })
             }
           })
           .catch((err) => {
-            console.log(err);
             setLoading(false);
           });
       } else {
@@ -222,7 +229,6 @@ const RegisterBtn = (props) => {
         'x-auth-token': localStorage.getItem('token'),
       },
     };
-    console.log(props.confId)
     let delConfUrl = url + `conference/deleteConference/${props.confId}`;
     setLoading(true);
     swal({
@@ -237,14 +243,18 @@ const RegisterBtn = (props) => {
           .delete(delConfUrl, configuration)
           .then((res) => {
             if (res.data.message === 'Success') {
-              swal('Conference deleted successfully');
               authContext.getProfile();
-              setDeleteConfRedir(true);
               setLoading(false);
+              swal('Conference deleted successfully')
+                .then(res => {
+                  setDeleteConfRedir(true);
+                })
+                .catch(err => {
+                  throw err;
+                });
             }
           })
           .catch((err) => {
-            console.log(err);
             setLoading(false);
           });
       } else {
@@ -282,7 +292,7 @@ const RegisterBtn = (props) => {
       if (props.user === authContext.userId) {
         return (
           <>
-            {deleteStallRedir && <Redirect to='/stallList' />}
+            {deleteStallRedir && <Redirect to='/eventDetails' />}
             {deleteStallRedir && <NotifyUser stall={true} />}
             <div
               className='btn btn-danger'
@@ -293,16 +303,16 @@ const RegisterBtn = (props) => {
             </div>
           </>
         );
-      } 
+      }
       else {
         return <></>;
       }
-    } 
-    else if(props.confId){
-      if(props.user===authContext.userId){
-          return (
-            <>
-            {deleteConfRedir && <Redirect to= '/conferenceDetails'/>}
+    }
+    else if (props.confId) {
+      if (props.user === authContext.userId) {
+        return (
+          <>
+            {deleteConfRedir && <Redirect to='/eventDetails' />}
             <div
               className='btn btn-danger'
               style={{ width: '200px' }}
@@ -310,10 +320,10 @@ const RegisterBtn = (props) => {
             >
               Delete Conference
             </div>
-            </>
-          )
+          </>
+        )
       }
-      else{
+      else {
         return <></>
       }
     }
