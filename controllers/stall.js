@@ -106,7 +106,7 @@ exports.deleteStall = (req, res) => {
       return profile.save();
     })
     .then((profile) => {
-      return Stall.findOneAndDelete(req.params.stallId);
+      return Stall.findByIdAndDelete(req.params.stallId);
     })
     .then((stall) => {
       res.status(200).json({ message: 'Success', stall: stall });

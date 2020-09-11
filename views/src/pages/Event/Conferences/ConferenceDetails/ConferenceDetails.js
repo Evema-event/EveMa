@@ -6,6 +6,7 @@ import classes from './conferenceDetails.module.css';
 import EventTab from '../../../../Layout/eventTab';
 
 import ConferenceContext from '../../../../context/conference/conferenceContext';
+import RegisterButton from '../../../../Layout/RegisterBtn';
 
 const ConferenceDetails = () => {
     const conferenceContext = useContext(ConferenceContext);
@@ -75,7 +76,11 @@ const ConferenceDetails = () => {
                             </div>
                         </div>
                     </div>
+                 <div className={classes['Del-btn']}>
+                  {<RegisterButton confId={conference._id} user={conference.userId._id} />}
+                 </div>
                 </div>
+              
             }
         </div>
     );

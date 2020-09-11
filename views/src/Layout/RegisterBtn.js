@@ -4,9 +4,11 @@ import swal from 'sweetalert';
 
 import url from '../server';
 import axios from 'axios';
+import NotifyUser from '../pages/Event/NotifyUser/NotifyUser';
 
 import EventContext from '../context/event/eventContext';
 import AuthContext from '../context/auth/authContext';
+
 
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
@@ -15,9 +17,11 @@ const RegisterBtn = (props) => {
   const [stallRedir, setStallRedir] = useState(false);
   const [confRedir, setConfRedir] = useState(false);
   const [deleteStallRedir, setDeleteStallRedir] = useState(false);
+  const [deleteConfRedir, setDeleteConfRedir] = useState(false);
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
+
 
   const registerEvent = () => {
     setregEvent(true);
@@ -32,6 +36,7 @@ const RegisterBtn = (props) => {
     axios
       .put(registerUrl, data, config)
       .then((res) => {
+        eventContext.setIndividualEvent(res.data.event, true);
         swal('Congrats', 'Event registered Successfully', 'success');
         authContext.getProfile();
         setLoading(false);
@@ -47,24 +52,53 @@ const RegisterBtn = (props) => {
         'x-auth-token': localStorage.getItem('token'),
       },
     };
-    //let eventdata = {};
-
     let deleteUrl = url + `event/deleteEvent/${props.eventId}`;
+    let users = ['Visitor', 'Exhibitor'];
+    const data = {
+      subject: "Regarding - Cancellation of an event",
+      body: `${props.name} event has been cancelled. Sorry for the inconvenience.
+             For further queries, please contact ${props.event.contactEmail}`,
+      users: users,
+    };
+    let mailUrl = url + `event/notifyUsers/${props.eventId}`;
     setLoading(true);
-    axios
-      .delete(deleteUrl, configuration)
-      .then((res) => {
-        if (res.data.message === 'Success') {
-          swal('Event deleted successfully');
-          eventContext.getUpcomingEvent();
-          setisSubmit(true);
-          setLoading(false);
-        }
-      })
+    swal({
+      title: 'Are you sure?',
+      text: 'You are about to delete an event!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        axios.post(mailUrl, data, configuration)
+          .then((res) => {
+            return axios.delete(deleteUrl, configuration)
+          })
+          .then((res) => {
+            if (res.data.message === 'Success') {
+              swal('Event deleted successfully and users notified');
+              eventContext.getUpcomingEvent();
+              setisSubmit(true);
+              setLoading(false);
+            }
+          })
+          .catch((err) => {
+            throw err;
+          });
+      }
+      else {
+        setisSubmit(true);
+        setLoading(false)
+      }
+    })
       .catch((err) => {
-        setLoading(false);
-      });
-  };
+        swal('Something went wrong', 'try again!', 'error')
+        setisSubmit(true)
+        setLoading(false)
+      })
+  }
+
+
 
   const registerStall = () => {
     eventContext.setSelectedEvent(props.eventId);
@@ -98,14 +132,14 @@ const RegisterBtn = (props) => {
           {loading ? (
             <div disabled>Loading</div>
           ) : (
-            <div
-              className='btn btn-success pl-2 pr-2'
-              style={{ width: '200px' }}
-              onClick={registerStall}
-            >
-              Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
-            </div>
-          )}
+              <div
+                className='btn btn-success pl-2 pr-2'
+                style={{ width: '200px' }}
+                onClick={registerStall}
+              >
+                Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
+              </div>
+            )}
         </>
       );
     } else {
@@ -133,14 +167,14 @@ const RegisterBtn = (props) => {
           {loading ? (
             <div disabled>Loading</div>
           ) : (
-            <div
-              className='btn btn-success'
-              style={{ width: '200px' }}
-              onClick={registerConference}
-            >
-              Register Conference
-            </div>
-          )}
+              <div
+                className='btn btn-success'
+                style={{ width: '200px' }}
+                onClick={registerConference}
+              >
+                Register Conference
+              </div>
+            )}
         </>
       );
     }
@@ -155,19 +189,78 @@ const RegisterBtn = (props) => {
 
     let delStallUrl = url + `stall/deleteStall/${props.stallId}`;
     setLoading(true);
-    axios
-      .delete(delStallUrl, configuration)
-      .then((res) => {
-        if (res.data.message === 'Success') {
-          swal('Stall deleted successfully');
-          setDeleteStallRedir(true);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+    swal({
+      title: 'Are you sure?',
+      text: 'You are about to delete a stall!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        axios
+          .delete(delStallUrl, configuration)
+          .then((res) => {
+            if (res.data.message === 'Success') {
+              eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
+              eventContext.setIndividualEvent(eventContext.indivEvent, true);
+              authContext.getProfile();
+              setLoading(false);
+              swal('Stall deleted successfully')
+                .then(res => {
+                  setDeleteStallRedir(true);
+                })
+                .catch(err => {
+                  throw err;
+                })
+            }
+          })
+          .catch((err) => {
+            setLoading(false);
+          });
+      } else {
+        setDeleteStallRedir(true);
+      }
+    });
+  };
+
+  const deleteConference = () => {
+    let configuration = {
+      headers: {
+        'x-auth-token': localStorage.getItem('token'),
+      },
+    };
+    let delConfUrl = url + `conference/deleteConference/${props.confId}`;
+    setLoading(true);
+    swal({
+      title: 'Are you sure?',
+      text: 'You are about to delete a Conference!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((res) => {
+      if (res) {
+        axios
+          .delete(delConfUrl, configuration)
+          .then((res) => {
+            if (res.data.message === 'Success') {
+              authContext.getProfile();
+              setLoading(false);
+              swal('Conference deleted successfully')
+                .then(res => {
+                  setDeleteConfRedir(true);
+                })
+                .catch(err => {
+                  throw err;
+                });
+            }
+          })
+          .catch((err) => {
+            setLoading(false);
+          });
+      } else {
+        setDeleteConfRedir(true);
+      }
+    });
   };
 
   if (
@@ -179,16 +272,16 @@ const RegisterBtn = (props) => {
         {authContext.registeredEvents.includes(props.eventId) || regEvent ? (
           <div className='btn btn-success pl-5 pr-5'>Registered</div>
         ) : (
-          <div className='btn btn-success pl-5 pr-5'>
-            {loading ? (
-              <div className='btn-warning' disabled>
-                Loading
-              </div>
-            ) : (
-              <div onClick={registerEvent}>Register Event</div>
-            )}
-          </div>
-        )}
+            <div className='btn btn-success pl-5 pr-5'>
+              {loading ? (
+                <div className='btn-warning' disabled>
+                  Loading
+                </div>
+              ) : (
+                  <div onClick={registerEvent}>Register Event</div>
+                )}
+            </div>
+          )}
       </div>
     );
   } else if (
@@ -199,7 +292,8 @@ const RegisterBtn = (props) => {
       if (props.user === authContext.userId) {
         return (
           <>
-            {deleteStallRedir && <Redirect to='/stallList' />}
+            {deleteStallRedir && <Redirect to='/eventDetails' />}
+            {deleteStallRedir && <NotifyUser stall={true} />}
             <div
               className='btn btn-danger'
               style={{ width: '200px' }}
@@ -209,10 +303,31 @@ const RegisterBtn = (props) => {
             </div>
           </>
         );
-      } else {
+      }
+      else {
         return <></>;
       }
-    } else {
+    }
+    else if (props.confId) {
+      if (props.user === authContext.userId) {
+        return (
+          <>
+            {deleteConfRedir && <Redirect to='/eventDetails' />}
+            <div
+              className='btn btn-danger'
+              style={{ width: '200px' }}
+              onClick={deleteConference}
+            >
+              Delete Conference
+            </div>
+          </>
+        )
+      }
+      else {
+        return <></>
+      }
+    }
+    else {
       return (
         <div className='ml-auto row'>
           {stallRedir && <Redirect to='/registerStall' />}
@@ -237,14 +352,14 @@ const RegisterBtn = (props) => {
               Loading
             </div>
           ) : (
-            <div
-              className='btn btn-danger'
-              style={{ width: '200px' }}
-              onClick={deleteEvent}
-            >
-              Delete Event
-            </div>
-          )}
+              <div
+                className='btn btn-danger'
+                style={{ width: '200px' }}
+                onClick={deleteEvent}
+              >
+                Delete Event
+              </div>
+            )}
         </div>
         <div className='col'>
           <Link

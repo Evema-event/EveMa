@@ -25,11 +25,10 @@ const Navbar = () => {
   const logout = () => {
     setRedirect(true);
     authContext.logout();
-  }
+  };
 
   const guestLinks = (
     <Fragment>
-      {redirect && <Redirect to='/' />}
       {localStorage.getItem('token') &&
         localStorage.getItem('role') === 'Organizer' ? (
           <li>
@@ -41,7 +40,7 @@ const Navbar = () => {
           <li>
             <Link className='nav-link' to='/'>
               Home
-            </Link>
+          </Link>
           </li>
         )}
       <li>
@@ -50,17 +49,27 @@ const Navbar = () => {
         </Link>
       </li>
       {authContext.token ? (
-        <li className='nav-item'>
-          <span
-            style={{ cursor: 'pointer' }}
-            className='nav-link'
-            onClick={logout}
-          >
-            Logout
-          </span>
-        </li>
+        <>
+          {authContext.role !== 'Organizer' && (
+            <li className='nav-item'>
+              <Link to='/profile' className='nav-link'>
+                Profile
+              </Link>
+            </li>
+          )}
+          <li className='nav-item'>
+            <span
+              style={{ cursor: 'pointer' }}
+              className='nav-link'
+              onClick={logout}
+            >
+              Logout
+            </span>
+          </li>
+        </>
       ) : (
           <>
+            {redirect && <Redirect to='/' />}
             <li className='nav-item'>
               <Link className='nav-link' to='/signup/0'>
                 Sign Up

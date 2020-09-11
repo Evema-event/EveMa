@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import classes from '../../EventList/eventList.module.css'
@@ -10,8 +10,14 @@ import ConferenceContext from '../../../context/conference/conferenceContext';
 import EventContext from '../../../context/event/eventContext';
 
 const Conferences = () => {
-    const { conferences } = useContext(ConferenceContext);
+    const { conferences, getConferences } = useContext(ConferenceContext);
     const { selectedEvent } = useContext(EventContext);
+    
+    
+  useEffect(() => {
+    getConferences(selectedEvent);
+    // eslint-disable-next-line
+  }, []);
 
     return (
         <>

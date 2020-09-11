@@ -82,6 +82,8 @@ const RegisterStall = (props) => {
       axios
         .post(registerStallUrl, data, config)
         .then((res) => {
+          eventContext.indivEvent.registeredStalls.push(res.data.stall._id);
+          eventContext.setIndividualEvent(eventContext.indivEvent, true);
           authContext.getProfile();
           swal('Congrats', 'Stall registered Successfully', 'success')
             .then((val) => {
@@ -172,35 +174,35 @@ const RegisterStall = (props) => {
               Registered
             </div>
           ) : (
-            <div className={classes['register-button']}>
-              {loading ? (
-                <button
-                  className={[
-                    'btn btn-primary btn-block',
-                    classes.can,
-                    classes.next,
-                    classes['btn-primary'],
-                  ].join(' ')}
-                  type='button'
-                  disable={loading.toString()}
-                >
-                  Loading
-                </button>
-              ) : (
-                <button
-                  type='submit'
-                  className={[
-                    'btn btn-primary btn-block',
-                    classes.can,
-                    classes.next,
-                    classes['btn-primary'],
-                  ].join(' ')}
-                >
-                  Register
-                </button>
-              )}
-            </div>
-          )}
+              <div className={classes['register-button']}>
+                {loading ? (
+                  <button
+                    className={[
+                      'btn btn-primary btn-block',
+                      classes.can,
+                      classes.next,
+                      classes['btn-primary'],
+                    ].join(' ')}
+                    type='button'
+                    disable={loading.toString()}
+                  >
+                    Loading
+                  </button>
+                ) : (
+                    <button
+                      type='submit'
+                      className={[
+                        'btn btn-primary btn-block',
+                        classes.can,
+                        classes.next,
+                        classes['btn-primary'],
+                      ].join(' ')}
+                    >
+                      Register
+                    </button>
+                  )}
+              </div>
+            )}
 
           <Link to='/'>
             <button

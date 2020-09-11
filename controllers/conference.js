@@ -46,6 +46,70 @@ exports.getConferences = (req, res) => {
     });
 };
 
+//Exhibitor can delete a Conference
+exports.deleteConference = (req, res) => {
+  let eventId
+  User.findById(req.userId)
+    .then((user) => {
+      if (!user.role.includes('Exhibitor')) {
+        const error = new Error('Only Exhibitor can delete a conference.')
+        error.statusCode = 401
+        throw error
+      }
+      return Conference.findById(req.params.conferenceId)
+        .populate("eventId")
+    })
+    .then((conf) => {
+      if (!conf) {
+        const error = new Error('Conference not found')
+        error.statusCode = 404
+        throw error
+      }
+      let currentdate = Date.now()
+      let confDate = conf.eventId.startDate
+      let limitDate = new Date(confDate.setDate(confDate.getDate() - 2)).toISOString()
+      if (currentdate > limitDate) {
+        const error = new Error('Time limit Exceeded to delete')
+        error.statusCode = 401
+        throw error
+      }
+      eventId = conf.eventId._id
+      return Event.findById(eventId)
+    })
+    .then((event) => {
+      event.registeredConferences = event.registeredConferences.filter(
+        (conferenceId) => {
+          return conferenceId.toString() !== req.params.conferenceId.toString()
+        }
+      )
+      return event.save();
+    })
+    .then((event) => {
+      return Profile.findOne({
+        userId: req.userId
+      })
+    })
+    .then((profile) => {
+      let confl = []
+      profile.registeredConferences.forEach((conf) => {
+        if (conf.eventId.toString() !== eventId.toString()) {
+          confl.push(conf)
+        }
+      })
+      profile.registeredConferences = confl
+      return profile.save()
+    })
+    .then((profile) => {
+      return Conference.findByIdAndDelete(req.params.conferenceId)
+    })
+    .then((conference) => {
+      return res.status(200).json({ message: 'Success', conference: conference })
+    })
+    .catch((err) => {
+      throwError(err, res)
+    })
+}
+
 // Exhibitor can register a Conference
 exports.registerConference = (req, res) => {
   let loadedEvent;
