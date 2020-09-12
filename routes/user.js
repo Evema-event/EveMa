@@ -8,6 +8,7 @@ const signupController = require('../controllers/signup');
 const loginController = require('../controllers/login');
 const passwordController = require('../controllers/password');
 const profileController = require('../controllers/profile');
+const switchUserController = require('../controllers/switchUser');
 
 // Importing validators
 const verifyUserValidator = require('../validators/verifyUser');
@@ -83,6 +84,16 @@ router.get(
   '/getProfile',
   authenticate,
   profileController.getProfile
+)
+
+/*
+POST - /api/user/switchUser
+Create and Switch account between exhibitor and visitor
+*/
+router.post(
+  '/switchUser',
+  authenticate,
+  switchUserController.switchUser
 )
 
 // Exporting all routes
