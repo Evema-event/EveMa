@@ -209,3 +209,15 @@ token: **Required**
 Input: **subject,body,users(Array must contain Visitor or Exhibitor or Both)**
 
 Output:**Return Failed if error else Success**
+
+## switchUser
+
+url: **api/user/switchUser**
+
+method: **post**
+
+token: **Required**
+
+Input: **password**
+
+Output:**Return Failed if error else return Success**
