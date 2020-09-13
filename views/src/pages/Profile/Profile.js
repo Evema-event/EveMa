@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import img from '../../img/picture.jpeg';
 import classes from '../Profile/Profile.module.css';
@@ -88,8 +88,32 @@ const Profile = () => {
                 <h5 className={classes.head}>Zipcode</h5>
                 <p className={classes.body}>{profile.zipcode}</p>
               </div>
+              
             </div>
+             
           </div>
+         
+        </div>
+        <div className={classes.switch}>
+        {profile.role==='Exhibitor' ? (
+              <Link to= '/switchAccount'>
+                <button
+                  type="button"
+                  className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                >
+                  Signup as Visitor
+                </button>
+                </Link>
+              ) : (
+                <Link to='/switchAccount'>
+                  <button
+                    type='button'
+                    className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                  >
+                     Signup as Exhibitor
+                  </button>
+                  </Link>
+                )}
         </div>
       </div>
     </div>

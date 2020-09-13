@@ -1,6 +1,7 @@
 .section {
     width: 100%;
     padding-top: 40px;
+    margin-bottom: 30px;
     /* background-image: linear-gradient(to bottom right, rgba(0, 60, 226, 0.6), rgba(202, 30, 30, 0.768)); */
 
 }
@@ -66,6 +67,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 80px;
+}
+.switch{
+    width: 250px;
+    /* margin: 0 0 50px 270px;  */
+    margin: 0 auto;
+    margin-bottom: 2rem;
 }
 
 .info {

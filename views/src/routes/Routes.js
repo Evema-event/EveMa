@@ -35,6 +35,7 @@ import Navbar from '../Layout/Navbar/Navbar';
 
 //Import Profile
 import Profile from '../pages/Profile/Profile';
+import SwitchAccount from '../pages/Auth/SwitchAccount/SwitchAccount';
 
 const Routes = () => {
   return (
@@ -57,6 +58,7 @@ const Routes = () => {
         <Route exact path='/conferenceList' component={Conferences} />
         <Route exact path='/conferenceDetails' component={ConferencesDetails} />
         <Route exact path='/registerStall' component={RegisterStall} />
+        <Route exact path='/switchAccount' component={SwitchAccount}/>
         <Route
           exact
           path='/registerConference'
