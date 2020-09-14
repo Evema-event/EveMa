@@ -14,6 +14,7 @@ const AuthState = (props) => {
     password: '',
     email: '',
     role: '',
+    roles: [],
     firstname: '',
     lastname: '',
     state: '',
@@ -76,6 +77,7 @@ const AuthState = (props) => {
         password: response.data.user.password,
         email: response.data.user.emailId,
         role: '',
+        roles: response.data.user.role,
       };
     } else {
       user = {
@@ -84,6 +86,7 @@ const AuthState = (props) => {
         password: response.data.user.password,
         email: response.data.user.emailId,
         role: '',
+        roles: response.data.user.role,
         firstname: response.data.profile.firstName,
         lastname: response.data.profile.lastName,
         state: response.data.profile.state,
@@ -122,6 +125,7 @@ const AuthState = (props) => {
         email: state.email,
         password: state.password,
         role: state.role,
+        roles: state.roles,
         firstname: state.firstname,
         lastname: state.lastname,
         state: state.state,

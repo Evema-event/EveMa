@@ -12,3 +12,4 @@ TypeError: res.status is not a function
 TypeError: user.role[1].push is not a function
 TypeError: Cannot read property 'push' of undefined
 TypeError: res.status is not a function
+ReferenceError: tokenGenerator is not defined

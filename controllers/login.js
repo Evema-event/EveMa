@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs');
 // Importing utility functions
 const tokenGenerator = require('../utility/tokenGenerator');
 const throwError = require('../utility/throwError');
-const user = require('../models/user');
+
 
 // Login function generate token based on user availability
 exports.login = (req, res) => {
@@ -32,7 +32,7 @@ exports.login = (req, res) => {
         throw error;
       }
       if (savedUser.role[0] === 'Organizer') {
-        return user;
+        return {};
       }
 
       return Profile.findOne({ userId: savedUser._id });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
@@ -6,9 +6,11 @@ import classes from '../Login/login.module.css';
 
 import axios from 'axios';
 import url from '../../../server.js';
+import AuthContext from '../../../context/auth/authContext'
 
 
 const SwitchAccount = () => {
+  const authContext = useContext(AuthContext)
   const initialState = {
     password: { value: '', error: '' },
   };
@@ -59,18 +61,21 @@ const SwitchAccount = () => {
       axios
         .post(switchAccountUrl, data, config)
         .then((res) => {
-          if(res.message === 'Success'){
-          setisSubmit(true);
-          setLoading(false);
-          swal('Account Switched', 'You have successfully switched role!', 'success');
-        }
-      })
+          if (res.message === 'Success') {
+            authContext.authentication(res)
+            setisSubmit(true);
+            setLoading(false);
+            swal('Account added', 'You have successfully created a new account', 'success');
+          }
+        })
         .catch((err) => {
           setLoading(false);
-          swal('Something Wrong', 'You are not signed up', 'error');
+          swal('Something Wrong', 'error');
         });
     }
   };
+
+
 
   return (
     <div className={classes['bg-login']}>
