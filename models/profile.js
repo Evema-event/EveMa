@@ -9,6 +9,10 @@ const profileSchema = new Schema({
     ref: 'User',
     required: true,
   },
+  image: {
+    type: String,
+    required: true
+  },
   registeredEvents: [
     {
       type: mongoose.Schema.Types.ObjectId,

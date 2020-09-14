@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
-import img from '../../img/picture.jpeg';
 import classes from '../Profile/Profile.module.css';
+
+import { fileUrl } from '../../server';
 
 import AuthContext from '../../context/auth/authContext';
 
@@ -63,7 +64,7 @@ const Profile = () => {
                 </div>
               </div>
               <div className={classes.image}>
-                <img src={img} alt='Profile'></img>
+                <img src={fileUrl + profile.image} alt='Profile'></img>
                 <h5 className={classes.picture}>{profile.role}</h5>
               </div>
             </div>

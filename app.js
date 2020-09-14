@@ -16,6 +16,9 @@ if ((process.env.NODE_ENV || '').trim() === 'production') {
     app.use(express.static('views/build'));
 }
 
+// Serving static images and files
+app.use('/public', express.static('public'));
+
 // cors middleware for development
 app.use((req, res, next) => {
     if ((process.env.NODE_ENV || '').trim() !== 'production') {
