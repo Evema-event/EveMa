@@ -78,29 +78,34 @@
 .info {
     padding-bottom: 10px;
 }
-.custom-file-input::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-.custom-file-input::before {
-    content: 'Select some files';
+
+.file{
     display: inline-block;
-    background: linear-gradient(to top, #f9f9f9, #e3e3e3);
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    cursor: pointer;
-    text-shadow: 1px 1px #fff;
-    font-weight: 700;
-    font-size: 10pt;
-  }
-.custom-file-input:hover::before {
-    border-color: black;
+    
 }
-.custom-file-input:active::before {
-    background: -webkit-linear-gradient(to top, #e3e3e3, #f9f9f9);
+
+.fileInput{
+    display: none;
+}
+
+.fileLabel, .fileButton{
+    width: 75px;
+    height: 40px;
+    border: 1px solid blue;
+    background-color: blue;
+    color: cornsilk;
+    padding: 5px 5px;
+    text-align: center;
+    margin: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px grey;
+}
+
+.fileButton{
+    width: 70px;
+    background-color: mediumseagreen;
+    border: 1px solid mediumseagreen;
 }
 
 @media screen and (max-width: 1400px) {}
