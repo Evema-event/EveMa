@@ -4,7 +4,6 @@ import swal from 'sweetalert';
 
 import url from '../server';
 import axios from 'axios';
-import NotifyUser from '../pages/Event/NotifyUser/NotifyUser';
 
 import EventContext from '../context/event/eventContext';
 import AuthContext from '../context/auth/authContext';
@@ -16,8 +15,7 @@ const RegisterBtn = (props) => {
   const [regEvent, setregEvent] = useState(false);
   const [stallRedir, setStallRedir] = useState(false);
   const [confRedir, setConfRedir] = useState(false);
-  const [deleteStallRedir, setDeleteStallRedir] = useState(false);
-  const [deleteConfRedir, setDeleteConfRedir] = useState(false);
+
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
@@ -180,88 +178,7 @@ const RegisterBtn = (props) => {
     }
   };
 
-  const deleteStall = () => {
-    let configuration = {
-      headers: {
-        'x-auth-token': localStorage.getItem('token'),
-      },
-    };
 
-    let delStallUrl = url + `stall/deleteStall/${props.stallId}`;
-    setLoading(true);
-    swal({
-      title: 'Are you sure?',
-      text: 'You are about to delete a stall!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    }).then((res) => {
-      if (res) {
-        axios
-          .delete(delStallUrl, configuration)
-          .then((res) => {
-            if (res.data.message === 'Success') {
-              eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
-              eventContext.setIndividualEvent(eventContext.indivEvent, true);
-              authContext.getProfile();
-              setLoading(false);
-              swal('Stall deleted successfully')
-                .then(res => {
-                  setDeleteStallRedir(true);
-                })
-                .catch(err => {
-                  throw err;
-                })
-            }
-          })
-          .catch((err) => {
-            setLoading(false);
-          });
-      } else {
-        setDeleteStallRedir(true);
-      }
-    });
-  };
-
-  const deleteConference = () => {
-    let configuration = {
-      headers: {
-        'x-auth-token': localStorage.getItem('token'),
-      },
-    };
-    let delConfUrl = url + `conference/deleteConference/${props.confId}`;
-    setLoading(true);
-    swal({
-      title: 'Are you sure?',
-      text: 'You are about to delete a Conference!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    }).then((res) => {
-      if (res) {
-        axios
-          .delete(delConfUrl, configuration)
-          .then((res) => {
-            if (res.data.message === 'Success') {
-              authContext.getProfile();
-              setLoading(false);
-              swal('Conference deleted successfully')
-                .then(res => {
-                  setDeleteConfRedir(true);
-                })
-                .catch(err => {
-                  throw err;
-                });
-            }
-          })
-          .catch((err) => {
-            setLoading(false);
-          });
-      } else {
-        setDeleteConfRedir(true);
-      }
-    });
-  };
 
   if (
     localStorage.getItem('token') &&
@@ -288,58 +205,18 @@ const RegisterBtn = (props) => {
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Exhibitor'
   ) {
-    if (props.stallId) {
-      if (props.user === authContext.userId) {
-        return (
-          <>
-            {deleteStallRedir && <Redirect to='/eventDetails' />}
-            {deleteStallRedir && <NotifyUser stall={true} />}
-            <div
-              className='btn btn-danger'
-              style={{ width: '200px' }}
-              onClick={deleteStall}
-            >
-              Delete Stall
-            </div>
-          </>
-        );
-      }
-      else {
-        return <></>;
-      }
-    }
-    else if (props.confId) {
-      if (props.user === authContext.userId) {
-        return (
-          <>
-            {deleteConfRedir && <Redirect to='/eventDetails' />}
-            <div
-              className='btn btn-danger'
-              style={{ width: '200px' }}
-              onClick={deleteConference}
-            >
-              Delete Conference
-            </div>
-          </>
-        )
-      }
-      else {
-        return <></>
-      }
-    }
-    else {
-      return (
-        <div className='ml-auto row'>
-          {stallRedir && <Redirect to='/registerStall' />}
-          {confRedir && <Redirect to='/registerConference' />}
-          <div className='col-6' style={{ position: 'relative' }}>
-            {stallBtn()}
-          </div>
-          <div className='col-6'>{conferenceBtn()}</div>
+    return (
+      <div className='ml-auto row'>
+        {stallRedir && <Redirect to='/registerStall' />}
+        {confRedir && <Redirect to='/registerConference' />}
+        <div className='col-6' style={{ position: 'relative' }}>
+          {stallBtn()}
         </div>
-      );
-    }
-  } else if (
+        <div className='col-6'>{conferenceBtn()}</div>
+      </div>
+    );
+  }
+  else if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Organizer'
   ) {

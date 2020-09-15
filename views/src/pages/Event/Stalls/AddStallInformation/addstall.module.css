@@ -1,0 +1,44 @@
+.section-add {
+  margin: 30px auto;
+  width: 400px;
+  padding: 3rem;
+  color: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(44, 0, 255, 1) 0%,
+    rgba(189, 16, 224, 1) 100%
+  );
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+.section-add h3 {
+  margin: 0.5rem 0rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+.form_group {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_input {
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  /* width: 350px; */
+  box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
+  margin-bottom: auto;
+  border: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .section-add h3 {
+    font-size: 20px;
+  }
+  .section-add {
+    width: 300px;
+    padding: 1.5rem;
+  }
+}

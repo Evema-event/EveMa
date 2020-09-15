@@ -135,6 +135,13 @@ const Signup2 = () => {
       axios
         .post(signupUrl, userData)
         .then((res) => {
+          let role
+          if (res.data.user.role.length === 1) {
+            role = res.data.user.role[0];
+          } else {
+            role = 'Exhibitor';
+          }
+          localStorage.setItem('role', role)
           authContext.authentication(res);
           swal('Congrats', 'You logged in successfully!', 'success');
           setLoading(false);

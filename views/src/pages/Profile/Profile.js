@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 
 import classes from '../Profile/Profile.module.css';
@@ -7,10 +7,19 @@ import { fileUrl } from '../../server';
 
 import AuthContext from '../../context/auth/authContext';
 
+
 const Profile = () => {
   const profile = useContext(AuthContext);
+  const [Redir, setRedir] = useState(false)
+
+  const switchUser = (role) => {
+    localStorage.setItem('role', role)
+    profile.updateUser({ role: role })
+    setRedir(true)
+  }
 
   const addOrSwitch = () => {
+    let role = profile.role === 'Visitor' ? 'Exhibitor' : 'Visitor'
     if (profile.roles.length === 1) {
       return (
         <div className={classes.switch}>
@@ -26,11 +35,13 @@ const Profile = () => {
     } else {
       return (
         <div className={classes.switch}>
+          {Redir && <Redirect to='/home' />}
           <button
             type="button"
+            onClick={() => switchUser(role)}
             className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
           >
-            Switch as {profile.role === 'Visitor' ? 'Exhibitor' : 'Visitor'}
+            Switch to {role}
           </button>
         </div>)
     }
