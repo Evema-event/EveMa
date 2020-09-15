@@ -75,6 +75,13 @@ const Login = () => {
       axios
         .post(loginUrl, userData)
         .then((res) => {
+          let role
+          if (res.data.user.role.length === 1) {
+            role = res.data.user.role[0];
+          } else {
+            role = 'Exhibitor';
+          }
+          localStorage.setItem('role', role)
           if (res.data.user.role[0] === 'Organizer') {
             setFields({
               ...fields,
@@ -117,7 +124,7 @@ const Login = () => {
                 name='username'
                 id='username'
                 value={fields.username.value}
-                placeholder='Username'
+                placeholder='Username or Email'
                 required
                 onChange={handleChange}
               />

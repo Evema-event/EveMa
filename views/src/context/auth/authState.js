@@ -76,7 +76,7 @@ const AuthState = (props) => {
         username: response.data.user.userName,
         password: response.data.user.password,
         email: response.data.user.emailId,
-        role: '',
+        role: localStorage.getItem('role'),
         roles: response.data.user.role,
       };
     } else {
@@ -85,7 +85,7 @@ const AuthState = (props) => {
         username: response.data.user.userName,
         password: response.data.user.password,
         email: response.data.user.emailId,
-        role: '',
+        role: localStorage.getItem('role'),
         roles: response.data.user.role,
         firstname: response.data.profile.firstName,
         lastname: response.data.profile.lastName,
@@ -105,12 +105,7 @@ const AuthState = (props) => {
         registeredConferences: response.data.profile.registeredConferences,
       };
     }
-    if (response.data.user.role.length === 1) {
-      user.role = response.data.user.role[0];
-    } else {
-      user.role = 'Exhibitor';
-    }
-    localStorage.setItem('role', user.role);
+
     dispatch({
       type: AUTHENTICATE,
       payload: { token: response.data.token, user: user },
