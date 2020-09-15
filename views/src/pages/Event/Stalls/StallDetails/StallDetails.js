@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import classes from './stallDetails.module.css';
 import StallContext from '../../../../context/stall/stallContext';
 import EventTab from '../../../../Layout/eventTab';
-import RegisterButton from '../../../../Layout/RegisterBtn';
+import ExhibitorBtn from '../../../../Layout/ExhibitorBtn';
 
 const StallDetails = () => {
   const stallContext = useContext(StallContext);
@@ -56,7 +56,7 @@ const StallDetails = () => {
             </div>
           </div>
           <div className={classes['delete-btn']}>
-            {<RegisterButton stallId={stall._id} user={stall.userId._id} />}
+            {<ExhibitorBtn stallId={stall._id} user={stall.userId._id} />}
           </div>
         </div>
       )}
