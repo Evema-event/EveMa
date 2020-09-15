@@ -10,7 +10,11 @@ import AuthContext from '../../context/auth/authContext';
 
 const Profile = () => {
   const profile = useContext(AuthContext);
+
   const [Redir, setRedir] = useState(false)
+  const [image, setImage] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+  const [err, setError] = useState('');
 
   const switchUser = (role) => {
     localStorage.setItem('role', role)
@@ -18,6 +22,44 @@ const Profile = () => {
     setRedir(true)
   }
 
+  const onUploadPicture = (event) => {
+    if (event.target.files.length !== 0) {
+      if (event.target.files[0].size < 1000000) {
+        setError('');
+        setImage(event.target.files[0]);
+        let reader = new FileReader();
+        reader.onload = () => {
+          setImageUrl(reader.result);
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+      else {
+        setError('Please upload an image smaller than 1MB');
+      }
+    }
+
+    else {
+      setImage('');
+      setImageUrl('');
+    }
+  }
+
+  const uploadImage = () => {
+    if (image === '') {
+      setError('Please upload an image');
+    }
+    else {
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+          'x-auth-token': localStorage.getItem('token')
+        }
+      }
+      const formData = new FormData();
+      formData.append('file', image);
+      console.log(formData, config);
+    }
+  }
   const addOrSwitch = () => {
     let role = profile.role === 'Visitor' ? 'Exhibitor' : 'Visitor'
     if (profile.roles.length === 1) {
@@ -74,12 +116,16 @@ const Profile = () => {
                   <p className={classes.body}>{profile.contact}</p>
                 </div>
               </div>
-              <div className={classes.image}>
-                <img src={fileUrl + profile.image} alt='Profile'></img>
+              <div>
+                <div className={classes.image}>
+                  <img src={imageUrl === '' ? (fileUrl + profile.image) : imageUrl} alt='Profile'></img>
+                </div>
+                <input type="file" className={classes["custom-file-input"]} accept='image/*' name='File' onChange={onUploadPicture} />
+                <button className="btn btn-outline-secondary" type="button" onClick={uploadImage}>Save</button>
+                <p>{err}</p>
                 <h5 className={classes.picture}>{profile.role}</h5>
               </div>
             </div>
-
             <div className={classes.part}>
               <div className={classes.info}>
                 <h5 className={classes.head}>FirstName</h5>
