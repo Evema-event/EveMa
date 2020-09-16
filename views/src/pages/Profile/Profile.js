@@ -121,11 +121,11 @@ const Profile = () => {
                   <img src={imageUrl === '' ? (fileUrl + profile.image) : imageUrl} alt='Profile'></img>
                 </div>
                 <div className={classes.file}>
-    <input type="file" className={classes.fileInput} accept='image/*' name='File' id='profile' onChange={onUploadPicture}/>
-    <label className={classes.fileLabel} htmlFor='profile'>Upload</label>
-    <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>
-               </div>
-               
+                  <input type="file" className={classes.fileInput} accept='image/*' name='file' id='profile' onChange={onUploadPicture} />
+                  <label className={classes.fileLabel} htmlFor='profile'>Upload</label>
+                  <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>
+                </div>
+
                 <p>{err}</p>
                 <h5 className={classes.picture}>{profile.role}</h5>
               </div>
