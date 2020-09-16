@@ -16,6 +16,7 @@ const signupValidator = require('../validators/signup');
 const loginValidator = require('../validators/login');
 const forgetPasswordValidator = require('../validators/forgetPassword');
 const resetPasswordValidator = require('../validators/resetPassword');
+const updateProfileValidator = require('../validators/updateProfile');
 
 // Importing middleware
 const validator = require('../middleware/validator');
@@ -84,6 +85,18 @@ router.get(
   '/getProfile',
   authenticate,
   profileController.getProfile
+)
+
+/*
+ POST - /api/user/updateProfile
+ Update profile details of the visitor and the exhibitor
+*/
+router.post(
+  '/updateProfile',
+  authenticate,
+  updateProfileValidator,
+  validator,
+  profileController.updateProfile
 )
 
 /*
