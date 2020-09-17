@@ -1,230 +1,242 @@
 .section {
-    width: 100%;
-    padding-top: 40px;
-    margin-bottom: 30px;
-    /* background-image: linear-gradient(to bottom right, rgba(0, 60, 226, 0.6), rgba(202, 30, 30, 0.768)); */
-
+	width: 100%;
+	padding-top: 40px;
+	margin-bottom: 30px;
 }
 
 .heads {
-    border: 1px solid grey;
-    margin: auto;
-    width: 800px;
-    background: white;
-    /* background-image: linear-gradient(to left,#FBD3E9,  #BB377D); */
-
+	border: 1px solid grey;
+	margin: auto;
+	width: 800px;
+	background: white;
 }
 
 .profile {
-    text-align: center;
-    padding-top: 30px;
-    font-size: 30px;
+	text-align: center;
+	padding-top: 30px;
+	font-size: 30px;
 }
 
 .user {
-    width: 50%;
-    padding: 0 0 0 30px;
+	width: 50%;
+	padding: 0 0 0 30px;
 }
 
 .division {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 100px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 100px;
 }
 
 .head {
-    width: 300px;
+	width: 300px;
 }
 
 .body {
-    width: 220px;
-    font-size: 16px;
-    border-bottom: 2px solid black;
+	width: 220px;
+	font-size: 16px;
+	border: none;
+	border-bottom: 2px solid black;
 }
 
 .main {
-    width: 50%;
-    display: flex;
-    margin: 30px;
-    padding: 30px;
-
+	width: 50%;
+	display: flex;
+	margin: 30px;
+	padding: 30px;
 }
 
 .image img {
-    width: 170px;
-    height: 170px;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 3px 3px 5px black;
+	width: 170px;
+	height: 170px;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 3px 3px 5px black;
 }
 
 .picture {
-    text-align: center;
-    padding-top: 15px;
+	text-align: center;
+	padding-top: 15px;
 }
 
 .part {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 80px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 80px;
 }
-.switch{
-    width: 250px;
-    /* margin: 0 0 50px 270px;  */
-    margin: 0 auto;
-    margin-bottom: 2rem;
+
+.switch {
+	width: 250px;
+	margin: 0 auto;
+	margin-bottom: 2rem;
 }
 
 .info {
-    padding-bottom: 10px;
+	padding-bottom: 10px;
 }
 
-.file{
-    display: inline-block;
-    
+.extend {
+	grid-column: 1/3;
 }
 
-.fileInput{
-    display: none;
+.extend .body {
+	width: 88%;
 }
 
-.fileLabel, .fileButton{
-    width: 75px;
-    height: 40px;
-    border: 1px solid blue;
-    background-color: blue;
-    color: cornsilk;
-    padding: 5px 5px;
-    text-align: center;
-    margin: 5px;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 3px grey;
+.file {
+	display: inline-block;
 }
 
-.fileButton{
-    width: 70px;
-    background-color: mediumseagreen;
-    border: 1px solid mediumseagreen;
+.fileInput {
+	display: none;
 }
 
-@media screen and (max-width: 1400px) {}
+.fileLabel,
+.fileButton {
+	width: 75px;
+	height: 40px;
+	border: 1px solid blue;
+	background-color: blue;
+	color: cornsilk;
+	padding: 5px 5px;
+	text-align: center;
+	margin: 5px;
+	margin-top: 10px;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px grey;
+}
+
+.fileButton {
+	width: 70px;
+	background-color: mediumseagreen;
+	border: 1px solid mediumseagreen;
+}
+
+@media screen and (max-width: 1400px) {
+}
 
 @media screen and (max-width: 900px) {
-    .heads {
-        width: 650px;
-    }
+	.heads {
+		width: 650px;
+	}
 
-    .division {
-        column-gap: 0;
-    }
+	.division {
+		column-gap: 0;
+	}
 
-    .part {
-        column-gap: 0;
-    }
+	.part {
+		column-gap: 0;
+	}
 
-    .user {
-        padding: 0;
-    }
+	.user {
+		padding: 0;
+	}
 }
 
 @media screen and (max-width: 700px) {
-    .heads {
-        width: 600px;
-    }
+	.heads {
+		width: 600px;
+	}
 
-    .main {
-        padding: 5px;
-    }
+	.main {
+		padding: 5px;
+	}
 }
 
 @media screen and (max-width: 650px) {
-    .heads {
-        width: 400px;
-    }
+	.heads {
+		width: 400px;
+	}
 
-    .part,
-    .division {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
+	.part,
+	.division {
+		display: grid;
+		grid-template-columns: 1fr;
+	}
 
-    .main {
-        padding: 50px;
-    }
+	.extend {
+		grid-column: 1/2;
+	}
 
-    .profile {
-        font-size: 40px;
-        padding-right: 50px;
-    }
+	.extend .body {
+		width: 220px;
+	}
 
-    .image {
-        position: relative;
-        bottom: 290px;
-        padding-left: 20px;
-    }
+	.main {
+		padding: 50px;
+	}
 
-    .info {
-        position: relative;
-        top: 200px;
-    }
+	.profile {
+		font-size: 40px;
+		padding-right: 50px;
+	}
 
-    .part {
-        position: relative;
-        bottom: 210px;
-    }
+	.image {
+		position: relative;
+		bottom: 290px;
+		padding-left: 20px;
+	}
 
-    .picture {
-        padding-right: 100px;
-    }
+	.info {
+		position: relative;
+		top: 200px;
+	}
 
+	.part {
+		position: relative;
+		bottom: 210px;
+	}
+
+	.picture {
+		padding-right: 100px;
+	}
 }
 
 @media screen and (max-width: 450px) {
-    .heads {
-        width: 350px;
-    }
+	.heads {
+		width: 350px;
+	}
 
-    .main {
-        padding: 0;
-    }
+	.main {
+		padding: 0;
+	}
 
-    .image {
-        position: relative;
-        margin-top: 20px;
-    }
+	.image {
+		position: relative;
+		margin-top: 20px;
+	}
 
-    .info {
-        position: relative;
-        top: 220px;
-    }
+	.info {
+		position: relative;
+		top: 220px;
+	}
 
-    .part {
-        position: relative;
-        bottom: 235px;
-    }
+	.part {
+		position: relative;
+		bottom: 235px;
+	}
 
-    .main {
-        padding: 30px;
-    }
+	.main {
+		padding: 30px;
+	}
 }
 
 @media screen and (max-width: 400px) {
-    .heads {
-        width: 300px;
-    }
+	.heads {
+		width: 300px;
+	}
 
-    .main {
-        padding: 0;
-    }
+	.main {
+		padding: 0;
+	}
 
-    .image {
-        position: relative;
-        margin-top: 35px;
-    }
+	.image {
+		position: relative;
+		margin-top: 35px;
+	}
 
-    .profile {
-        padding: 15px;
-        font-size: 35px;
-    }
+	.profile {
+		padding: 15px;
+		font-size: 35px;
+	}
 }

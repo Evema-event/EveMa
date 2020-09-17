@@ -1,202 +1,30 @@
-import React, { useContext, useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import swal from 'sweetalert';
+import React, { useState } from 'react';
 
-import classes from '../Profile/Profile.module.css';
+import classes from './Profile.module.css';
 
-import url, { fileUrl } from '../../server';
-import axios from 'axios';
-
-import AuthContext from '../../context/auth/authContext';
-
+import UserData from './UserData/UserData';
+import ShowProfileData from './ProfileData/ShowProfileData';
+import UpdateProfileData from './ProfileData/UpdateProfileData';
+import AddOrSwitch from './AddOrSwitch/AddOrSwitch';
 
 const Profile = () => {
-  const profile = useContext(AuthContext);
+  const [isEdit, setIsEdit] = useState(false);
 
-  const [Redir, setRedir] = useState(false)
-  const [image, setImage] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [err, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const switchUser = (role) => {
-    localStorage.setItem('role', role)
-    profile.updateUser({ role: role })
-    setRedir(true)
+  const toggleEdit = () => {
+    setIsEdit(!isEdit);
   }
 
-  const onUploadPicture = (event) => {
-    if (event.target.files.length !== 0) {
-      if (event.target.files[0].size < 1000000) {
-        setError('');
-        setImage(event.target.files[0]);
-        let reader = new FileReader();
-        reader.onload = () => {
-          setImageUrl(reader.result);
-        }
-        reader.readAsDataURL(event.target.files[0]);
-      }
-      else {
-        setError('Please upload an image smaller than 1MB');
-      }
-    }
-
-    else {
-      setImage('');
-      setImageUrl('');
-    }
-  }
-
-  const uploadImage = () => {
-    if (image === '') {
-      setError('Please upload an image');
-    }
-    else {
-      const config = {
-        headers: {
-          'content-type': 'multipart/form-data',
-          'x-auth-token': localStorage.getItem('token')
-        }
-      }
-      const formData = new FormData();
-      formData.append('file', image);
-      setIsLoading(true);
-      axios.put(url + '/user/updateProfileImage', formData, config)
-        .then(res => {
-          profile.updateUser({ image: res.data.profile.image });
-          setIsLoading(false);
-          setImage('');
-          setImageUrl('');
-          swal('Success', 'Profile image uploaded', 'success');
-        })
-        .catch(err => {
-          setIsLoading(false);
-          swal('Failed', 'Try again', 'error');
-        })
-    }
-  }
-  const addOrSwitch = () => {
-    let role = profile.role === 'Visitor' ? 'Exhibitor' : 'Visitor'
-    if (profile.roles.length === 1) {
-      return (
-        <div className={classes.switch}>
-          <Link to='/switchAccount'>
-            <button
-              type="button"
-              className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
-            >
-              Signup as {profile.role === 'Visitor' ? 'Exhibitor' : 'Visitor'}
-            </button>
-          </Link>
-        </div>)
-    } else {
-      return (
-        <div className={classes.switch}>
-          {Redir && <Redirect to='/home' />}
-          <button
-            type="button"
-            onClick={() => switchUser(role)}
-            className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
-          >
-            Switch to {role}
-          </button>
-        </div>)
-    }
-
-  }
   return (
     <div className={classes.section}>
       <div className={classes.heads}>
-        {!localStorage.getItem('token') && (
-          <Redirect to='/' />
-        )}
-        {profile.role === 'Organizer' && (
-          <Redirect to='/' />
-        )}
         <h4 className={classes.profile}>Profile</h4>
         <div className={classes.main}>
           <div className={classes.user}>
-            <div className={classes.division}>
-              <div className={classes.header}>
-                <div className={classes.info}>
-                  <h5 className={classes.head}>Username</h5>
-                  <p className={classes.body}>{profile.username}</p>
-                </div>
-                <div className={classes.info}>
-                  <h5 className={classes.head}>Email</h5>
-                  <p className={classes.body}>{profile.email}</p>
-                </div>
-                <div className={classes.info}>
-                  <h5 className={classes.head}>Contact</h5>
-                  <p className={classes.body}>{profile.contact}</p>
-                </div>
-              </div>
-              <div>
-                <div className={classes.image}>
-                  <img src={imageUrl === '' ? (fileUrl + profile.image) : imageUrl} alt='Profile'></img>
-                </div>
-                <div className={classes.file}>
-                  <input type="file" className={classes.fileInput} accept='image/*' name='file' id='profile' onChange={onUploadPicture} />
-                  <label className={classes.fileLabel} htmlFor='profile'>Upload</label>
-                  {isLoading ? <button className={classes.fileButton} type="button">Loading...</button> : <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>}
-                </div>
-                <p>{err}</p>
-                <h5 className={classes.picture}>{profile.role}</h5>
-              </div>
-            </div>
-            <div className={classes.part}>
-              <div className={classes.info}>
-                <h5 className={classes.head}>FirstName</h5>
-                <p className={classes.body}>{profile.firstname}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>LastName</h5>
-                <p className={classes.body}>{profile.lastname}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Date of Birth</h5>
-                <p className={classes.body}>{profile.dob.slice(0, 10)}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Gender</h5>
-                <p className={classes.body}>{profile.gender}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Areas of Interest</h5>
-                <p className={classes.body}>{profile.areasOfInterest}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Designation</h5>
-                <p className={classes.body}>{profile.destination}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Company</h5>
-                <p className={classes.body}>{profile.company}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>City</h5>
-                <p className={classes.body}>{profile.city}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>State</h5>
-                <p className={classes.body}>{profile.state}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Country</h5>
-                <p className={classes.body}>{profile.country}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Company Address</h5>
-                <p className={classes.body}>{profile.address}</p>
-              </div>
-              <div className={classes.info}>
-                <h5 className={classes.head}>Zipcode</h5>
-                <p className={classes.body}>{profile.zipcode}</p>
-              </div>
-            </div>
+            <UserData />
+            {isEdit ? <UpdateProfileData toggleEdit={toggleEdit} /> : <ShowProfileData toggleEdit={toggleEdit} />}
           </div>
         </div>
-        {addOrSwitch()}
+        <AddOrSwitch />
       </div>
     </div>
   );

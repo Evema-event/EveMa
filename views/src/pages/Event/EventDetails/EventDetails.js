@@ -21,7 +21,7 @@ const EventDetails = () => {
                         <div className='row'>
                             <div className={[classes['indiv-name'], 'col-4'].join(' ')}>{event.name}</div>
                             <div className='col-8 d-none d-md-block'>
-                                {eventContext.isUpcoming && <RegisterButton eventId={event._id} />}
+                                {eventContext.isUpcoming && <RegisterButton eventId={event._id} event={event} />}
                             </div>
                         </div>
                         <div className={classes['indiv-name']}>Event Description:</div>

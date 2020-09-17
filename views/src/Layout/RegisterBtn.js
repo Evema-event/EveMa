@@ -54,7 +54,7 @@ const RegisterBtn = (props) => {
     let users = ['Visitor', 'Exhibitor'];
     const data = {
       subject: "Regarding - Cancellation of an event",
-      body: `${props.name} event has been cancelled. Sorry for the inconvenience.
+      body: `${props.event.name} event has been cancelled. Sorry for the inconvenience.
              For further queries, please contact ${props.event.contactEmail}`,
       users: users,
     };
