@@ -4,18 +4,10 @@ Event Management Server.
 
 In the project directory, you can run:
 
-For install backend dependencies,
+For install dependencies,
 
 ```js
 npm install
-```
-
-For install frontend dependencies,
-
-```bash
-cd views
-npm install
-cd ..
 ```
 
 To run the server at http://localhost:5000
@@ -37,7 +29,7 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ```js
-npm run client
+npm run frontend
 ```
 
 To start both frontend and backend servers concurrently at development.
@@ -45,7 +37,7 @@ Runs backend at http://localhost:5000
 Open frontend at http://localhost:3000
 
 ```js
-npm run dev
+npm run backend
 ```
 
 To start application in production.
