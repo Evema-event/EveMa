@@ -21,6 +21,7 @@ const updateProfileValidator = require('../validators/updateProfile');
 // Importing middleware
 const validator = require('../middleware/validator');
 const authenticate = require('../middleware/authenticate');
+const saveProfileImage = require('../middleware/saveProfileImage');
 
 /* 
   Post - /api/user/verifyUser 
@@ -97,6 +98,15 @@ router.post(
   updateProfileValidator,
   validator,
   profileController.updateProfile
+)
+
+/* PUT - /api/user/updateProfileImage
+  Update the profile picture of the visitor and the exhibitor*/
+router.put(
+  '/updateProfileImage',
+  authenticate,
+  saveProfileImage,
+  profileController.updateProfileImage
 )
 
 /*

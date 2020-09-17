@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 import classes from '../Profile/Profile.module.css';
 
-import { fileUrl } from '../../server';
+import url, { fileUrl } from '../../server';
+import axios from 'axios';
 
 import AuthContext from '../../context/auth/authContext';
 
@@ -15,6 +17,7 @@ const Profile = () => {
   const [image, setImage] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [err, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const switchUser = (role) => {
     localStorage.setItem('role', role)
@@ -57,7 +60,19 @@ const Profile = () => {
       }
       const formData = new FormData();
       formData.append('file', image);
-      console.log(formData, config);
+      setIsLoading(true);
+      axios.put(url + '/user/updateProfileImage', formData, config)
+        .then(res => {
+          profile.updateUser({ image: res.data.profile.image });
+          setIsLoading(false);
+          setImage('');
+          setImageUrl('');
+          swal('Success', 'Profile image uploaded', 'success');
+        })
+        .catch(err => {
+          setIsLoading(false);
+          swal('Failed', 'Try again', 'error');
+        })
     }
   }
   const addOrSwitch = () => {
@@ -123,9 +138,8 @@ const Profile = () => {
                 <div className={classes.file}>
                   <input type="file" className={classes.fileInput} accept='image/*' name='file' id='profile' onChange={onUploadPicture} />
                   <label className={classes.fileLabel} htmlFor='profile'>Upload</label>
-                  <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>
+                  {isLoading ? <button className={classes.fileButton} type="button">Loading...</button> : <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>}
                 </div>
-
                 <p>{err}</p>
                 <h5 className={classes.picture}>{profile.role}</h5>
               </div>

@@ -4,6 +4,7 @@ const Profile = require('../models/profile');
 
 // Importing throw error utility function
 const throwError = require('../utility/throwError');
+const deleteFile = require('../utility/deleteFile');
 
 // It will return profile of user
 exports.getProfile = (req, res) => {
@@ -69,4 +70,33 @@ exports.updateProfile = (req, res) => {
         .catch((err) => {
             throwError(err, res)
         })
+}
+
+// Updating profile image
+exports.updateProfileImage = (req, res) => {
+    if (req.error) {
+        return res.status(422).json({ message: "Failed", error: req.error });
+    };
+
+    Profile.findOne({ userId: req.userId })
+        .then(profile => {
+            if (!profile) {
+                const error = new Error("Profile not found");
+                error.statusCode = 404;
+                throw error;
+            }
+            if (req.file) {
+                if (profile.image !== 'public/profileImages/default.png') {
+                    deleteFile(profile.image);
+                }
+                profile.image = req.file.path;
+            }
+            return profile.save()
+        })
+        .then(profile => {
+            res.status(200).json({ message: "Success", profile: profile });
+        })
+        .catch(err => {
+            throwError(err, res);
+        });
 }

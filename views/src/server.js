@@ -3,10 +3,10 @@ let createfileUrl = '';
 
 if ((process.env.NODE_ENV || '').trim() === 'production') {
   url = '/api/';
-  createfileUrl = '';
+  createfileUrl = '/';
 } else {
   url = 'http://localhost:5000/api/';
-  createfileUrl = 'http://localhost:5000';
+  createfileUrl = 'http://localhost:5000/';
 }
 
 export const fileUrl = createfileUrl;
