@@ -7,7 +7,7 @@ let storage = multer.diskStorage({
     destination: (req, file, cb) => {
         let url = req.originalUrl.split('/');
         if (url[url.length - 1] === 'updateProfileImage') {
-            cb(null, '.\\public\\profileImages');
+            cb(null, './public/profileImages');
         }
     },
     filename: (req, file, cb) => {
