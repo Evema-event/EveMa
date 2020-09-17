@@ -10,7 +10,8 @@ import { GET_STALLS, SET_INDIVIDUAL_STALL } from '../types';
 const StallState = (props) => {
     const initialState = {
         stalls: null,
-        individualStall: null
+        individualStall: null,
+        selectedStallId: null
     };
 
     const [state, dispatch] = useReducer(StallReducer, initialState);
@@ -26,6 +27,8 @@ const StallState = (props) => {
         dispatch({ type: GET_STALLS, payload: res.data.stalls });
     }
 
+
+
     const setIndividualStall = (stall) => {
         dispatch({ type: SET_INDIVIDUAL_STALL, payload: stall });
     }
@@ -34,6 +37,7 @@ const StallState = (props) => {
         value={{
             stalls: state.stalls,
             individualStall: state.individualStall,
+            selectedStallId: state.selectedStallId,
             setIndividualStall,
             getStalls
         }}

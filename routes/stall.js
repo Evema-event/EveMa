@@ -29,7 +29,7 @@ router.post(
   stallController.registerStall
 );
 
-/*Delete - /api/stall/deleteStall/{eventId}
+/*Delete - /api/stall/deleteStall/{stallId}
  Only exhibitor can delete an event*/
 router.delete(
   '/deleteStall/:stallId',
@@ -37,7 +37,7 @@ router.delete(
   stallController.deleteStall
 );
 
-/*Put - /api/stall/addinfo/{eventId}
+/*Put - /api/stall/addinfo/{stallId}
 Only exhibitor can add additional info*/
 router.put(
   '/addinfo/:stallId',

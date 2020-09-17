@@ -10,7 +10,8 @@ export default (state, action) => {
         case SET_INDIVIDUAL_STALL:
             return {
                 ...state,
-                individualStall: action.payload
+                individualStall: action.payload,
+                selectedStallId: action.payload._id
             };
         default: return state;
     }

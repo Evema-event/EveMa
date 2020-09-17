@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
+
+import btnclass from '../pages/Auth/Login/login.module.css';
 import url from '../server';
 import axios from 'axios';
 
@@ -118,6 +120,16 @@ const ExhibitorBtn = (props) => {
                         >
                             {loading ? "Loading" : "Delete Stall"}
                         </div>
+                        <div>
+                            <Link
+                                className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
+                                to='/addStallDetails'
+                                style={{ width: '200px', textAlign: 'center', margin: 'auto' }}
+                            >
+                                <div>Add More Information</div>
+                            </Link>
+                        </div>
+
                     </>
                 );
             }
