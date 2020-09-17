@@ -26,6 +26,9 @@ const stallSchema = new Schema({
     ref: 'Event',
     required: true,
   },
+  links: [String],
+  documents: [String],
+  images: [String]
 });
 
 //Exporting stall model

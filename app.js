@@ -1,7 +1,7 @@
 // NPM package imports
 const express = require('express');
 const bodyParser = require('body-parser');
-const multer = require('multer');
+// const multer = require('multer');
 
 // Importing routes
 const routes = require('./routes/routes');
@@ -14,47 +14,47 @@ app.use(bodyParser.json());
 
 //  Saving files
 // Path to be file stored
-let storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        let url = req.originalUrl.split('/');
-        if (url[url.length - 1] === 'updateProfileImage') {
-            cb(null, '.\\public\\profileImages');
-        }
-    },
-    filename: (req, file, cb) => {
-        let url = req.originalUrl.split('/');
-        if (url[url.length - 1] === 'updateProfileImage') {
-            let filename = Math.random().toString().slice(2, 6) + '-' + Math.random().toString().slice(2, 6) + '-' + file.originalname;
-            cb(null, filename);
-        }
-    },
-});
+// let storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         let url = req.originalUrl.split('/');
+//         if (url[url.length - 1] === 'updateProfileImage') {
+//             cb(null, '.\\public\\profileImages');
+//         }
+//     },
+//     filename: (req, file, cb) => {
+//         let url = req.originalUrl.split('/');
+//         if (url[url.length - 1] === 'updateProfileImage') {
+//             let filename = Math.random().toString().slice(2, 6) + '-' + Math.random().toString().slice(2, 6) + '-' + file.originalname;
+//             cb(null, filename);
+//         }
+//     },
+// });
 
 // only image can be uploaded
-let fileFilter = (req, file, cb) => {
-    let type = file.mimetype.split('/');
-    if (type[0] !== 'image') {
-        req.error = 'Only image type can be upload';
-        cb(null, false);
-    } else {
-        cb(null, true);
-    }
-};
+// let fileFilter = (req, file, cb) => {
+//     let type = file.mimetype.split('/');
+//     if (type[0] !== 'image') {
+//         req.error = 'Only image type can be upload';
+//         cb(null, false);
+//     } else {
+//         cb(null, true);
+//     }
+// };
 
 // image size must be below 1MB
-let limits = {
-    fileSize: 1000000
-};
+// let limits = {
+//     fileSize: 1000000
+// };
 
 // Option for storing file
-let multerOptions = {
-    storage: storage,
-    limits: limits,
-    fileFilter: fileFilter
-}
+// let multerOptions = {
+//     storage: storage,
+//     limits: limits,
+//     fileFilter: fileFilter
+// }
 
 // integrating multer middleware to store files
-app.use(multer(multerOptions).single('file'));
+// app.use(multer(multerOptions).single('file'));
 
 // Serving static files for production
 if ((process.env.NODE_ENV || '').trim() === 'production') {

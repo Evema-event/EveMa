@@ -7,9 +7,11 @@ const stallValidator = require('../validators/stall');
 
 //Importing controllers
 const stallController = require('../controllers/stall');
+const stallAddInfoController = require('../controllers/stallAddInfo');
 
 //Importing Middleware
 const authenticate = require('../middleware/authenticate');
+const saveStallFiles = require('../middleware/saveStallFiles');
 const validator = require('../middleware/validator');
 
 /* Get - /api/stall/getStalls 
@@ -33,6 +35,15 @@ router.delete(
   '/deleteStall/:stallId',
   authenticate,
   stallController.deleteStall
+);
+
+/*Put - /api/stall/addinfo/{eventId}
+Only exhibitor can add additional info*/
+router.put(
+  '/addinfo/:stallId',
+  authenticate,
+  saveStallFiles,
+  stallAddInfoController.addInfo
 );
 
 module.exports = router;
