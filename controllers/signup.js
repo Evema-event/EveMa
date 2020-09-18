@@ -35,7 +35,7 @@ exports.signUp = (req, res) => {
       savedUser = user;
       const profile = new Profile({
         userId: user._id,
-        image: '/public/profileImages/default.png',
+        image: 'public/profileImages/default.png',
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         gender: req.body.gender,
