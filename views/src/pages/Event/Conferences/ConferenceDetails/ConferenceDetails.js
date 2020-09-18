@@ -50,7 +50,7 @@ const ConferenceDetails = () => {
                         <div className={classes['conference-item']}>
                             <h5>Date</h5>
                             <div className={classes['indiv-value']}>
-                                <h6>{conference.date}</h6>
+                                <h6>{conference.date.slice(0, 10)}</h6>
                             </div>
                         </div>
                         <div className={classes['conference-item']}>
