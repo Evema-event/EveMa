@@ -61,12 +61,10 @@ const SwitchAccount = () => {
       axios
         .post(switchAccountUrl, data, config)
         .then((res) => {
-          if (res.message === 'Success') {
-            authContext.authentication(res)
-            setisSubmit(true);
-            setLoading(false);
-            swal('Account added', 'You have successfully created a new account', 'success');
-          }
+          authContext.authentication(res)
+          setisSubmit(true);
+          setLoading(false);
+          swal('Account added', 'You have successfully created a new account', 'success');
         })
         .catch((err) => {
           setLoading(false);
@@ -102,7 +100,6 @@ const SwitchAccount = () => {
                 <button
                   type="button"
                   className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
-                  disable={loading}
                 >
                   Loading
                 </button>
