@@ -51,7 +51,7 @@ exports.getStalls = (req, res) => {
 exports.deleteStall = (req, res) => {
   let eventId;
   User.findById(req.userId).then((user) => {
-    if (user.role[0] !== 'Exhibitor') {
+    if (!user.role.includes('Exhibitor')) {
       const error = new Error('Only Exhibitor can delete a stall');
       error.statusCode = 401;
       throw error;

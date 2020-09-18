@@ -9,10 +9,10 @@ const throwError = require('../utility/throwError');
 // Send events that have end date today or after
 exports.getUpcomingEvents = (req, res) => {
   Event.find({
-      endDate: {
-        $gte: new Date(Date.now() - 24 * 3600 * 1000)
-      }
-    })
+    endDate: {
+      $gte: new Date(Date.now() - 24 * 3600 * 1000)
+    }
+  })
     .then((events) => {
       return res.status(200).json({
         message: 'Success',
@@ -27,10 +27,10 @@ exports.getUpcomingEvents = (req, res) => {
 // Send events that have end date before today
 exports.getCompletedEvents = (req, res) => {
   Event.find({
-      endDate: {
-        $lt: new Date(Date.now() - 24 * 3600 * 1000)
-      }
-    })
+    endDate: {
+      $lt: new Date(Date.now() - 24 * 3600 * 1000)
+    }
+  })
     .then((events) => {
       return res.status(200).json({
         message: 'Success',
@@ -46,7 +46,7 @@ exports.getCompletedEvents = (req, res) => {
 exports.getVisitorList = (req, res) => {
   User.findById(req.userId)
     .then((user) => {
-      if (user.role[0] !== 'Organizer') {
+      if (user.role.includes('Organizer')) {
         const error = new Error("Only organizers can view the visitor's list");
         error.statusCode = 401;
         throw error;
@@ -62,8 +62,8 @@ exports.getVisitorList = (req, res) => {
           return Promise.all(
             event.registeredUsers.map((user) => {
               return Profile.findOne({
-                  userId: user._id
-                })
+                userId: user._id
+              })
                 .then((profile) => {
                   let newuser = {
                     ...profile._doc,
@@ -95,7 +95,7 @@ exports.addEvent = (req, res) => {
   // Verify user is organizer or not
   User.findById(req.userId)
     .then((user) => {
-      if (user.role[0] !== 'Organizer') {
+      if (user.role.includes('Organizer')) {
         const error = new Error('Organizer only can able to add an event');
         error.statusCode = 401;
         throw error;
@@ -133,7 +133,7 @@ exports.deleteEvent = (req, res) => {
   // Organizer only can able to delete event
   User.findById(req.userId)
     .then((user) => {
-      if (user.role[0] !== 'Organizer') {
+      if (user.role.includes('Organizer')) {
         const error = new Error('Organizer only can able to delete an event');
         error.statusCode = 401;
         throw error;

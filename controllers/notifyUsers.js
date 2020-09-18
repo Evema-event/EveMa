@@ -65,6 +65,9 @@ exports.notifyUsers = (req, res) => {
           usersEmail.add(conference.userId.emailId);
         });
       }
+      if (Array.from(usersEmail).length === 0) {
+        return {};
+      }
       const to = Array.from(usersEmail).join(', ');
       let subject = req.body.subject;
       let body = req.body.body;

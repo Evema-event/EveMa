@@ -89,10 +89,10 @@ router.get(
 )
 
 /*
- POST - /api/user/updateProfile
+ PUT - /api/user/updateProfile
  Update profile details of the visitor and the exhibitor
 */
-router.post(
+router.put(
   '/updateProfile',
   authenticate,
   updateProfileValidator,

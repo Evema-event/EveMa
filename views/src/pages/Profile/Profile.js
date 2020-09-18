@@ -17,7 +17,7 @@ const Profile = () => {
   return (
     <div className={classes.section}>
       <div className={classes.heads}>
-        <h4 className={classes.profile}>Profile</h4>
+        <h4 className={classes.profile}>{localStorage.getItem('role')}</h4>
         <div className={classes.main}>
           <div className={classes.user}>
             <UserData />

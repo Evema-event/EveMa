@@ -11,7 +11,7 @@ const ShowProfileData = (props) => {
     return (
         <div className={classes.part}>
             <div className={[classes.info, classes.extend].join(' ')}>
-                <h3 style={{ display: "inline-block", marginRight: "5px", verticalAlign: "middle" }}>Personal and professional data</h3>
+                <h3 style={{ display: "inline-block", marginRight: "12px", verticalAlign: "middle" }}>Personal and professional data</h3>
                 <button className={classes.fileButton} style={{ background: "green" }}
                     onClick={props.toggleEdit}>Edit</button>
             </div>

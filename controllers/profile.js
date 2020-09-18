@@ -17,7 +17,7 @@ exports.getProfile = (req, res) => {
             loadedUser = user;
 
             // Return empty profile for organizer
-            if (user.role[0] === 'Organizer') {
+            if (user.role.includes('Organizer')) {
                 let profile = {};
                 return profile;
             } else {
@@ -37,16 +37,18 @@ exports.getProfile = (req, res) => {
 
 //Updating profiles of visitor and exhibitor
 exports.updateProfile = (req, res) => {
+    let loadedUser;
+
     User.findById(req.userId)
         .then((user) => {
-            if (user.role[0] === 'Organizer') {
+            if (user.role.includes('Organizer')) {
                 const error = new Error("Organizer cannot update profile")
                 error.statusCode = 401
                 throw error
             }
-            return user
+            loadedUser = user;
+            return Profile.findOne({ userId: req.userId })
         })
-    Profile.findOne({ userId: req.userId })
         .then((profile) => {
             profile.firstName = req.body.firstName
             profile.lastName = req.body.lastName
@@ -65,7 +67,7 @@ exports.updateProfile = (req, res) => {
             return profile.save()
         })
         .then((profile) => {
-            res.status(200).json({ message: 'Success', updatedProfile: profile })
+            res.status(200).json({ message: 'Success', user: loadedUser, profile: profile })
         })
         .catch((err) => {
             throwError(err, res)

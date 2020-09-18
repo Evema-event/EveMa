@@ -82,17 +82,14 @@ const UserData = () => {
                     <p className={classes.body}>{profile.email}</p>
                 </div>
             </div>
-            <div>
-                <div className={classes.image}>
-                    <img src={imageUrl === '' ? (fileUrl + profile.image) : imageUrl} alt='Profile'></img>
-                </div>
+            <div className={classes.image}>
+                <img src={imageUrl === '' ? (fileUrl + profile.image) : imageUrl} alt='Profile'></img>
                 <div className={classes.file}>
                     <input type="file" className={classes.fileInput} accept='image/*' name='file' id='profile' onChange={onUploadPicture} />
                     <label className={classes.fileLabel} htmlFor='profile'>Upload</label>
                     {isLoading ? <button className={classes.fileButton} type="button">Loading...</button> : <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>}
                 </div>
                 <p>{err}</p>
-                <h5 className={classes.picture}>{profile.role}</h5>
             </div>
         </div>
     );

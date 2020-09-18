@@ -168,12 +168,12 @@ const Signup2 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='destination'
                 id='destination'
+                name='destination'
                 value={fields.destination.value}
+                onChange={handleChange}
                 placeholder='Designation'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.destination.error}</h6>
             </div>
@@ -182,8 +182,8 @@ const Signup2 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='areasOfInterest'
                 id='areasOfInterest'
+                name='areasOfInterest'
                 value={fields.areasOfInterest.value}
                 onChange={handleChange}
                 placeholder='IOT, ML, AI..'
@@ -196,8 +196,8 @@ const Signup2 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='company'
                 id='company'
+                name='company'
                 value={fields.company.value}
                 onChange={handleChange}
                 placeholder='Name'
@@ -211,8 +211,8 @@ const Signup2 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='contact'
                 id='contact'
+                name='contact'
                 value={fields.contact.value}
                 onChange={handleChange}
                 placeholder='Contact'
@@ -225,8 +225,8 @@ const Signup2 = () => {
             <label htmlFor='text-area'>Address</label>
             <textarea
               className={classes['form_text']}
-              name='address'
               id='text-area'
+              name='address'
               value={fields.address.value}
               onChange={handleChange}
               cols='10'

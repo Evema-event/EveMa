@@ -138,12 +138,12 @@ const Signup1 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='firstname'
                 id='firstname'
+                name='firstname'
                 value={fields.firstname.value}
+                onChange={handleChange}
                 placeholder='Firstname'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.firstname.error}</h6>
             </div>
@@ -152,12 +152,12 @@ const Signup1 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='lastname'
                 id='lastname'
+                name='lastname'
                 value={fields.lastname.value}
+                onChange={handleChange}
                 placeholder='Lastname'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.lastname.error}</h6>
             </div>
@@ -166,12 +166,12 @@ const Signup1 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='state'
                 id='state'
+                name='state'
                 value={fields.state.value}
+                onChange={handleChange}
                 placeholder='State'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.state.error}</h6>
             </div>
@@ -181,12 +181,12 @@ const Signup1 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='country'
                 id='country'
+                name='country'
                 value={fields.country.value}
+                onChange={handleChange}
                 placeholder='Country'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.country.error}</h6>
             </div>
@@ -195,12 +195,12 @@ const Signup1 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='city'
                 id='city'
+                name='city'
                 value={fields.city.value}
+                onChange={handleChange}
                 placeholder='City'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.city.error}</h6>
             </div>
@@ -209,12 +209,12 @@ const Signup1 = () => {
               <input
                 className={classes['form_input']}
                 type='text'
-                name='zipcode'
                 id='zipcode'
+                name='zipcode'
                 value={fields.zipcode.value}
+                onChange={handleChange}
                 placeholder='Zipcode'
                 required
-                onChange={handleChange}
               />
               <h6>{fields.zipcode.error}</h6>
             </div>
@@ -222,12 +222,12 @@ const Signup1 = () => {
               <label htmlFor='dob'>Date of Birth</label>
               <input
                 type='date'
-                name='dob'
                 id='dob'
                 required
+                name='dob'
                 value={fields.dob.value}
-                className={classes['form_input']}
                 onChange={handleChange}
+                className={classes['form_input']}
               />
               <h6>{fields.dob.error}</h6>
             </div>

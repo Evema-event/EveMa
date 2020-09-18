@@ -2,14 +2,11 @@ import React, { useState, useContext } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
-
-import btnclass from '../pages/Auth/Login/login.module.css';
 import url from '../server';
 import axios from 'axios';
 
 import AuthContext from '../context/auth/authContext';
 import EventContext from '../context/event/eventContext';
-
 
 const ExhibitorBtn = (props) => {
 
@@ -18,7 +15,6 @@ const ExhibitorBtn = (props) => {
     const [deleteStallRedir, setDeleteStallRedir] = useState(false);
     const [deleteConfRedir, setDeleteConfRedir] = useState(false);
     const [loading, setLoading] = useState(false);
-
 
     const deleteStall = () => {
         let configuration = {
@@ -120,16 +116,13 @@ const ExhibitorBtn = (props) => {
                         >
                             {loading ? "Loading" : "Delete Stall"}
                         </div>
-                        <div>
-                            <Link
-                                className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
-                                to='/addStallDetails'
-                                style={{ width: '200px', textAlign: 'center', margin: 'auto' }}
-                            >
-                                <div>Add More Information</div>
-                            </Link>
-                        </div>
-
+                        <Link
+                            className='btn btn-success'
+                            to='/addStallDetails'
+                            style={{ width: '200px', textAlign: 'center', margin: 'auto 5px' }}
+                        >
+                            <div>Add More Information</div>
+                        </Link>
                     </>
                 );
             }

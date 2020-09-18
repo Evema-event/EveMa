@@ -95,8 +95,8 @@
 .fileButton {
 	width: 75px;
 	height: 40px;
-	border: 1px solid blue;
-	background-color: blue;
+	border: 1px solid green;
+	background-color: green;
 	color: cornsilk;
 	padding: 5px 5px;
 	text-align: center;
@@ -152,6 +152,10 @@
 	.division {
 		display: grid;
 		grid-template-columns: 1fr;
+	}
+
+	.main {
+		margin-top: 100px;
 	}
 
 	.extend {
