@@ -46,7 +46,7 @@ exports.getCompletedEvents = (req, res) => {
 exports.getVisitorList = (req, res) => {
   User.findById(req.userId)
     .then((user) => {
-      if (user.role.includes('Organizer')) {
+      if (!user.role.includes('Organizer')) {
         const error = new Error("Only organizers can view the visitor's list");
         error.statusCode = 401;
         throw error;
@@ -95,7 +95,7 @@ exports.addEvent = (req, res) => {
   // Verify user is organizer or not
   User.findById(req.userId)
     .then((user) => {
-      if (user.role.includes('Organizer')) {
+      if (!user.role.includes('Organizer')) {
         const error = new Error('Organizer only can able to add an event');
         error.statusCode = 401;
         throw error;
@@ -133,7 +133,7 @@ exports.deleteEvent = (req, res) => {
   // Organizer only can able to delete event
   User.findById(req.userId)
     .then((user) => {
-      if (user.role.includes('Organizer')) {
+      if (!user.role.includes('Organizer')) {
         const error = new Error('Organizer only can able to delete an event');
         error.statusCode = 401;
         throw error;
