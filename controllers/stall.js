@@ -56,10 +56,9 @@ exports.deleteStall = (req, res) => {
       error.statusCode = 401;
       throw error;
     }
-    return user;
-  });
-  Stall.findById(req.params.stallId)
-    .populate('eventId')
+    return Stall.findById(req.params.stallId)
+      .populate('eventId')
+  })
     .then((stall) => {
       if (!stall) {
         const error = new Error('Stall not found');
