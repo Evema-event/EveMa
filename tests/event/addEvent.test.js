@@ -56,7 +56,6 @@ describe('Add Event to database', () => {
         expect(res.body.message).toBe('Failed');
     });
 
-
     // Throw error - only organizer can add event
     test('Post Add event with visitor token', async () => {
         const res = await request(app)

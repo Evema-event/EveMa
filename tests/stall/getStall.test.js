@@ -48,7 +48,7 @@ describe('Test cases for getstall api', () => {
     // Throw error if token not present
     test('Should throw error if token not present', async () => {
         const res = await request(app)
-            .get('/api/stall/getStalls/0blakdfjlsruie');
+            .get('/api/stall/getStalls/5f44ce10f0ff6424c008ce0d');
         expect(res.status).toBe(401);
         expect(res.body.message).toBe('Failed');
     });

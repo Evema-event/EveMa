@@ -15,11 +15,10 @@ const saveStallFiles = require('../middleware/saveStallFiles');
 const validator = require('../middleware/validator');
 
 /* Get - /api/stall/getStalls 
-Return stalls of specific event
-*/
+Return stalls of specific event*/
 router.get('/getStalls/:eventId', authenticate, stallController.getStalls);
 
-/* Post - /api/stall/registerStall
+/* Post - /api/stall/registerStall/{eventId}
  Exhibitor can register for a stall*/
 router.post(
   '/registerStall/:eventId',
