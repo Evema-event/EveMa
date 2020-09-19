@@ -12,7 +12,7 @@ const conferenceController = require('../controllers/conference');
 const authenticate = require('../middleware/authenticate');
 const validator = require('../middleware/validator');
 
-/* Get - /api/stall/getConferences
+/* Get - /api/conference/getConferences/{eventId}
 Return conferences of specific event
 */
 router.get(
@@ -21,7 +21,7 @@ router.get(
   conferenceController.getConferences
 );
 
-/* Post - /api/conference/registerConference
+/* Post - /api/conference/registerConference/{eventId}
  Exhibitor can register for a conference*/
 router.post(
   '/registerConference/:eventId',
@@ -31,7 +31,7 @@ router.post(
   conferenceController.registerConference
 );
 
-/*Delete - /api/conference/deleteConference
+/*Delete - /api/conference/deleteConference/{conferenceId}
 Exhibitor can delete a conference*/
 router.delete(
   '/deleteConference/:conferenceId',
