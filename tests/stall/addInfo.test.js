@@ -25,7 +25,7 @@ let stallId;
 
 // Run before all test cases - will connect to data base
 beforeAll(async () => {
-    await db.connectDB('test-deletestall');
+    await db.connectDB('test-addinfo');
     const event = await new Event(events.valid[1]).save();
     eventId = event._id;
     token = await getToken();
@@ -46,42 +46,44 @@ afterAll(async () => {
     await db.disconnectDB();
 });
 
-// Test cases for delete stall
-describe('Delete stall from database', () => {
+// Test cases for add more info stall
+describe('test cases for add info to stall', () => {
 
-    // Throw error token not present
-    test('Delete stall without token', async () => {
+    // Throw error for token not present
+    test('Add info to stall without token', async () => {
         const res = await request(app)
-            .delete(`/api/stall/deleteStall/${stallId}`);
+            .put(`/api/stall/addinfo/${stallId}`);
         expect(res.status).toBe(401);
         expect(res.body.message).toBe('Failed');
     });
 
-    // Throw error - only exhibitor can delete stall
-    test('Delete stall with visitor token', async () => {
+    // Throw error for visitor token
+    test('Add info to stall with visitor token', async () => {
         const res = await request(app)
-            .delete(`/api/stall/deleteStall/${stallId}`)
+            .put(`/api/stall/addinfo/${stallId}`)
             .set('x-auth-token', token.visitorToken);
-        expect(res.status).toBe(401);
+        expect(res.status).toBe(409);
         expect(res.body.message).toBe('Failed');
     });
 
-    // Throw error - only exhibitor can delete stall
-    test('Delete stall with organizer token', async () => {
+    // Throw error for organizer token
+    test('Add info to stall with organizer token', async () => {
         const res = await request(app)
-            .delete(`/api/stall/deleteStall/${stallId}`)
+            .put(`/api/stall/addInfo/${stallId}`)
             .set('x-auth-token', token.organizerToken);
-        expect(res.status).toBe(401);
+        expect(res.status).toBe(409);
         expect(res.body.message).toBe('Failed');
     });
 
-    // Stall should delete successfuly for exhibitor token
-    test('Delete stall with exhibitor token', async () => {
+    // Success for exhibitor token
+    test('Add info to stall with exhibitor token', async () => {
         const res = await request(app)
-            .delete(`/api/stall/deleteStall/${stallId}`)
-            .set('x-auth-token', token.exhibitorToken);
+            .put(`/api/stall/addinfo/${stallId}`)
+            .set('x-auth-token', token.exhibitorToken)
+            .send({ link: "http://www.google.com" });
         expect(res.status).toBe(200);
         expect(res.body.message).toBe('Success');
-        expect(res.body.stall.productName).toBe(stallData.valid.productName);
+        expect(res.body.stall.links[0]).toBe("http://www.google.com");
     });
+
 });
