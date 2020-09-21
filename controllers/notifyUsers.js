@@ -13,7 +13,7 @@ exports.notifyUsers = (req, res) => {
     .then((user) => {
       if (!user.role.includes('Organizer')) {
         const error = new Error('Must be an organizer to notify users');
-        error.statuscode(401);
+        error.statusCode = 401;
         throw error;
       }
       if (
