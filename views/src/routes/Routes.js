@@ -10,9 +10,13 @@ import CompletedList from '../pages/EventList/CompletedList/CompletedList';
 import UpcomingList from '../pages/EventList/UpcomingList/UpcomingList';
 import EventDetails from '../pages/Event/EventDetails/EventDetails';
 
-// Stalls Conference Visitor tab pages
+// Stalls pages
 import Stalls from '../pages/Event/Stalls/Stalls';
 import StallDetails from '../pages/Event/Stalls/StallDetails/StallDetails';
+import StallVisitorList from '../pages/Event/Stalls/Visitors/VisitorsList';
+import StallVisitorDetails from '../pages/Event/Stalls/Visitors/VisitorDetails';
+
+// conference pages
 import Conferences from '../pages/Event/Conferences/Conferences';
 import ConferencesDetails from '../pages/Event/Conferences/ConferenceDetails/ConferenceDetails';
 import AddStallInformation from '../pages/Event/Stalls/AddStallInformation/AddStallInformation';
@@ -46,29 +50,36 @@ const Routes = () => {
         <Navbar />
         <Switch>
           <Route path='/admin' component={Admin} />
+
           <Route exact path='/signup/0' component={Signup0} />
           <Route exact path='/signup/1' component={Signup1} />
           <Route exact path='/signup/2' component={Signup2} />
           <Route exact path='/login' component={Login} />
+
           <Route exact path='/forgetPassword/0' component={ForgetPassword0} />
           <Route exact path='/forgetPassword/1' component={ForgetPassword1} />
+
           <Route exact path='/eventList' component={EventList} />
           <Route exact path='/upcomingList' component={UpcomingList} />
           <Route exact path='/completedList' component={CompletedList} />
           <Route exact path='/eventDetails' component={EventDetails} />
+
           <Route exact path='/stallList' component={Stalls} />
           <Route exact path='/stallDetails' component={StallDetails} />
+
+          <Route exact path='/stallVisitorList' component={StallVisitorList} />
+          <Route exact path='/stallVisitorDetails' component={StallVisitorDetails} />
+
           <Route exact path='/conferenceList' component={Conferences} />
           <Route exact path='/conferenceDetails' component={ConferencesDetails} />
+
           <Route exact path='/registerStall' component={RegisterStall} />
-          <Route
-            exact
-            path='/registerConference'
-            component={RegisterConference}
-          />
+          <Route exact path='/registerConference' component={RegisterConference} />
+
           <Route exact path='/switchAccount' component={SwitchAccount} />
           <Route exact path='/addStallDetails' component={AddStallInformation} />
           <Route exact path='/profile' component={Profile} />
+
           <Route path='/' component={Home} />
         </Switch>
       </ScrollToTop>

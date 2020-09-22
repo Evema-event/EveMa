@@ -5,13 +5,20 @@ import StallReducer from './stallReducer';
 import url from '../../server';
 import axios from 'axios';
 
-import { GET_STALLS, SET_INDIVIDUAL_STALL } from '../types';
+import {
+    GET_STALLS,
+    SET_INDIVIDUAL_STALL,
+    GET_STALL_VISITORS,
+    SET_INDIVIDUAL_STALL_VISITOR
+} from '../types';
 
 const StallState = (props) => {
     const initialState = {
         stalls: null,
         individualStall: null,
-        selectedStallId: null
+        selectedStallId: null,
+        visitors: null,
+        individualVisitor: null
     };
 
     const [state, dispatch] = useReducer(StallReducer, initialState);
@@ -27,10 +34,24 @@ const StallState = (props) => {
         dispatch({ type: GET_STALLS, payload: res.data.stalls });
     }
 
-
+    const getVisitors = async (stallId) => {
+        let stallUrl = url + `stall/getVisitors/${stallId}`;
+        const config = {
+            headers: {
+                'x-auth-token': localStorage.getItem('token')
+            }
+        };
+        const res = await axios.get(stallUrl, config);
+        dispatch({ type: GET_STALL_VISITORS, payload: res.data.visitors });
+    }
 
     const setIndividualStall = (stall) => {
         dispatch({ type: SET_INDIVIDUAL_STALL, payload: stall });
+        getVisitors(stall._id);
+    }
+
+    const setIndividualVisitor = (visitor) => {
+        dispatch({ type: SET_INDIVIDUAL_STALL_VISITOR, payload: visitor });
     }
 
     return <StallContext.Provider
@@ -38,8 +59,12 @@ const StallState = (props) => {
             stalls: state.stalls,
             individualStall: state.individualStall,
             selectedStallId: state.selectedStallId,
+            visitors: state.visitors,
+            individualVisitor: state.individualVisitor,
             setIndividualStall,
-            getStalls
+            getStalls,
+            getVisitors,
+            setIndividualVisitor
         }}
     >
         {props.children}
