@@ -86,8 +86,11 @@ const UserData = () => {
                 <img src={imageUrl === '' ? (fileUrl + profile.image) : imageUrl} alt='Profile'></img>
                 <div className={classes.file}>
                     <input type="file" className={classes.fileInput} accept='image/*' name='file' id='profile' onChange={onUploadPicture} />
-                    <label className={classes.fileLabel} htmlFor='profile'>Upload</label>
-                    {isLoading ? <button className={classes.fileButton} type="button">Loading...</button> : <button className={classes.fileButton} type="button" onClick={uploadImage}>Save</button>}
+                    {
+                        imageUrl === '' ?
+                            <label className={classes.fileButton} htmlFor='profile' dataTitle="Upload"><i className="fa fa-upload"></i> </label> :
+                            isLoading ? <button className={classes.fileButton} type="button">...</button> : <button className={classes.fileButton} dataTitle="Save" type="button" onClick={uploadImage}><i className="fa fa-save"></i></button>
+                    }
                 </div>
                 <p>{err}</p>
             </div>

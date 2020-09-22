@@ -216,12 +216,12 @@ const UpdateProfileData = (props) => {
         <form className={classes.part} onSubmit={handleSubmit}>
             <div className={[classes.info, classes.extend].join(' ')}>
                 <h3 style={{ display: "inline-block", marginRight: "12px", verticalAlign: "middle" }}>Personal and professional data</h3>
-                <button type="button" className={classes.fileButton}
+                <button type="button" className={classes.Button}
                     onClick={props.toggleEdit}>Cancel</button>
                 {
                     loading ?
-                        <button type="button" className={classes.fileButton} style={{ background: "green" }}>Loading</button> :
-                        <button type="submit" className={classes.fileButton} style={{ background: "green" }}>Save</button>
+                        <button type="button" className={classes.Button} style={{ background: "green" }}>Loading</button> :
+                        <button type="submit" className={classes.Button} style={{ background: "green" }}>Save</button>
                 }
             </div>
             <div className={classes.info}>
