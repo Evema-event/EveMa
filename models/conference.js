@@ -42,6 +42,12 @@ const conferenceSchema = new Schema({
     ref: 'User',
     required: true,
   },
+  registeredVisitors: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
 });
 
 // Exporting event model
