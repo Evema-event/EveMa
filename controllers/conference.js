@@ -183,7 +183,7 @@ exports.registerConference = (req, res) => {
 };
 
 // Visitor can register a conference
-exports.registerConference = (req, res) => {
+exports.visitorConference = (req, res) => {
   let loadedConference;
   User.findById(req.userId)
     .then(user => {
