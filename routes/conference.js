@@ -43,7 +43,7 @@ Visitor can register a conference*/
 router.put(
   '/registerConference/:conferenceId',
   authenticate,
-  conferenceController.registerConference
+  conferenceController.visitorConference
 );
 
 module.exports = router;
