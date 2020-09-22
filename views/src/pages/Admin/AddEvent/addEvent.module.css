@@ -1,160 +1,170 @@
+* {
+  text-decoration: none !important;
+}
+
 .event-bg {
-	margin: 2rem;
-	padding: 0.5rem;
+  margin: 2rem;
+  padding: 0.5rem;
 }
 .event {
-	display: flex;
-	margin: 2rem;
-	padding: 2rem;
-	justify-content: center;
-	color: #ffffff;
-	background-color: #21d4fd;
-	background-image: linear-gradient(19deg, #24c2e6 30%, #b721ff 100%);
+  display: flex;
+  margin: 2rem;
+  padding: 2rem;
+  justify-content: center;
+  color: #ffffff;
+  background: #3aafa9;
 }
 
 .event .add-left img {
-	width: 700px;
+  width: 700px;
 }
 
 .add-right {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 .description {
-	display: flex;
-	flex-direction: column;
-	grid-area: dec;
+  display: flex;
+  flex-direction: column;
+  grid-area: dec;
 }
 
 .btn-block {
-	margin-top: 0rem !important;
+  margin-top: 0rem !important;
 }
 
 .add-right h1 {
-	text-align: center;
-	text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Rubik', sans-serif;
 }
 
 .event-inputs {
-	margin: 1rem 1rem 0rem 1rem;
-	padding: 1rem 3rem 0rem 2rem;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 2rem;
-	grid-template-areas: '. .' 'dec dec' '. .';
+  margin: 1rem 1rem 0rem 1rem;
+  padding: 1rem 3rem 0rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  grid-template-areas: '. .' 'dec dec' '. .';
 }
 
 .add-group {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Rubik', sans-serif;
 }
 
 .add-input {
-	margin: 0.4rem 0rem 0.7rem 0rem;
-	padding: 0.3rem 0.5rem;
-	border-radius: 0.2rem;
-	width: 220px;
-	box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
-	border: none;
+  margin: 0.4rem 0rem 0.7rem 0rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  width: 220px;
+  box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
+  border: none;
+  font-family: 'Karla', sans-serif;
 }
 
 .add_text {
-	padding: 0.3rem 0.5rem;
-	border-radius: 0.2rem;
-	box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
-	margin-bottom: 1rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.2rem;
+  box-shadow: 3px 5px 3px rgba(75, 75, 75, 0.3);
+  margin-bottom: 1rem;
+  font-family: 'Karla', sans-serif;
 }
 
 .next {
-	margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .btn-primary {
-	color: #ffffff !important;
-	background-color: rgba(0, 0, 0, 0.26) !important;
-	border: 0 solid transparent !important;
+  color: #ffffff !important;
+  background-color: rgba(0, 0, 0, 0.26) !important;
+  border: 0 solid transparent !important;
 }
 
+.btn-primary:hover {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
 .link {
-	color: #ffffff !important;
-	text-decoration: none !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 
 .btn {
-	margin-top: 2rem !important;
+  margin-top: 2rem !important;
 }
 
 .add-group h6 {
-	color: rgb(255, 205, 205);
+  color: rgb(255, 205, 205);
 }
 
 @media only screen and (max-width: 1400px) {
-	.event {
-		width: 1200px;
-	}
-	.event .add-left img {
-		width: 90%;
-		height: 60vh;
-	}
+  .event {
+    width: 1200px;
+  }
+  .event .add-left img {
+    width: 90%;
+    height: 60vh;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-	.event {
-		width: 1000px;
-	}
-	.event .add-left img {
-		height: 60vh;
-	}
+  .event {
+    width: 1000px;
+  }
+  .event .add-left img {
+    height: 60vh;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
-	.event {
-		width: 800px;
-		margin: 0rem;
-	}
-	.event .add-left img {
-		display: none;
-	}
+  .event {
+    width: 800px;
+    margin: 0rem;
+  }
+  .event .add-left img {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-	.event {
-		width: 600px;
-	}
+  .event {
+    width: 600px;
+  }
 }
 
 @media only screen and (max-width: 700px) {
-	.event {
-		width: 550px;
-	}
-	label {
-		font-size: 1rem;
-	}
+  .event {
+    width: 550px;
+  }
+  label {
+    font-size: 1rem;
+  }
 }
 
 @media only screen and (max-width: 650px) {
-	.event {
-		margin: 10px auto;
-	}
-	.event-inputs {
-		grid-template-columns: 1fr;
-		grid-template-areas: '.' '.' 'dec' '.' '.';
-	}
-	.event {
-		width: 300px;
-	}
-	.add-right h1 {
-		font-size: 140% !important;
-	}
+  .event {
+    margin: 10px auto;
+  }
+  .event-inputs {
+    grid-template-columns: 1fr;
+    grid-template-areas: '.' '.' 'dec' '.' '.';
+  }
+  .event {
+    width: 300px;
+  }
+  .add-right h1 {
+    font-size: 140% !important;
+  }
 }
 
 @media only screen and (max-width: 450px) {
-	.event {
-		width: 290px;
-	}
+  .event {
+    width: 290px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-	.event {
-		width: 280px;
-	}
+  .event {
+    width: 280px;
+  }
 }

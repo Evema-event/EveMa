@@ -1,58 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .stall-bg {
-	width: 388px;
-	padding: 10px;
-	color: white;
-	background: linear-gradient(to right bottom, rgba(44, 0, 255, 1) 0%, rgba(189, 16, 224, 1) 100%);
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
-	border-radius: 10px;
-	backdrop-filter: blur(10px);
-	font-family: 'Oxygen';
-	font-style: normal;
-	/* font-weight: bold; */
-	font-size: 20px;
-	line-height: 25px;
-	text-transform: uppercase;
+  width: 388px;
+  padding: 10px;
+  color: white;
+  background: #3aafa9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  font-size: 20px;
+  line-height: 25px;
+  font-family: 'Rubik', sans-serif;
+  transition: 0.3s ease-in-out;
+}
+
+.stall-bg:hover {
+  transform: translate(-2px, -5px);
 }
 .product-name {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	justify-content: flex-start;
-	margin: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: flex-start;
+  margin: 0.5rem;
 }
 
 .stall-title {
-	text-align: center;
-	font-weight: bold;
-	margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  /* color: #263e46; */
+  color: #194645;
+  text-transform: uppercase;
+  font-family: 'Karla', sans-serif;
 }
 
 .stall-bg h6 {
-	font-style: italic;
-	color: #ffffff;
+  font-style: italic;
+  color: #ffffff;
 }
 
 @media only screen and (max-width: 900px) {
-	.stall-bg {
-		width: 370px;
-	}
+  .stall-bg {
+    width: 370px;
+  }
 }
 @media only screen and (max-width: 500px) {
-	.stall-bg {
-		width: 360px;
-	}
+  .stall-bg {
+    width: 360px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-	.stall-bg {
-		width: 240px;
-	}
-	.product-name {
-		grid-template-columns: 1fr;
-	}
+  .stall-bg {
+    width: 240px;
+  }
+  .product-name {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media only screen and (max-width: 300px) {
-	.stall-bg {
-		width: 220px;
-	}
+  .stall-bg {
+    width: 220px;
+  }
 }

@@ -1,117 +1,135 @@
 .fullView .grad {
-	background-image: linear-gradient(to bottom right, rgb(153, 0, 255), rgb(255, 0, 93));
-	width: 350px;
-	border-radius: 10px 10px 0 0;
+  background: #17252a;
+  width: 350px;
+  border-radius: 10px 10px 0 0;
+  text-transform: uppercase;
 }
 
 .fullView .rect {
-	width: 350px;
-	background-color: #ffffff;
-	border-radius: 10px;
-	flex-direction: column;
-	display: flex;
-	box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.3);
+  width: 350px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  flex-direction: column;
+  display: flex;
+  box-shadow: 4px 3px 2px 0.14px rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease-in-out;
+}
+
+.fullView .rect:hover {
+  transform: translate(-2px, -5px);
+  box-shadow: 5px 4px 2px 0.14px rgba(0, 0, 0, 0.3);
 }
 
 .fullView .card {
-	font-family: Roboto;
-	font-style: normal;
-	font-weight: bold;
-	color: #121212;
+  font-style: normal;
+  font-weight: bold;
+  color: #17252a;
+  font-weight: 600;
 }
 .fullView .card .name {
-	color: #ffffff;
-	font-size: 25px;
-	margin-top: 17px;
-	margin-left: 15px;
+  color: #ffffff;
+  font-size: 25px;
+  margin-top: 17px;
+  margin-left: 15px;
 }
 
 .fullView .card .description {
-	color: #414141;
-	margin-top: 10px;
-	margin-left: 15px;
-	font-weight: 400;
-	min-height: 80px;
+  font-family: 'Karla', sans-serif;
+  color: #17252a;
+  font-size: 19.5px;
+  margin: 10px 20px;
+  font-weight: 500;
+  height: 100px;
 }
 
 .fullView .card .details {
-	display: flex;
-	align-content: center;
-	justify-content: space-evenly;
-	margin: 0rem;
-	padding: 0.5rem;
-	font-size: 18px;
-	color: #6e4166;
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  margin: 0rem;
+  padding: 0.5rem;
+  font-size: 18px;
+  color: #2b7a78;
 }
 
 @media (max-width: 1500px) {
-	.fullView .rect {
-		width: 350px;
-	}
-	.fullView .grad {
-		width: 350px;
-	}
+  .fullView .rect {
+    width: 350px;
+  }
+  .fullView .grad {
+    width: 350px;
+    transition: 0s ease-in-out;
+  }
 }
 
 @media (max-width: 1300px) {
-	.fullView .rect {
-		padding-right: 0rem;
-	}
+  .fullView .rect {
+    padding-right: 0rem;
+    transition: all 0s ease-in-out;
+  }
 }
 
 @media (max-width: 910px) {
-	.fullView .rect {
-		width: 300px;
-	}
-	.fullView .grad {
-		width: 300px;
-	}
+  .fullView .rect {
+    width: 300px;
+  }
+  .fullView .grad {
+    width: 300px;
+  }
 }
 @media (max-width: 800px) {
-	.fullView .rect {
-		width: 250px;
-	}
-	.fullView .grad {
-		width: 250px;
-	}
+  .fullView .rect {
+    width: 250px;
+  }
+  .fullView .grad {
+    width: 250px;
+  }
 
-	.fullView .pad {
-		padding-right: 1rem;
-	}
+  .fullView .pad {
+    padding-right: 1rem;
+  }
 }
 
 @media (max-width: 700px) {
-	.fullView .rect {
-		width: 500px;
-	}
-	.fullView .grad {
-		width: 500px;
-	}
+  .fullView .rect {
+    width: 500px;
+  }
+  .fullView .grad {
+    width: 500px;
+  }
 }
 
 @media (max-width: 600px) {
-	.fullView .rect {
-		width: 415px;
-	}
-	.fullView .grad {
-		width: 415px;
-	}
+  .fullView .rect {
+    width: 415px;
+  }
+  .fullView .grad {
+    width: 415px;
+  }
+
+  .fullView .card .description {
+    font-size: 15px;
+  }
+  .fullView .card .details {
+    text-align: center;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 500px) {
-	.fullView .rect {
-		width: 300px;
-	}
-	.fullView .grad {
-		width: 300px;
-	}
+  .fullView .rect {
+    width: 300px;
+  }
+  .fullView .grad {
+    width: 300px;
+  }
 }
 
 @media (max-width: 400px) {
-	.fullView .rect {
-		width: 250px;
-	}
-	.fullView .grad {
-		width: 250px;
-	}
+  .fullView .rect {
+    width: 250px;
+  }
+  .fullView .grad {
+    width: 250px;
+  }
 }

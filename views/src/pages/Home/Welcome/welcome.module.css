@@ -1,66 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .sectionHome {
-	margin-top: 1rem;
-	width: 100%;
-	background-color: whitesmoke;
-	margin-bottom: 0rem;
+  width: 100%;
+  font-family: 'Rubik', sans-serif;
+  margin-bottom: 0.5rem;
+  background-color: #3aafa9;
 }
 
 .header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerContent {
-	text-align: center;
-	padding-left: 30px;
+  text-align: center;
+  padding-left: 30px;
 }
 
 .headerImage {
-	width: 50%;
+  width: 50%;
 }
 
 .headerImage img {
-	width: 100%;
+  width: 100%;
 }
 
 .headerPrimary {
-	color: #9b7dfb;
-	font-size: 3.6rem;
-	font-style: italic;
-	margin-bottom: 3rem;
-	text-align: center;
+  color: #feffff;
+  font-size: 3.6rem;
+  font-style: italic;
+  margin-bottom: 3rem;
+  text-align: center;
 }
 
-.sectionHome p {
-	padding-top: 1rem;
-	text-align: center;
+.paragraph {
+  color: #17252a;
+  font-size: 18px;
+  padding-top: 1rem;
+  text-align: center;
 }
 
 @media only screen and (max-width: 1200px) {
-	.headerPrimary {
-		font-size: 2.8rem;
-	}
+  .headerPrimary {
+    font-size: 2.8rem;
+  }
 }
 
 @media only screen and (max-width: 900px) {
-	.headerImage {
-		width: 70%;
-	}
-	.headerPrimary {
-		font-size: 2rem;
-	}
+  .headerImage {
+    width: 70%;
+  }
+  .headerPrimary {
+    font-size: 2rem;
+  }
 }
 
 @media only screen and (max-width: 700px) {
-	.header {
-		flex-direction: column;
-	}
-	.headerImage {
-		width: 98%;
-	}
-	.headerContent {
-		padding-left: 0px;
-		padding-top: 30px;
-	}
+  .header {
+    flex-direction: column;
+  }
+  .headerImage {
+    width: 98%;
+  }
+  .headerContent {
+    padding-left: 0px;
+    padding-top: 30px;
+  }
+  .paragraph {
+    font-size: 15px;
+    width: 80vw;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .paragraph {
+    font-size: 13px;
+  }
 }

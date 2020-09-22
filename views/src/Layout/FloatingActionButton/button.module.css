@@ -1,15 +1,15 @@
 .fixed-button {
-	background-color: #243aff;
-	color: #ffffff;
-	border: none;
-	outline: none;
-	position: fixed;
-	bottom: 0px;
-	right: 15px;
-	height: 50px;
-	width: 50px;
-	margin-bottom: 20px;
-	border-radius: 30px;
-	box-shadow: 1px 3px 5px #888888;
-	cursor: pointer;
+  background-color: #2b7a78;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }

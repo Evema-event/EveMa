@@ -13,7 +13,7 @@ const Welcome = () => {
 
         <div className={classes.headerContent}>
           <h1 className={classes.headerPrimary}>Welcome to EveMa</h1>
-          <p>
+          <p className={classes.paragraph}>
             Greetings to everyone, <br /> This is the Event Management page for
             the large events and <br /> for more about events <br /> scroll down
           </p>

@@ -1,14 +1,23 @@
 * {
-	padding: 0;
-	border: 0;
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 .box {
-	margin: 25px 25px;
+  margin: 25px 25px;
 }
 
 a {
-	text-decoration: none !important;
+  text-decoration: none !important;
 }
+
+/* 
+Color Pallate
+#17252A
+#2B7A78
+#3AAFA9
+#DEF2F1
+#FEFFFF
+*/

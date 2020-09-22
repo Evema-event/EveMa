@@ -84,7 +84,9 @@ const ForgetPassword0 = () => {
       {isSubmit && <Redirect to='/forgetpassword/1' />}
       <div className={classes['forget']}>
         <form className={classes['form-login']} onSubmit={handleSubmit}>
-          <h2 style={{ fontSize: "1.8rem", marginBottom: "1.5rem" }}>Forget Password</h2>
+          <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>
+            Forget Password
+          </h2>
           <span className={classes['inputs-login']}>
             <div className={classes['form_group']}>
               <input
@@ -101,20 +103,30 @@ const ForgetPassword0 = () => {
             <div>
               {loading ? (
                 <button
-                  type="button"
-                  className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                  type='button'
+                  className={[
+                    'btn btn-primary btn-block',
+                    classes.next,
+                    classes.link,
+                    classes['btn-primary'],
+                  ].join(' ')}
                   disable={loading}
                 >
                   Loading
                 </button>
               ) : (
-                  <button
-                    type='submit'
-                    className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
-                  >
-                    Next
-                  </button>
-                )}
+                <button
+                  type='submit'
+                  className={[
+                    'btn btn-primary btn-block',
+                    classes.next,
+                    classes.link,
+                    classes['btn-primary'],
+                  ].join(' ')}
+                >
+                  Next
+                </button>
+              )}
             </div>
           </span>
         </form>

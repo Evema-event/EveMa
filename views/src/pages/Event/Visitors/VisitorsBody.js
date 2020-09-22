@@ -3,6 +3,8 @@ import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import VisitorContext from '../../../context/visitor/visitorContext';
 
+import classes from './visitor.module.css';
+
 // VisitorsBody component
 const VisitorsBody = (props) => {
   const [redirectVisitor, setRedirect] = useState(false);
@@ -14,7 +16,7 @@ const VisitorsBody = (props) => {
   };
 
   return (
-    <tr onClick={onClickUser}>
+    <tr onClick={onClickUser} className={classes.fontKarla}>
       {redirectVisitor && <Redirect to='/admin/VisitorDetails' />}
 
       <td>{props.index}</td>

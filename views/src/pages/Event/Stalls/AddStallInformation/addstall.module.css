@@ -3,14 +3,11 @@
   width: 400px;
   padding: 3rem;
   color: white;
-  background: linear-gradient(
-    to right bottom,
-    rgba(44, 0, 255, 1) 0%,
-    rgba(189, 16, 224, 1) 100%
-  );
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.32);
+  background: #3aa9af;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
   backdrop-filter: blur(10px);
+  font-family: 'Rubik', sans-serif;
 }
 .section-add h3 {
   margin: 0.5rem 0rem;
