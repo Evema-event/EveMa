@@ -27,7 +27,7 @@ exports.addVisitor = (req, res) => {
             }
             if (!user.role.includes('Visitor')) {
                 const error = new Error("User must be a visitor");
-                error.statusCode = 422;
+                error.statusCode = 401;
                 throw error;
             }
             if (loadedStall.visitors) {

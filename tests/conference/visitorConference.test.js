@@ -22,7 +22,7 @@ let conferenceId;
 
 // Run before all test cases - will create users and get token for each
 beforeAll(async () => {
-    await db.connectDB('test-registerevent');
+    await db.connectDB('test-visitorconference');
     token = await getToken();
     const conferenceRes = await new Conference({
         ...conferenceData.valid,
