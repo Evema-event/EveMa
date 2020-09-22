@@ -56,4 +56,12 @@ router.put(
   addVisitorController.addVisitor
 );
 
+/*Get - /api/stall/getvisitors/{stallId}
+get visitors info of who visited the stall*/
+router.get(
+  '/getvisitors/:stallId',
+  authenticate,
+  addVisitorController.getVisitors
+);
+
 module.exports = router;

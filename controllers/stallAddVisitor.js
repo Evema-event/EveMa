@@ -1,5 +1,6 @@
 // Importing database models
 const User = require('../models/user');
+const Profile = require('../models/profile');
 const Stall = require('../models/stall');
 
 // Importing utility functions
@@ -42,6 +43,46 @@ exports.addVisitor = (req, res) => {
             res.status(200).json({ message: "Success", stall: stall });
         })
         .catch(err => {
+            throwError(err, res);
+        });
+};
+
+// Send visitor list for an stall
+exports.getVisitors = (req, res) => {
+    Stall.findById(req.params.stallId)
+        .populate('visitors')
+        .then((stall) => {
+            if (!stall) {
+                const error = new Error("Stall not found");
+                error.statusCode = 404;
+                throw error;
+            }
+            return Promise.all(
+                stall.visitors.map(visitor => {
+                    return Profile.findOne({
+                        userId: visitor._id
+                    })
+                        .then((profile) => {
+                            let newvisitor = {
+                                ...profile._doc,
+                                emailId: visitor.emailId,
+                                userName: visitor.userName,
+                            };
+                            return newvisitor;
+                        })
+                        .catch((err) => {
+                            throw err;
+                        });
+                })
+            );
+        })
+        .then((list) => {
+            res.status(200).json({
+                message: 'Success',
+                visitors: list
+            });
+        })
+        .catch((err) => {
             throwError(err, res);
         });
 };
