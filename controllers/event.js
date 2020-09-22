@@ -51,39 +51,39 @@ exports.getVisitorList = (req, res) => {
         error.statusCode = 401;
         throw error;
       }
-      Event.findById(req.params.eventId)
+      return Event.findById(req.params.eventId)
         .populate('registeredUsers')
-        .then((event) => {
-          if (!event) {
-            const error = new Error('Event not found');
-            error.statusCode = 404;
-            throw error;
-          }
-          return Promise.all(
-            event.registeredUsers.map((user) => {
-              return Profile.findOne({
-                userId: user._id
-              })
-                .then((profile) => {
-                  let newuser = {
-                    ...profile._doc,
-                    emailId: user.emailId,
-                    userName: user.userName,
-                  };
-                  return newuser;
-                })
-                .catch((err) => {
-                  throwError(err, res);
-                });
+    })
+    .then((event) => {
+      if (!event) {
+        const error = new Error("Event not found");
+        error.statusCode = 404;
+        throw error;
+      }
+      return Promise.all(
+        event.registeredUsers.map((user) => {
+          return Profile.findOne({
+            userId: user._id
+          })
+            .then((profile) => {
+              let newuser = {
+                ...profile._doc,
+                emailId: user.emailId,
+                userName: user.userName,
+              };
+              return newuser;
             })
-          );
+            .catch((err) => {
+              throwError(err, res);
+            });
         })
-        .then((list) => {
-          res.status(200).json({
-            message: 'Success',
-            visitorlist: list
-          });
-        });
+      );
+    })
+    .then((list) => {
+      res.status(200).json({
+        message: 'Success',
+        visitorlist: list
+      });
     })
     .catch((err) => {
       throwError(err, res);

@@ -181,3 +181,60 @@ exports.registerConference = (req, res) => {
       return throwError(err, res);
     });
 };
+
+// Visitor can register a conference
+exports.registerConference = (req, res) => {
+  let loadedConference;
+  User.findById(req.userId)
+    .then(user => {
+      if (!user.role.includes("Visitor")) {
+        const error = new Error("Visitor only able to register conference");
+        error.statusCode = 401;
+        throw error;
+      }
+      return Conference.findById(req.params.conferenceId);
+    })
+    .then(conference => {
+      if (!conference) {
+        const error = new Error("Conference not found");
+        error.statusCode = 404;
+        throw error;
+      }
+      if (conference.registeredVisitors) {
+        if (conference.registeredVisitors.includes(req.userId)) {
+          const error = new Error("User already registered");
+          error.statusCode = 422;
+          throw error;
+        } else {
+          conference.registeredVisitors.push(req.userId);
+        }
+      } else {
+        conference.registeredVisitors = [req.userId];
+      }
+      return conference.save();
+    })
+    .then(conference => {
+      loadedConference = conference;
+      return Profile.findOne({ userId: req.userId });
+    })
+    .then(profile => {
+      if (profile.visitorConference) {
+        if (profile.visitorConference.includes(req.params.conferenceId)) {
+          const error = new Error("User already registered");
+          error.statusCode = 422;
+          throw error;
+        } else {
+          profile.visitorConference.push(req.params.conferenceId);
+        }
+      } else {
+        profile.visitorConference = [req.params.conferenceId];
+      }
+      return profile.save();
+    })
+    .then(profile => {
+      res.status(200).json({ message: "Success", conference: loadedConference });
+    })
+    .catch(err => {
+      throwError(err, res);
+    });
+};

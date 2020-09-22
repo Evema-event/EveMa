@@ -13,8 +13,7 @@ const authenticate = require('../middleware/authenticate');
 const validator = require('../middleware/validator');
 
 /* Get - /api/conference/getConferences/{eventId}
-Return conferences of specific event
-*/
+Return conferences of specific event*/
 router.get(
   '/getConferences/:eventId',
   authenticate,
@@ -37,6 +36,14 @@ router.delete(
   '/deleteConference/:conferenceId',
   authenticate,
   conferenceController.deleteConference
-)
+);
+
+/*Put - /api/conference/registerConference/{conferenceId}
+Visitor can register a conference*/
+router.put(
+  '/registerConference/:conferenceId',
+  authenticate,
+  conferenceController.registerConference
+);
 
 module.exports = router;

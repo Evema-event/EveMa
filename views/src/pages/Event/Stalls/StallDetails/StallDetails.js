@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import classes from './stallDetails.module.css';
 import StallContext from '../../../../context/stall/stallContext';
 import EventTab from '../../../../Layout/eventTab';
+import StallTab from '../../../../Layout/stallTab';
 import ExhibitorBtn from '../../../../Layout/ExhibitorBtn';
 
 const StallDetails = () => {
@@ -16,6 +17,7 @@ const StallDetails = () => {
       {!stallContext.stalls && <Redirect to='/'></Redirect>}
       {stall && (
         <>
+          <StallTab tab='stall' />
           <div className={classes['stall-card']}>
             <div className={classes['stall-title']}>
               <h4>{stall.productName}</h4>

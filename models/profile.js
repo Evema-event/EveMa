@@ -19,6 +19,12 @@ const profileSchema = new Schema({
       ref: 'Event'
     }
   ],
+  visitorConferences: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Conference'
+    }
+  ],
   registeredStalls: [
     {
       eventId: {

@@ -4,10 +4,12 @@ const router = express.Router();
 
 //Importing validation files
 const stallValidator = require('../validators/stall');
+const addVisitorValidator = require('../validators/stallAddVisitor');
 
 //Importing controllers
 const stallController = require('../controllers/stall');
 const stallAddInfoController = require('../controllers/stallAddInfo');
+const addVisitorController = require('../controllers/stallAddVisitor');
 
 //Importing Middleware
 const authenticate = require('../middleware/authenticate');
@@ -43,6 +45,23 @@ router.put(
   authenticate,
   saveStallFiles,
   stallAddInfoController.addInfo
+);
+
+/*Put - /api/stall/addvisitor/{stallId}
+Add visitor info to stall from hardware*/
+router.put(
+  '/addvisitor/:stallId',
+  addVisitorValidator,
+  validator,
+  addVisitorController.addVisitor
+);
+
+/*Get - /api/stall/getvisitors/{stallId}
+get visitors info of who visited the stall*/
+router.get(
+  '/getvisitors/:stallId',
+  authenticate,
+  addVisitorController.getVisitors
 );
 
 module.exports = router;

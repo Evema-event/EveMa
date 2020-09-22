@@ -26,6 +26,12 @@ const stallSchema = new Schema({
     ref: 'Event',
     required: true,
   },
+  visitors: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   links: [String],
   documents: [String],
   images: [String]
