@@ -15,11 +15,13 @@ import Stalls from '../pages/Event/Stalls/Stalls';
 import StallDetails from '../pages/Event/Stalls/StallDetails/StallDetails';
 import StallVisitorList from '../pages/Event/Stalls/Visitors/VisitorsList';
 import StallVisitorDetails from '../pages/Event/Stalls/Visitors/VisitorDetails';
+import AddStallInformation from '../pages/Event/Stalls/AddStallInformation/AddStallInformation';
 
 // conference pages
 import Conferences from '../pages/Event/Conferences/Conferences';
 import ConferencesDetails from '../pages/Event/Conferences/ConferenceDetails/ConferenceDetails';
-import AddStallInformation from '../pages/Event/Stalls/AddStallInformation/AddStallInformation';
+import ConferenceVisitorList from '../pages/Event/Conferences/Visitors/VisitorsList';
+import ConferenceVisitorDetails from '../pages/Event/Conferences/Visitors/VisitorDetails';
 
 // Importing Auth pages
 import Signup0 from '../pages/Auth/Signup/Signup0';
@@ -72,6 +74,9 @@ const Routes = () => {
 
           <Route exact path='/conferenceList' component={Conferences} />
           <Route exact path='/conferenceDetails' component={ConferencesDetails} />
+
+          <Route exact path='/conferenceVisitorList' component={ConferenceVisitorList} />
+          <Route exact path='/conferenceVisitorDetails' component={ConferenceVisitorDetails} />
 
           <Route exact path='/registerStall' component={RegisterStall} />
           <Route exact path='/registerConference' component={RegisterConference} />
