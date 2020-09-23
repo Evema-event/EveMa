@@ -8,7 +8,6 @@ import axios from 'axios';
 import EventContext from '../context/event/eventContext';
 import AuthContext from '../context/auth/authContext';
 
-
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
   const [isSubmit, setisSubmit] = useState(false);
@@ -16,10 +15,8 @@ const RegisterBtn = (props) => {
   const [stallRedir, setStallRedir] = useState(false);
   const [confRedir, setConfRedir] = useState(false);
 
-
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
-
 
   const registerEvent = () => {
     setregEvent(true);
@@ -95,8 +92,6 @@ const RegisterBtn = (props) => {
         setLoading(false)
       })
   }
-
-
 
   const registerStall = () => {
     eventContext.setSelectedEvent(props.eventId);
@@ -177,8 +172,6 @@ const RegisterBtn = (props) => {
       );
     }
   };
-
-
 
   if (
     localStorage.getItem('token') &&

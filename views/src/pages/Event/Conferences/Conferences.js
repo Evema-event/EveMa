@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import classes from '../../EventList/eventList.module.css'
 
 import ConferenceCard from './ConferenceCard/ConferenceCard';
-import EventTab from '../../../Layout/eventTab';
+import EventTab from '../../../Layout/EventTab';
 
 import ConferenceContext from '../../../context/conference/conferenceContext';
 import EventContext from '../../../context/event/eventContext';
@@ -12,12 +12,12 @@ import EventContext from '../../../context/event/eventContext';
 const Conferences = () => {
     const { conferences, getConferences } = useContext(ConferenceContext);
     const { selectedEvent } = useContext(EventContext);
-    
-    
-  useEffect(() => {
-    getConferences(selectedEvent);
-    // eslint-disable-next-line
-  }, []);
+
+
+    useEffect(() => {
+        getConferences(selectedEvent);
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <>

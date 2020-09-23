@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import classes from '../Stalls/StallDetails/stallDetails.module.css';
 
 // Importing custom components
-import EventTab from '../../../Layout/eventTab';
+import EventTab from '../../../Layout/EventTab';
 import VisitorContext from '../../../context/visitor/visitorContext';
 
 // VisitorDetails component

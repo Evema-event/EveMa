@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import classes from '../../EventList/eventList.module.css';
 
 import StallCard from './StallCard/StallCard';
-import EventTab from '../../../Layout/eventTab';
+import EventTab from '../../../Layout/EventTab';
 
 import EventContext from '../../../context/event/eventContext';
 import StallContext from '../../../context/stall/stallContext';

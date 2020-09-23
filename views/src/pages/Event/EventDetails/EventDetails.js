@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 
 import classes from './eventDetails.module.css';
 
-import RegisterButton from '../../../Layout/RegisterBtn';
-import EventTab from '../../../Layout/eventTab';
+import EventButton from '../../../Layout/EventBtn';
+import EventTab from '../../../Layout/EventTab';
 
 import EventContext from '../../../context/event/eventContext';
 
@@ -27,7 +27,7 @@ const EventDetails = () => {
               </div>
               <div className='col-8 d-none d-md-block'>
                 {eventContext.isUpcoming && (
-                  <RegisterButton eventId={event._id} event={event} />
+                  <EventButton eventId={event._id} event={event} />
                 )}
               </div>
             </div>
@@ -77,7 +77,7 @@ const EventDetails = () => {
             </div>
             <div className='d-md-none mt-4'>
               {eventContext.isUpcoming && (
-                <RegisterButton eventId={event._id} event={event} />
+                <EventButton eventId={event._id} event={event} />
               )}
             </div>
           </div>

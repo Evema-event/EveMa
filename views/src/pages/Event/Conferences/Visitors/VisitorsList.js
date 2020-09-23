@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 // Importing custom components
-import ConferenceTab from '../../../../Layout/conferenceTab';
-import EventTab from '../../../../Layout/eventTab';
+import ConferenceTab from '../../../../Layout/ConferenceTab';
+import EventTab from '../../../../Layout/EventTab';
 import VisitorsHeader from './VisitorsHeader';
 import VisitorsBody from './VisitorsBody';
 

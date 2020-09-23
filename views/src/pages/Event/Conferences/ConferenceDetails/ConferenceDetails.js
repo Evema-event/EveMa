@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 
 import classes from './conferenceDetails.module.css';
 
-import EventTab from '../../../../Layout/eventTab';
-import ConferenceTab from '../../../../Layout/conferenceTab';
+import EventTab from '../../../../Layout/EventTab';
+import ConferenceTab from '../../../../Layout/ConferenceTab';
+import ConferenceBtn from '../../../../Layout/ConferenceBtn';
 
 import ConferenceContext from '../../../../context/conference/conferenceContext';
-import ExhibitorBtn from '../../../../Layout/ExhibitorBtn';
 
 const ConferenceDetails = () => {
   const conferenceContext = useContext(ConferenceContext);
@@ -82,7 +82,7 @@ const ConferenceDetails = () => {
             </div>
             <div className={classes['Del-btn']}>
               {
-                <ExhibitorBtn
+                <ConferenceBtn
                   confId={conference._id}
                   user={conference.userId._id}
                 />

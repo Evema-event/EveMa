@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import classes from './stallDetails.module.css';
+
+import EventTab from '../../../../Layout/EventTab';
+import StallTab from '../../../../Layout/StallTab';
+import StallBtn from '../../../../Layout/StallBtn';
+
 import StallContext from '../../../../context/stall/stallContext';
-import EventTab from '../../../../Layout/eventTab';
-import StallTab from '../../../../Layout/stallTab';
-import ExhibitorBtn from '../../../../Layout/ExhibitorBtn';
 
 const StallDetails = () => {
   const stallContext = useContext(StallContext);
@@ -59,7 +61,7 @@ const StallDetails = () => {
               </div>
             </div>
             <div className={classes['delete-btn']}>
-              {<ExhibitorBtn stallId={stall._id} user={stall.userId._id} />}
+              {<StallBtn stallId={stall._id} user={stall.userId._id} />}
             </div>
           </div>
         </>
