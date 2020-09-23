@@ -238,3 +238,43 @@ exports.visitorConference = (req, res) => {
       throwError(err, res);
     });
 };
+
+// Send visitor list for an conference
+exports.getVisitors = (req, res) => {
+  Conference.findById(req.params.conferenceId)
+    .populate('registeredVisitors')
+    .then((conference) => {
+      if (!conference) {
+        const error = new Error("Conference not found");
+        error.statusCode = 404;
+        throw error;
+      }
+      return Promise.all(
+        conference.registeredVisitors.map(visitor => {
+          return Profile.findOne({
+            userId: visitor._id
+          })
+            .then((profile) => {
+              let newvisitor = {
+                ...profile._doc,
+                emailId: visitor.emailId,
+                userName: visitor.userName,
+              };
+              return newvisitor;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        })
+      );
+    })
+    .then((list) => {
+      res.status(200).json({
+        message: 'Success',
+        visitors: list
+      });
+    })
+    .catch((err) => {
+      throwError(err, res);
+    });
+};

@@ -46,4 +46,12 @@ router.put(
   conferenceController.visitorConference
 );
 
+/*Get - /api/conference/getvisitors/{conferenceId}
+get visitors info of who registered for the conference*/
+router.get(
+  '/getvisitors/:conferenceId',
+  authenticate,
+  conferenceController.getVisitors
+);
+
 module.exports = router;
