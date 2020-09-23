@@ -47,7 +47,7 @@ describe('Test cases for visitor register conference', () => {
     // Throw error for request without token
     test('Should throw error for request doesn\'t have token', async () => {
         const res = await request(app)
-            .put('/api/conference/registerConference/' + conferenceId);
+            .put('/api/conference/visitorConference/' + conferenceId);
         expect(res.status).toBe(401);
         expect(res.body.message).toBe("Failed");
     });
@@ -55,7 +55,7 @@ describe('Test cases for visitor register conference', () => {
     // Throw error for request from exhibitor
     test('Should throw error for request from exhibitor', async () => {
         const res = await request(app)
-            .put('/api/conference/registerConference/' + conferenceId)
+            .put('/api/conference/visitorConference/' + conferenceId)
             .set('x-auth-token', token.exhibitorToken);
         expect(res.status).toBe(401);
         expect(res.body.message).toBe("Failed");
@@ -64,7 +64,7 @@ describe('Test cases for visitor register conference', () => {
     // Throw error for request from organizer
     test('Should throw error for request from organizer', async () => {
         const res = await request(app)
-            .put('/api/conference/registerConference/' + conferenceId)
+            .put('/api/conference/visitorConference/' + conferenceId)
             .set('x-auth-token', token.organizerToken);
         expect(res.status).toBe(401);
         expect(res.body.message).toBe("Failed");
@@ -73,7 +73,7 @@ describe('Test cases for visitor register conference', () => {
     // Success for valid token
     test('Should success for request from visitor', async () => {
         const res = await request(app)
-            .put('/api/conference/registerConference/' + conferenceId)
+            .put('/api/conference/visitorConference/' + conferenceId)
             .set('x-auth-token', token.visitorToken);
         expect(res.status).toBe(200);
         expect(res.body.message).toBe("Success");
@@ -84,7 +84,7 @@ describe('Test cases for visitor register conference', () => {
     // Throw error for more than 1 time register
     test('Should throw error for request from visitor more than once', async () => {
         const res = await request(app)
-            .put('/api/conference/registerConference/' + conferenceId)
+            .put('/api/conference/visitorConference/' + conferenceId)
             .set('x-auth-token', token.visitorToken);
         expect(res.status).toBe(422);
         expect(res.body.message).toBe("Failed");

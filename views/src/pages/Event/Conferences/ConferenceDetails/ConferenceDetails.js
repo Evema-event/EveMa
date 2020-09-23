@@ -73,11 +73,23 @@ const ConferenceDetails = () => {
                   <h6>{conference.userId.emailId}</h6>
                 </div>
               </div>
-              <div className={classes['conferenceAdd']}>
-                <h5>Product Description</h5>
-                <div className={classes['details-bg']}>
-                  <h6>{conference.description}</h6>
+              <div className={classes['conference-item']}>
+                <h5>Seat Limit</h5>
+                <div className={classes['indiv-value']}>
+                  <h6>{conference.seatLimit}</h6>
                 </div>
+              </div>
+              <div className={classes['conference-item']}>
+                <h5>Available Seats</h5>
+                <div className={classes['indiv-value']}>
+                  <h6>{conference.seatLimit - (conference?.registeredVisitors?.length || 0)}</h6>
+                </div>
+              </div>
+            </div>
+            <div className={classes['conferenceAdd']}>
+              <h5>Product Description</h5>
+              <div className={classes['details-bg']}>
+                <h6>{conference.description}</h6>
               </div>
             </div>
             <div className={classes['Del-btn']}>
@@ -85,6 +97,7 @@ const ConferenceDetails = () => {
                 <ConferenceBtn
                   confId={conference._id}
                   user={conference.userId._id}
+                  limit={conference.seatLimit - (conference?.registeredVisitors?.length || 0)}
                 />
               }
             </div>

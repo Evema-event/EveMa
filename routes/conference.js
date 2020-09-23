@@ -38,10 +38,10 @@ router.delete(
   conferenceController.deleteConference
 );
 
-/*Put - /api/conference/registerConference/{conferenceId}
+/*Put - /api/conference/visitorConference/{conferenceId}
 Visitor can register a conference*/
 router.put(
-  '/registerConference/:conferenceId',
+  '/visitorConference/:conferenceId',
   authenticate,
   conferenceController.visitorConference
 );

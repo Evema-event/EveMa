@@ -205,6 +205,10 @@ exports.visitorConference = (req, res) => {
           const error = new Error("User already registered");
           error.statusCode = 422;
           throw error;
+        } else if (conference.registeredVisitors.length >= conference.seatLimit) {
+          const error = new Error("House full");
+          error.statusCode = 422;
+          throw error;
         } else {
           conference.registeredVisitors.push(req.userId);
         }
@@ -218,16 +222,16 @@ exports.visitorConference = (req, res) => {
       return Profile.findOne({ userId: req.userId });
     })
     .then(profile => {
-      if (profile.visitorConference) {
-        if (profile.visitorConference.includes(req.params.conferenceId)) {
+      if (profile.visitorConferences) {
+        if (profile.visitorConferences.includes(req.params.conferenceId)) {
           const error = new Error("User already registered");
           error.statusCode = 422;
           throw error;
         } else {
-          profile.visitorConference.push(req.params.conferenceId);
+          profile.visitorConferences.push(req.params.conferenceId);
         }
       } else {
-        profile.visitorConference = [req.params.conferenceId];
+        profile.visitorConferences = [req.params.conferenceId];
       }
       return profile.save();
     })

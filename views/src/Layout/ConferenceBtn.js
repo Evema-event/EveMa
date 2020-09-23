@@ -53,6 +53,27 @@ const ConferenceBtn = (props) => {
         });
     };
 
+    const onRegisterConf = () => {
+        let data = {};
+        let config = {
+            headers: {
+                'x-auth-token': localStorage.getItem('token'),
+            },
+        };
+        let registerUrl = url + `conference/visitorConference/${props.confId}`;
+        setLoading(true);
+        axios
+            .put(registerUrl, data, config)
+            .then((res) => {
+                authContext.getProfile();
+                swal('Congrats', 'Event registered Successfully', 'success');
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+            });
+    }
+
     if (
         localStorage.getItem('token') &&
         localStorage.getItem('role') === 'Exhibitor' &&
@@ -70,6 +91,19 @@ const ConferenceBtn = (props) => {
                 </div>
             </>
         )
+    }
+    else if (localStorage.getItem('token') && localStorage.getItem('role') === 'Visitor') {
+        if (authContext.visitorConferences.includes(props.confId)) {
+            return <button className="btn btn-success" style={{ width: '200px' }}>Registered</button>
+        } else if (props.limit > 0) {
+            if (loading) {
+                return <button className="btn btn-success" style={{ width: '200px' }}>Loading</button>
+            } else {
+                return <button className="btn btn-success" style={{ width: '200px' }} onClick={onRegisterConf}>Register</button>
+            }
+        } else {
+            return <button className="btn btn-danger" style={{ width: '200px' }}>House full</button>
+        }
     }
     return <></>;
 }
