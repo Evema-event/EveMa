@@ -61,7 +61,9 @@ const SwitchAccount = () => {
       axios
         .post(switchAccountUrl, data, config)
         .then((res) => {
-          authContext.authentication(res)
+          let role = localStorage.getItem('role') === 'Visitor' ? 'Exhibitor' : 'Visitor';
+          localStorage.setItem('role', role);
+          authContext.authentication(res);
           setisSubmit(true);
           setLoading(false);
           swal('Account added', 'You have successfully created a new account', 'success');
