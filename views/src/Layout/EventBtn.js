@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import EventContext from '../context/event/eventContext';
 import AuthContext from '../context/auth/authContext';
+import classes from '../pages/Event/EventDetails/eventDetails.module.css';
 
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
@@ -50,7 +51,7 @@ const RegisterBtn = (props) => {
     let deleteUrl = url + `event/deleteEvent/${props.eventId}`;
     let users = ['Visitor', 'Exhibitor'];
     const data = {
-      subject: "Regarding - Cancellation of an event",
+      subject: 'Regarding - Cancellation of an event',
       body: `${props.event.name} event has been cancelled. Sorry for the inconvenience.
              For further queries, please contact ${props.event.contactEmail}`,
       users: users,
@@ -63,35 +64,36 @@ const RegisterBtn = (props) => {
       icon: 'warning',
       buttons: true,
       dangerMode: true,
-    }).then((res) => {
-      if (res) {
-        axios.post(mailUrl, data, configuration)
-          .then((res) => {
-            return axios.delete(deleteUrl, configuration)
-          })
-          .then((res) => {
-            if (res.data.message === 'Success') {
-              swal('Event deleted successfully and users notified');
-              eventContext.getUpcomingEvent();
-              setisSubmit(true);
-              setLoading(false);
-            }
-          })
-          .catch((err) => {
-            throw err;
-          });
-      }
-      else {
-        setisSubmit(true);
-        setLoading(false)
-      }
     })
-      .catch((err) => {
-        swal('Something went wrong', 'try again!', 'error')
-        setisSubmit(true)
-        setLoading(false)
+      .then((res) => {
+        if (res) {
+          axios
+            .post(mailUrl, data, configuration)
+            .then((res) => {
+              return axios.delete(deleteUrl, configuration);
+            })
+            .then((res) => {
+              if (res.data.message === 'Success') {
+                swal('Event deleted successfully and users notified');
+                eventContext.getUpcomingEvent();
+                setisSubmit(true);
+                setLoading(false);
+              }
+            })
+            .catch((err) => {
+              throw err;
+            });
+        } else {
+          setisSubmit(true);
+          setLoading(false);
+        }
       })
-  }
+      .catch((err) => {
+        swal('Something went wrong', 'try again!', 'error');
+        setisSubmit(true);
+        setLoading(false);
+      });
+  };
 
   const registerStall = () => {
     eventContext.setSelectedEvent(props.eventId);
@@ -125,14 +127,14 @@ const RegisterBtn = (props) => {
           {loading ? (
             <div disabled>Loading</div>
           ) : (
-              <div
-                className='btn btn-success pl-2 pr-2'
-                style={{ width: '200px' }}
-                onClick={registerStall}
-              >
-                Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
-              </div>
-            )}
+            <div
+              className='btn btn-success pl-2 pr-2'
+              style={{ width: '200px' }}
+              onClick={registerStall}
+            >
+              Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
+            </div>
+          )}
         </>
       );
     } else {
@@ -160,14 +162,14 @@ const RegisterBtn = (props) => {
           {loading ? (
             <div disabled>Loading</div>
           ) : (
-              <div
-                className='btn btn-success'
-                style={{ width: '200px' }}
-                onClick={registerConference}
-              >
-                Register Conference
-              </div>
-            )}
+            <div
+              className='btn btn-success'
+              style={{ width: '200px' }}
+              onClick={registerConference}
+            >
+              Register Conference
+            </div>
+          )}
         </>
       );
     }
@@ -180,18 +182,20 @@ const RegisterBtn = (props) => {
     return (
       <div className='ml-auto'>
         {authContext.registeredEvents.includes(props.eventId) || regEvent ? (
-          <div className='btn btn-success pl-5 pr-5'>Registered</div>
+          <div style={{ width: '200px' }} className='btn btn-success pl-5 pr-5'>
+            Registered
+          </div>
         ) : (
-            <div className='btn btn-success pl-5 pr-5'>
-              {loading ? (
-                <div className='btn-warning' disabled>
-                  Loading
-                </div>
-              ) : (
-                  <div onClick={registerEvent}>Register Event</div>
-                )}
-            </div>
-          )}
+          <div className='btn btn-success pl-5 pr-5'>
+            {loading ? (
+              <div className='btn-warning' disabled>
+                Loading
+              </div>
+            ) : (
+              <div onClick={registerEvent}>Register Event</div>
+            )}
+          </div>
+        )}
       </div>
     );
   } else if (
@@ -199,39 +203,21 @@ const RegisterBtn = (props) => {
     localStorage.getItem('role') === 'Exhibitor'
   ) {
     return (
-      <div className='ml-auto row'>
+      <div className={classes.registerButton}>
         {stallRedir && <Redirect to='/registerStall' />}
         {confRedir && <Redirect to='/registerConference' />}
-        <div className='col-6' style={{ position: 'relative' }}>
-          {stallBtn()}
-        </div>
-        <div className='col-6'>{conferenceBtn()}</div>
+        <div>{stallBtn()}</div>
+        <div>{conferenceBtn()}</div>
       </div>
     );
-  }
-  else if (
+  } else if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Organizer'
   ) {
     return (
-      <div className='ml-auto row'>
+      <div className={classes.registerButton}>
         {isSubmit && <Redirect to='/admin' />}
-        <div className='col'>
-          {loading ? (
-            <div className='btn btn-warning' disabled>
-              Loading
-            </div>
-          ) : (
-              <div
-                className='btn btn-danger'
-                style={{ width: '200px' }}
-                onClick={deleteEvent}
-              >
-                Delete Event
-              </div>
-            )}
-        </div>
-        <div className='col'>
+        <div>
           <Link
             to='/admin/notifyUser'
             className='btn btn-success'
@@ -239,6 +225,21 @@ const RegisterBtn = (props) => {
           >
             Notify Users
           </Link>
+        </div>
+        <div>
+          {loading ? (
+            <div className='btn btn-warning' disabled>
+              Loading
+            </div>
+          ) : (
+            <div
+              className='btn btn-danger'
+              style={{ width: '200px' }}
+              onClick={deleteEvent}
+            >
+              Delete Event
+            </div>
+          )}
         </div>
       </div>
     );

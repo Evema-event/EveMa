@@ -99,6 +99,14 @@
   margin: 0 auto;
 }
 
+.registerButton {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: 1300px) {
   .comp-card .main-bg {
     width: 900px;
@@ -227,6 +235,14 @@
   }
   .comp-card .register-button {
     margin: 0 4.4rem;
+  }
+  .registerButton {
+    flex-direction: column;
+    gap: 0rem;
+    justify-content: center;
+    row-gap: 10px;
+    margin: auto;
+    margin-top: 0.5rem;
   }
 }
 

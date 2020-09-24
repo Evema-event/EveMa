@@ -18,19 +18,13 @@ const EventDetails = () => {
         <div key={event._id}>
           <EventTab tab='event' />
           <div className={classes['main-bg']}>
-            <div className='row'>
-              <div
-                style={{ textTransform: 'uppercase' }}
-                className={[classes['indiv-name'], 'col-4'].join(' ')}
-              >
-                {event.name}
-              </div>
-              <div className='col-8 d-none d-md-block'>
-                {eventContext.isUpcoming && (
-                  <EventButton eventId={event._id} event={event} />
-                )}
-              </div>
+            <div
+              style={{ textTransform: 'uppercase' }}
+              className={classes['indiv-name']}
+            >
+              {event.name}
             </div>
+
             <div className={classes['indiv-name']}>Event Description:</div>
             <br />
 
@@ -75,7 +69,7 @@ const EventDetails = () => {
                 </div>
               </div>
             </div>
-            <div className='d-md-none mt-4'>
+            <div className={classes.registerButton}>
               {eventContext.isUpcoming && (
                 <EventButton eventId={event._id} event={event} />
               )}
