@@ -19,14 +19,13 @@ const UpcomingEvents = () => {
         <div className={[eventClasses.title, classes.title].join(' ')}>
           Upcoming Events
         </div>
-        <div className={classes.eventList}>
-          {upcomingEvents &&
-            upcomingEvents.map((event, i) =>
-              i < 2 ? (
-                <EventCard key={event._id} event={event} isUpcoming={true} />
-              ) : null
-            )}
-        </div>
+        {upcomingEvents && upcomingEvents.length > 0 ? <div className={classes.eventList}>
+          {upcomingEvents.map((event, i) =>
+            i < 2 ? (
+              <EventCard key={event._id} event={event} isUpcoming={true} />
+            ) : null
+          )}
+        </div> : <center style={{ paddingTop: '50px' }}>No upcoming events yet!</center>}
         {upcomingEvents && upcomingEvents.length > 2 && (
           <Loadmore link='/upcomingList' />
         )}

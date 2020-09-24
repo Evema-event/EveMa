@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
+import AuthContext from '../context/auth/authContext'
+import EventContext from '../context/event/eventContext'
+
 const EventTab = (props) => {
+
+    const { registeredEvents } = useContext(AuthContext)
+    const { indivEvent } = useContext(EventContext)
 
     const [redirectStall, setRedirectStall] = React.useState(false);
     const [redirectConference, setRedirectConference] = React.useState(false);
 
     const onClickStall = () => {
         if (localStorage.getItem('token')) {
-            setRedirectStall(true);
+            if (localStorage.getItem('role') === 'Visitor' && !registeredEvents.includes(indivEvent._id)) {
+                swal('Oops', 'Please register for this event to view stalls', 'error')
+            }
+            else {
+                setRedirectStall(true);
+            }
         } else {
             swal('Oops', 'Please login to view stalls', 'error');
         }
@@ -17,7 +28,12 @@ const EventTab = (props) => {
 
     const onClickConference = () => {
         if (localStorage.getItem('token')) {
-            setRedirectConference(true);
+            if (localStorage.getItem('role') === 'Visitor' && !registeredEvents.includes(indivEvent._id)) {
+                swal('Oops', 'Please register for this event to view conferences', 'error')
+            }
+            else {
+                setRedirectConference(true);
+            }
         } else {
             swal('Oops', 'Please login to view conference', 'error');
         }

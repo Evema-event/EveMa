@@ -50,14 +50,14 @@ const StallDetails = () => {
                 </div>
               </div>
               <div className={classes['stallAdd']}>
-                <h5>Product Description</h5>
-                <div className={classes['detail-bg']}>{stall.description}</div>
-              </div>
-              <div className={classes['stallAdd']}>
                 <h5>Company Address</h5>
                 <div className={classes['detail-bg']}>
                   {stall.user.companyAddress}
                 </div>
+              </div>
+              <div className={classes['stallAdd']}>
+                <h5>Description</h5>
+                <div className={classes['detail-bg']}>{stall.description}</div>
               </div>
             </div>
             <div className={classes['delete-btn']}>

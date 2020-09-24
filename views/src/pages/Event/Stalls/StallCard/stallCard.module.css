@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .stall-bg {
-  width: 388px;
+  width: 420px;
   padding: 10px;
   color: white;
   background: #3aafa9;
@@ -40,7 +40,7 @@
   color: #ffffff;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 950px) {
   .stall-bg {
     width: 370px;
   }

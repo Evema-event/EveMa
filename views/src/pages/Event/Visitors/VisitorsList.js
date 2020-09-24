@@ -28,15 +28,17 @@ const VisitorsList = () => {
     return (
         <div>
             <EventTab tab="visitor" />
-            <div style={{ overflowX: "auto" }}>
-                <table className="table" style={tableCss}>
-                    <VisitorsHeader />
-                    <tbody>
-                        {visitors && visitors.map((visitor, i) =>
-                            <VisitorsBody key={visitor._id} visitor={visitor} index={i + 1} onClick={visitor._id} />)}
-                    </tbody>
-                </table>
-            </div>
+            { visitors && visitors.length > 0 ?
+                <div style={{ overflowX: "auto" }}>
+                    <table className="table" style={tableCss}>
+                        <VisitorsHeader />
+                        <tbody>
+                            {visitors.map((visitor, i) =>
+                                <VisitorsBody key={visitor._id} visitor={visitor} index={i + 1} onClick={visitor._id} />)}
+                        </tbody>
+                    </table>
+                </div> : <center style={{ marginTop: "50px" }}>No visitors yet!</center>
+            }
         </div>
     );
 }

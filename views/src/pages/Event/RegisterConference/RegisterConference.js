@@ -46,7 +46,7 @@ const RegisterConf = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let isError = false;
-    if (fields.confTitle.value.length < 2) {
+    if (fields.confTitle.value.length < 5) {
       isError = true;
       fields.confTitle.error =
         'Conference Title must be greater than 2 characters';
@@ -278,35 +278,35 @@ const RegisterConf = (props) => {
                   Registered
                 </div>
               ) : (
-                <div className={classes['register-button']}>
-                  {loading ? (
-                    <button
-                      type='button'
-                      className={[
-                        'btn btn-primary btn-block',
-                        classes.can,
-                        classes.next,
-                        classes['btn-primary'],
-                      ].join(' ')}
-                      disable={loading.toString()}
-                    >
-                      Loading
-                    </button>
-                  ) : (
-                    <button
-                      type='submit'
-                      className={[
-                        'btn btn-primary btn-block',
-                        classes.can,
-                        classes.next,
-                        classes['btn-primary'],
-                      ].join(' ')}
-                    >
-                      Register
-                    </button>
-                  )}
-                </div>
-              )}
+                  <div className={classes['register-button']}>
+                    {loading ? (
+                      <button
+                        type='button'
+                        className={[
+                          'btn btn-primary btn-block',
+                          classes.can,
+                          classes.next,
+                          classes['btn-primary'],
+                        ].join(' ')}
+                        disable={loading.toString()}
+                      >
+                        Loading
+                      </button>
+                    ) : (
+                        <button
+                          type='submit'
+                          className={[
+                            'btn btn-primary btn-block',
+                            classes.can,
+                            classes.next,
+                            classes['btn-primary'],
+                          ].join(' ')}
+                        >
+                          Register
+                        </button>
+                      )}
+                  </div>
+                )}
             </div>
           </div>
         </form>
