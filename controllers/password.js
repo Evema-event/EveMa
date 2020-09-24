@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs');
 // Importing utility functions
 const sendMail = require('../utility/sendMail');
 const throwError = require('../utility/throwError');
+const hashPassword = require('../utility/hashPassword');
+const user = require('../models/user');
 
 // Forget Password function send OTP to user mail provided while signup
 exports.forgetPassword = (req, res) => {
@@ -74,4 +76,36 @@ exports.resetPassword = (req, res) => {
         .catch(err => {
             return throwError(err, res);
         });
+}
+
+exports.changePassword = (req, res) => {
+    let loadedUser
+    User.findById(req.userId)
+        .then((user) => {
+            if (!user) {
+                const error = new Error("User not found")
+                error.statusCode = 404
+                throw error
+            }
+            loadedUser = user
+            return bcrypt.compare(req.body.oldPassword, user.password);
+        })
+        .then((isMatch) => {
+            if (!isMatch) {
+                const error = new Error("Wrong password")
+                error.statusCode = 422
+                throw error
+            }
+            return hashPassword(req.body.newPassword);
+        })
+        .then((hashedPassword) => {
+            loadedUser.password = hashedPassword
+            return loadedUser.save()
+        })
+        .then((user) => {
+            res.status(200).json({ message: 'Success', user: user })
+        })
+        .catch((err) => {
+            throwError(err, res)
+        })
 }
