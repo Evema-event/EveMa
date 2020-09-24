@@ -41,15 +41,18 @@ const Stalls = () => {
       <div className={classes['view']}>
         {
           myStalls.length > 0 ?
-            myStalls.map((stall) => <StallCard stall={stall} key={stall._id} />) : <center>No stalls yet!</center>}
+            myStalls.map((stall) => <StallCard stall={stall} key={stall._id} />) :
+            <center>No stalls yet!</center>
+        }
       </div>
       <h1 style={{ margin: "10px 50px", fontSize: "28px" }}>Stalls</h1>
       <div className={classes['view']}>
         {
           otherStalls.length > 0 ?
-            otherStalls.map((stall) => <StallCard stall={stall} key={stall._id} />) : <center>No stalls yet!</center>}
+            otherStalls.map((stall) => <StallCard stall={stall} key={stall._id} />) :
+            <center>No stalls yet!</center>
+        }
       </div>
-
     </>
   );
 };
