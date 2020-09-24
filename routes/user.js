@@ -17,6 +17,7 @@ const loginValidator = require('../validators/login');
 const forgetPasswordValidator = require('../validators/forgetPassword');
 const resetPasswordValidator = require('../validators/resetPassword');
 const updateProfileValidator = require('../validators/updateProfile');
+const changePasswordValidator = require('../validators/changePassword');
 
 // Importing middleware
 const validator = require('../middleware/validator');
@@ -117,6 +118,18 @@ router.post(
   '/switchUser',
   authenticate,
   switchUserController.switchUser
+)
+
+/*
+PUT - /api/user/changePassword
+Change the password for user
+ */
+router.put(
+  '/changePassword',
+  authenticate,
+  changePasswordValidator,
+  validator,
+  passwordController.changePassword
 )
 
 // Exporting all routes

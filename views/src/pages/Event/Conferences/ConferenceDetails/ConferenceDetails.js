@@ -87,7 +87,7 @@ const ConferenceDetails = () => {
               </div>
             </div>
             <div className={classes['conferenceAdd']}>
-              <h5>Product Description</h5>
+              <h5>Description</h5>
               <div className={classes['details-bg']}>
                 <h6>{conference.description}</h6>
               </div>
