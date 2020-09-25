@@ -44,6 +44,7 @@ import Navbar from '../Layout/Navbar/Navbar';
 //Import Profile
 import Profile from '../pages/Profile/Profile';
 import SwitchAccount from '../pages/Auth/SwitchAccount/SwitchAccount';
+import UpdatePassword from '../pages/Profile/ProfileData/UpdatePassword';
 
 const Routes = () => {
   return (
@@ -70,20 +71,46 @@ const Routes = () => {
           <Route exact path='/stallDetails' component={StallDetails} />
 
           <Route exact path='/stallVisitorList' component={StallVisitorList} />
-          <Route exact path='/stallVisitorDetails' component={StallVisitorDetails} />
+          <Route
+            exact
+            path='/stallVisitorDetails'
+            component={StallVisitorDetails}
+          />
 
           <Route exact path='/conferenceList' component={Conferences} />
-          <Route exact path='/conferenceDetails' component={ConferencesDetails} />
+          <Route
+            exact
+            path='/conferenceDetails'
+            component={ConferencesDetails}
+          />
 
-          <Route exact path='/conferenceVisitorList' component={ConferenceVisitorList} />
-          <Route exact path='/conferenceVisitorDetails' component={ConferenceVisitorDetails} />
+          <Route
+            exact
+            path='/conferenceVisitorList'
+            component={ConferenceVisitorList}
+          />
+          <Route
+            exact
+            path='/conferenceVisitorDetails'
+            component={ConferenceVisitorDetails}
+          />
 
           <Route exact path='/registerStall' component={RegisterStall} />
-          <Route exact path='/registerConference' component={RegisterConference} />
+          <Route
+            exact
+            path='/registerConference'
+            component={RegisterConference}
+          />
 
           <Route exact path='/switchAccount' component={SwitchAccount} />
-          <Route exact path='/addStallDetails' component={AddStallInformation} />
+          <Route
+            exact
+            path='/addStallDetails'
+            component={AddStallInformation}
+          />
           <Route exact path='/profile' component={Profile} />
+
+          <Route exact path='/changePassword' component={UpdatePassword} />
 
           <Route path='/' component={Home} />
         </Switch>

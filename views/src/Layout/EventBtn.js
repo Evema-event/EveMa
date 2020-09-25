@@ -180,7 +180,7 @@ const RegisterBtn = (props) => {
     localStorage.getItem('role') === 'Visitor'
   ) {
     return (
-      <div className='ml-auto'>
+      <div>
         {authContext.registeredEvents.includes(props.eventId) || regEvent ? (
           <div style={{ width: '200px' }} className='btn btn-success pl-5 pr-5'>
             Registered

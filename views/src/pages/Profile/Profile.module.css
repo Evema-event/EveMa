@@ -53,7 +53,9 @@
   width: 50%;
   display: flex;
   margin: 30px;
+  margin-bottom: -10px;
   padding: 30px;
+  padding-bottom: 0rem;
 }
 
 .image img {
@@ -79,6 +81,14 @@
   background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
+.next {
+  margin-top: 2rem;
+}
+.link {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
 .part {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -89,7 +99,11 @@
   width: 250px;
   margin: 0 auto;
   padding-bottom: 3rem;
-  margin-bottom: 2rem;
+}
+
+.center {
+  margin: 0 auto;
+  width: 250px;
 }
 
 .info {
@@ -150,6 +164,10 @@
 .fileButton:hover {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.grid {
+  display: flex;
 }
 
 [datatitle] {
@@ -242,6 +260,7 @@
 
   .main {
     padding: 50px;
+    margin-bottom: -5rem;
   }
 
   .profile {
@@ -270,6 +289,10 @@
 
   .picture {
     padding-right: 100px;
+  }
+
+  .grid {
+    flex-direction: column;
   }
 }
 
@@ -319,6 +342,7 @@
   }
   .main {
     padding: 0;
+    margin-bottom: -2rem;
   }
 
   .image {
