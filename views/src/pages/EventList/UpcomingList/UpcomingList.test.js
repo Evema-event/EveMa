@@ -15,8 +15,7 @@ const renderWithContext = () => {
 };
 
 let data = {
-  title: 'Upcoming Events',
-  center: 'No upcoming events yet!',
+  title: 'Upcoming Events'
 };
 
 describe('Test cases for the Upcoming List', () => {
@@ -30,11 +29,11 @@ describe('Test cases for the Upcoming List', () => {
   });
 
   //Check the Center
-  test('should have Center Element and No upcoming events yet! text', () => {
+  test('should have Center Element', () => {
     renderWithContext();
     const centerElement = screen.getByText((content, element) => {
       return (
-        content === data.center && element.tagName.toLowerCase() === 'center'
+        element.tagName.toLowerCase() === 'center'
       );
     });
     expect(centerElement).toBeInTheDocument();
