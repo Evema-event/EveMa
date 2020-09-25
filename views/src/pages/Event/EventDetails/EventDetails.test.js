@@ -3,6 +3,7 @@ import { render, screen, act } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import EventContext from '../../../context/event/eventContext';
+import AuthContext from '../../../context/auth/authContext';
 
 import EventDetails from './EventDetails';
 
@@ -38,15 +39,23 @@ beforeEach(() => {
   act(() => {
     render(
       <Router>
-        <EventContext.Provider
+        <AuthContext.Provider
           value={{
-            indivEvent: eventData,
-            selectedEvent: eventData._id,
-            isUpcoming: true,
+            registeredEvents: [
+              '5f52b6e822995b0ea0c16098'
+            ]
           }}
         >
-          <EventDetails />
-        </EventContext.Provider>
+          <EventContext.Provider
+            value={{
+              indivEvent: eventData,
+              selectedEvent: eventData._id,
+              isUpcoming: true,
+            }}
+          >
+            <EventDetails />
+          </EventContext.Provider>
+        </AuthContext.Provider>
       </Router>
     );
   });
