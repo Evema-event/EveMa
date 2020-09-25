@@ -8,6 +8,8 @@ import {
   GET_COMPLETED_EVENTS,
   FIND_INDIV_EVENT,
   SET_SELECTED_EVENT,
+  UPCOMING_EVENTS_LOADING,
+  COMPLETED_EVENTS_LOADING
 } from '../types';
 
 const EventState = (props) => {
@@ -17,18 +19,22 @@ const EventState = (props) => {
     isUpcoming: false,
     indivEvent: null,
     selectedEvent: null,
+    upcomingEventsLoading: false,
+    completedEventsLoading: false,
   };
 
   const [state, dispatch] = useReducer(EventReducer, initialState);
 
   // GET UPCOMING EVENT
   const getUpcomingEvent = async () => {
+    dispatch({ type: UPCOMING_EVENTS_LOADING });
     const events = await axios.get(url + 'event/upcomingEvents');
     dispatch({ payload: events.data.events, type: GET_UPCOMING_EVENTS });
   };
 
   // GET COMPLETED EVENT
   const getCompletedEvent = async () => {
+    dispatch({ type: COMPLETED_EVENTS_LOADING });
     const events = await axios.get(url + 'event/completedEvents');
     dispatch({ payload: events.data.events, type: GET_COMPLETED_EVENTS });
   };
@@ -50,6 +56,8 @@ const EventState = (props) => {
         indivEvent: state.indivEvent,
         selectedEvent: state.selectedEvent,
         isUpcoming: state.isUpcoming,
+        upcomingEventsLoading: state.upcomingEventsLoading,
+        completedEventsLoading: state.completedEventsLoading,
         getUpcomingEvent,
         getCompletedEvent,
         setIndividualEvent,

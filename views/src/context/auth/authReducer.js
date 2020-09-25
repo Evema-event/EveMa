@@ -1,4 +1,10 @@
-import { UPDATE_USER, AUTHENTICATE, LOGOUT, FORGET_PASSWORD } from '../types';
+import {
+  UPDATE_USER,
+  AUTHENTICATE,
+  LOGOUT,
+  FORGET_PASSWORD,
+  PROFILE_LOADING
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -12,7 +18,13 @@ export default (state, action) => {
       return {
         ...state,
         ...action.payload.user,
+        profileLoading: false,
         token: action.payload.token,
+      };
+    case PROFILE_LOADING:
+      return {
+        ...state,
+        profileLoading: true,
       };
     case LOGOUT:
       localStorage.clear();

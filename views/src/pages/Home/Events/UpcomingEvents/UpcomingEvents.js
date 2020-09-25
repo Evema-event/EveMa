@@ -6,12 +6,17 @@ import classes from './upcomingEvents.module.css';
 import eventClasses from '../events.module.css';
 
 import Loadmore from '../Loadmore/Loadmore';
+import Loading from '../../../../Layout/Loading';
 import EventCard from '../../../EventList/EventCard/EventCard';
 
 import EventContext from '../../../../context/event/eventContext';
 
 const UpcomingEvents = () => {
-  const { upcomingEvents } = useContext(EventContext);
+  const { upcomingEvents, upcomingEventsLoading } = useContext(EventContext);
+
+  if (upcomingEventsLoading) {
+    return <div className={classes.upcoming}> <Loading color="light" /> </div>;
+  }
 
   return (
     <div className={classes.upcoming}>

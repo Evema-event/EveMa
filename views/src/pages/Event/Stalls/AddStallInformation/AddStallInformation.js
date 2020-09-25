@@ -8,11 +8,14 @@ import swal from 'sweetalert'
 import classes from './addstall.module.css';
 import btnclass from '../../../Auth/Login/login.module.css';
 
-import StallContext from '../../../../context/stall/stallContext'
+import StallContext from '../../../../context/stall/stallContext';
+import EventContext from '../../../../context/event/eventContext';
 
 const AddStallInformation = (props) => {
 
-  const stallContext = useContext(StallContext)
+  const stallContext = useContext(StallContext);
+  const eventContext = useContext(EventContext);
+
   const initialState = {
     link: { value: '', error: '' },
     image: { value: '', error: '', name: '' },
@@ -22,8 +25,6 @@ const AddStallInformation = (props) => {
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
-
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -79,8 +80,6 @@ const AddStallInformation = (props) => {
     }
   };
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault()
     setIsLoading(true)
@@ -120,6 +119,8 @@ const AddStallInformation = (props) => {
     let addinfoUrl = url + `stall/addinfo/${stallContext.selectedStallId}`
     axios.put(addinfoUrl, formData, config)
       .then((res) => {
+        stallContext.getStalls(eventContext.indivEvent._id);
+        stallContext.updateIndividualStall(res.data.stall);
         swal('', 'Data added successfully', 'success')
           .then(res => {
             setIsSubmit(true)

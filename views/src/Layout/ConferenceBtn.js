@@ -6,10 +6,15 @@ import url from '../server';
 import axios from 'axios';
 
 import AuthContext from '../context/auth/authContext';
+import EventContext from '../context/event/eventContext';
+import ConferenceContext from '../context/conference/conferenceContext';
 
 const ConferenceBtn = (props) => {
 
     const authContext = useContext(AuthContext);
+    const eventContext = useContext(EventContext);
+    const conferenceContext = useContext(ConferenceContext);
+
     const [deleteConfRedir, setDeleteConfRedir] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -20,7 +25,6 @@ const ConferenceBtn = (props) => {
             },
         };
         let delConfUrl = url + `conference/deleteConference/${props.confId}`;
-        setLoading(true);
         swal({
             title: 'Are you sure?',
             text: 'You are about to delete a Conference!',
@@ -29,10 +33,12 @@ const ConferenceBtn = (props) => {
             dangerMode: true,
         }).then((res) => {
             if (res) {
+                setLoading(true);
                 axios
                     .delete(delConfUrl, configuration)
                     .then((res) => {
                         if (res.data.message === 'Success') {
+                            conferenceContext.getConferences(eventContext.indivEvent._id);
                             authContext.getProfile();
                             setLoading(false);
                             swal('Conference deleted successfully')
@@ -47,8 +53,6 @@ const ConferenceBtn = (props) => {
                     .catch((err) => {
                         setLoading(false);
                     });
-            } else {
-                setDeleteConfRedir(true);
             }
         });
     };

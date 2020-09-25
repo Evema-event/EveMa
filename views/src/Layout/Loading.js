@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Loading = () => {
+const Loading = (props) => {
+
   return (
-    <div class='spinner-border text-info' role='status'>
-      <span class='sr-only'>Loading...</span>
+    <div className={['spinner-border', `text-${props.color}`].join(' ')} role='status'>
+      <span className='sr-only'>Loading...</span>
     </div>
   );
 };

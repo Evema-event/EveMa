@@ -6,7 +6,11 @@ import VisitorContext from './visitorContext';
 import VisitorReducer from './visitorReducer';
 
 // Importing required types
-import { GET_VISITOR, SET_INDIV_VISITOR } from '../types';
+import {
+  GET_VISITOR,
+  SET_INDIV_VISITOR,
+  VISITOR_LOADING
+} from '../types';
 
 // Importing files and packages to fetch data
 import axios from 'axios';
@@ -18,6 +22,7 @@ const VisitorState = (props) => {
   const initialState = {
     visitorlist: null,
     individualVisitor: null,
+    visitorLoading: false,
   };
 
   // Apply reducer to state
@@ -25,6 +30,7 @@ const VisitorState = (props) => {
 
   // Function fetch data from server
   const getVisitors = async (eventId) => {
+    dispatch({ type: VISITOR_LOADING });
     const config = {
       headers: {
         'x-auth-token': localStorage.getItem('token'),
@@ -45,6 +51,7 @@ const VisitorState = (props) => {
       value={{
         visitorlist: state.visitorlist,
         individualVisitor: state.individualVisitor,
+        visitorLoading: state.visitorLoading,
         getVisitors,
         setIndividualVisitor,
       }}

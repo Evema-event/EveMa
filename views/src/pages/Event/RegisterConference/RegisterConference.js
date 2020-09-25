@@ -10,6 +10,7 @@ import url from '../../../server';
 
 import EventContext from '../../../context/event/eventContext';
 import AuthContext from '../../../context/auth/authContext';
+import ConferenceContext from '../../../context/conference/conferenceContext';
 
 const RegisterConf = (props) => {
   const initialState = {
@@ -28,6 +29,7 @@ const RegisterConf = (props) => {
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
+  const conferenceContext = useContext(ConferenceContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -103,6 +105,7 @@ const RegisterConf = (props) => {
       axios
         .post(registerConfUrl, data, config)
         .then((res) => {
+          conferenceContext.getConferences(eventContext.selectedEvent);
           authContext.getProfile();
           swal('Congrats', 'Conference registered Successfully', 'success')
             .then((val) => {

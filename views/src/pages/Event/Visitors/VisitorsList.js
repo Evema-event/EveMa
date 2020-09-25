@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 
 // Importing custom components
 import EventTab from '../../../Layout/EventTab';
+import Loading from '../../../Layout/Loading';
+
 import VisitorsHeader from './VisitorsHeader';
 import VisitorsBody from './VisitorsBody';
 
@@ -14,12 +16,24 @@ import VisitorContext from '../../../context/visitor/visitorContext';
 const VisitorsList = () => {
     const visitorContext = useContext(VisitorContext);
     const visitors = visitorContext.visitorlist;
+    const loading = visitorContext.visitorLoading;
     const tableCss = {
         width: "90%",
         minWidth: "600px",
         margin: "5px auto",
         textAlign: "left"
     };
+
+    if (loading) {
+        return (
+            <>
+                <EventTab tab='visitor' />
+                <center style={{ marginTop: "100px" }}>
+                    <Loading color="info"></Loading>
+                </center>
+            </>
+        );
+    }
 
     if (!visitors) {
         return <Redirect to='/' />;

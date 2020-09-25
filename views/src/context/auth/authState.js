@@ -5,7 +5,13 @@ import AuthReducer from './authReducer';
 import axios from 'axios';
 import url from '../../server';
 
-import { UPDATE_USER, AUTHENTICATE, LOGOUT, FORGET_PASSWORD } from '../types';
+import {
+  UPDATE_USER,
+  AUTHENTICATE,
+  LOGOUT,
+  FORGET_PASSWORD,
+  PROFILE_LOADING
+} from '../types';
 
 const AuthState = (props) => {
   const initialState = {
@@ -35,11 +41,13 @@ const AuthState = (props) => {
     registeredStalls: [],
     visitorConferences: [],
     registeredConferences: [],
+    profileLoading: false,
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   const getProfile = () => {
+    dispatch({ type: PROFILE_LOADING });
     const profileUrl = url + 'user/getProfile';
 
     const config = {
@@ -144,6 +152,7 @@ const AuthState = (props) => {
         registeredEvents: state.registeredEvents,
         visitorConferences: state.visitorConferences,
         registeredConferences: state.registeredConferences,
+        profileLoading: state.profileLoading,
         updateUser,
         getProfile,
         authentication,

@@ -10,6 +10,7 @@ import axios from 'axios';
 
 import EventContext from '../../../context/event/eventContext';
 import AuthContext from '../../../context/auth/authContext';
+import StallContext from '../../../context/stall/stallContext';
 
 const RegisterStall = (props) => {
   const initialState = {
@@ -24,6 +25,7 @@ const RegisterStall = (props) => {
 
   const eventContext = useContext(EventContext);
   const authContext = useContext(AuthContext);
+  const stallContext = useContext(StallContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -84,6 +86,7 @@ const RegisterStall = (props) => {
         .then((res) => {
           eventContext.indivEvent.registeredStalls.push(res.data.stall._id);
           eventContext.setIndividualEvent(eventContext.indivEvent, true);
+          stallContext.getStalls(eventContext.selectedEvent);
           authContext.getProfile();
           swal('Congrats', 'Stall registered Successfully', 'success')
             .then((val) => {

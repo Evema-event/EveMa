@@ -3,6 +3,8 @@ import {
   GET_COMPLETED_EVENTS,
   FIND_INDIV_EVENT,
   SET_SELECTED_EVENT,
+  UPCOMING_EVENTS_LOADING,
+  COMPLETED_EVENTS_LOADING
 } from '../types';
 
 export default (state, action) => {
@@ -11,12 +13,24 @@ export default (state, action) => {
       return {
         ...state,
         upcomingEvents: action.payload,
+        upcomingEventsLoading: false,
       };
     case GET_COMPLETED_EVENTS:
       return {
         ...state,
         completedEvents: action.payload,
+        completedEventsLoading: false,
       };
+    case UPCOMING_EVENTS_LOADING:
+      return {
+        ...state,
+        upcomingEventsLoading: true,
+      };
+    case COMPLETED_EVENTS_LOADING:
+      return {
+        ...state,
+        completedEventsLoading: true,
+      }
     case FIND_INDIV_EVENT:
       return {
         ...state,

@@ -7,10 +7,12 @@ import axios from 'axios';
 
 import AuthContext from '../context/auth/authContext';
 import EventContext from '../context/event/eventContext';
+import StallContext from '../context/stall/stallContext';
 
 const ExhibitorBtn = (props) => {
   const authContext = useContext(AuthContext);
   const eventContext = useContext(EventContext);
+  const stallContext = useContext(StallContext);
 
   const [deleteStallRedir, setDeleteStallRedir] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -23,39 +25,39 @@ const ExhibitorBtn = (props) => {
     };
 
     let delStallUrl = url + `stall/deleteStall/${props.stallId}`;
-    setLoading(true);
     swal({
       title: 'Are you sure?',
       text: 'You are about to delete a stall!',
       icon: 'warning',
       buttons: true,
       dangerMode: true,
-    }).then((res) => {
-      if (res) {
-        axios
-          .delete(delStallUrl, configuration)
-          .then((res) => {
-            if (res.data.message === 'Success') {
-              eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
-              eventContext.setIndividualEvent(eventContext.indivEvent, true);
-              authContext.getProfile();
+    })
+      .then((res) => {
+        if (res) {
+          setLoading(true);
+          axios
+            .delete(delStallUrl, configuration)
+            .then((res) => {
+              if (res.data.message === 'Success') {
+                eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
+                eventContext.setIndividualEvent(eventContext.indivEvent, true);
+                stallContext.getStalls(eventContext.indivEvent._id);
+                authContext.getProfile();
+                setLoading(false);
+                swal('Stall deleted successfully')
+                  .then((res) => {
+                    setDeleteStallRedir(true);
+                  })
+                  .catch((err) => {
+                    throw err;
+                  });
+              }
+            })
+            .catch((err) => {
               setLoading(false);
-              swal('Stall deleted successfully')
-                .then((res) => {
-                  setDeleteStallRedir(true);
-                })
-                .catch((err) => {
-                  throw err;
-                });
-            }
-          })
-          .catch((err) => {
-            setLoading(false);
-          });
-      } else {
-        setDeleteStallRedir(true);
-      }
-    });
+            });
+        }
+      });
   };
 
   if (

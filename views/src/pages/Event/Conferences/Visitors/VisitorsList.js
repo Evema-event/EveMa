@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom';
 // Importing custom components
 import ConferenceTab from '../../../../Layout/ConferenceTab';
 import EventTab from '../../../../Layout/EventTab';
+import Loading from '../../../../Layout/Loading';
+
 import VisitorsHeader from './VisitorsHeader';
 import VisitorsBody from './VisitorsBody';
 
@@ -15,12 +17,25 @@ import ConferenceContext from '../../../../context/conference/conferenceContext'
 const VisitorsList = () => {
     const conferenceContext = useContext(ConferenceContext);
     const visitors = conferenceContext.visitors;
+    const loading = conferenceContext.confVisitorLoading;
     const tableCss = {
         width: "90%",
         minWidth: "600px",
         margin: "5px auto",
         textAlign: "left"
     };
+
+    if (loading) {
+        return (
+            <>
+                <EventTab tab='conference' />
+                <ConferenceTab tab="visitor" />
+                <center style={{ marginTop: "100px" }}>
+                    <Loading color="info"></Loading>
+                </center>
+            </>
+        );
+    }
 
     if (!visitors) {
         return <Redirect to='/' />;

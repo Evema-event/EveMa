@@ -10,7 +10,9 @@ import {
     GET_CONFERENCES,
     SET_INDIVIDUAL_CONF,
     GET_CONF_VISITORS,
-    SET_INDIVIDUAL_CONF_VISITOR
+    SET_INDIVIDUAL_CONF_VISITOR,
+    CONFERENCE_LOADING,
+    CONF_VISITOR_LOADING
 } from '../types';
 
 const ConferenceState = (props) => {
@@ -18,12 +20,15 @@ const ConferenceState = (props) => {
         conferences: null,
         individualConference: null,
         visitors: null,
-        individualVisitor: null
+        individualVisitor: null,
+        conferenceLoading: false,
+        confVisitorLoading: false,
     };
 
     const [state, dispatch] = useReducer(ConferenceReducer, initialState);
 
     const getConferences = async (eventId) => {
+        dispatch({ type: CONFERENCE_LOADING });
         const config = {
             headers: {
                 'x-auth-token': localStorage.getItem('token')
@@ -34,6 +39,7 @@ const ConferenceState = (props) => {
     }
 
     const getVisitors = async (conferenceId) => {
+        dispatch({ type: CONF_VISITOR_LOADING });
         let conferenceUrl = url + `conference/getVisitors/${conferenceId}`;
         const config = {
             headers: {
@@ -60,6 +66,8 @@ const ConferenceState = (props) => {
             individualConference: state.individualConference,
             visitors: state.visitors,
             individualVisitor: state.individualVisitor,
+            conferenceLoading: state.conferenceLoading,
+            confVisitorLoading: state.confVisitorLoading,
             getConferences,
             setIndividualConference,
             getVisitors,
