@@ -31,6 +31,8 @@ Details of all models:
 15. companyName -> String
 16. companyAddress -> String
 17. contactNumber -> String
+18. image -> String
+19. visitorConferences -> Array -> conferenceId
 
 ## Event Model
 
@@ -56,6 +58,10 @@ Details of all models:
 3. productDomain -> String
 4. userId -> ObjectId
 5. eventId -> ObjectId
+6. visitors -> Array -> userId
+7. links -> Array -> String
+8. documents -> Array -> String
+9. images -> Array -> String
 
 ## Conference Model
 
@@ -68,3 +74,4 @@ Details of all models:
 7. seatLimit -> Number
 8. userId -> ObjectId
 9. eventId -> ObjectId
+10. registeredVisitors -> Array -> userId
