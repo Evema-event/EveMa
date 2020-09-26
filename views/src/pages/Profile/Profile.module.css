@@ -44,7 +44,6 @@
   border: none;
   background: #fff;
   padding: 0.3rem;
-  /* border-bottom: 2px solid black; */
   border-radius: 4px;
   font-family: 'Karla', sans-serif;
 }
@@ -69,24 +68,6 @@
 .picture {
   text-align: center;
   padding-top: 15px;
-}
-
-.btn-primary {
-  color: #ffffff !important;
-  background-color: rgba(0, 0, 0, 0.26) !important;
-  border: 0 solid transparent !important;
-}
-
-.btn-primary:hover {
-  background-color: rgba(0, 0, 0, 0.3) !important;
-}
-
-.next {
-  margin-top: 2rem;
-}
-.link {
-  color: #ffffff !important;
-  text-decoration: none !important;
 }
 
 .part {
@@ -150,15 +131,14 @@
 .Button {
   width: 75px;
   height: 40px;
-  border: 1px solid green;
-  background-color: green;
-  color: cornsilk;
+  color: #fff;
   padding: 5px 5px;
   text-align: center;
   margin: 5px;
   margin-top: 10px;
   border-radius: 5px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+  border: 1px solid;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.26);
 }
 
 .fileButton:hover {

@@ -30,19 +30,19 @@ const Navbar = () => {
   const guestLinks = (
     <Fragment>
       {localStorage.getItem('token') &&
-        localStorage.getItem('role') === 'Organizer' ? (
-          <li>
-            <Link className={'nav-link'} to='/admin'>
-              Admin
+      localStorage.getItem('role') === 'Organizer' ? (
+        <li>
+          <Link className={'nav-link'} to='/admin'>
+            Admin
           </Link>
-          </li>
-        ) : (
-          <li>
-            <Link className='nav-link' to='/'>
-              Home
+        </li>
+      ) : (
+        <li>
+          <Link className='nav-link' to='/'>
+            Home
           </Link>
-          </li>
-        )}
+        </li>
+      )}
       <li>
         <Link className='nav-link' to='/eventList'>
           EventList
@@ -68,20 +68,20 @@ const Navbar = () => {
           </li>
         </>
       ) : (
-          <>
-            {redirect && <Redirect to='/' />}
-            <li className='nav-item'>
-              <Link className='nav-link' to='/signup/0'>
-                Sign Up
+        <>
+          {redirect && <Redirect to='/' />}
+          <li className='nav-item'>
+            <Link className='nav-link' to='/signup/0'>
+              Sign Up
             </Link>
-            </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to='/login'>
-                Login
+          </li>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/login'>
+              Login
             </Link>
-            </li>{' '}
-          </>
-        )}
+          </li>{' '}
+        </>
+      )}
     </Fragment>
   );
 
@@ -106,7 +106,7 @@ const Navbar = () => {
         aria-label='Toggle navigation'
       >
         <span>
-          <i className='fas fa-bars' />
+          <i className='fa fa-bars' />
         </span>
       </button>
 

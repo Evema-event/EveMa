@@ -39,7 +39,7 @@
   font-size: 19.5px;
   margin: 10px 20px;
   font-weight: 500;
-  height: 100px;
+  min-height: 100px;
 }
 
 .fullView .card .details {

@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 
 import signup from '../../../img/signup.jpg';
 import classes from './signup.module.css';
+import btnclasses from '../../../Layout/button.module.css';
 
 import AuthContext from '../../../context/auth/authContext';
 
@@ -135,13 +136,13 @@ const Signup2 = () => {
       axios
         .post(signupUrl, userData)
         .then((res) => {
-          let role
+          let role;
           if (res.data.user.role.length === 1) {
             role = res.data.user.role[0];
           } else {
             role = 'Exhibitor';
           }
-          localStorage.setItem('role', role)
+          localStorage.setItem('role', role);
           authContext.authentication(res);
           swal('Congrats', 'You logged in successfully!', 'success');
           setLoading(false);
@@ -206,7 +207,11 @@ const Signup2 = () => {
               <h6>{fields.company.error}</h6>
             </div>
 
-            <div className={[classes['form_group'], classes['text-area']].join(' ')}>
+            <div
+              className={[classes['form_group'], classes['text-area']].join(
+                ' '
+              )}
+            >
               <label htmlFor='contact'>Contact</label>
               <input
                 className={classes['form_input']}
@@ -237,26 +242,44 @@ const Signup2 = () => {
           </div>
           <span className={classes['inputs']}>
             <Link to='/signup/1'>
-              <button type='button' className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}>
+              <button
+                type='button'
+                className={[
+                  'btn btn-primary btn-block',
+                  btnclasses.next,
+                  btnclasses.link,
+                  btnclasses['btn-primary'],
+                ].join(' ')}
+              >
                 Back
               </button>
             </Link>
             {loading ? (
               <button
-                type="button"
-                className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                type='button'
+                className={[
+                  'btn btn-primary btn-block',
+                  btnclasses.next,
+                  btnclasses.link,
+                  btnclasses['btn-primary'],
+                ].join(' ')}
                 disable='true'
               >
                 Loading
               </button>
             ) : (
-                <button
-                  type='submit'
-                  className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
-                >
-                  Submit
-                </button>
-              )}
+              <button
+                type='submit'
+                className={[
+                  'btn btn-primary btn-block',
+                  btnclasses.next,
+                  btnclasses.link,
+                  btnclasses['btn-primary'],
+                ].join(' ')}
+              >
+                Submit
+              </button>
+            )}
           </span>
         </form>
       </div>

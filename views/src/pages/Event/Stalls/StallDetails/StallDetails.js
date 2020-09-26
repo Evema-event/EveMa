@@ -53,12 +53,14 @@ const StallDetails = () => {
               <div className={classes['stallAdd']}>
                 <h5>Company Address</h5>
                 <div className={classes['detail-bg']}>
-                  {stall.user.companyAddress}
+                  <h6>{stall.user.companyAddress}</h6>
                 </div>
               </div>
               <div className={classes['stallAdd']}>
                 <h5>Description</h5>
-                <div className={classes['detail-bg']}>{stall.description}</div>
+                <div className={classes['detail-bg']}>
+                  <h6>{stall.description}</h6>
+                </div>
               </div>
             </div>
             <div className={classes['delete-btn']}>

@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import signup from '../../../img/signup.jpg';
 import classes from './signup.module.css';
+import btnclasses from '../../../Layout/button.module.css';
 
 import AuthContext from '../../../context/auth/authContext';
 
@@ -251,25 +252,43 @@ const Signup1 = () => {
             </div>
 
             <Link to='/signup/0'>
-              <button type='button' className={['btn btn-primary btn-block', classes.link, classes.next, classes['btn-primary']].join(' ')}>
+              <button
+                type='button'
+                className={[
+                  'btn btn-primary btn-block',
+                  btnclasses.link,
+                  btnclasses.next,
+                  btnclasses['btn-primary'],
+                ].join(' ')}
+              >
                 Back
               </button>
             </Link>
             {loading ? (
               <button
-                className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                className={[
+                  'btn btn-primary btn-block',
+                  btnclasses.next,
+                  btnclasses.link,
+                  btnclasses['btn-primary'],
+                ].join(' ')}
                 disable={loading}
               >
                 Loading
               </button>
             ) : (
-                <button
-                  type='submit'
-                  className={['btn btn-primary btn-block ', classes.next, classes.link, classes['btn-primary']].join(' ')}
-                >
-                  Next
-                </button>
-              )}
+              <button
+                type='submit'
+                className={[
+                  'btn btn-primary btn-block ',
+                  classes.next,
+                  classes.link,
+                  classes['btn-primary'],
+                ].join(' ')}
+              >
+                Next
+              </button>
+            )}
           </span>
         </form>
       </div>

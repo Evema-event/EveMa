@@ -52,8 +52,8 @@
   font-family: 'Karla', sans-serif;
 }
 .card-value h6 {
-  font-size: 16px;
   color: #000000;
+  font-weight: 400;
 }
 
 .stallAdd {
@@ -70,6 +70,9 @@
   padding: 0.5rem 1rem;
   margin: 0.5rem 0;
   font-family: 'Karla', sans-serif;
+}
+.detail-bg h6 {
+  font-weight: 400;
 }
 .linkBg {
   display: grid;
@@ -93,27 +96,6 @@
 .imageBg img {
   width: 270px;
   height: 270px;
-}
-
-.btn-primary {
-  color: #ffffff !important;
-  background-color: rgba(0, 0, 0, 0.26) !important;
-  border: 0 solid transparent !important;
-  width: 250px !important;
-}
-
-.btn-primary:hover {
-  background-color: rgba(0, 0, 0, 0.3) !important;
-}
-
-.next {
-  margin-top: 2rem;
-}
-.link {
-  color: #ffffff !important;
-  text-decoration: none !important;
-  margin: auto;
-  margin-top: 1rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -171,6 +153,7 @@
   }
   .detail-bg {
     width: 250px;
+    word-wrap: break-word;
   }
   .link {
     margin-top: 1rem;

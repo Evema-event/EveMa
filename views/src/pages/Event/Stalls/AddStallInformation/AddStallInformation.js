@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import url from '../../../../server'
-import axios from 'axios'
-import swal from 'sweetalert'
+import url from '../../../../server';
+import axios from 'axios';
+import swal from 'sweetalert';
 
 import classes from './addstall.module.css';
 import btnclass from '../../../Auth/Login/login.module.css';
@@ -12,7 +12,6 @@ import StallContext from '../../../../context/stall/stallContext';
 import EventContext from '../../../../context/event/eventContext';
 
 const AddStallInformation = (props) => {
-
   const stallContext = useContext(StallContext);
   const eventContext = useContext(EventContext);
 
@@ -24,7 +23,7 @@ const AddStallInformation = (props) => {
 
   const [fields, setFields] = useState(initialState);
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,17 +32,16 @@ const AddStallInformation = (props) => {
         ...fields,
         link: {
           ...fields.link,
-          value: value
-        }
-      })
-    }
-    else {
-      let maxSize
+          value: value,
+        },
+      });
+    } else {
+      let maxSize;
       if (name === 'image') {
-        maxSize = 1000000
+        maxSize = 1000000;
       }
       if (name === 'document') {
-        maxSize = 5000000
+        maxSize = 5000000;
       }
       if (event.target.files.length !== 0) {
         if (event.target.files[0].size < maxSize) {
@@ -52,90 +50,95 @@ const AddStallInformation = (props) => {
             [name]: {
               value: event.target.files[0],
               error: '',
-              name: event.target.files[0].name
-            }
-          })
-        }
-        else {
+              name: event.target.files[0].name,
+            },
+          });
+        } else {
           setFields({
             ...fields,
             [name]: {
               value: '',
-              error: `Please upload a ${name} that is less than ${maxSize / 1000000}MB`,
-              name: ''
-            }
-          })
+              error: `Please upload a ${name} that is less than ${
+                maxSize / 1000000
+              }MB`,
+              name: '',
+            },
+          });
         }
-      }
-      else {
+      } else {
         setFields({
           ...fields,
           [name]: {
             value: '',
             error: '',
-            name: ''
-          }
-        })
+            name: '',
+          },
+        });
       }
     }
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    setIsLoading(true)
-    let formData = new FormData()
+    event.preventDefault();
+    setIsLoading(true);
+    let formData = new FormData();
     if (fields.link.value.trim() !== '') {
-      formData.append('link', fields.link.value)
+      formData.append('link', fields.link.value);
     }
     if (fields.image.value !== '') {
-      formData.append('image', fields.image.value)
+      formData.append('image', fields.image.value);
     }
     if (fields.document.value !== '') {
-      formData.append('document', fields.document.value)
+      formData.append('document', fields.document.value);
     }
-    if (!formData.get('link') && !formData.get('image') && !formData.get('document')) {
+    if (
+      !formData.get('link') &&
+      !formData.get('image') &&
+      !formData.get('document')
+    ) {
       setFields({
         ...fields,
         link: {
           ...fields.link,
-          error: 'Atleast one field must be filled'
+          error: 'Atleast one field must be filled',
         },
         image: {
           ...fields.image,
-          error: 'Atleast one field must be filled'
+          error: 'Atleast one field must be filled',
         },
         document: {
           ...fields.document,
-          error: 'Atleast one field must be filled'
-        }
-      })
+          error: 'Atleast one field must be filled',
+        },
+      });
     }
     const config = {
       headers: {
         'content-type': 'multipart/form-data',
-        'x-auth-token': localStorage.getItem('token')
-      }
-    }
-    let addinfoUrl = url + `stall/addinfo/${stallContext.selectedStallId}`
-    axios.put(addinfoUrl, formData, config)
+        'x-auth-token': localStorage.getItem('token'),
+      },
+    };
+    let addinfoUrl = url + `stall/addinfo/${stallContext.selectedStallId}`;
+    axios
+      .put(addinfoUrl, formData, config)
       .then((res) => {
         stallContext.getStalls(eventContext.indivEvent._id);
         stallContext.updateIndividualStall(res.data.stall);
         swal('', 'Data added successfully', 'success')
-          .then(res => {
-            setIsSubmit(true)
+          .then((res) => {
+            setIsSubmit(true);
           })
-          .catch(err => {
-            throw err
-          })
-        setIsLoading(false)
+          .catch((err) => {
+            throw err;
+          });
+        setIsLoading(false);
       })
       .catch((err) => {
-        setIsLoading(false)
-      })
+        setIsLoading(false);
+      });
   };
 
-  console.log(stallContext.selectedStallId)
+  console.log(stallContext.selectedStallId);
   return (
     <div>
       {isSubmit && <Redirect to='/StallDetails' />}
@@ -155,7 +158,9 @@ const AddStallInformation = (props) => {
               value={fields.link.value}
               onChange={handleChange}
             />
-            <p style={{ color: 'black', padding: '5px' }}>{fields.link.error}</p>
+            <p style={{ color: 'black', padding: '5px' }}>
+              {fields.link.error}
+            </p>
           </div>
           <div className={classes['form_group']}>
             <label htmlFor='customFile'>Upload image</label>
@@ -172,7 +177,9 @@ const AddStallInformation = (props) => {
                 {fields.image.name || 'Choose Image'}
               </label>
             </div>
-            <p style={{ color: 'black', padding: '5px' }}>{fields.image.error}</p>
+            <p style={{ color: 'black', padding: '5px' }}>
+              {fields.image.error}
+            </p>
           </div>
           <div className={classes['form_group']}>
             <label htmlFor='customFile'>Upload document</label>
@@ -189,22 +196,27 @@ const AddStallInformation = (props) => {
                 {fields.document.name || 'Choose document'}
               </label>
             </div>
-            <p style={{ color: 'black', padding: '5px' }}>{fields.document.error}</p>
+            <p style={{ color: 'black', padding: '5px' }}>
+              {fields.document.error}
+            </p>
           </div>
-          {isLoading ? <button
-            type='button'
-            className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
-            style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
-          >
-            Loading
-          </button> :
+          {isLoading ? (
+            <button
+              type='button'
+              className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
+              style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
+            >
+              Loading
+            </button>
+          ) : (
             <button
               type='submit'
               className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
               style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
             >
               Submit
-          </button>}
+            </button>
+          )}
         </div>
       </form>
     </div>
