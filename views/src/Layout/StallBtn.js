@@ -8,6 +8,7 @@ import axios from 'axios';
 import AuthContext from '../context/auth/authContext';
 import EventContext from '../context/event/eventContext';
 import StallContext from '../context/stall/stallContext';
+import btnclasses from './button.module.css';
 
 const ExhibitorBtn = (props) => {
   const authContext = useContext(AuthContext);
@@ -31,33 +32,32 @@ const ExhibitorBtn = (props) => {
       icon: 'warning',
       buttons: true,
       dangerMode: true,
-    })
-      .then((res) => {
-        if (res) {
-          setLoading(true);
-          axios
-            .delete(delStallUrl, configuration)
-            .then((res) => {
-              if (res.data.message === 'Success') {
-                eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
-                eventContext.setIndividualEvent(eventContext.indivEvent, true);
-                stallContext.getStalls(eventContext.indivEvent._id);
-                authContext.getProfile();
-                setLoading(false);
-                swal('Stall deleted successfully')
-                  .then((res) => {
-                    setDeleteStallRedir(true);
-                  })
-                  .catch((err) => {
-                    throw err;
-                  });
-              }
-            })
-            .catch((err) => {
+    }).then((res) => {
+      if (res) {
+        setLoading(true);
+        axios
+          .delete(delStallUrl, configuration)
+          .then((res) => {
+            if (res.data.message === 'Success') {
+              eventContext.indivEvent.registeredStalls.pop(res.data.stall._id);
+              eventContext.setIndividualEvent(eventContext.indivEvent, true);
+              stallContext.getStalls(eventContext.indivEvent._id);
+              authContext.getProfile();
               setLoading(false);
-            });
-        }
-      });
+              swal('Stall deleted successfully')
+                .then((res) => {
+                  setDeleteStallRedir(true);
+                })
+                .catch((err) => {
+                  throw err;
+                });
+            }
+          })
+          .catch((err) => {
+            setLoading(false);
+          });
+      }
+    });
   };
 
   if (
@@ -70,15 +70,17 @@ const ExhibitorBtn = (props) => {
         {deleteStallRedir && <Redirect to='/eventDetails' />}
 
         <Link
-          className='btn btn-success'
+          className={['btn btn-success', btnclasses['btn-success']].join(' ')}
           to='/addStallDetails'
-          style={{ width: '200px', textAlign: 'center', margin: '10px' }}
+          style={{
+            textAlign: 'center',
+            margin: '10px',
+          }}
         >
           <div>Add More Information</div>
         </Link>
         <div
-          className='btn btn-danger'
-          style={{ width: '200px' }}
+          className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
           onClick={deleteStall}
         >
           {loading ? 'Loading' : 'Delete Stall'}

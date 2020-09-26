@@ -97,31 +97,17 @@ input {
   font-family: 'Karla', sans-serif;
 }
 
-.next {
-  margin-top: 2rem;
-}
-
 .bg-login button {
   padding: 0.6rem;
 }
 
-.btn-primary {
-  color: #ffffff !important;
-  background-color: rgba(0, 0, 0, 0.26) !important;
-  border: 0 solid transparent !important;
-}
-
-.btn-primary:hover {
-  background-color: rgba(0, 0, 0, 0.3) !important;
+.form_group h6 {
+  color: rgb(255, 205, 205);
 }
 
 .link {
   color: #ffffff !important;
   text-decoration: none !important;
-}
-
-.form_group h6 {
-  color: rgb(255, 205, 205);
 }
 
 @media only screen and (max-width: 1400px) {

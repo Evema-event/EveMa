@@ -23,22 +23,22 @@ const Footer = () => {
               <ul className={classes['social-icons']}>
                 <li>
                   <Link className={classes['facebook']} to='/'>
-                    <i className='fab fa-facebook' />
+                    <i className='fa fa-facebook' />
                   </Link>
                 </li>
                 <li>
                   <Link className={classes['twitter']} to='/'>
-                    <i className='fab fa-twitter' />
+                    <i className='fa fa-twitter' />
                   </Link>
                 </li>
                 <li>
                   <Link className={classes['youtube']} to='/'>
-                    <i className='fab fa-youtube' />
+                    <i className='fa fa-youtube' />
                   </Link>
                 </li>
                 <li>
                   <Link className={classes['linkedin']} to='/'>
-                    <i className='fab fa-linkedin' />
+                    <i className='fa fa-linkedin' />
                   </Link>
                 </li>
               </ul>

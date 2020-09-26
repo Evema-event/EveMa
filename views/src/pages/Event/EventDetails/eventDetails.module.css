@@ -11,6 +11,7 @@
   background: #3aa9af;
   padding: 3rem;
   font-family: 'Karla', sans-serif;
+  font-weight: 400;
 }
 
 .comp-card p {
@@ -55,7 +56,7 @@
   background-color: rgba(255, 255, 255, 1);
   border-radius: 20px;
   margin-right: 2rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .comp-card .last-bg {
@@ -64,13 +65,13 @@
   width: 266px;
   background-color: #ffffff;
   border-radius: 20px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .comp-card .contact-part {
   display: flex;
   margin-top: 1rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .comp-card .contact-bg {
@@ -80,7 +81,7 @@
   background-color: rgba(255, 255, 255, 1);
   border-radius: 20px;
   margin-right: 1rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .comp-card .contact-bg div {
@@ -94,7 +95,7 @@
   width: 100px;
   padding: 0.3rem 0.75rem;
   border-radius: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
   margin: 0 auto;
 }

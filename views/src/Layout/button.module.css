@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  font-family: 'Rubik', sans-serif;
+}
+.btn-primary {
+  color: #ffffff !important;
+  background-color: rgba(0, 0, 0, 0.26) !important;
+  border: 0 solid transparent !important;
+  width: 250px;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.btn-success {
+  color: #ffffff !important;
+  background-color: #3c9d00 !important;
+  border: 0 solid transparent !important;
+  width: 250px;
+}
+
+.btn-success:hover {
+  background-color: #48bc00 !important;
+}
+
+.btn-danger {
+  color: #ffffff !important;
+  background-color: #d33f37 !important;
+  border: 0 solid transparent !important;
+  width: 250px;
+}
+.btn-danger:hover {
+  background-color: #ff002f !important;
+}
+
+.link {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.next {
+  margin-top: 2rem;
+}

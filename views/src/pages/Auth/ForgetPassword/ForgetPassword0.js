@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import swal from 'sweetalert';
 
 import classes from '../Login/login.module.css';
+import btnclasses from '../../../Layout/button.module.css';
 
 import axios from 'axios';
 import url from '../../../server.js';
@@ -106,9 +107,9 @@ const ForgetPassword0 = () => {
                   type='button'
                   className={[
                     'btn btn-primary btn-block',
-                    classes.next,
-                    classes.link,
-                    classes['btn-primary'],
+                    btnclasses.next,
+                    btnclasses.link,
+                    btnclasses['btn-primary'],
                   ].join(' ')}
                   disable={loading}
                 >
@@ -119,9 +120,9 @@ const ForgetPassword0 = () => {
                   type='submit'
                   className={[
                     'btn btn-primary btn-block',
-                    classes.next,
-                    classes.link,
-                    classes['btn-primary'],
+                    btnclasses.next,
+                    btnclasses.link,
+                    btnclasses['btn-primary'],
                   ].join(' ')}
                 >
                   Next

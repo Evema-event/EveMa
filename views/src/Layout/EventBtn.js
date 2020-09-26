@@ -8,6 +8,7 @@ import axios from 'axios';
 import EventContext from '../context/event/eventContext';
 import AuthContext from '../context/auth/authContext';
 import classes from '../pages/Event/EventDetails/eventDetails.module.css';
+import btnclasses from './button.module.css';
 
 const RegisterBtn = (props) => {
   const [loading, setLoading] = useState(false);
@@ -128,8 +129,10 @@ const RegisterBtn = (props) => {
             <div disabled>Loading</div>
           ) : (
             <div
-              className='btn btn-success pl-2 pr-2'
-              style={{ width: '200px' }}
+              className={[
+                'btn btn-success pl-2 pr-2',
+                btnclasses['btn-success'],
+              ].join(' ')}
               onClick={registerStall}
             >
               Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
@@ -139,9 +142,22 @@ const RegisterBtn = (props) => {
       );
     } else {
       return (
-        <div className='btn btn-success' style={{ width: '150px' }}>
+        <div
+          className={[
+            'btn btn-danger pl-2 pr-2',
+            btnclasses['btn-danger'],
+          ].join(' ')}
+        >
           Registered{' '}
-          <span style={{ ...stallCountCSS, backgroundColor: 'red' }}>0</span>{' '}
+          <span
+            style={{
+              ...stallCountCSS,
+              color: 'black',
+              backgroundColor: 'white',
+            }}
+          >
+            0
+          </span>{' '}
         </div>
       );
     }
@@ -155,7 +171,16 @@ const RegisterBtn = (props) => {
       }
     }
     if (registered) {
-      return <div className='btn btn-success pl-5 pr-5'>Registered</div>;
+      return (
+        <div
+          className={[
+            'btn btn-danger pl-2 pr-2',
+            btnclasses['btn-danger'],
+          ].join(' ')}
+        >
+          Registered
+        </div>
+      );
     } else {
       return (
         <>
@@ -163,8 +188,10 @@ const RegisterBtn = (props) => {
             <div disabled>Loading</div>
           ) : (
             <div
-              className='btn btn-success'
-              style={{ width: '200px' }}
+              className={[
+                'btn btn-success pl-2 pr-2',
+                btnclasses['btn-success'],
+              ].join(' ')}
               onClick={registerConference}
             >
               Register Conference
@@ -182,11 +209,21 @@ const RegisterBtn = (props) => {
     return (
       <div>
         {authContext.registeredEvents.includes(props.eventId) || regEvent ? (
-          <div style={{ width: '200px' }} className='btn btn-success pl-5 pr-5'>
+          <div
+            className={[
+              'btn btn-success pl-5 pr-5',
+              btnclasses['btn-success'],
+            ].join(' ')}
+          >
             Registered
           </div>
         ) : (
-          <div className='btn btn-success pl-5 pr-5'>
+          <div
+            className={[
+              'btn btn-success pl-2 pr-2',
+              btnclasses['btn-success'],
+            ].join(' ')}
+          >
             {loading ? (
               <div className='btn-warning' disabled>
                 Loading
@@ -220,21 +257,23 @@ const RegisterBtn = (props) => {
         <div>
           <Link
             to='/admin/notifyUser'
-            className='btn btn-success'
-            style={{ width: '200px' }}
+            className={['btn btn-success', btnclasses['btn-success']].join(' ')}
           >
             Notify Users
           </Link>
         </div>
         <div>
           {loading ? (
-            <div className='btn btn-warning' disabled>
+            <div
+              className='btn btn-warning'
+              style={{ width: '250px' }}
+              disabled
+            >
               Loading
             </div>
           ) : (
             <div
-              className='btn btn-danger'
-              style={{ width: '200px' }}
+              className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
               onClick={deleteEvent}
             >
               Delete Event
@@ -246,7 +285,14 @@ const RegisterBtn = (props) => {
   }
   return (
     <Link to='/login'>
-      <div className='btn btn-success pl-5 pr-5'>Register</div>
+      <div
+        className={[
+          'btn btn-success pl-5 pr-5',
+          btnclasses['btn-success'],
+        ].join(' ')}
+      >
+        Register
+      </div>
     </Link>
   );
 };
