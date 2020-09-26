@@ -8,6 +8,7 @@ import StallTab from '../../../../Layout/StallTab';
 import StallBtn from '../../../../Layout/StallBtn';
 
 import StallContext from '../../../../context/stall/stallContext';
+import StallMoreDetails from './StallMoreDetails';
 
 const StallDetails = () => {
   const stallContext = useContext(StallContext);
@@ -64,6 +65,7 @@ const StallDetails = () => {
               {<StallBtn stallId={stall._id} user={stall.userId._id} />}
             </div>
           </div>
+          <StallMoreDetails />
         </>
       )}
     </div>

@@ -17,6 +17,12 @@ if ((process.env.NODE_ENV || '').trim() === 'production') {
 }
 
 // Serving static images and files
+app.use('/public', (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    next();
+});
 app.use('/public', express.static('public'));
 
 // cors middleware for development
