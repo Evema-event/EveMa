@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  backend-test:
+  backend-eventtest:
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,7 +23,61 @@ jobs:
       - name: Installing dependencies
         run: npm ci
       - name: Testing backend endpoints
-        run: npm run test
+        run: npm run test -- tests/event/
+
+  backend-usertest:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Installing dependencies
+        run: npm ci
+      - name: Testing backend endpoints
+        run: npm run test -- tests/user/
+
+  backend-stalltest:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Installing dependencies
+        run: npm ci
+      - name: Testing backend endpoints
+        run: npm run test -- tests/stall/
+
+  backend-conferencetest:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Installing dependencies
+        run: npm ci
+      - name: Testing backend endpoints
+        run: npm run test -- tests/conference/
 
   frontend-test:
     runs-on: ubuntu-latest
