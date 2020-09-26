@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './Profile.module.css';
+import btnclasses from '../../Layout/button.module.css';
 
 import Loading from '../../Layout/Loading';
 
@@ -26,8 +27,8 @@ const Profile = () => {
       <div className={classes.section}>
         <div className={classes.heads}>
           <h4 className={classes.profile}>{localStorage.getItem('role')}</h4>
-          <center style={{ padding: "100px" }}>
-            <Loading color="light"></Loading>
+          <center style={{ padding: '100px' }}>
+            <Loading color='light'></Loading>
           </center>
         </div>
       </div>
@@ -44,8 +45,8 @@ const Profile = () => {
             {isEdit ? (
               <UpdateProfileData toggleEdit={toggleEdit} />
             ) : (
-                <ShowProfileData toggleEdit={toggleEdit} />
-              )}
+              <ShowProfileData toggleEdit={toggleEdit} />
+            )}
           </div>
         </div>
         <div className={classes.grid}>
@@ -55,9 +56,9 @@ const Profile = () => {
                 style={{ width: '250px' }}
                 className={[
                   'btn btn-primary',
-                  classes.next,
-                  classes.link,
-                  classes['btn-primary'],
+                  btnclasses.next,
+                  btnclasses.link,
+                  btnclasses['btn-primary'],
                 ].join(' ')}
               >
                 Change Password

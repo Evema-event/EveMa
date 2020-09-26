@@ -4,6 +4,7 @@ import swal from 'sweetalert';
 
 import login from '../../../img/login.jpg';
 import classes from './login.module.css';
+import btnclasses from '../../../Layout/button.module.css';
 
 import axios from 'axios';
 import url from '../../../server';
@@ -75,13 +76,13 @@ const Login = () => {
       axios
         .post(loginUrl, userData)
         .then((res) => {
-          let role
+          let role;
           if (res.data.user.role.length === 1) {
             role = res.data.user.role[0];
           } else {
             role = 'Exhibitor';
           }
-          localStorage.setItem('role', role)
+          localStorage.setItem('role', role);
           if (res.data.user.role[0] === 'Organizer') {
             setFields({
               ...fields,
@@ -153,8 +154,8 @@ const Login = () => {
                 type='submit'
                 className={[
                   'btn btn-primary btn-block',
-                  classes.next,
-                  classes['btn-primary'],
+                  btnclasses.next,
+                  btnclasses['btn-primary'],
                 ].join(' ')}
                 disable={loading.toString()}
               >

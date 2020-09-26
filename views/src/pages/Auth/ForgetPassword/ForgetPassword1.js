@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 import classes from '../Login/login.module.css';
+import btnclasses from '../../../Layout/button.module.css';
 
 import axios from 'axios';
 import url from '../../../server.js';
@@ -145,24 +146,39 @@ const ForgetPassword2 = () => {
               </div>
               {loading ? (
                 <button
-                  type="button"
-                  className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                  type='button'
+                  className={[
+                    'btn btn-primary btn-block',
+                    btnclasses.next,
+                    btnclasses.link,
+                    btnclasses['btn-primary'],
+                  ].join(' ')}
                   disable='true'
                 >
                   Loading
                 </button>
               ) : (
-                  <button
-                    type='submit'
-                    className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
-                  >
-                    Submit
-                  </button>
-                )}
+                <button
+                  type='submit'
+                  className={[
+                    'btn btn-primary btn-block',
+                    btnclasses.next,
+                    btnclasses.link,
+                    btnclasses['btn-primary'],
+                  ].join(' ')}
+                >
+                  Submit
+                </button>
+              )}
               <Link to='/forgetpassword/0'>
                 <button
                   type='submit'
-                  className={['btn btn-primary btn-block', classes.next, classes.link, classes['btn-primary']].join(' ')}
+                  className={[
+                    'btn btn-primary btn-block',
+                    btnclasses.next,
+                    btnclasses.link,
+                    btnclasses['btn-primary'],
+                  ].join(' ')}
                 >
                   Cancel
                 </button>
