@@ -2,13 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  test:
-
+  backend-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,16 +15,30 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Installing backend dependencies
-      run: npm ci
-    - name: Testing backend endpoints
-      run: npm run test
-    - name: Installing frontend dependencies
-      run: npm ci --prefix views
-    - name: Testing frontend
-      run: npm run test --prefix views
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Installing dependencies
+        run: npm ci
+      - name: Testing backend endpoints
+        run: npm run test
+
+  frontend-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Installing dependencies
+        run: npm ci
+      - name: Testing frontend
+        run: npm run clienttest
