@@ -30,7 +30,7 @@ afterAll(async () => {
     await db.disconnectDB();
 });
 
-describe('Test cases for forgetPassword', () => {
+describe('Test cases for ChangePassword', () => {
 
     // Throw error if the request is without token
     test("Should throw error for request without token", async () => {
@@ -45,6 +45,7 @@ describe('Test cases for forgetPassword', () => {
             .send(changePasswordData.invalid)
         expect(res.status).toBe(422)
         expect(res.body.message).toBe('Failed')
+        expect(res.body.error.length).toBe(2)
     })
     // Throw error for wrong password
     test("Should throw error for wrong password", async () => {
