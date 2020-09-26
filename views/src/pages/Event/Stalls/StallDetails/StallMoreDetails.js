@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import JSZip from "jszip";
+import JSZipUtils from "jszip-utils";
+import { saveAs } from 'file-saver';
+
 import classes from './stallDetails.module.css';
 import { fileUrl } from '../../../../server';
 
@@ -9,6 +13,31 @@ import StallContext from '../../../../context/stall/stallContext';
 const StallMoreDetails = () => {
   const stallContext = useContext(StallContext);
   const stall = stallContext.individualStall;
+
+  const urlToPromise = (url) => {
+    return new Promise(function (resolve, reject) {
+      JSZipUtils.getBinaryContent(url, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      });
+    });
+  }
+
+  const onClickDownload = async () => {
+    if (stall?.documents?.length) {
+      let zip = new JSZip();
+      stall.documents.forEach(async (document, i) => {
+        const documentUrl = fileUrl + document;
+        let filename = document.split('-');
+        filename = `${i + 1} ${filename[filename.length - 1]}`;
+        await zip.file(filename, urlToPromise(documentUrl), { binary: true });
+      });
+      zip.generateAsync({ type: "blob" }).then(content => saveAs(content, "documents"));
+    }
+  }
 
   if (
     !stall ||
@@ -66,6 +95,7 @@ const StallMoreDetails = () => {
                   classes.link,
                   classes['btn-primary'],
                 ].join(' ')}
+                onClick={onClickDownload}
               >
                 Download Documents
               </button>
