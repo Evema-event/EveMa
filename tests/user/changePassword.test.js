@@ -9,12 +9,13 @@ const db = require('../../db');
 const User = require('../../models/user');
 const Profile = require('../../models/profile');
 
-
+// Importing utility function
 const getToken = require('../utility/getToken');
 
 // Importing Dummy data
 const changePasswordData = require('../dummyData/changePassword');
 
+// Initializing global variable
 let token;
 
 // Run before all test cases - will connect to data base and register visitor account

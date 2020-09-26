@@ -79,23 +79,14 @@
 }
 @media (max-width: 800px) {
   .fullView .rect {
-    width: 250px;
+    width: 500px;
   }
   .fullView .grad {
-    width: 250px;
+    width: 500px;
   }
 
   .fullView .pad {
     padding-right: 1rem;
-  }
-}
-
-@media (max-width: 700px) {
-  .fullView .rect {
-    width: 500px;
-  }
-  .fullView .grad {
-    width: 500px;
   }
 }
 

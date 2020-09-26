@@ -41,7 +41,7 @@ exports.switchUser = (req, res) => {
         }
       } else {
         const error = new Error('Password does not match');
-        error.statusCode = 401;
+        error.statusCode = 422;
         throw error;
       }
       return loadedUser.save();

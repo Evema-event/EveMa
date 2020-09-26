@@ -35,7 +35,7 @@ const StallMoreDetails = () => {
         filename = `${i + 1} ${filename[filename.length - 1]}`;
         await zip.file(filename, urlToPromise(documentUrl), { binary: true });
       });
-      zip.generateAsync({ type: "blob" }).then(content => saveAs(content, "documents"));
+      zip.generateAsync({ type: "blob" }).then(content => saveAs(content, stall.productName));
     }
   }
 
