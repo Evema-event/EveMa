@@ -19,7 +19,7 @@ exports.addVisitor = (req, res) => {
             loadedStall = stall;
             if (stall.userId.toString() === req.body.userId.toString()) {
                 const error = new Error("You can not be visitor for your stall");
-                error.statusCode = 200;
+                error.statusCode = 401;
                 throw error;
             }
             return User.findById(req.body.userId);
