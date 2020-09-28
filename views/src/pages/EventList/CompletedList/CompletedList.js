@@ -6,12 +6,16 @@ import EventCard from '../EventCard/EventCard';
 import Loading from '../../../Layout/Loading';
 
 import EventContext from '../../../context/event/eventContext';
+import AuthContext from '../../../context/auth/authContext';
 
 const CompletedList = () => {
     const { getCompletedEvent, completedEvents, completedEventsLoading } = useContext(EventContext);
+    const { registeredEvents, registeredStalls, registeredConferences } = useContext(AuthContext);
 
     useEffect(() => {
-        getCompletedEvent();
+        if (!completedEventsLoading && !completedEvents) {
+            getCompletedEvent();
+        }
         // eslint-disable-next-line
     }, []);
 
@@ -20,6 +24,99 @@ const CompletedList = () => {
             <>
                 <div className={classes.title}>Completed Events</div>
                 <center><Loading color="info" /></center>
+            </>
+        );
+    }
+
+    if (localStorage.getItem('role') === 'Visitor') {
+        let myEvents = [];
+        let otherEvents = [];
+
+        if (completedEvents && completedEvents.length > 0) {
+            completedEvents.forEach(event => {
+                if (registeredEvents.includes(event._id)) {
+                    myEvents.push(event);
+                } else {
+                    otherEvents.push(event);
+                }
+            })
+        }
+
+        return (
+            <>
+                <div className={classes.title}>Completed Events</div>
+                {
+                    myEvents.length > 0 ?
+                        <>
+                            <p className={classes.subtitle}>Registered Events</p>
+                            <div className={classes.view}>
+                                {
+                                    myEvents.length > 0 ?
+                                        myEvents.map((event, i) => <EventCard key={event._id} event={event} isUpcoming={false} />) : <center>No events yet!</center>
+                                }
+                            </div>
+                            <p className={classes.subtitle}>Events</p>
+                        </> : <p className={classes.subtitle} style={{ fontSize: "20px" }}>No completed events registered by you.</p>
+                }
+                <div className={classes.view}>
+                    {
+                        otherEvents.length > 0 ?
+                            otherEvents.map((event, i) => <EventCard key={event._id} event={event} isUpcoming={false} />) : <center>No events yet!</center>
+                    }
+                </div>
+            </>
+        );
+    } else if (localStorage.getItem('role') === 'Exhibitor') {
+        let myEvents = [];
+        let otherEvents = [];
+
+        if (completedEvents && completedEvents.length > 0) {
+            completedEvents.forEach(event => {
+                let isIn = false;
+                for (var stall of registeredStalls) {
+                    if (stall.eventId === event._id) {
+                        myEvents.push(event);
+                        isIn = true;
+                        break;
+                    }
+                };
+                if (!isIn) {
+                    for (var conference of registeredConferences) {
+                        if (conference.eventId === event._id) {
+                            myEvents.push(event);
+                            isIn = true;
+                            break;
+                        }
+                    };
+                }
+                if (!isIn) {
+                    otherEvents.push(event);
+                }
+            })
+        }
+
+        return (
+            <>
+                <div className={classes.title}>Completed Events</div>
+                {
+                    myEvents.length > 0 ?
+                        <>
+                            <p className={classes.subtitle}>Exhibited Events</p>
+                            <div className={classes.view}>
+                                {
+                                    myEvents.length > 0 ?
+                                        myEvents.map((event, i) => <EventCard key={event._id} event={event} isUpcoming={false} />) : <center>No events yet!</center>
+                                }
+                            </div>
+                            <p className={classes.subtitle}>Events</p>
+                        </> : <p className={classes.subtitle} style={{ fontSize: "20px" }}>No stalls or conference exhibited in completed events by you.</p>
+                }
+                <div className={classes.view}>
+                    {
+                        otherEvents.length > 0 ?
+                            otherEvents.map((event, i) => <EventCard key={event._id} event={event} isUpcoming={false} />) : <center>No events yet!</center>
+                    }
+                </div>
             </>
         );
     }
