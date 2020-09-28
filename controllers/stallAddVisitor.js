@@ -17,6 +17,11 @@ exports.addVisitor = (req, res) => {
                 throw error;
             }
             loadedStall = stall;
+            if (stall.userId.toString() === req.body.userId.toString()) {
+                const error = new Error("You can not be visitor for your stall");
+                error.statusCode = 200;
+                throw error;
+            }
             return User.findById(req.body.userId);
         })
         .then(user => {

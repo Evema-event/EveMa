@@ -200,6 +200,11 @@ exports.visitorConference = (req, res) => {
         error.statusCode = 404;
         throw error;
       }
+      if (conference.userId.toString() === req.userId.toString()) {
+        const error = new Error("You cannot register for your own conference");
+        error.statusCode = 422;
+        throw error;
+      }
       if (conference.registeredVisitors) {
         if (conference.registeredVisitors.includes(req.userId)) {
           const error = new Error("User already registered");

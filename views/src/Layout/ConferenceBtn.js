@@ -96,7 +96,8 @@ const ConferenceBtn = (props) => {
     );
   } else if (
     localStorage.getItem('token') &&
-    localStorage.getItem('role') === 'Visitor'
+    localStorage.getItem('role') === 'Visitor' &&
+    props.user !== authContext.userId
   ) {
     if (authContext.visitorConferences.includes(props.confId)) {
       return (
