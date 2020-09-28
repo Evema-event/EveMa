@@ -26,7 +26,7 @@ const AddOrSwitch = () => {
           <button
             type='button'
             className={[
-              'btn btn-primary btn-block',
+              'btn btn-primary',
               btnclasses.next,
               btnclasses.link,
               btnclasses['btn-primary'],
@@ -45,7 +45,7 @@ const AddOrSwitch = () => {
           type='button'
           onClick={() => switchUser()}
           className={[
-            'btn btn-primary btn-block',
+            'btn btn-primary',
             btnclasses.next,
             btnclasses.link,
             btnclasses['btn-primary'],

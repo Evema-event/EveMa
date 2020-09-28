@@ -90,8 +90,8 @@ const Navbar = () => {
       <Link className='nav-link' to='/'>
         <img
           src={Logo}
-          width='80'
-          height='35'
+          width='100'
+          height='39'
           className='d-inline-block align-top'
           alt='Logo'
         ></img>

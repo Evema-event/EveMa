@@ -19,13 +19,13 @@ const EventDetails = () => {
           <EventTab tab='event' />
           <div className={classes['main-bg']}>
             <div
-              style={{ textTransform: 'uppercase' }}
+              style={{ textTransform: 'uppercase', textAlign: 'center' }}
               className={classes['indiv-name']}
             >
               {event.name}
             </div>
 
-            <div className={classes['indiv-name']}>Event Description:</div>
+            <div className={classes['indiv-name']}>Event Description</div>
             <br />
 
             <div className={classes['discription-row']}>
@@ -47,7 +47,7 @@ const EventDetails = () => {
             </div>
             <br />
             <div>
-              <div className={classes['indiv-name']}>Contact Details:</div>
+              <div className={classes['indiv-name']}>Contact Details</div>
             </div>
 
             <div className={classes['contact-part']}>

@@ -51,69 +51,75 @@ const Routes = () => {
     <Router>
       <ScrollToTop>
         <Navbar />
-        <Switch>
-          <Route path='/admin' component={Admin} />
+        <div style={{ marginTop: '6rem' }}>
+          <Switch>
+            <Route path='/admin' component={Admin} />
 
-          <Route exact path='/signup/0' component={Signup0} />
-          <Route exact path='/signup/1' component={Signup1} />
-          <Route exact path='/signup/2' component={Signup2} />
-          <Route exact path='/login' component={Login} />
+            <Route exact path='/signup/0' component={Signup0} />
+            <Route exact path='/signup/1' component={Signup1} />
+            <Route exact path='/signup/2' component={Signup2} />
+            <Route exact path='/login' component={Login} />
 
-          <Route exact path='/forgetPassword/0' component={ForgetPassword0} />
-          <Route exact path='/forgetPassword/1' component={ForgetPassword1} />
+            <Route exact path='/forgetPassword/0' component={ForgetPassword0} />
+            <Route exact path='/forgetPassword/1' component={ForgetPassword1} />
 
-          <Route exact path='/eventList' component={EventList} />
-          <Route exact path='/upcomingList' component={UpcomingList} />
-          <Route exact path='/completedList' component={CompletedList} />
-          <Route exact path='/eventDetails' component={EventDetails} />
+            <Route exact path='/eventList' component={EventList} />
+            <Route exact path='/upcomingList' component={UpcomingList} />
+            <Route exact path='/completedList' component={CompletedList} />
+            <Route exact path='/eventDetails' component={EventDetails} />
 
-          <Route exact path='/stallList' component={Stalls} />
-          <Route exact path='/stallDetails' component={StallDetails} />
+            <Route exact path='/stallList' component={Stalls} />
+            <Route exact path='/stallDetails' component={StallDetails} />
 
-          <Route exact path='/stallVisitorList' component={StallVisitorList} />
-          <Route
-            exact
-            path='/stallVisitorDetails'
-            component={StallVisitorDetails}
-          />
+            <Route
+              exact
+              path='/stallVisitorList'
+              component={StallVisitorList}
+            />
+            <Route
+              exact
+              path='/stallVisitorDetails'
+              component={StallVisitorDetails}
+            />
 
-          <Route exact path='/conferenceList' component={Conferences} />
-          <Route
-            exact
-            path='/conferenceDetails'
-            component={ConferencesDetails}
-          />
+            <Route exact path='/conferenceList' component={Conferences} />
+            <Route
+              exact
+              path='/conferenceDetails'
+              component={ConferencesDetails}
+            />
 
-          <Route
-            exact
-            path='/conferenceVisitorList'
-            component={ConferenceVisitorList}
-          />
-          <Route
-            exact
-            path='/conferenceVisitorDetails'
-            component={ConferenceVisitorDetails}
-          />
+            <Route
+              exact
+              path='/conferenceVisitorList'
+              component={ConferenceVisitorList}
+            />
+            <Route
+              exact
+              path='/conferenceVisitorDetails'
+              component={ConferenceVisitorDetails}
+            />
 
-          <Route exact path='/registerStall' component={RegisterStall} />
-          <Route
-            exact
-            path='/registerConference'
-            component={RegisterConference}
-          />
+            <Route exact path='/registerStall' component={RegisterStall} />
+            <Route
+              exact
+              path='/registerConference'
+              component={RegisterConference}
+            />
 
-          <Route exact path='/switchAccount' component={SwitchAccount} />
-          <Route
-            exact
-            path='/addStallDetails'
-            component={AddStallInformation}
-          />
-          <Route exact path='/profile' component={Profile} />
+            <Route exact path='/switchAccount' component={SwitchAccount} />
+            <Route
+              exact
+              path='/addStallDetails'
+              component={AddStallInformation}
+            />
+            <Route exact path='/profile' component={Profile} />
 
-          <Route exact path='/changePassword' component={UpdatePassword} />
+            <Route exact path='/changePassword' component={UpdatePassword} />
 
-          <Route path='/' component={Home} />
-        </Switch>
+            <Route path='/' component={Home} />
+          </Switch>
+        </div>
       </ScrollToTop>
     </Router>
   );

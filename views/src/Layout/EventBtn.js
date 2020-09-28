@@ -253,7 +253,7 @@ const RegisterBtn = (props) => {
   ) {
     return (
       <div className={classes.registerButton}>
-        {isSubmit && <Redirect to='/admin' />}
+        {isSubmit && <Redirect to='/eventDetails' />}
         <div>
           <Link
             to='/admin/notifyUser'

@@ -5,6 +5,9 @@
   font-family: 'Rubik', sans-serif;
   color: #ffffff !important;
   background-image: linear-gradient(#456971, #456971);
+  position: fixed !important;
+  top: 0;
+  width: 100%;
   z-index: 1;
 }
 
@@ -23,8 +26,12 @@
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255) !important;
+  color: rgb(219, 219, 219) !important;
   padding: 0rem 0rem !important;
+}
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:active {
+  color: #ffffff !important;
 }
 
 :focus {

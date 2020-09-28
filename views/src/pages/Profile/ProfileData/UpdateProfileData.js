@@ -212,7 +212,11 @@ const UpdateProfileData = (props) => {
   };
 
   return (
-    <form className={classes.part} onSubmit={handleSubmit}>
+    <form
+      className={classes.part}
+      onSubmit={handleSubmit}
+      style={{ marginBottom: '2rem' }}
+    >
       <div className={[classes.info, classes.extend].join(' ')}>
         <h3
           style={{

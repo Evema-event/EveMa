@@ -46,3 +46,7 @@
 .next {
   margin-top: 2rem;
 }
+
+:focus {
+  outline: transparent !important;
+}
