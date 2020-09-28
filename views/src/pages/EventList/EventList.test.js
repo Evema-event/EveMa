@@ -5,6 +5,7 @@ import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import url from '../../server';
 
+import AuthState from '../../context/auth/authState';
 import EventState from '../../context/event/eventState';
 import StallState from '../../context/stall/stallState';
 import ConferenceState from '../../context/conference/conferenceState';
@@ -58,15 +59,17 @@ beforeAll(() => server.listen());
 beforeEach(async () => {
   act(() => {
     render(
-      <EventState>
-        <StallState>
-          <ConferenceState>
-            <VisitorState>
-              <EventList />
-            </VisitorState>
-          </ConferenceState>
-        </StallState>
-      </EventState>
+      <AuthState>
+        <EventState>
+          <StallState>
+            <ConferenceState>
+              <VisitorState>
+                <EventList />
+              </VisitorState>
+            </ConferenceState>
+          </StallState>
+        </EventState>
+      </AuthState>
     );
   });
   await act(() => sleep(500));

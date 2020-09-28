@@ -4,13 +4,16 @@ import { render, screen } from '@testing-library/react';
 // Import Contexts
 
 import EventState from '../../../context/event/eventState';
+import AuthState from '../../../context/auth/authState';
 import CompletedList from './CompletedList';
 
 const renderWithContext = () => {
   return render(
-    <EventState>
-      <CompletedList />
-    </EventState>
+    <AuthState>
+      <EventState>
+        <CompletedList />
+      </EventState>
+    </AuthState>
   );
 };
 
