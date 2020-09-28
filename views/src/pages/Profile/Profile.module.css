@@ -148,6 +148,7 @@
 
 .grid {
   display: flex;
+  gap: 80px;
 }
 
 [datatitle] {
@@ -262,17 +263,13 @@
     top: 200px;
   }
 
-  .part {
-    position: relative;
-    bottom: 210px;
-  }
-
   .picture {
     padding-right: 100px;
   }
 
   .grid {
     flex-direction: column;
+    gap: 0px;
   }
 }
 
@@ -293,11 +290,6 @@
   .info {
     position: relative;
     top: 220px;
-  }
-
-  .part {
-    position: relative;
-    bottom: 235px;
   }
 
   .main {

@@ -29,8 +29,8 @@
 .fullView .card .name {
   color: #ffffff;
   font-size: 25px;
-  margin-top: 17px;
-  margin-left: 15px;
+  margin: 0.2rem 0;
+  text-align: center;
 }
 
 .fullView .card .description {
@@ -39,7 +39,7 @@
   font-size: 19.5px;
   margin: 10px 20px;
   font-weight: 500;
-  min-height: 100px;
+  min-height: 130px;
 }
 
 .fullView .card .details {
@@ -88,6 +88,10 @@
   .fullView .pad {
     padding-right: 1rem;
   }
+
+  .fullView .card {
+    margin: auto 5rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -96,6 +100,10 @@
   }
   .fullView .grad {
     width: 415px;
+  }
+
+  .fullView .card {
+    margin: auto;
   }
 
   .fullView .card .description {
