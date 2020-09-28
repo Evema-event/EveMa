@@ -83,7 +83,7 @@ const Signup2 = () => {
       fields.company.error = '';
     }
 
-    if (fields.contact.value.length < 10) {
+    if (!(/^\d{10}$/.test(fields.contact.value))) {
       isError = true;
       fields.contact.error = 'Contact is invalid';
     } else {
@@ -193,7 +193,7 @@ const Signup2 = () => {
               <h6>{fields.areasOfInterest.error}</h6>
             </div>
             <div className={classes['form_group']}>
-              <label htmlFor='company'>Company/Institution Name</label>
+              <label htmlFor='company'>Company Name</label>
               <input
                 className={classes['form_input']}
                 type='text'
@@ -263,7 +263,6 @@ const Signup2 = () => {
                   btnclasses.link,
                   btnclasses['btn-primary'],
                 ].join(' ')}
-                disable='true'
               >
                 Loading
               </button>

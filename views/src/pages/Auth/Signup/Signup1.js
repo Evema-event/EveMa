@@ -87,14 +87,14 @@ const Signup1 = () => {
 
     if (fields.city.value.length < 3) {
       isError = true;
-      fields.city.error = 'city is required';
+      fields.city.error = 'City is required';
     } else {
       fields.city.error = '';
     }
 
-    if (fields.zipcode.value.length < 6) {
+    if (!(/^\d{6}$/.test(fields.zipcode.value))) {
       isError = true;
-      fields.zipcode.error = 'zipcode is required';
+      fields.zipcode.error = 'Zipcode entered is invalid';
     } else {
       fields.zipcode.error = '';
     }

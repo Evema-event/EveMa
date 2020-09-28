@@ -60,8 +60,8 @@ const Signup0 = () => {
     } else {
       fields.username.error = '';
     }
-
-    if (fields.email.value.length < 5) {
+    let mailFormat= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    if (!fields.email.value.match(mailFormat)) {
       isError = true;
       fields.email.error = 'Email is Invalid';
     } else {
