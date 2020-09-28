@@ -39,6 +39,7 @@ const AuthState = (props) => {
     otp: '',
     registeredEvents: [],
     registeredStalls: [],
+    visitedStalls: [],
     visitorConferences: [],
     registeredConferences: [],
     profileLoading: false,
@@ -113,6 +114,7 @@ const AuthState = (props) => {
         address: response.data.profile.companyAddress,
         registeredEvents: response.data.profile.registeredEvents,
         registeredStalls: response.data.profile.registeredStalls,
+        visitedStalls: response.data.profile.visitedStalls,
         visitorConferences: response.data.profile.visitorConferences,
         registeredConferences: response.data.profile.registeredConferences,
       };
@@ -150,6 +152,7 @@ const AuthState = (props) => {
         token: state.token,
         registeredStalls: state.registeredStalls,
         registeredEvents: state.registeredEvents,
+        visitedStalls: state.visitedStalls,
         visitorConferences: state.visitorConferences,
         registeredConferences: state.registeredConferences,
         profileLoading: state.profileLoading,

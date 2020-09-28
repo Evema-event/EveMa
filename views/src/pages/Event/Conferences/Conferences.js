@@ -64,21 +64,7 @@ const Conferences = () => {
                 </div>
             </>
         );
-    } else if (localStorage.getItem('role') === 'Organizer') {
-        return (
-            <>
-                {!selectedEvent && <Redirect to='/' />}
-                <EventTab tab="conference" />
-                <div className={classes['view']}>
-                    {
-                        conferences && conferences.length > 0 ?
-                            conferences.map((conference) => <ConferenceCard conference={conference} key={conference._id} />) :
-                            <center>No conferences yet!</center>
-                    }
-                </div>
-            </>
-        );
-    } else {
+    } else if (localStorage.getItem('role') === 'Visitor') {
         let myConferences = [];
         let otherConferences = [];
 
@@ -109,6 +95,20 @@ const Conferences = () => {
                     {
                         otherConferences.length > 0 ?
                             otherConferences.map((conference) => <ConferenceCard conference={conference} key={conference._id} />) :
+                            <center>No conferences yet!</center>
+                    }
+                </div>
+            </>
+        );
+    } else {
+        return (
+            <>
+                {!selectedEvent && <Redirect to='/' />}
+                <EventTab tab="conference" />
+                <div className={classes['view']}>
+                    {
+                        conferences && conferences.length > 0 ?
+                            conferences.map((conference) => <ConferenceCard conference={conference} key={conference._id} />) :
                             <center>No conferences yet!</center>
                     }
                 </div>

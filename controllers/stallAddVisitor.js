@@ -40,7 +40,20 @@ exports.addVisitor = (req, res) => {
             return loadedStall.save();
         })
         .then(stall => {
-            res.status(200).json({ message: "Success", stall: stall });
+            return Profile.findOne({ userId: req.body.userId });
+        })
+        .then(profile => {
+            if (profile.visitedStalls) {
+                if (!profile.visitedStalls.includes(req.params.stallId)) {
+                    profile.visitedStalls.push(req.params.stallId);
+                }
+            } else {
+                profile.visitedStalls = [req.params.stallId];
+            }
+            return profile.save();
+        })
+        .then(profile => {
+            res.status(200).json({ message: "Success", stall: loadedStall });
         })
         .catch(err => {
             throwError(err, res);

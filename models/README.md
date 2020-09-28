@@ -25,14 +25,15 @@ Details of all models:
 9.  country -> String
 10. state -> String
 11. cityName -> String
-12. zipCode -> String
+12. zipCode -> Number
 13. areaOfInterest -> Array
 14. designation -> String
 15. companyName -> String
 16. companyAddress -> String
-17. contactNumber -> String
+17. contactNumber -> Number
 18. image -> String
 19. visitorConferences -> Array -> conferenceId
+20. visitedStalls -> Array -> stallId
 
 ## Event Model
 

@@ -19,6 +19,12 @@ const profileSchema = new Schema({
       ref: 'Event'
     }
   ],
+  visitedStalls: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Stall'
+    }
+  ],
   visitorConferences: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -83,7 +89,7 @@ const profileSchema = new Schema({
     required: true,
   },
   zipCode: {
-    type: String,
+    type: Number,
     required: true,
   },
   areaOfInterest: {
@@ -103,7 +109,7 @@ const profileSchema = new Schema({
     required: true,
   },
   contactNumber: {
-    type: String,
+    type: Number,
     required: true,
   },
 });

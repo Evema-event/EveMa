@@ -14,7 +14,7 @@ import AuthContext from '../../../context/auth/authContext';
 const Stalls = () => {
   const { selectedEvent } = useContext(EventContext);
   const { stalls, stallLoading } = useContext(StallContext);
-  const { userId } = useContext(AuthContext)
+  const { userId, visitedStalls } = useContext(AuthContext)
 
   if (stallLoading) {
     return (
@@ -64,20 +64,63 @@ const Stalls = () => {
         </div>
       </>
     );
-  }
-  return (
-    <>
-      {!selectedEvent && <Redirect to='/' />}
-      <EventTab tab='stall' />
-      <div className={classes['view']}>
-        {
-          stalls && stalls.length > 0 ?
-            stalls.map((stall) => <StallCard stall={stall} key={stall._id} />) :
-            <center>No stalls yet!</center>
+  } else if (localStorage.getItem('role') === 'Visitor') {
+    let myStalls = []
+    let otherStalls = []
+
+    if (stalls && stalls.length > 0) {
+      stalls.forEach((stall) => {
+        if (visitedStalls.includes(stall._id)) {
+          myStalls.push(stall)
         }
-      </div>
-    </>
-  );
+        else {
+          otherStalls.push(stall)
+        }
+      })
+    }
+
+    return (
+      <>
+        {!selectedEvent && <Redirect to='/' />}
+        <EventTab tab='stall' />
+        {
+          myStalls.length === 0 ? null :
+            <>
+              <h1 style={{ margin: "10px 50px", fontSize: "28px" }}>Visited stalls</h1>
+              <div className={classes['view']}>
+                {
+                  myStalls.length > 0 ?
+                    myStalls.map((stall) => <StallCard stall={stall} key={stall._id} />) :
+                    <center>No stalls yet!</center>
+                }
+              </div>
+              <h1 style={{ margin: "10px 50px", fontSize: "28px" }}>Stalls</h1>
+            </>
+        }
+        <div className={classes['view']}>
+          {
+            otherStalls.length > 0 ?
+              otherStalls.map((stall) => <StallCard stall={stall} key={stall._id} />) :
+              <center>No stalls yet!</center>
+          }
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        {!selectedEvent && <Redirect to='/' />}
+        <EventTab tab='stall' />
+        <div className={classes['view']}>
+          {
+            stalls && stalls.length > 0 ?
+              stalls.map((stall) => <StallCard stall={stall} key={stall._id} />) :
+              <center>No stalls yet!</center>
+          }
+        </div>
+      </>
+    );
+  }
 };
 
 export default Stalls;
