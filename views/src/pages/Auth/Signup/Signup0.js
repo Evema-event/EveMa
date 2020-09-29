@@ -218,7 +218,8 @@ const Signup0 = () => {
                     btnclasses.next,
                     btnclasses['btn-primary'],
                   ].join(' ')}
-                  disable={loading.toString()}
+                  disable={loading.toString()
+                  }
                 >
                   Loading
                 </button>
@@ -232,6 +233,7 @@ const Signup0 = () => {
                     btnclasses.next,
                     btnclasses.link,
                   ].join(' ')}
+                  style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
                 >
                   Next
                 </button>

@@ -9,7 +9,7 @@
   font-family: 'Rubik', sans-serif;
 }
 
-.about h2 {
+/* .about h2 {
   font-weight: bold;
   text-align: center;
   font-family: 'Karla', sans-serif;
@@ -17,11 +17,11 @@
   font-size: 45px;
   color: #feffff;
   transition: all 0.3s ease-in-out;
-}
+} */
 
-.about h2:hover {
+/* .about h2:hover {
   letter-spacing: 5px;
-}
+} */
 
 .title {
   text-transform: uppercase;

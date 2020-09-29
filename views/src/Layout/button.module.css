@@ -8,18 +8,23 @@
   color: #ffffff !important;
   background-color: rgba(0, 0, 0, 0.26) !important;
   border: 0 solid transparent !important;
-  width: 250px;
+  width: 200px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.50);
+
 }
 
 .btn-primary:hover {
   background-color: rgba(0, 0, 0, 0.3) !important;
+
 }
 
 .btn-success {
   color: #ffffff !important;
   background-color: #3c9d00 !important;
   border: 0 solid transparent !important;
-  width: 250px;
+  width: 200px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.50);
+
 }
 
 .btn-success:hover {
@@ -30,7 +35,9 @@
   color: #ffffff !important;
   background-color: #d33f37 !important;
   border: 0 solid transparent !important;
-  width: 250px;
+  width: 200px;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.50);
+
 }
 .btn-danger:hover {
   background-color: #ff002f !important;

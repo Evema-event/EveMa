@@ -51,7 +51,7 @@ const Routes = () => {
     <Router>
       <ScrollToTop>
         <Navbar />
-        <div style={{ marginTop: '6rem' }}>
+        <div style={{ marginTop: '5rem' }}>
           <Switch>
             <Route path='/admin' component={Admin} />
 

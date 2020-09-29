@@ -39,7 +39,7 @@
 }
 
 .body {
-  width: 220px;
+  width: 255px;
   font-size: 16px;
   border: none;
   background: #fff;
@@ -96,7 +96,7 @@
 }
 
 .extend .body {
-  width: 88%;
+  width: 94%;
 }
 
 .image {
@@ -225,6 +225,7 @@
   .division {
     display: grid;
     grid-template-columns: 1fr;
+    margin-top: 1rem;
   }
 
   .main {
@@ -236,7 +237,7 @@
   }
 
   .extend .body {
-    width: 220px;
+    width: 255px;
   }
 
   .main {
@@ -250,7 +251,6 @@
 
   .image {
     position: relative;
-    bottom: 290px;
     padding-left: 20px;
   }
 
@@ -260,7 +260,6 @@
 
   .info {
     position: relative;
-    top: 200px;
   }
 
   .picture {
@@ -289,7 +288,6 @@
 
   .info {
     position: relative;
-    top: 220px;
   }
 
   .main {
