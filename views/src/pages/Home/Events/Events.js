@@ -17,12 +17,8 @@ const Events = () => {
 
     return (
         <div>
-            <div style={{background: "#3AAFA9", marginTop:"30px", padding: "10px"}}>
-            <UpcomingEvents />    
-            </div>
-            <div style={{background: "#3AAFA9",marginTop:"30px", padding: "10px"}}>
-            <CompletedEvents />   
-            </div>
+            <UpcomingEvents />
+            <CompletedEvents />
         </div>
     );
 }

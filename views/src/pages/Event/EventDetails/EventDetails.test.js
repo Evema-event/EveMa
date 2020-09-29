@@ -78,19 +78,10 @@ describe('Test cases for the Event Details', () => {
   // Check the Start time
   test('should have the Start Time', () => {
     const startTime = screen.getByText((content) => {
-      const index = content.indexOf(eventData.startTime + ' A.M');
+      const index = content.indexOf(eventData.startTime.toString());
       return index !== -1;
     });
     expect(startTime).toBeInTheDocument();
-  });
-
-  // Check the End time
-  test('should have the End Time', () => {
-    const endTime = screen.getByText((content) => {
-      const index = content.indexOf(eventData.endTime + ' P.M');
-      return index !== -1;
-    });
-    expect(endTime).toBeInTheDocument();
   });
 
   // Check the Start Date

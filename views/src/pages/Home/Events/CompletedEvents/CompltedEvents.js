@@ -12,14 +12,16 @@ const CompletedEvents = () => {
     const { completedEvents } = useContext(EventContext);
     if (completedEvents && completedEvents.length > 0) {
         return (
-            <div className={classes.completed}>
-                <div className={classes.left}>
-                    <div className={[eventClasses.title, classes.title].join(' ')}>Completed Events</div>
-                    <div className={classes.eventList}>
-                        {completedEvents.map((event, i) => i < 6 ? <EventCard key={event._id} event={event} isUpcoming={false} /> : null
-                        )}
+            <div style={{ background: "#3AAFA9", marginTop: "30px", padding: "10px" }}>
+                <div className={classes.completed}>
+                    <div className={classes.left}>
+                        <div className={[eventClasses.title, classes.title].join(' ')}>Completed Events</div>
+                        <div className={classes.eventList}>
+                            {completedEvents.map((event, i) => i < 6 ? <EventCard key={event._id} event={event} isUpcoming={false} /> : null
+                            )}
+                        </div>
+                        {completedEvents.length > 2 && <Loadmore link='/completedList' />}
                     </div>
-                    {completedEvents.length > 2 && <Loadmore link='/completedList' />}
                 </div>
             </div>
         );
