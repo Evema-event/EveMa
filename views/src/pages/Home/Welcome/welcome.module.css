@@ -2,82 +2,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .sectionHome {
-  width: 100%;
-  font-family: 'Rubik', sans-serif;
-  margin-bottom: 0.5rem;
-  background-color: #3aafa9;
-}
-
-.header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	width: 100%;
+	font-family: 'Rubik', sans-serif;
+	margin-bottom: 0.5rem;
+	background-color: #3aafa9;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .headerContent {
-  text-align: center;
-  padding-left: 30px;
+	text-align: center;
+	padding: 30px;
 }
 
 .headerImage {
-  width: 50%;
-  padding: 90px 0px;
+	width: 50%;
+	padding: 10px;
+	margin: 0;
 }
 
 .headerImage img {
-  width: 100%;
+	width: 100%;
+	border-radius: 10px;
+	opacity: 0.9;
 }
 
 .headerPrimary {
-  color: #feffff;
-  font-size: 3.6rem;
-  font-style: italic;
-  margin-bottom: 3rem;
-  text-align: center;
+	color: #feffff;
+	font-size: 3.6rem;
+	font-style: italic;
+	margin-bottom: 3rem;
+	text-align: center;
 }
 
 .paragraph {
-  color: #17252a;
-  font-size: 18px;
-  padding-top: 1rem;
-  text-align: center;
+	color: #17252a;
+	font-size: 18px;
+	padding-top: 1rem;
+	text-align: center;
 }
 
 @media only screen and (max-width: 1200px) {
-  .headerPrimary {
-    font-size: 2.8rem;
-  }
+	.headerPrimary {
+		font-size: 2.8rem;
+	}
 }
 
 @media only screen and (max-width: 900px) {
-  .headerImage {
-    width: 70%;
-  }
-  .headerPrimary {
-    font-size: 2rem;
-  }
+	.headerImage {
+		width: 70%;
+	}
+	.headerPrimary {
+		margin-bottom: 2rem;
+		font-size: 2rem;
+	}
 }
 
 @media only screen and (max-width: 700px) {
-  .header {
-    flex-direction: column;
-  }
-  .headerImage {
-    width: 98%;
-  }
-  .headerContent {
-    padding-left: 0px;
-    padding-top: 30px;
-  }
-  .paragraph {
-    font-size: 15px;
-    width: 80vw;
-    margin: 0 auto;
-  }
+	.sectionHome {
+		flex-direction: column;
+	}
+	.headerImage {
+		width: 98%;
+	}
+	.headerContent {
+		padding-left: 0px;
+		padding-top: 30px;
+	}
+	.paragraph {
+		font-size: 15px;
+		margin: 0 auto;
+	}
 }
 
-@media only screen and (max-width: 400px) {
-  .paragraph {
-    font-size: 13px;
-  }
+@media only screen and (max-width: 450px) {
+	.headerContent {
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.headerPrimary {
+		text-align: center;
+		margin-bottom: 1rem;
+	}
+	.paragraph {
+		font-size: 13px;
+	}
 }

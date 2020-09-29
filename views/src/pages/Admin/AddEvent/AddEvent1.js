@@ -73,6 +73,13 @@ const AddEvent = () => {
       fields.lastDate.error = '';
     }
 
+    if (!(/^\d+.?\d+$/.test('0' + fields.price.value))) {
+      isError = true;
+      fields.price.error = 'Price must be valid number';
+    } else {
+      fields.price.error = '';
+    }
+
     if (fields.description.value.length < 15) {
       isError = true;
       fields.description.error = 'Description must be atleast 2 lines';
@@ -115,6 +122,7 @@ const AddEvent = () => {
           setLoading(false);
         })
         .catch((err) => {
+          setLoading(false);
           swal('Oops...', 'Something Wrong', 'error');
         });
     }
@@ -157,17 +165,17 @@ const AddEvent = () => {
                   placeholder='Price'
                   required
                 />
+                <h6>{fields.price.error}</h6>
               </div>
               <div className={classes['add-group']}>
                 <label htmlFor='startTime'>Start Time</label>
                 <input
                   className={classes['add-input']}
-                  type='text'
+                  type='time'
                   name='startTime'
                   id='startTime'
                   value={fields.startTime.value}
                   onChange={handleChange}
-                  placeholder='eg: 9:00'
                   required
                 />
               </div>
@@ -175,12 +183,11 @@ const AddEvent = () => {
                 <label htmlFor='endTime'>End Time</label>
                 <input
                   className={classes['add-input']}
-                  type='text'
+                  type='time'
                   name='endTime'
                   id='endTime'
                   value={fields.endTime.value}
                   onChange={handleChange}
-                  placeholder='eg: 5:30'
                   required
                 />
               </div>

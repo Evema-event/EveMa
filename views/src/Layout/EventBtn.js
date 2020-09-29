@@ -58,7 +58,6 @@ const RegisterBtn = (props) => {
       users: users,
     };
     let mailUrl = url + `event/notifyUsers/${props.eventId}`;
-    setLoading(true);
     swal({
       title: 'Are you sure?',
       text: 'You are about to delete an event!',
@@ -68,6 +67,7 @@ const RegisterBtn = (props) => {
     })
       .then((res) => {
         if (res) {
+          setLoading(true);
           axios
             .post(mailUrl, data, configuration)
             .then((res) => {
@@ -128,16 +128,16 @@ const RegisterBtn = (props) => {
           {loading ? (
             <div disabled>Loading</div>
           ) : (
-            <div
-              className={[
-                'btn btn-success pl-2 pr-2',
-                btnclasses['btn-success'],
-              ].join(' ')}
-              onClick={registerStall}
-            >
-              Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
-            </div>
-          )}
+              <div
+                className={[
+                  'btn btn-success pl-2 pr-2',
+                  btnclasses['btn-success'],
+                ].join(' ')}
+                onClick={registerStall}
+              >
+                Register Stall <span style={stallCountCSS}>{2 - stallCount}</span>
+              </div>
+            )}
         </>
       );
     } else {
@@ -187,16 +187,16 @@ const RegisterBtn = (props) => {
           {loading ? (
             <div disabled>Loading</div>
           ) : (
-            <div
-              className={[
-                'btn btn-success pl-2 pr-2',
-                btnclasses['btn-success'],
-              ].join(' ')}
-              onClick={registerConference}
-            >
-              Register Conference
-            </div>
-          )}
+              <div
+                className={[
+                  'btn btn-success pl-2 pr-2',
+                  btnclasses['btn-success'],
+                ].join(' ')}
+                onClick={registerConference}
+              >
+                Register Conference
+              </div>
+            )}
         </>
       );
     }
@@ -218,21 +218,21 @@ const RegisterBtn = (props) => {
             Registered
           </div>
         ) : (
-          <div
-            className={[
-              'btn btn-success pl-2 pr-2',
-              btnclasses['btn-success'],
-            ].join(' ')}
-          >
-            {loading ? (
-              <div className='btn-warning' disabled>
-                Loading
-              </div>
-            ) : (
-              <div onClick={registerEvent}>Register Event</div>
-            )}
-          </div>
-        )}
+            <div
+              className={[
+                'btn btn-success pl-2 pr-2',
+                btnclasses['btn-success'],
+              ].join(' ')}
+            >
+              {loading ? (
+                <div className='btn-warning' disabled>
+                  Loading
+                </div>
+              ) : (
+                  <div onClick={registerEvent}>Register Event</div>
+                )}
+            </div>
+          )}
       </div>
     );
   } else if (
@@ -253,7 +253,7 @@ const RegisterBtn = (props) => {
   ) {
     return (
       <div className={classes.registerButton}>
-        {isSubmit && <Redirect to='/eventDetails' />}
+        {isSubmit && <Redirect to='/' />}
         <div>
           <Link
             to='/admin/notifyUser'
@@ -272,13 +272,13 @@ const RegisterBtn = (props) => {
               Loading
             </div>
           ) : (
-            <div
-              className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
-              onClick={deleteEvent}
-            >
-              Delete Event
-            </div>
-          )}
+              <div
+                className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
+                onClick={deleteEvent}
+              >
+                Delete Event
+              </div>
+            )}
         </div>
       </div>
     );

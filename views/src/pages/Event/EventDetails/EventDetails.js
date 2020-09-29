@@ -33,16 +33,17 @@ const EventDetails = () => {
 
               <div className={classes['last-bg']}>
                 <div>
-                  Time: {event.startTime} A.M - {event.endTime} P.M
+                  {"Time  : "}{event.startTime} - {event.endTime}
                 </div>
                 <div>
-                  Date : {new Date(event.startDate).toISOString().slice(0, 10)}{' '}
+                  {"Date  : "}{new Date(event.startDate).toISOString().slice(0, 10)}{' '}
                   -{' '}
                   <span>
                     {new Date(event.endDate).toISOString().slice(0, 10)}
                   </span>
                 </div>
-                <div>Venue :{event.venue}</div>
+                <div>{"Price: "}{event.price}</div>
+                <div>{"Venue : "}{event.venue}</div>
               </div>
             </div>
             <br />

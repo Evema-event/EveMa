@@ -67,14 +67,15 @@ const AddEvent = () => {
       fields.venue.error = '';
     }
 
-    if (fields.contact.value.length < 10) {
+    if (!(/^\d{10}$/.test(fields.contact.value))) {
       isError = true;
       fields.contact.error = 'Enter a valid contact number';
     } else {
       fields.contact.error = '';
     }
 
-    if (fields.email.value.length < 5) {
+    let mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    if (!fields.email.value.match(mailFormat)) {
       isError = true;
       fields.email.error = 'Email is Invalid';
     } else {
@@ -173,7 +174,7 @@ const AddEvent = () => {
                 <label htmlFor='Email'>Email Address</label>
                 <input
                   className={classes['add-input']}
-                  type='text'
+                  type='email'
                   name='email'
                   id='Email'
                   value={fields.email.value}

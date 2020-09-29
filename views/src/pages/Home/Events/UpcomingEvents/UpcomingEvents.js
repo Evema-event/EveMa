@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
 
-import UpcomingImage from '../../../../img/upcoming.png';
-
 import classes from './upcomingEvents.module.css';
 import eventClasses from '../events.module.css';
 
@@ -36,7 +34,7 @@ const UpcomingEvents = () => {
         )}
       </div>
       <div className={classes.right}>
-        <img alt='Demo' src={UpcomingImage} />
+        <img alt='Demo' src={"https://cdn.shopify.com/s/files/1/0025/3444/1060/files/Insights_Animation-ed984277.gif?v=1588082524"} />
       </div>
     </div>
   );

@@ -58,9 +58,8 @@ const AddStallInformation = (props) => {
             ...fields,
             [name]: {
               value: '',
-              error: `Please upload a ${name} that is less than ${
-                maxSize / 1000000
-              }MB`,
+              error: `Please upload a ${name} that is less than ${maxSize / 1000000
+                }MB`,
               name: '',
             },
           });
@@ -173,7 +172,7 @@ const AddStallInformation = (props) => {
                 accept='image/*'
                 onChange={handleChange}
               />
-              <label className='custom-file-label' htmlFor='customFile'>
+              <label className='custom-file-label' style={{ overflow: "hidden" }} htmlFor='customFile'>
                 {fields.image.name || 'Choose Image'}
               </label>
             </div>
@@ -192,7 +191,7 @@ const AddStallInformation = (props) => {
                 accept='application/*,text/*'
                 onChange={handleChange}
               />
-              <label className='custom-file-label' htmlFor='customFile'>
+              <label className='custom-file-label' style={{ overflow: "hidden" }} htmlFor='customFile'>
                 {fields.document.name || 'Choose document'}
               </label>
             </div>
@@ -209,14 +208,14 @@ const AddStallInformation = (props) => {
               Loading
             </button>
           ) : (
-            <button
-              type='submit'
-              className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
-              style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
-            >
-              Submit
-            </button>
-          )}
+              <button
+                type='submit'
+                className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
+                style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
+              >
+                Submit
+              </button>
+            )}
         </div>
       </form>
     </div>

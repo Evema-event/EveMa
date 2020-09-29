@@ -74,7 +74,7 @@ const RegisterConf = (props) => {
       fields.stDate.error = '';
     }
 
-    if (fields.seatLimit.value.length < 2) {
+    if (fields.seatLimit.value < 10) {
       isError = true;
       fields.seatLimit.error = 'Seat Limit must be greater than 2 characters';
     } else {
@@ -182,7 +182,7 @@ const RegisterConf = (props) => {
               <label htmlFor='seatLimit'>Seat Limit</label>
               <input
                 className={classes['reg-input']}
-                type='text'
+                type='number'
                 name='seatLimit'
                 id='seatLimit'
                 value={fields.seatLimit.value}
@@ -210,7 +210,7 @@ const RegisterConf = (props) => {
               <label htmlFor='startTime'>Start Time</label>
               <input
                 className={classes['reg-input']}
-                type='text'
+                type='time'
                 name='stTime'
                 id='startTime'
                 value={fields.stTime.value}
@@ -224,7 +224,7 @@ const RegisterConf = (props) => {
               <label htmlFor='endTime'>End Time</label>
               <input
                 className={classes['reg-input']}
-                type='text'
+                type='time'
                 name='edTime'
                 id='endTime'
                 value={fields.edTime.value}
