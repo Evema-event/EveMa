@@ -148,7 +148,7 @@
 
 .grid {
   display: flex;
-  gap: 80px;
+  gap: 230px;
 }
 
 [datatitle] {
@@ -201,6 +201,9 @@
   .user {
     padding: 0;
   }
+  .grid{
+    gap: 150px;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -213,6 +216,9 @@
   }
   .extend h3 {
     margin-top: 1rem;
+  }
+  .grid{
+    gap: 150px;
   }
 }
 
