@@ -8,6 +8,8 @@ import { saveAs } from 'file-saver';
 import classes from './stallDetails.module.css';
 import { fileUrl } from '../../../../server';
 
+import btnclasses from '../../../../Layout/button.module.css'
+
 import StallContext from '../../../../context/stall/stallContext';
 
 const StallMoreDetails = () => {
@@ -86,14 +88,14 @@ const StallMoreDetails = () => {
           )}
 
           {stall.documents.length === 0 ? null : (
-            <div>
+            <div style={{margin: 'auto'}}>
               <button
                 type='button'
                 className={[
-                  'btn btn-primary btn-block',
-                  classes.next,
-                  classes.link,
-                  classes['btn-primary'],
+                  'btn btn-primary',
+                  btnclasses.next,
+                  btnclasses.link,
+                  btnclasses['btn-primary'],
                 ].join(' ')}
                 onClick={onClickDownload}
               >

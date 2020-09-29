@@ -6,7 +6,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 import classes from './addstall.module.css';
-import btnclass from '../../../Auth/Login/login.module.css';
+import btnclass from '../../../../Layout/button.module.css';
 
 import StallContext from '../../../../context/stall/stallContext';
 import EventContext from '../../../../context/event/eventContext';

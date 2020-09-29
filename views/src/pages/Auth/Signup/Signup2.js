@@ -250,6 +250,7 @@ const Signup2 = () => {
                   btnclasses.link,
                   btnclasses['btn-primary'],
                 ].join(' ')}
+                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
               >
                 Back
               </button>
@@ -275,6 +276,8 @@ const Signup2 = () => {
                   btnclasses.link,
                   btnclasses['btn-primary'],
                 ].join(' ')}
+                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
+
               >
                 Submit
               </button>

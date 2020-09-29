@@ -12,13 +12,13 @@ const ChangePassword = () => {
         <div className={classes.center}>
           <Link to='/changePassword'>
             <button
-              style={{ width: '250px' }}
               className={[
                 'btn btn-primary',
                 btnclasses.next,
                 btnclasses.link,
                 btnclasses['btn-primary'],
               ].join(' ')}
+              style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
             >
               Change Password
             </button>

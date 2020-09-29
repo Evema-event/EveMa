@@ -19,11 +19,12 @@ const UpcomingEvents = () => {
   }
 
   return (
-    <div className={classes.upcoming}>
-      <div className={classes.left}>
-        <div className={[eventClasses.title, classes.title].join(' ')}>
+    <>
+    <div className={[eventClasses.title, classes.title].join(' ')}>
           Upcoming Events
         </div>
+      <div className={classes.upcoming}>
+      <div className={classes.left}>
         {upcomingEvents && upcomingEvents.length > 0 ? <div className={classes.eventList}>
           {upcomingEvents.map((event, i) =>
             i < 2 ? (
@@ -39,6 +40,7 @@ const UpcomingEvents = () => {
         <img alt='Demo' src={UpcomingImage} />
       </div>
     </div>
+    </>
   );
 };
 

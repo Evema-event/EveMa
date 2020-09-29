@@ -260,6 +260,7 @@ const Signup1 = () => {
                   btnclasses.next,
                   btnclasses['btn-primary'],
                 ].join(' ')}
+                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
               >
                 Back
               </button>
@@ -285,6 +286,7 @@ const Signup1 = () => {
                   classes.link,
                   classes['btn-primary'],
                 ].join(' ')}
+                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
               >
                 Next
               </button>

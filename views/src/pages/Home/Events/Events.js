@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 
-import classes from './events.module.css';
 
 import UpcomingEvents from './UpcomingEvents/UpcomingEvents';
 import CompletedEvents from './CompletedEvents/CompltedEvents';
@@ -17,10 +16,13 @@ const Events = () => {
     }, []);
 
     return (
-        <div className={classes.about}>
-            <h2>About Events</h2>
-            <UpcomingEvents />
-            <CompletedEvents />
+        <div>
+            <div style={{background: "#3AAFA9", marginTop:"30px", padding: "10px"}}>
+            <UpcomingEvents />    
+            </div>
+            <div style={{background: "#3AAFA9",marginTop:"30px", padding: "10px"}}>
+            <CompletedEvents />   
+            </div>
         </div>
     );
 }
