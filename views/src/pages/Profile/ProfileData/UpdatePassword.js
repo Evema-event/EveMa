@@ -98,7 +98,7 @@ const UpdatePassword = () => {
       {isSubmit && <Redirect to='/profile' />}
       <div className={classes['forget']}>
         <form className={classes['form-login']} onSubmit={handleSubmit}>
-          <h5>Create New Password</h5>
+          <h5 style={{ color: '#194645' }}>Create New Password</h5>
           <span className={classes['inputs-login']}>
             <div>
               <div className={classes['form_group']}>
@@ -147,10 +147,10 @@ const UpdatePassword = () => {
                 <h6>{fields.cpassword.error}</h6>
               </div>
               {loading ? (
-                <button
+                <button style={{ marginTop: '30px', boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
                   type='button'
                   className={[
-                    'btn btn-primary btn-block',
+                    'btn btn-warning btn-block',
                     classes.next,
                     classes.link,
                     classes['btn-primary'],
@@ -160,23 +160,23 @@ const UpdatePassword = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className={[
-                    'btn btn-primary btn-block',
-                    classes.next,
-                    classes.link,
-                    classes['btn-primary'],
-                  ].join(' ')}
-                >
-                  Submit
-                </button>
-              )}
+                  <button style={{ marginTop: '30px', boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
+                    type='submit'
+                    className={[
+                      'btn btn-success btn-block',
+                      classes.next,
+                      classes.link,
+                      classes['btn-primary'],
+                    ].join(' ')}
+                  >
+                    Submit
+                  </button>
+                )}
               <Link to='/profile'>
-                <button
+                <button style={{ marginTop: '10px', boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
                   type='submit'
                   className={[
-                    'btn btn-primary btn-block',
+                    'btn btn-danger btn-block',
                     classes.next,
                     classes.link,
                     classes['btn-primary'],
