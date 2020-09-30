@@ -84,31 +84,34 @@
 }
 @media (max-width: 800px) {
 	.fullView .rect {
-		width: 500px;
+		width: 100%;
 	}
+
 	.fullView .grad {
-		width: 500px;
+		width: 100%;
+	}
+
+	.fullView .card {
+		margin: auto;
+		width: 90%;
 	}
 
 	.fullView .pad {
 		padding-right: 1rem;
 	}
-
-	.fullView .card {
-		margin: auto 5rem;
-	}
 }
 
 @media (max-width: 600px) {
 	.fullView .rect {
-		width: 415px;
+		width: 100%;
 	}
 	.fullView .grad {
-		width: 415px;
+		width: 100%;
 	}
 
 	.fullView .card {
 		margin: auto;
+		width: 90%;
 	}
 
 	.fullView .card .description {

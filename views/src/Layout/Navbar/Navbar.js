@@ -31,19 +31,19 @@ const Navbar = () => {
     <Fragment>
       {localStorage.getItem('token') &&
         localStorage.getItem('role') === 'Organizer' ? (
-          <li>
+          <li data-toggle='collapse' data-target='#navbarSupportedContent'>
             <Link className={'nav-link'} to='/admin'>
               Admin
           </Link>
           </li>
         ) : (
-          <li>
+          <li data-toggle='collapse' data-target='#navbarSupportedContent'>
             <Link className='nav-link' to='/'>
               Home
           </Link>
           </li>
         )}
-      <li>
+      <li data-toggle='collapse' data-target='#navbarSupportedContent'>
         <Link className='nav-link' to='/eventList'>
           Events
         </Link>
@@ -51,13 +51,13 @@ const Navbar = () => {
       {authContext.token ? (
         <>
           {authContext.role !== 'Organizer' && (
-            <li className='nav-item'>
+            <li className='nav-item' data-toggle='collapse' data-target='#navbarSupportedContent'>
               <Link to='/profile' className='nav-link'>
                 Profile
               </Link>
             </li>
           )}
-          <li className='nav-item'>
+          <li className='nav-item' data-toggle='collapse' data-target='#navbarSupportedContent'>
             <span
               style={{ cursor: 'pointer' }}
               className='nav-link'
@@ -70,12 +70,12 @@ const Navbar = () => {
       ) : (
           <>
             {redirect && <Redirect to='/' />}
-            <li className='nav-item'>
+            <li className='nav-item' data-toggle='collapse' data-target='#navbarSupportedContent'>
               <Link className='nav-link' to='/signup/0'>
                 Sign Up
             </Link>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item' data-toggle='collapse' data-target='#navbarSupportedContent'>
               <Link className='nav-link' to='/login'>
                 Log In
             </Link>
