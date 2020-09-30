@@ -43,6 +43,10 @@
 	min-height: 130px;
 }
 
+.fullView .card .description::first-letter {
+	text-transform: uppercase;
+}
+
 .fullView .card .details {
 	display: flex;
 	align-content: center;

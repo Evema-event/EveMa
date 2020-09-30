@@ -2,63 +2,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .navbar {
-  font-family: 'Rubik', sans-serif;
-  color: #ffffff !important;
-  background-image: linear-gradient(#456971, #456971);
-  position: fixed !important;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  padding: 0 !important;
+	font-family: 'Rubik', sans-serif;
+	color: #ffffff !important;
+	background-image: linear-gradient(#456971, #456971);
+	position: fixed !important;
+	top: 0;
+	width: 100%;
+	z-index: 1;
+	padding: 0 !important;
 }
 
 .navbar-dark .navbar-toggler {
-  border-width: 0.09rem;
-  border-color: transparent !important;
+	border-width: 0.09rem;
+	border-color: transparent !important;
 }
 
 .navbar-dark img {
-  margin-left: 0.6rem;
+	margin-left: 0.6rem;
 }
 
 .navbar-dark .fa-bars {
-  font-size: 1.5rem;
-  color: #ffffff;
+	font-size: 1.5rem;
+	color: #ffffff;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: rgb(219, 219, 219) !important;
-  padding: 0rem 0rem !important;
+	color: rgb(219, 219, 219) !important;
+	padding: 0rem 0rem !important;
 }
 .navbar-dark .navbar-nav .nav-link:focus,
 .navbar-dark .navbar-nav .nav-link:active {
-  color: #ffffff !important;
+	color: #ffffff !important;
 }
 
 :focus {
-  outline: transparent !important;
-}
-
-.navbar-dark ul {
-  text-transform: uppercase;
+	outline: transparent !important;
 }
 
 .navbar-dark ul li {
-  margin-right: 1rem;
-  text-decoration: none;
-  font-weight: bolder;
-  font-size: 1rem;
-  letter-spacing: 0.1rem;
+	margin-right: 1rem;
+	text-decoration: none;
+	font-weight: bolder;
+	font-size: 1.1rem;
+}
+.navbar-dark ul li:hover {
+	border-bottom: 2px solid white;
 }
 
 @media only screen and (max-width: 980px) {
-  .navbar-dark ul li {
-    text-align: center;
-    padding: 0.5rem;
-  }
+	.navbar-dark ul li {
+		text-align: center;
+		padding: 0.5rem;
+	}
 
-  .navbar-dark .navbar-nav {
-    margin-top: 1rem;
-    border-top: 2px solid white;
-  }
+	.navbar-dark .navbar-nav {
+		margin-top: 1rem;
+		border-top: 2px solid white;
+	}
 }

@@ -59,6 +59,10 @@
 	font-weight: 400;
 }
 
+.comp-card .details-bg::first-letter {
+	text-transform: uppercase;
+}
+
 .comp-card .last-bg {
 	color: #17252a;
 	padding: 1rem;

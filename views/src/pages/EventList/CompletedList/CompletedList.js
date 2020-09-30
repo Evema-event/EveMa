@@ -56,7 +56,7 @@ const CompletedList = () => {
                                 }
                             </div>
                             <p className={classes.subtitle}>Events</p>
-                        </> : <p className={classes.subtitle} style={{ fontSize: "20px" }}>No completed events registered by you.</p>
+                        </> : <></>
                 }
                 <div className={classes.view}>
                     {
@@ -109,7 +109,7 @@ const CompletedList = () => {
                                 }
                             </div>
                             <p className={classes.subtitle}>Events</p>
-                        </> : <p className={classes.subtitle} style={{ fontSize: "20px" }}>No stalls or conference exhibited in completed events by you.</p>
+                        </> : <></>
                 }
                 <div className={classes.view}>
                     {

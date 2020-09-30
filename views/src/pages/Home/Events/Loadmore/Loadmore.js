@@ -8,7 +8,7 @@ const Loadmore = (props) => {
         <div className={classes.loadMore}>
             <Link to={props.link} className={classes.button}>
                 <span className={classes.hoverLine}>
-                    <span className={classes.buttonText}>Load More</span>
+                    <span className={classes.buttonText}>Load more</span>
                     <span className={classes.rarrow}>
                         <i className='fa fa-arrow-circle-right' />
                     </span>

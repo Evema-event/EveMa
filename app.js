@@ -8,13 +8,20 @@ const routes = require('./routes/routes');
 // Express app
 const app = express();
 
-// Input parser
-app.use(bodyParser.json());
-
 // Serving static files for production
 if ((process.env.NODE_ENV || '').trim() === 'production') {
+    app.use((req, res, next) => {
+        if (req.headers["x-forwarded-proto"] !== "https") {
+            res.redirect(302, "https://" + req.hostname + req.originalUrl);
+        } else {
+            next();
+        }
+    });
     app.use(express.static('views/build'));
-}
+};
+
+// Input parser
+app.use(bodyParser.json());
 
 // Serving static images and files
 app.use('/public', (req, res, next) => {
