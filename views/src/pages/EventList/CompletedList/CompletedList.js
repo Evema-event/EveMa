@@ -28,6 +28,10 @@ const CompletedList = () => {
         );
     }
 
+    if (completedEvents && completedEvents.length === 0) {
+        return <></>;
+    }
+
     if (localStorage.getItem('role') === 'Visitor') {
         let myEvents = [];
         let otherEvents = [];
@@ -135,10 +139,7 @@ const CompletedList = () => {
         );
     } else {
         return (
-            <>
-                <div className={classes.title}>Completed Events</div>
-                <center className="h2">No completed events yet!</center>
-            </>
+            <></>
         )
     }
 }
