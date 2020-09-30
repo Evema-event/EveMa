@@ -70,7 +70,7 @@ const ConferenceBtn = (props) => {
       .put(registerUrl, data, config)
       .then((res) => {
         authContext.getProfile();
-        swal('Congrats', 'Event registered Successfully', 'success');
+        swal('Congrats', 'Conference registered Successfully', 'success');
         setLoading(false);
       })
       .catch((err) => {

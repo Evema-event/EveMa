@@ -161,8 +161,8 @@ const Login = () => {
               >
                 {loading ? 'Loading' : 'Login'}
               </button>
-              <Link className={classes['link']} to='/signup/0'>
-                <small>
+              <Link className={classes['link']} to='/signup/0' style={{ display: "block", paddingTop: "10px" }}>
+                <small >
                   Need an account?
                   <span
                     style={{

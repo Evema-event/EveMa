@@ -6,7 +6,7 @@ const Event = require('../models/event');
 
 //Importing throw error utility function
 const throwError = require('../utility/throwError');
-const stall = require('../validators/stall');
+const deleteFile = require('../utility/deleteFile');
 
 //Get stalls of particular event
 exports.getStalls = (req, res) => {
@@ -108,6 +108,12 @@ exports.deleteStall = (req, res) => {
       return Stall.findByIdAndDelete(req.params.stallId);
     })
     .then((stall) => {
+      stall.images.forEach(image => {
+        deleteFile(image);
+      });
+      stall.documents.forEach(document => {
+        deleteFile(document);
+      });
       res.status(200).json({ message: 'Success', stall: stall });
     })
     .catch((err) => {

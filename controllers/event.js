@@ -2,9 +2,12 @@
 const Event = require('../models/event');
 const User = require('../models/user');
 const Profile = require('../models/profile');
+const Stall = require('../models/stall');
+const Conference = require('../models/conference');
 
 // Importing throw error utility function
 const throwError = require('../utility/throwError');
+const deleteFile = require('../utility/deleteFile');
 
 // Send events that have end date today or after
 exports.getUpcomingEvents = (req, res) => {
@@ -131,6 +134,7 @@ exports.addEvent = (req, res) => {
 // Delete an event from database
 exports.deleteEvent = (req, res) => {
   // Organizer only can able to delete event
+  let loadedEvent;
   User.findById(req.userId)
     .then((user) => {
       if (!user.role.includes('Organizer')) {
@@ -139,6 +143,118 @@ exports.deleteEvent = (req, res) => {
         throw error;
       }
       // Delete event
+      return Event.findById(req.params.eventId);
+    })
+    .then(event => {
+      if (!event) {
+        const error = new Error('Event not found');
+        error.statusCode = 404;
+        throw error;
+      }
+      if (new Date(event.startDate).getTime() - Date.now() < 2 * 24 * 3600 * 1000) {
+        const error = new Error("You can only able to delete event before 2 days");
+        error.statusCode = 403;
+        throw error;
+      }
+      loadedEvent = event;
+      return Promise.all(
+        event.registeredUsers.map((userId) => {
+          return Profile.findOne({ userId: userId })
+            .then((profile) => {
+
+              profile.registeredEvents.pop(req.params.eventId);
+
+              profile.visitorConferences = profile.visitorConferences.filter(conference => !loadedEvent.registeredConferences.includes(conference));
+
+              return profile.save();
+            })
+            .catch((err) => {
+              throwError(err, res);
+            });
+        })
+      );
+    })
+    .then(profile => {
+      return Promise.all(
+        loadedEvent.registeredUsers.map((userId) => {
+          return Profile.findOne({ userId: userId })
+            .then((profile) => {
+
+              let stalls = [];
+              profile.registeredStalls.forEach((stall) => {
+                if (stall.eventId.toString() !== req.params.eventId.toString()) {
+                  stalls.push(stall)
+                }
+              });
+              profile.registeredStalls = stalls;
+
+              return profile.save();
+            })
+            .catch((err) => {
+              throwError(err, res);
+            });
+        })
+      );
+    })
+    .then(profile => {
+      return Promise.all(
+        loadedEvent.registeredStalls.map((stallId) => {
+          return Stall.findById(stallId)
+            .then(stall => {
+              stall.images.forEach(image => {
+                deleteFile(image);
+              });
+              stall.documents.forEach(document => {
+                deleteFile(document);
+              });
+              return Profile.findOne({ userId: stall.userId });
+            })
+            .then((profile) => {
+
+              let stalls = [];
+              profile.registeredStalls.forEach((stall) => {
+                if (stall.eventId.toString() !== req.params.eventId.toString()) {
+                  stalls.push(stall)
+                }
+              });
+              profile.registeredStalls = stalls;
+
+              return profile.save();
+            })
+            .then(profile => {
+              return Stall.findByIdAndDelete(stallId);
+            })
+            .catch(err => { });
+        })
+      );
+    })
+    .then(stall => {
+      return Promise.all(
+        loadedEvent.registeredConferences.map((conferenceId) => {
+          return Conference.findById(conferenceId)
+            .then(conference => {
+              return Profile.findOne({ userId: conference.userId });
+            })
+            .then((profile) => {
+
+              let confs = [];
+              profile.registeredConferences.forEach((conf) => {
+                if (conf.eventId.toString() !== req.params.eventId.toString()) {
+                  confs.push(conf)
+                }
+              });
+              profile.registeredConferences = confs;
+
+              return profile.save();
+            })
+            .then(profile => {
+              return Conference.findByIdAndDelete(conferenceId);
+            })
+            .catch(err => { });
+        })
+      );
+    })
+    .then(conference => {
       return Event.findByIdAndDelete(req.params.eventId);
     })
     .then((event) => {

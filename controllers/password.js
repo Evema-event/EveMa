@@ -8,7 +8,6 @@ const bcrypt = require('bcryptjs');
 const sendMail = require('../utility/sendMail');
 const throwError = require('../utility/throwError');
 const hashPassword = require('../utility/hashPassword');
-const user = require('../models/user');
 
 // Forget Password function send OTP to user mail provided while signup
 exports.forgetPassword = (req, res) => {
@@ -79,6 +78,9 @@ exports.resetPassword = (req, res) => {
 }
 
 exports.changePassword = (req, res) => {
+    if (req.body.oldPassword === req.body.newPassword) {
+        return res.status(422).json({ message: "Failed", error: "Password must be different" });
+    }
     let loadedUser
     User.findById(req.userId)
         .then((user) => {

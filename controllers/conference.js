@@ -97,6 +97,7 @@ exports.deleteConference = (req, res) => {
         }
       })
       profile.registeredConferences = confl
+      profile.visitorConferences = profile.visitorConferences.filter(conference => conference.toString() !== req.params.conferenceId.toString());
       return profile.save()
     })
     .then((profile) => {
