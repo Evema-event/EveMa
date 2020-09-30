@@ -47,7 +47,7 @@ const ShowProfileData = (props) => {
         </div>
         <div className={classes.info}>
           <h5 className={classes.head}>Areas of Interest</h5>
-          <p className={classes.body}>{profile.areasOfInterest}</p>
+          <p className={classes.body}>{profile.areasOfInterest.join(', ')}</p>
         </div>
         <div className={classes.info}>
           <h5 className={classes.head}>Designation</h5>

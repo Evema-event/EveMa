@@ -46,7 +46,6 @@ const EventCard = (props) => {
                             {new Date(props.event.startDate).toISOString().slice(0, 10)}
                         </span>
                         <span>{props.event.startTime} </span>
-                        <span>{props.event.venue} </span>
                     </div>
                 </div>
             </div>
