@@ -86,14 +86,6 @@ describe('Test cases Events in the home page', () => {
         expect(description[1]).toBeInTheDocument();
     });
 
-    // Check venue of the event is present
-    test('Should render venue of event two time', () => {
-        const venue = screen.getAllByText(eventData.venue);
-        expect(venue.length).toBe(2);
-        expect(venue[0]).toBeInTheDocument();
-        expect(venue[1]).toBeInTheDocument();
-    });
-
     // Check startTime of the event is present
     test('Should render startTime of event two time', () => {
         const startTime = screen.getAllByText(eventData.startTime);

@@ -92,15 +92,4 @@ describe('Test cases for the event card', () => {
     });
     expect(endDateElement).toBeInTheDocument();
   });
-
-  // Check the Venue
-  test('should have the Venu', () => {
-    renderWithContext();
-    const endDateElement = screen.getByText((content, element) => {
-      return (
-        content === eventData.venue && element.tagName.toLowerCase() === 'span'
-      );
-    });
-    expect(endDateElement).toBeInTheDocument();
-  });
 });
