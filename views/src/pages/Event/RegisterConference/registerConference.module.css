@@ -1,7 +1,7 @@
 .section-conf {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 48%;
   transform: translate(-50%, -50%);
   color: white;
   background: #3aafa9;
@@ -9,7 +9,7 @@
   padding: 2rem;
   margin: 1rem;
   display: flex;
-  width: 1100px;
+  width: 1190px;
   margin-top: 4rem;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .section-conf .reg-img {
-  width: 45%;
+  width: 50%;
 }
 
 .section-conf form {
@@ -84,16 +84,7 @@
   margin-top: 0.75rem !important;
 }
 
-@media screen and (max-width: 1400px) {
-}
-
-@media screen and (max-width: 1200px) {
-  .section-conf {
-    width: 1070px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1275px) {
   .section-conf {
     width: 650px;
   }

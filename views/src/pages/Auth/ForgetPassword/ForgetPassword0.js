@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 import classes from '../Login/login.module.css';
@@ -129,6 +129,15 @@ const ForgetPassword0 = () => {
                   Next
                 </button>
               )}
+              <Link to='/login'>
+            <button
+              type='button'
+              className={['btn btn-primary', btnclasses['btn-primary']].join(' ')}
+              style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
+            >
+              Cancel
+            </button>
+          </Link>
             </div>
           </span>
         </form>

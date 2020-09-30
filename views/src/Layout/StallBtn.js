@@ -88,6 +88,7 @@ const ExhibitorBtn = (props) => {
             {loading ? 'Loading' : 'Delete Stall'}
           </div>
         }
+            <p style={{color:"white", textAlign:'center',marginTop:'5px',marginBottom:'5px'}}>*One can delete a Stall until two days before the Event*</p>
       </>
     );
   }
