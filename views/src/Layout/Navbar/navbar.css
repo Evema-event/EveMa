@@ -45,8 +45,8 @@
 	font-weight: bolder;
 	font-size: 1.1rem;
 }
-.navbar-dark ul li:hover {
-	border-bottom: 2px solid white;
+.navbar-dark ul li .nav-link:hover {
+	text-decoration: underline !important;
 }
 
 @media only screen and (max-width: 980px) {

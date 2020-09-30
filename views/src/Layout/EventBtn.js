@@ -262,24 +262,27 @@ const RegisterBtn = (props) => {
             Notify Users
           </Link>
         </div>
-        <div>
-          {loading ? (
-            <div
-              className='btn btn-warning'
-              style={{ width: '250px' }}
-              disabled
-            >
-              Loading
-            </div>
-          ) : (
+        {
+          (new Date(eventContext.indivEvent.startDate).getTime() - Date.now() > 2 * 24 * 3600 * 1000) &&
+          <div>
+            {loading ? (
               <div
-                className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
-                onClick={deleteEvent}
+                className='btn btn-warning'
+                style={{ width: '250px' }}
+                disabled
               >
-                Delete Event
+                Loading
               </div>
-            )}
-        </div>
+            ) : (
+                <div
+                  className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
+                  onClick={deleteEvent}
+                >
+                  Delete Event
+                </div>
+              )}
+          </div>
+        }
       </div>
     );
   }

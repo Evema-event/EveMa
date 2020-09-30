@@ -79,12 +79,15 @@ const ExhibitorBtn = (props) => {
         >
           <div>Add More Information</div>
         </Link>
-        <div
-          className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
-          onClick={deleteStall}
-        >
-          {loading ? 'Loading' : 'Delete Stall'}
-        </div>
+        {
+          (new Date(eventContext.indivEvent.startDate).getTime() - Date.now() > 2 * 24 * 3600 * 1000) &&
+          <div
+            className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
+            onClick={deleteStall}
+          >
+            {loading ? 'Loading' : 'Delete Stall'}
+          </div>
+        }
       </>
     );
   }

@@ -79,7 +79,7 @@ const AddStallInformation = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsLoading(true);
+    let isError = false;
     let formData = new FormData();
     if (fields.link.value.trim() !== '') {
       formData.append('link', fields.link.value);
@@ -95,6 +95,7 @@ const AddStallInformation = (props) => {
       !formData.get('image') &&
       !formData.get('document')
     ) {
+      isError = true;
       setFields({
         ...fields,
         link: {
@@ -110,31 +111,50 @@ const AddStallInformation = (props) => {
           error: 'Atleast one field must be filled',
         },
       });
-    }
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data',
-        'x-auth-token': localStorage.getItem('token'),
-      },
-    };
-    let addinfoUrl = url + `stall/addinfo/${stallContext.selectedStallId}`;
-    axios
-      .put(addinfoUrl, formData, config)
-      .then((res) => {
-        stallContext.getStalls(eventContext.indivEvent._id);
-        stallContext.updateIndividualStall(res.data.stall);
-        swal('', 'Data added successfully', 'success')
-          .then((res) => {
-            setIsSubmit(true);
-          })
-          .catch((err) => {
-            throw err;
-          });
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setIsLoading(false);
+    } else {
+      setFields({
+        ...fields,
+        link: {
+          ...fields.link,
+          error: '',
+        },
+        image: {
+          ...fields.image,
+          error: '',
+        },
+        document: {
+          ...fields.document,
+          error: '',
+        },
       });
+    }
+    if (!isError) {
+      setIsLoading(true);
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+          'x-auth-token': localStorage.getItem('token'),
+        },
+      };
+      let addinfoUrl = url + `stall/addinfo/${stallContext.selectedStallId}`;
+      axios
+        .put(addinfoUrl, formData, config)
+        .then((res) => {
+          stallContext.getStalls(eventContext.indivEvent._id);
+          stallContext.updateIndividualStall(res.data.stall);
+          swal('', 'Data added successfully', 'success')
+            .then((res) => {
+              setIsSubmit(true);
+            })
+            .catch((err) => {
+              throw err;
+            });
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          setIsLoading(false);
+        });
+    }
   };
 
   console.log(stallContext.selectedStallId);

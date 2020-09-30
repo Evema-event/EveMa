@@ -81,7 +81,8 @@ const ConferenceBtn = (props) => {
   if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Exhibitor' &&
-    props.user === authContext.userId
+    props.user === authContext.userId &&
+    (new Date(eventContext.indivEvent.startDate).getTime() - Date.now() > 2 * 24 * 3600 * 1000)
   ) {
     return (
       <>
