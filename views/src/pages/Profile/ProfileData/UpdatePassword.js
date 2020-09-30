@@ -37,14 +37,14 @@ const UpdatePassword = () => {
     let isError = false;
     if (fields.oldpassword.value.length < 8) {
       isError = true;
-      fields.oldpassword.error = 'Old Password is invalid';
+      fields.oldpassword.error = 'Password must be atleast 8 characters in length';
     } else {
       fields.oldpassword.error = '';
     }
 
     if (fields.password.value.length < 8) {
       isError = true;
-      fields.password.error = 'Invalid password ';
+      fields.password.error = 'Password must be atleast 8 characters in length';
     } else {
       fields.password.error = '';
     }
@@ -56,9 +56,16 @@ const UpdatePassword = () => {
       fields.cpassword.error = '';
     }
 
+    if (!isError && fields.oldpassword.value === fields.password.value) {
+      isError = true;
+      fields.password.error = 'Old Password and New password cannot be the same';
+    }
+
+
     setFields({
       ...fields,
     });
+
 
     if (!isError) {
       setLoading(true);
@@ -92,7 +99,6 @@ const UpdatePassword = () => {
         });
     }
   };
-
   return (
     <div className={classes['bg-login']}>
       {isSubmit && <Redirect to='/profile' />}
@@ -108,7 +114,6 @@ const UpdatePassword = () => {
                   type='password'
                   name='oldpassword'
                   id='oldpassword'
-                  minLength='8'
                   value={fields.oldpassword.value}
                   placeholder='Enter Current Password'
                   onChange={handleChange}
@@ -123,7 +128,6 @@ const UpdatePassword = () => {
                   type='password'
                   name='password'
                   id='password'
-                  minLength='8'
                   value={fields.password.value}
                   placeholder='Enter your Password'
                   onChange={handleChange}
@@ -138,7 +142,6 @@ const UpdatePassword = () => {
                   type='password'
                   name='cpassword'
                   id='cpassword'
-                  minLength='8'
                   value={fields.cpassword.value}
                   placeholder='Re-enter your Password'
                   onChange={handleChange}

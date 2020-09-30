@@ -138,7 +138,6 @@ const Login = () => {
                 type='password'
                 name='password'
                 id='password'
-                minLength='8'
                 value={fields.password.value}
                 placeholder='Enter your Password'
                 onChange={handleChange}
@@ -158,7 +157,7 @@ const Login = () => {
                   btnclasses['btn-primary'],
                 ].join(' ')}
                 disable={loading.toString()}
-                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
+                style={{ boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
               >
                 {loading ? 'Loading' : 'Login'}
               </button>

@@ -60,7 +60,7 @@ const Signup0 = () => {
     } else {
       fields.username.error = '';
     }
-    let mailFormat= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    let mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     if (!fields.email.value.match(mailFormat)) {
       isError = true;
       fields.email.error = 'Email is Invalid';
@@ -164,7 +164,6 @@ const Signup0 = () => {
                 type='password'
                 name='password'
                 id='password'
-                minLength='8'
                 value={fields.password.value}
                 placeholder='Enter your Password'
                 onChange={handleChange}
@@ -180,7 +179,6 @@ const Signup0 = () => {
                 type='password'
                 name='cpassword'
                 id='cpassword'
-                minLength='8'
                 value={fields.cpassword.value}
                 placeholder='Re-enter your Password'
                 onChange={handleChange}
@@ -224,20 +222,20 @@ const Signup0 = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  data-testid='button'
-                  type='submit'
-                  className={[
-                    'btn btn-primary btn-block',
-                    btnclasses['btn-primary'],
-                    btnclasses.next,
-                    btnclasses.link,
-                  ].join(' ')}
-                  style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
-                >
-                  Next
-                </button>
-              )}
+                  <button
+                    data-testid='button'
+                    type='submit'
+                    className={[
+                      'btn btn-primary btn-block',
+                      btnclasses['btn-primary'],
+                      btnclasses.next,
+                      btnclasses.link,
+                    ].join(' ')}
+                    style={{ boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
+                  >
+                    Next
+                  </button>
+                )}
             </div>
           </span>
         </form>
