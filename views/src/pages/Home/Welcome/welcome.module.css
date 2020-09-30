@@ -12,8 +12,9 @@
 }
 
 .headerContent {
+	min-width: 50%;
 	text-align: center;
-	padding: 30px;
+	padding: 10px;
 }
 
 .headerImage {
@@ -69,6 +70,7 @@
 	.headerContent {
 		padding-left: 0px;
 		padding-top: 30px;
+		padding-bottom: 30px;
 	}
 	.paragraph {
 		font-size: 15px;
