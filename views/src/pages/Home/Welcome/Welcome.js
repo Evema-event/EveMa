@@ -12,9 +12,13 @@ const Welcome = () => {
       <div className={classes.headerContent}>
         <h1 className={classes.headerPrimary}>Welcome to EveMa</h1>
         <p className={classes.paragraph}>
-          Greetings to everyone, <br /> This is the Event Management page for
-            the large events and <br /> for more about events <br /> scroll down
-          </p>
+          <span style={{ color: "white" }}>“Don’t find customers for your products, <br /> find products for your customers.”
+          <br />-Seth Godin</span><br /><br />
+          Ever wanted to be a part of something bigger,<br /> something that excites you and keeps you engaged?<br />
+          You can be a part of our Events that are exciting and captivating!<br />
+          Grow as a person to grow your business!<br />
+          Be a part of this experience
+        </p>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import url from '../../../../server';
 import axios from 'axios';
@@ -236,6 +236,15 @@ const AddStallInformation = (props) => {
                 Submit
               </button>
             )}
+            <Link to='/stalldetails'>
+              <button
+               type='button'
+               className={['btn btn-primary', btnclass['btn-primary']].join(' ')}
+               style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
+              >
+                Cancel
+              </button>
+            </Link>
         </div>
       </form>
     </div>

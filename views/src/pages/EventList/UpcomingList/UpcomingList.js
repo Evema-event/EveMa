@@ -28,6 +28,10 @@ const UpcomingList = () => {
         );
     }
 
+    if (upcomingEvents && upcomingEvents.length === 0) {
+        return <center style={{ marginTop: "100px" }}>No events yet!</center>
+    }
+
     if (localStorage.getItem('role') === 'Visitor') {
         let myEvents = [];
         let otherEvents = [];
@@ -126,7 +130,7 @@ const UpcomingList = () => {
         return (
             <>
                 <div className={classes.title}>Upcoming Events</div>
-                <center className="h2">No upcoming events yet!</center>
+                <center className="h6">No upcoming events yet!</center>
             </>
         );
     }

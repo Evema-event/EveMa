@@ -17,15 +17,6 @@ describe('Test case for Welcome screen', () => {
         expect(h1Element).toBeInTheDocument();
     });
 
-    // Check it have paragraph with correct starting text
-    test('Check paragraph element with Greetings to everyone', () => {
-        render(<Welcome />);
-        const pElement = screen.getByText((content, element) => {
-            return content.startsWith('Greetings to everyone') && element.tagName.toLowerCase() === 'p';
-        });
-        expect(pElement).toBeInTheDocument();
-    });
-
     // Check it have an image
     test('Checking image is present', () => {
         render(<Welcome />);

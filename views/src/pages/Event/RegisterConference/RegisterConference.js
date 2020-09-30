@@ -255,7 +255,7 @@ const RegisterConf = (props) => {
               <h6>{fields.confDesc.error}</h6>
             </div>
 
-            <Link to='/'>
+            <Link to='/eventdetails'>
               <button
                 type='button'
                 className={[

@@ -207,7 +207,7 @@ const RegisterStall = (props) => {
               </div>
             )}
 
-          <Link to='/'>
+          <Link to='/eventdetails'>
             <button
               type='button'
               className={[
