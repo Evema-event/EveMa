@@ -74,7 +74,7 @@ const ExhibitorBtn = (props) => {
           to='/addStallDetails'
           style={{
             textAlign: 'center',
-            margin: '10px',
+            margin: '25px',
           }}
         >
           <div>Add More Information</div>
@@ -88,7 +88,7 @@ const ExhibitorBtn = (props) => {
             {loading ? 'Loading' : 'Delete Stall'}
           </div>
         }
-            <p style={{color:"white", textAlign:'center',marginTop:'5px',marginBottom:'5px'}}>*One can delete a Stall until two days before the Event*</p>
+        <p style={{ color: "white", textAlign: 'center', fontWeight: "bold", marginTop: '5px', marginBottom: '5px' }}>*One can delete a Stall until two days before the Event*</p>
       </>
     );
   }

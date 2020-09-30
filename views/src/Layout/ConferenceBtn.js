@@ -81,20 +81,20 @@ const ConferenceBtn = (props) => {
   if (
     localStorage.getItem('token') &&
     localStorage.getItem('role') === 'Exhibitor' &&
-    props.user === authContext.userId 
+    props.user === authContext.userId
   ) {
     return (
       <>
         {deleteConfRedir && <Redirect to='/eventDetails' />}
-    {   
-    (new Date(eventContext.indivEvent.startDate).getTime() - Date.now() > 2 * 24 * 3600 * 1000)&&
-    <div
-      className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
-      onClick={deleteConference}
-    >
-      {loading ? 'Loading' : 'Delete Conference'}
-    </div>}
-        <p style={{color:"white", textAlign:'center',marginTop:'20px'}}>*One can delete a Conference until two days before the Event*</p>
+        {
+          (new Date(eventContext.indivEvent.startDate).getTime() - Date.now() > 2 * 24 * 3600 * 1000) &&
+          <div
+            className={['btn btn-danger', btnclasses['btn-danger']].join(' ')}
+            onClick={deleteConference}
+          >
+            {loading ? 'Loading' : 'Delete Conference'}
+          </div>}
+        <p style={{ color: "white", fontWeight: "bold", textAlign: 'center', marginTop: '20px' }}>*One can delete a Conference until two days before the Event*</p>
       </>
     );
   } else if (

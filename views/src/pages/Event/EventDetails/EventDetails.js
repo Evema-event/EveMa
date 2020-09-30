@@ -70,23 +70,23 @@ const EventDetails = () => {
                 </div>
               </div>
             </div>
-              {eventContext.isUpcoming && (
-                <>
-            <div className={classes.registerButton}>
-                <EventButton eventId={event._id} event={event} />
-            </div>
-            {localStorage.getItem('role') ==='Organizer' ?
-              (
-              <p style={{color:"whitesmoke", textAlign:'center',marginTop:'20px'}}>*Events can be deleted before 2 days of the start of the Event*</p>
-              ): localStorage.getItem('role') ==='Exhibitor'?
-            (
-            <p style={{color:"whitesmoke", textAlign:'center',marginTop:'20px'}}>*Exhibitors can register upto 2 Stalls and 1 Conference only*</p>
-            ):
-            (
-              <></>
-            )
-            }</>
-              )}
+            {eventContext.isUpcoming && (
+              <>
+                <div className={classes.registerButton}>
+                  <EventButton eventId={event._id} event={event} />
+                </div>
+                {localStorage.getItem('role') === 'Organizer' ?
+                  (
+                    <p style={{ color: "white", fontWeight: "bold", textAlign: 'center', marginTop: '20px' }}>*Events can be deleted before 2 days of the start of the Event*</p>
+                  ) : localStorage.getItem('role') === 'Exhibitor' ?
+                    (
+                      <p style={{ color: "white", fontWeight: "bold", textAlign: 'center', marginTop: '20px' }}>*Exhibitors can register upto 2 Stalls and 1 Conference only*</p>
+                    ) :
+                    (
+                      <></>
+                    )
+                }</>
+            )}
           </div>
         </div>
       </div>

@@ -155,7 +155,6 @@ const UpdatePassword = () => {
                   className={[
                     'btn btn-warning btn-block',
                     classes.next,
-                    classes.link,
                     classes['btn-primary'],
                   ].join(' ')}
                   disable='true'
@@ -168,7 +167,6 @@ const UpdatePassword = () => {
                     className={[
                       'btn btn-success btn-block',
                       classes.next,
-                      classes.link,
                       classes['btn-primary'],
                     ].join(' ')}
                   >
@@ -181,7 +179,6 @@ const UpdatePassword = () => {
                   className={[
                     'btn btn-danger btn-block',
                     classes.next,
-                    classes.link,
                     classes['btn-primary'],
                   ].join(' ')}
                 >
