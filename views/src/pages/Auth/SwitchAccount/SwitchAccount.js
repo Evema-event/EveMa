@@ -76,7 +76,11 @@ const SwitchAccount = () => {
         })
         .catch((err) => {
           setLoading(false);
-          swal('Something Wrong', 'error');
+          if (err?.response?.data?.error === 'Password does not match') {
+            swal('', 'Invalid Password', 'error');
+          } else {
+            swal('', 'Something went wrong!', 'error');
+          }
         });
     }
   };

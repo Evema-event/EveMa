@@ -201,7 +201,7 @@
   .user {
     padding: 0;
   }
-  .grid{
+  .grid {
     gap: 150px;
   }
 }
@@ -217,12 +217,15 @@
   .extend h3 {
     margin-top: 1rem;
   }
-  .grid{
+  .grid {
     gap: 150px;
   }
 }
 
 @media screen and (max-width: 650px) {
+  .section {
+    padding-top: 0px;
+  }
   .heads {
     width: 400px;
   }
@@ -235,7 +238,7 @@
   }
 
   .main {
-    margin-top: 100px;
+    margin-top: -30px;
   }
 
   .extend {
