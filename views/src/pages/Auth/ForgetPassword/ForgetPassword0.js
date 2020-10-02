@@ -86,7 +86,7 @@ const ForgetPassword0 = () => {
       <div className={classes['forget']}>
         <form className={classes['form-login']} onSubmit={handleSubmit}>
           <h2 style={{ fontSize: '1.8rem', marginBottom: '1.5rem' }}>
-            Forget Password
+            Forgot Password
           </h2>
           <span className={classes['inputs-login']}>
             <div className={classes['form_group']}>
@@ -116,28 +116,28 @@ const ForgetPassword0 = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className={[
-                    'btn btn-primary btn-block',
-                    btnclasses.next,
-                    btnclasses.link,
-                    btnclasses['btn-primary'],
-                  ].join(' ')}
-                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
-                >
-                  Next
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className={[
+                      'btn btn-primary btn-block',
+                      btnclasses.next,
+                      btnclasses.link,
+                      btnclasses['btn-primary'],
+                    ].join(' ')}
+                    style={{ boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
+                  >
+                    Next
+                  </button>
+                )}
               <Link to='/login'>
-            <button
-              type='button'
-              className={['btn btn-primary', btnclasses['btn-primary']].join(' ')}
-              style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
-            >
-              Cancel
+                <button
+                  type='button'
+                  className={['btn btn-primary', btnclasses['btn-primary']].join(' ')}
+                  style={{ width: '100%', textAlign: 'center', marginTop: '10px' }}
+                >
+                  Cancel
             </button>
-          </Link>
+              </Link>
             </div>
           </span>
         </form>

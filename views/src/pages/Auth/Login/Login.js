@@ -145,7 +145,7 @@ const Login = () => {
               />
               <h6>{fields.password.error}</h6>
               <Link className={classes['link']} to='/forgetpassword/0'>
-                <small>Forget Password?</small>
+                <small>Forgot Password?</small>
               </Link>
             </div>
             <div>

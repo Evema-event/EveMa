@@ -158,19 +158,19 @@ const ForgetPassword2 = () => {
                   Loading
                 </button>
               ) : (
-                <button
-                  type='submit'
-                  className={[
-                    'btn btn-primary btn-block',
-                    btnclasses.next,
-                    btnclasses.link,
-                    btnclasses['btn-primary'],
-                  ].join(' ')}
-                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
-                >
-                  Submit
-                </button>
-              )}
+                  <button
+                    type='submit'
+                    className={[
+                      'btn btn-primary btn-block',
+                      btnclasses.next,
+                      btnclasses.link,
+                      btnclasses['btn-primary'],
+                    ].join(' ')}
+                    style={{ boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
+                  >
+                    Submit
+                  </button>
+                )}
               <Link to='/forgetpassword/0'>
                 <button
                   type='submit'
@@ -180,7 +180,7 @@ const ForgetPassword2 = () => {
                     btnclasses.link,
                     btnclasses['btn-primary'],
                   ].join(' ')}
-                style={{boxShadow: "3px 3px 3px rgba(0,0,0,0.50)"}}
+                  style={{ boxShadow: "3px 3px 3px rgba(0,0,0,0.50)" }}
                 >
                   Cancel
                 </button>
