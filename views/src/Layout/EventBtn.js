@@ -229,7 +229,7 @@ const RegisterBtn = (props) => {
                   Loading
                 </div>
               ) : (
-                  <div onClick={registerEvent}>Register Event</div>
+                  <div onClick={registerEvent}>Register for Event</div>
                 )}
             </div>
           )}
