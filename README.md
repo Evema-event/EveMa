@@ -1,4 +1,5 @@
-Event Management Server.
+# EveMa (Event Management Server)
+EveMa is a data acquisition,transmission and analytics software that provides a communication medium to share information between visitors and exhibitors enabling efficient follow-ups. It analyses the data of the visitor profiles helping them single out stalls based on their interests, thus converting hot leads into potential business targets.Majority (94%) of event planners believe that an event software makes it easier to achieve business outcomes and Meetup is a one stop portal to do so.
 
 ## Available Scripts
 
