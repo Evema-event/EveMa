@@ -2,3 +2,5 @@
 /views/node_modules
 /views/build
 error.txt
+.vercel
+.idea
